@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Game</string>
+    <string name="Option">Settings</string>
+    <string name="Red">Red_Colour</string>
+    <string name="Gray">Gray_Colour</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid account name</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="select_account">"Select Account"</string>
+    <string name="create_account">"Create Account"</string>
+    <string name="back">"Back"</string>
+    <string name="next1">"To Game Two"</string>
+    <string name="next2">"To Game Three"</string>
+    <string name="next3">"To Main Menu"</string>
 </resources>
