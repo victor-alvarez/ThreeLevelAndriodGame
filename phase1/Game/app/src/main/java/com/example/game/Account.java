@@ -1,9 +1,13 @@
 package com.example.game;
 
-/** A account*/
+/**
+ * A account
+ */
 public class Account {
 
-    /** The user id of the Account.*/
+    /**
+     * The user id of the Account.
+     */
     private String user_id;
 
     /**
