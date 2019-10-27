@@ -7,7 +7,7 @@
     tools:context=".CreateAccountActivity">
 
     <Button
-        android:id="@+id/backButton"
+        android:id="@+id/backButton_CreateAccountActivity"
         android:layout_width="169dp"
         android:layout_height="105dp"
         android:layout_marginStart="120dp"
@@ -16,10 +16,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createButton2" />
+        app:layout_constraintTop_toBottomOf="@+id/createButton_CreateAccountActivity" />
 
     <Button
-        android:id="@+id/createButton2"
+        android:id="@+id/createButton_CreateAccountActivity"
         android:layout_width="169dp"
         android:layout_height="105dp"
         android:layout_marginStart="121dp"
@@ -28,10 +28,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createName" />
+        app:layout_constraintTop_toBottomOf="@+id/createName_CreateAccountActivity" />
 
     <EditText
-        android:id="@+id/createName"
+        android:id="@+id/createName_CreateAccountActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="102dp"
@@ -40,6 +40,7 @@
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

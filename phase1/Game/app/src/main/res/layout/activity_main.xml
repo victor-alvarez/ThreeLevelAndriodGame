@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/settingsButton_MainActivity"
         android:layout_width="169dp"
         android:layout_height="105dp"
         android:layout_marginStart="120dp"
@@ -16,10 +16,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createButton" />
+        app:layout_constraintTop_toBottomOf="@+id/createButton_MainActivity" />
 
     <Button
-        android:id="@+id/inputButton"
+        android:id="@+id/inputButton_MainActivity"
         android:layout_width="169dp"
         android:layout_height="105dp"
         android:layout_marginStart="121dp"
@@ -28,10 +28,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accountNameText" />
+        app:layout_constraintTop_toBottomOf="@+id/accountNameText_MainActivity" />
 
     <Button
-        android:id="@+id/createButton"
+        android:id="@+id/createButton_MainActivity"
         android:layout_width="169dp"
         android:layout_height="105dp"
         android:layout_marginStart="120dp"
@@ -40,15 +40,17 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputButton" />
+        app:layout_constraintTop_toBottomOf="@+id/inputButton_MainActivity" />
 
     <EditText
-        android:id="@+id/accountNameText"
+        android:id="@+id/accountNameText_MainActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
         android:layout_marginTop="106dp"
         android:ems="10"
+        android:hint="@android:string/autofill"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:text="@string/title_activity_login"
         app:layout_constraintStart_toStartOf="parent"

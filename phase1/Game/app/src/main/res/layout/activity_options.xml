@@ -7,7 +7,7 @@
     tools:context=".OptionsActivity">
 
     <Button
-        android:id="@+id/backButton2"
+        android:id="@+id/backButton_OptionsActivity"
         android:layout_width="169dp"
         android:layout_height="105dp"
         android:layout_marginStart="120dp"
@@ -16,10 +16,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/radioOptions_OptionsActivity" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/radioOptions_OptionsActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -27,14 +27,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/red_button"
+            android:id="@+id/red_button_OptionsActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
             android:text="@string/Red" />
 
         <RadioButton
-            android:id="@+id/gray_button"
+            android:id="@+id/gray_button_OptionsActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
