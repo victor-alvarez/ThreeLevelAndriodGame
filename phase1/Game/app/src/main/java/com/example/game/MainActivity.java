@@ -30,11 +30,13 @@ public class MainActivity extends AppCompatActivity {
     inputName = (EditText) findViewById(R.id.accountNameText_MainActivity);
   }
 
+  /** Called when the user taps the "Settings" button */
   public void openOptions(View view) {
     Intent intent = new Intent(this, OptionsActivity.class);
     startActivity(intent);
   }
 
+  /** Called when the user taps the "Select Account" button */
   public void startGame(View view) {
     // if (inputName.getText().toString().equals(temp)){
     // TODO: Do something with the correct account to pass instructions about data
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     // }
   }
 
+  /** Called when the user taps the "Create Account" button */
   public void createAccount(View view) {
     Intent intent = new Intent(this, CreateAccountActivity.class);
     startActivity(intent);

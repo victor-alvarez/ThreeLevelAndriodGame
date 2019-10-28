@@ -14,6 +14,7 @@ public class Game3Activity extends AppCompatActivity {
     setContentView(R.layout.activity_game3);
   }
 
+  /** Called when the user taps the "To Main Menu" button */
   public void nextGame(View view) {
     Intent intent = new Intent(this, MainActivity.class);
     startActivity(intent);

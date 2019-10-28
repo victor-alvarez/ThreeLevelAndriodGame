@@ -28,6 +28,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     inputName = (EditText) findViewById(R.id.createName_CreateAccountActivity);
   }
 
+  /** Called when the user taps the "Create Account" or "Back" button */
   public void toMainMenu(View view) {
     // The button with id R.id.createButton_CreateAccountActivity is still linked to this
     // method. Recall the previous To-do associated with this button:
@@ -39,7 +40,8 @@ public class CreateAccountActivity extends AppCompatActivity {
     // toMainMenu()
 
     // Should probably create a new method for the R.id.createButton_CreateAccountActivity
-    // button. But for now, as stated in the To-do, it will just call this method.
+    // button OR check the id of the view parameter to determine what to do. But for now, as stated
+    // in the To-do, it will just call this method.
 
     // Also recall that the button with id R.id.backButton_CreateAccountActivity is also
     // linked to this method, as it should be.

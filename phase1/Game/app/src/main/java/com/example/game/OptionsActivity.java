@@ -25,6 +25,7 @@ public class OptionsActivity extends AppCompatActivity {
     }
   }
 
+  /** Called when the user taps the "Red_Colour" or "Gray_Colour" button */
   public void onRadioButtonClicked(View v) {
     // Is the button now checked?
     boolean checked = ((RadioButton) v).isChecked();
@@ -46,6 +47,7 @@ public class OptionsActivity extends AppCompatActivity {
     mEditor.apply();
   }
 
+  /** Called when the user taps the "Back" button */
   public void toMainMenu(View view) {
     Intent intent = new Intent(this, MainActivity.class);
     startActivity(intent);

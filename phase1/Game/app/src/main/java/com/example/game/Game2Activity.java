@@ -14,6 +14,7 @@ public class Game2Activity extends AppCompatActivity {
     setContentView(R.layout.activity_game2);
   }
 
+  /** Called when the user taps the "To Game Three" button */
   public void nextGame(View view) {
     Intent intent = new Intent(this, Game3Activity.class);
     startActivity(intent);
