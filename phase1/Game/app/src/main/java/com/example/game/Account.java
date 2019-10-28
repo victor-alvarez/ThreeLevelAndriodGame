@@ -62,6 +62,7 @@ public class Account {
 
     public void setCustomisation(String[] customisation) {
         this.customisation = customisation;
+        this.saveSettings();
     }
 
     /**
@@ -82,6 +83,7 @@ public class Account {
 
     public void setSave(String[] save) {
         this.save = save;
+        this.saveProgress();
     }
 
     public void saveSettings() {
