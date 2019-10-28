@@ -3,152 +3,142 @@ package com.example.game;
 import java.io.*;
 import java.util.ArrayList;
 
-/**
- * An account
- */
+/** An account */
 public class Account {
 
-    /**
-     * Account's login, customization settings and save data.
-     */
+  /** Account's login, customization settings and save data. */
+  public String login;
 
-    public String login;
-    public String[] customisation;
-    public String[] save;
-
-    /**
-     * Constructor for brand new Account. Activates from Create Account button. Takes login from
-     * Enter Login field. Uses default values for customization settings and save data.
-     *
-     * @param login of the Account.
-     */
-    public Account(String login) {
-        this.login = login;
-        String[] a = {"0", "0", "0"};
-        this.customisation = a;
-        String[] b = {"0", "0", "0", "0"};
-        this.save = b;
-    }
+  public String[] customisation;
+  public String[] save;
 
   /**
-   * Constructor for existing Account. Activates from Select Account button. Takes login from
-   * Enter Login field. Uses saved values for customization settings and save data.
+   * Constructor for brand new Account. Activates from Create Account button. Takes login from Enter
+   * Login field. Uses default values for customization settings and save data.
+   *
+   * @param login of the Account.
+   */
+  public Account(String login) {
+    this.login = login;
+    String[] a = {"0", "0", "0"};
+    this.customisation = a;
+    String[] b = {"0", "0", "0", "0"};
+    this.save = b;
+  }
+
+  /**
+   * Constructor for existing Account. Activates from Select Account button. Takes login from Enter
+   * Login field. Uses saved values for customization settings and save data.
    *
    * @param login of the Account;
    * @param customisation settings of the Account;
    * @param save data of the Account;
    */
   public Account(String login, String[] customisation, String[] save) {
-      this.login = login;
-      this.customisation = customisation;
-      this.save = save;
+    this.login = login;
+    this.customisation = customisation;
+    this.save = save;
   }
 
-    /**
-     * Getter for the customisation instance variable.
-     *
-     * @return customization settings of the Account.
-     */
+  /**
+   * Getter for the customisation instance variable.
+   *
+   * @return customization settings of the Account.
+   */
+  public String[] getCustomisation() {
+    return this.customisation;
+  }
 
-    public String[] getCustomisation() {
-        return this.customisation;
-    }
+  /**
+   * Setter for the customisation instance variable.
+   *
+   * @param customisation settings of the Account.
+   */
+  public void setCustomisation(String[] customisation) {
+    this.customisation = customisation;
+    this.saveSettings();
+  }
 
-    /**
-     * Setter for the customisation instance variable.
-     *
-     * @param customisation settings of the Account.
-     */
+  /**
+   * Getter for the save instance variable.
+   *
+   * @return save data of the Account.
+   */
+  public String[] getSave() {
+    return this.save;
+  }
 
-    public void setCustomisation(String[] customisation) {
-        this.customisation = customisation;
-        this.saveSettings();
-    }
+  /**
+   * Setter for the save instance variable.
+   *
+   * @param save data of the Account.
+   */
+  public void setSave(String[] save) {
+    this.save = save;
+    this.saveProgress();
+  }
 
-    /**
-     * Getter for the save instance variable.
-     *
-     * @return save data of the Account.
-     */
-
-    public String[] getSave() {
-        return this.save;
-    }
-
-    /**
-     * Setter for the save instance variable.
-     *
-     * @param save data of the Account.
-     */
-
-    public void setSave(String[] save) {
-        this.save = save;
-        this.saveProgress();
-    }
-
-    public void saveSettings() {
-        try {
-            File saveFile = new File("gameSaveFile.txt");
-            FileReader loadAccountData = new FileReader(saveFile);
-            BufferedReader loadAccData = new BufferedReader(loadAccountData);
-            String line;
-            ArrayList<String> old = new ArrayList<String>();
-            while ((line = loadAccData.readLine()) != null) {
-                int i = line.indexOf(", ");
-                String s = line.substring(0, i);
-                if (this.login.equals(s)) {
-                    String[] l = line.split(", ");
-                    String save = l[4] + ", " + l[5] + ", " + l[6] + ", " + l[7];
-                    String[] set = this.getCustomisation();
-                    String settings = set[0] + ", " + set[1] + ", " + set[2] + ", ";
-                    String newSettings = s + ", " + settings + save;
-                    old.add(newSettings);
-                } else {
-                    old.add(line);
-                }
-            }
-            PrintWriter saveSettings = new PrintWriter(saveFile);
-            for (String i: old) {
-                saveSettings.println(i);
-            }
-            saveSettings.close();
+  public void saveSettings() {
+    try {
+      File saveFile = new File("gameSaveFile.txt");
+      FileReader loadAccountData = new FileReader(saveFile);
+      BufferedReader loadAccData = new BufferedReader(loadAccountData);
+      String line;
+      ArrayList<String> old = new ArrayList<String>();
+      while ((line = loadAccData.readLine()) != null) {
+        int i = line.indexOf(", ");
+        String s = line.substring(0, i);
+        if (this.login.equals(s)) {
+          String[] l = line.split(", ");
+          String save = l[4] + ", " + l[5] + ", " + l[6] + ", " + l[7];
+          String[] set = this.getCustomisation();
+          String settings = set[0] + ", " + set[1] + ", " + set[2] + ", ";
+          String newSettings = s + ", " + settings + save;
+          old.add(newSettings);
+        } else {
+          old.add(line);
         }
-        catch (IOException error) {
-            System.out.println("Can't find account");
-        }
+      }
+      PrintWriter saveSettings = new PrintWriter(saveFile);
+      for (String i : old) {
+        saveSettings.println(i);
+      }
+      saveSettings.close();
+    } catch (IOException error) {
+      System.out.println("Can't find account");
     }
+  }
 
-    public void saveProgress() {
-        try {
-            File saveFile = new File("gameSaveFile.txt");
-            FileReader loadAccountData = new FileReader(saveFile);
-            BufferedReader loadAccData = new BufferedReader(loadAccountData);
-            String line;
-            ArrayList<String> old = new ArrayList<String>();
-            while ((line = loadAccData.readLine()) != null) {
-                int i = line.indexOf(", ");
-                String s = line.substring(0, i);
-                if (this.login.equals(s)) {
-                    String[] l = line.split(", ");
-                    String[] save = this.getSave();
-                    String set = l[1] + ", " + l[2] + ", " + l[3] + ", ";
-                    String sav = save[0] + ", " + save[1] + ", " + save[2] + ", " + save[3];
-                    String newSave = s + ", " + set + sav;
-                    old.add(newSave);
-                } else {
-                    old.add(line);
-                }
-            }
-            PrintWriter updateSave = new PrintWriter(saveFile);
-            for (String i: old) {
-                updateSave.println(i);
-            }
-            updateSave.close();
+  public void saveProgress() {
+    try {
+      File saveFile = new File("gameSaveFile.txt");
+      FileReader loadAccountData = new FileReader(saveFile);
+      BufferedReader loadAccData = new BufferedReader(loadAccountData);
+      String line;
+      ArrayList<String> old = new ArrayList<String>();
+      while ((line = loadAccData.readLine()) != null) {
+        int i = line.indexOf(", ");
+        String s = line.substring(0, i);
+        if (this.login.equals(s)) {
+          String[] l = line.split(", ");
+          String[] save = this.getSave();
+          String set = l[1] + ", " + l[2] + ", " + l[3] + ", ";
+          String sav = save[0] + ", " + save[1] + ", " + save[2] + ", " + save[3];
+          String newSave = s + ", " + set + sav;
+          old.add(newSave);
+        } else {
+          old.add(line);
         }
-        catch (IOException error) {
-            System.out.println("Can't find account");
-        }
+      }
+      PrintWriter updateSave = new PrintWriter(saveFile);
+      for (String i : old) {
+        updateSave.println(i);
+      }
+      updateSave.close();
+    } catch (IOException error) {
+      System.out.println("Can't find account");
     }
+  }
 
   /*public static void main(String[] args) {
     AccountManager.createNewAccount("TEST");
@@ -176,37 +166,42 @@ public class Account {
     System.out.println(c.getSave()[3]);
   }*/
 
+  /*    */
+  /** The user id of the Account. */
+  /*
+  private String user_id;
 
-    /*    *//**
-     * The user id of the Account.
-     *//*
-    private String user_id;
+  */
+  /**
+   * Getter for the user id instance variable.
+   *
+   * @return the user id of the Account.
+   */
+  /*
+  public String getUser_id() {
+      return user_id;
+  }
 
-    *//**
-     * Getter for the user id instance variable.
-     *
-     * @return the user id of the Account.
-     *//*
-    public String getUser_id() {
-        return user_id;
-    }
+  */
+  /**
+   * Setter for the user id instance variable.
+   *
+   * @param user_id the user id of the Account.
+   */
+  /*
+  public void setUser_id(String user_id) {
+      this.user_id = user_id;
+  }
 
-    *//**
-     * Setter for the user id instance variable.
-     *
-     * @param user_id the user id of the Account.
-     *//*
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
-    }
-
-    *//**
-     * Constructor for Account class.
-     *
-     * @param user_id the user id of the Account.
-     *//*
-    Account(String user_id) {
-        this.user_id = user_id;
-    }*/
+  */
+  /**
+   * Constructor for Account class.
+   *
+   * @param user_id the user id of the Account.
+   */
+  /*
+  Account(String user_id) {
+      this.user_id = user_id;
+  }*/
 
 }

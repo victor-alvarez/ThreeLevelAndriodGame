@@ -11,44 +11,43 @@ import android.widget.RadioButton;
 
 public class OptionsActivity extends AppCompatActivity {
 
-    SharedPreferences mPreferences;
-    SharedPreferences.Editor mEditor;
+  SharedPreferences mPreferences;
+  SharedPreferences.Editor mEditor;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_options);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_options);
 
-        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        if (mPreferences.getInt("Colour", 0) == 1) {
-            getWindow().getDecorView().setBackgroundResource(R.color.background1);
-        }
+    mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+    if (mPreferences.getInt("Colour", 0) == 1) {
+      getWindow().getDecorView().setBackgroundResource(R.color.background1);
     }
+  }
 
-    public void onRadioButtonClicked(View v) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) v).isChecked();
+  public void onRadioButtonClicked(View v) {
+    // Is the button now checked?
+    boolean checked = ((RadioButton) v).isChecked();
 
-        // Check which radio button was clicked
-        mEditor = mPreferences.edit();
-        switch (v.getId()) {
-            case R.id.gray_button_OptionsActivity:
-                if (checked)
-                    //android:setTheme(R.style.AppTheme2);
-                    getWindow().getDecorView().setBackgroundResource(R.color.background2);
-                    mEditor.putInt("Colour", 0);
-                break;
-            case R.id.red_button_OptionsActivity:
-                if (checked)
-                    mEditor.putInt("Colour", 1);
-                    getWindow().getDecorView().setBackgroundResource(R.color.background1);
-                break;
-        }
-        mEditor.apply();
+    // Check which radio button was clicked
+    mEditor = mPreferences.edit();
+    switch (v.getId()) {
+      case R.id.gray_button_OptionsActivity:
+        if (checked)
+          // android:setTheme(R.style.AppTheme2);
+          getWindow().getDecorView().setBackgroundResource(R.color.background2);
+        mEditor.putInt("Colour", 0);
+        break;
+      case R.id.red_button_OptionsActivity:
+        if (checked) mEditor.putInt("Colour", 1);
+        getWindow().getDecorView().setBackgroundResource(R.color.background1);
+        break;
     }
+    mEditor.apply();
+  }
 
-    public void toMainMenu(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
+  public void toMainMenu(View view) {
+    Intent intent = new Intent(this, MainActivity.class);
+    startActivity(intent);
+  }
 }
