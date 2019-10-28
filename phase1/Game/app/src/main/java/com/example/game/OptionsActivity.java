@@ -7,12 +7,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RadioButton;
 
 public class OptionsActivity extends AppCompatActivity {
-
-    Button button;
 
     SharedPreferences mPreferences;
     SharedPreferences.Editor mEditor;
@@ -26,13 +23,6 @@ public class OptionsActivity extends AppCompatActivity {
         if (mPreferences.getInt("Colour", 0) == 1) {
             getWindow().getDecorView().setBackgroundResource(R.color.background1);
         }
-
-        button = findViewById(R.id.backButton_OptionsActivity);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                toMainMenu();
-            }
-        });
     }
 
     public void onRadioButtonClicked(View v) {
@@ -57,7 +47,7 @@ public class OptionsActivity extends AppCompatActivity {
         mEditor.apply();
     }
 
-    public void toMainMenu() {
+    public void toMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
