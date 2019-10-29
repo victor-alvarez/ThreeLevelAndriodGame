@@ -9,6 +9,8 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.game.Game1.Game1Activity;
+
 public class MainActivity extends AppCompatActivity {
 
   EditText inputName;
