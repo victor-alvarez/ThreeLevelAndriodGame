@@ -15,6 +15,10 @@ public class RectPlayer implements GameObject{
         this.color = color;
     }
 
+    public Rect getRectangle(){
+        return rectangle;
+    }
+
     @Override
     public void draw(Canvas canvas){
         Paint paint = new Paint();
