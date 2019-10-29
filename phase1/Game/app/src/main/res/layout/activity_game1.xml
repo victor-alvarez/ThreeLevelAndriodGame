@@ -7,13 +7,65 @@
     tools:context=".Game1.Game1Activity">
 
     <Button
+        android:id="@+id/game1Button5"
+        android:layout_width="169dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="44dp"
+        android:onClick="playGame"
+        android:text="@string/game1_play"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/game1Button4"
+        android:layout_width="169dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="184dp"
+        android:onClick="toCustomization"
+        android:text="@string/game1_customize"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/game1Button3"
+        android:layout_width="169dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="296dp"
+        android:onClick="toShop"
+        android:text="@string/game1_shop"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/game1Button2"
+        android:layout_width="169dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="416dp"
+        android:onClick="nextGame"
+        android:text="@string/next1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/game1Button"
         android:layout_width="169dp"
         android:layout_height="105dp"
         android:layout_marginStart="120dp"
-        android:layout_marginTop="300dp"
-        android:onClick="nextGame"
-        android:text="@string/next1"
+        android:layout_marginTop="536dp"
+        android:onClick="toMainMenu"
+        android:text="@string/next3"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"

@@ -15,7 +15,7 @@ public class Game3Activity extends AppCompatActivity {
   }
 
   /** Called when the user taps the "To Main Menu" button */
-  public void nextGame(View view) {
+  public void toMainMenu(View view) {
     Intent intent = new Intent(this, MainActivity.class);
     startActivity(intent);
   }

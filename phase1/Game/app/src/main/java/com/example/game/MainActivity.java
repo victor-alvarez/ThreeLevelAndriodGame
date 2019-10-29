@@ -1,14 +1,12 @@
 package com.example.game;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.EditText;
-
 import com.example.game.Game1.Game1Activity;
 
 public class MainActivity extends AppCompatActivity {
