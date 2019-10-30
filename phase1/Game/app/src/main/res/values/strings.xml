@@ -22,4 +22,7 @@
     <string name="game1_changeSong">Change Song</string>
     <string name="game1_comingSoon">Coming soon....</string>
     <string name="game1_xButton">X</string>
+    <string name="account_already_exists">Account already exists with given name</string>
+    <string name="account_created">Account successfully created</string>
+    <string name="username">Username</string>
 </resources>

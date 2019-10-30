@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
   SharedPreferences mPreferences;
   Account account;
   TextView textView;
-  AccountManager accountManager;
+  AccountManager accountManager = new AccountManager();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
