@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".CreateAccountActivity">
 
+    <TextView
+        android:id="@+id/textView_CreateAccountActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="240dp"
+        android:textColor="@color/background1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/backButton_CreateAccountActivity"
         android:layout_width="169dp"
