@@ -6,7 +6,11 @@ import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.game.Account;
+
 public class BallJumperActivity extends Activity {
+
+  Account account;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -22,5 +26,6 @@ public class BallJumperActivity extends Activity {
     Constants.SCREEN_HEIGHT = dm.heightPixels;
 
     setContentView(new GamePanel(this));
+    account = (Account) getIntent().getSerializableExtra("ac");
   }
 }

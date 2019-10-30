@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
   EditText inputName;
-  AccountManager acc;
+  AccountManager accountManager = new AccountManager();
   SharedPreferences mPreferences;
+  TextView textView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,20 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     inputName = (EditText) findViewById(R.id.createName_CreateAccountActivity);
+    textView = findViewById(R.id.textView_CreateAccountActivity);
+  }
+
+  public void createAccount(View view){
+    Account tempAccount = accountManager.openExistingAccount(inputName.getText().toString(),
+            getApplicationContext());
+    if (tempAccount == null){
+      accountManager.createNewAccount(inputName.getText().toString(), getApplicationContext());
+      textView.setText(getResources().getText(R.string.account_created));
+      textView.setTextColor(getColor(R.color.font1));
+    } else {
+      textView.setText(getResources().getText(R.string.account_already_exists));
+      textView.setTextColor(getColor(R.color.background1));
+    }
   }
 
   /** Called when the user taps the "Create Account" or "Back" button */

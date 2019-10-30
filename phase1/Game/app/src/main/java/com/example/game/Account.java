@@ -1,10 +1,12 @@
 package com.example.game;
 
+import android.content.Context;
+
 import java.io.*;
 import java.util.ArrayList;
 
 /** An account */
-public class Account {
+public class Account implements Serializable{
 
   /** Account's login, customization settings and save data. */
   public String login;
@@ -12,18 +14,21 @@ public class Account {
   public String[] customisation;
   public String[] save;
 
+  private Context context;
+
   /**
    * Constructor for brand new Account. Activates from Create Account button. Takes login from Enter
    * Login field. Uses default values for customization settings and save data.
    *
    * @param login of the Account.
    */
-  public Account(String login) {
+  public Account(String login, Context context) {
     this.login = login;
     String[] a = {"0", "0", "0"};
     this.customisation = a;
     String[] b = {"0", "0", "0", "0"};
     this.save = b;
+    this.context = context;
   }
 
   /**
@@ -80,7 +85,7 @@ public class Account {
 
   public void saveSettings() {
     try {
-      File saveFile = new File("gameSaveFile.txt");
+      File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       FileReader loadAccountData = new FileReader(saveFile);
       BufferedReader loadAccData = new BufferedReader(loadAccountData);
       String line;
@@ -109,9 +114,12 @@ public class Account {
     }
   }
 
+  /**
+   * Does the exact same thing as the saveSetting method, so we really only need one of them);
+   */
   public void saveProgress() {
     try {
-      File saveFile = new File("gameSaveFile.txt");
+      File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       FileReader loadAccountData = new FileReader(saveFile);
       BufferedReader loadAccData = new BufferedReader(loadAccountData);
       String line;
@@ -165,43 +173,4 @@ public class Account {
     System.out.println(c.getSave()[2]);
     System.out.println(c.getSave()[3]);
   }*/
-
-  /*    */
-  /** The user id of the Account. */
-  /*
-  private String user_id;
-
-  */
-  /**
-   * Getter for the user id instance variable.
-   *
-   * @return the user id of the Account.
-   */
-  /*
-  public String getUser_id() {
-      return user_id;
-  }
-
-  */
-  /**
-   * Setter for the user id instance variable.
-   *
-   * @param user_id the user id of the Account.
-   */
-  /*
-  public void setUser_id(String user_id) {
-      this.user_id = user_id;
-  }
-
-  */
-  /**
-   * Constructor for Account class.
-   *
-   * @param user_id the user id of the Account.
-   */
-  /*
-  Account(String user_id) {
-      this.user_id = user_id;
-  }*/
-
 }

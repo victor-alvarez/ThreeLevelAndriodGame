@@ -15,7 +15,7 @@
         <activity android:name=".Game1.CustomizeActivity" />
         <activity android:name=".Game1.BallJumperActivity" />
         <activity android:name=".Game3Activity" />
-        <activity android:name=".Game2Activity" />
+        <activity android:name=".Game2.Game2Activity" />
         <activity android:name=".Game1.Game1Activity" />
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".OptionsActivity" />
