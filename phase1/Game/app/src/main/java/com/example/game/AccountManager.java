@@ -1,5 +1,12 @@
 package com.example.game;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Environment;
+
+import androidx.core.content.ContextCompat;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -15,9 +22,9 @@ public class AccountManager implements Serializable {
    * @param login of the Account.
    * @return new Account with given login.
    */
-  public static Account createNewAccount(String login) {
+  public static Account createNewAccount(String login, Context context) {
     try {
-      File saveFile = new File("gameSaveFile.txt");
+      File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       if (!saveFile.exists()) {
         saveFile.createNewFile();
         FileWriter saveAccount = new FileWriter(saveFile);
@@ -28,9 +35,9 @@ public class AccountManager implements Serializable {
       saveAccount.write("\n" + login + ", 0, 0, 0, 0, 0, 0, 0");
       saveAccount.close();
     } catch (IOException error) {
-      System.out.println("ERROR");
+      error.printStackTrace();
     }
-    return new Account(login);
+    return new Account(login, context);
   }
 
   /**
@@ -41,9 +48,9 @@ public class AccountManager implements Serializable {
    * @return Array[boolean][Account]: account found => true + loaded Account, save file or account
    *     missing => false + null.
    */
-  public static Object[] openExistingAccount(String login) {
+  public static Object[] openExistingAccount(String login, Context context) {
     try {
-      File saveFile = new File("gameSaveFile.txt");
+      File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       if (!saveFile.exists()) {
         Object[] result = {false, null};
         return result;
@@ -64,58 +71,10 @@ public class AccountManager implements Serializable {
         }
       }
     } catch (IOException error) {
+      error.printStackTrace();
       System.out.println("Can't find account");
     }
     Object[] result = {false, null};
     return result;
   }
-
-  /** List of accounts. */
-  /*
-  ArrayList<Account> accounts;
-
-  */
-  /** Create an account manager */
-  /*
-  AccountManager(){
-      //TODO: Read data from a file
-  }
-
-  */
-  /**
-   * Get account with name same as user id.
-   *
-   * @return the account with matching name;
-   */
-  /*
-  Account getAccount(String name){
-      for (Account account : accounts){
-          if (account.getUser_id().equals(name)){
-              return account;
-          }
-      }
-      return null;
-  }
-
-  */
-  /** Adds a new account to the arraylist. Also updates the data file. */
-  /*
-   void addAccount(String name){
-      accounts.add(new Account(name));
-      writeToFile();
-  }
-
-  */
-  /** Writes data about the accounts to a file */
-  /*
-  void writeToFile(){
-      return;
-  }
-
-  */
-  /** Reads data about the accounts to a file. */
-  /*
-  private void readFromFile(){
-      return;
-  }*/
 }

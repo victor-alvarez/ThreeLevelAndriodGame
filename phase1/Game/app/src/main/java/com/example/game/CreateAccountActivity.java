@@ -28,6 +28,15 @@ public class CreateAccountActivity extends AppCompatActivity {
     inputName = (EditText) findViewById(R.id.createName_CreateAccountActivity);
   }
 
+  public void createAccount(View view){
+    Object[] tup = AccountManager.openExistingAccount(inputName.getText().toString(), getApplicationContext());
+    if (tup[1] == null){
+      AccountManager.createNewAccount(inputName.getText().toString(), getApplicationContext());
+    } else {
+      //Don't create account and do something
+    }
+  }
+
   /** Called when the user taps the "Create Account" or "Back" button */
   public void toMainMenu(View view) {
     // The button with id R.id.createButton_CreateAccountActivity is still linked to this
