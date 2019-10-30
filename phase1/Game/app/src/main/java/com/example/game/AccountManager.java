@@ -22,7 +22,7 @@ public class AccountManager implements Serializable {
    * @param login of the Account.
    * @return new Account with given login.
    */
-  public static Account createNewAccount(String login, Context context) {
+  public Account createNewAccount(String login, Context context) {
     try {
       File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       if (!saveFile.exists()) {
@@ -48,7 +48,7 @@ public class AccountManager implements Serializable {
    * @return Array[boolean][Account]: account found => true + loaded Account, save file or account
    *     missing => false + null.
    */
-  public static Account openExistingAccount(String login, Context context) {
+  public Account openExistingAccount(String login, Context context) {
     try {
       File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       if (!saveFile.exists()) {

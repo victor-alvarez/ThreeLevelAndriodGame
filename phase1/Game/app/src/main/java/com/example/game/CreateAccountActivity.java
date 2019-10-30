@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class CreateAccountActivity extends AppCompatActivity {
 
   EditText inputName;
-  AccountManager acc;
+  AccountManager accountManager;
   SharedPreferences mPreferences;
   TextView textView;
 
@@ -32,9 +32,9 @@ public class CreateAccountActivity extends AppCompatActivity {
   }
 
   public void createAccount(View view){
-    Account tempAccount = AccountManager.openExistingAccount(inputName.getText().toString(), getApplicationContext());
+    Account tempAccount = accountManager.openExistingAccount(inputName.getText().toString(), getApplicationContext());
     if (tempAccount == null){
-      AccountManager.createNewAccount(inputName.getText().toString(), getApplicationContext());
+      accountManager.createNewAccount(inputName.getText().toString(), getApplicationContext());
       textView.setText("Account successfully created");
       textView.setTextColor(getColor(R.color.font1));
     } else {

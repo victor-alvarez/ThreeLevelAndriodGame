@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
   SharedPreferences mPreferences;
   Account account;
   TextView textView;
+  AccountManager accountManager;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
   /** Called when the user taps the "Select Account" button */
   public void startGame(View view) {
-    Account tempAccount = AccountManager.openExistingAccount(inputName.getText().toString(),
+    Account tempAccount = accountManager.openExistingAccount(inputName.getText().toString(),
             getApplicationContext());
     if (tempAccount != null) {
       account = tempAccount;
