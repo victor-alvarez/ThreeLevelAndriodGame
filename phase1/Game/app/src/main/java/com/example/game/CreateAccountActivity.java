@@ -32,8 +32,8 @@ public class CreateAccountActivity extends AppCompatActivity {
   }
 
   public void createAccount(View view){
-    Object[] tup = AccountManager.openExistingAccount(inputName.getText().toString(), getApplicationContext());
-    if (tup[1] == null){
+    Account tempAccount = AccountManager.openExistingAccount(inputName.getText().toString(), getApplicationContext());
+    if (tempAccount == null){
       AccountManager.createNewAccount(inputName.getText().toString(), getApplicationContext());
       textView.setText("Account successfully created");
       textView.setTextColor(getColor(R.color.font1));

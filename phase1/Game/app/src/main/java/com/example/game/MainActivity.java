@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
   /** Called when the user taps the "Select Account" button */
   public void startGame(View view) {
-    Object[] tup = AccountManager.openExistingAccount(inputName.getText().toString(),
+    Account tempAccount = AccountManager.openExistingAccount(inputName.getText().toString(),
             getApplicationContext());
-    if (tup[1] != null) {
-      account = (Account) tup[1];
+    if (tempAccount != null) {
+      account = tempAccount;
       Intent intent = new Intent(this, Game1Activity.class);
       intent.putExtra("ac", account);
       startActivity(intent);

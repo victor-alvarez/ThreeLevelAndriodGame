@@ -85,7 +85,7 @@ public class Account implements Serializable{
 
   public void saveSettings() {
     try {
-      File saveFile = new File(context.getFilesDir(),"gameSaveFile.txt");
+      File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       FileReader loadAccountData = new FileReader(saveFile);
       BufferedReader loadAccData = new BufferedReader(loadAccountData);
       String line;
@@ -114,9 +114,12 @@ public class Account implements Serializable{
     }
   }
 
+  /**
+   * Does the exact same thing as the saveSetting method, so we really only need one of them);
+   */
   public void saveProgress() {
     try {
-      File saveFile = new File(context.getFilesDir(),"gameSaveFile.txt");
+      File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       FileReader loadAccountData = new FileReader(saveFile);
       BufferedReader loadAccData = new BufferedReader(loadAccountData);
       String line;

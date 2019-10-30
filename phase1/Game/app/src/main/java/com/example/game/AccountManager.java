@@ -48,12 +48,11 @@ public class AccountManager implements Serializable {
    * @return Array[boolean][Account]: account found => true + loaded Account, save file or account
    *     missing => false + null.
    */
-  public static Object[] openExistingAccount(String login, Context context) {
+  public static Account openExistingAccount(String login, Context context) {
     try {
       File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       if (!saveFile.exists()) {
-        Object[] result = {false, null};
-        return result;
+        return null;
       }
       FileReader loadAccountData = new FileReader(saveFile);
       BufferedReader loadAccData = new BufferedReader(loadAccountData);
@@ -66,15 +65,13 @@ public class AccountManager implements Serializable {
           String[] cust = {l[1], l[2], l[3]};
           String[] save = {l[4], l[5], l[6], l[7]};
           Account acc = new Account(login, cust, save);
-          Object[] result = {true, acc};
-          return result;
+          return acc;
         }
       }
     } catch (IOException error) {
       error.printStackTrace();
       System.out.println("Can't find account");
     }
-    Object[] result = {false, null};
-    return result;
+    return null;
   }
 }
