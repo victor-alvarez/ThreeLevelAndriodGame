@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.game.Account;
-import com.example.game.Game3Activity;
+import com.example.game.Game3.Game3Activity;
 import com.example.game.R;
 
 public class Game2Activity extends AppCompatActivity {

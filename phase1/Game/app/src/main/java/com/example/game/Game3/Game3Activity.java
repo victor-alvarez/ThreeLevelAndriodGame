@@ -1,10 +1,14 @@
-package com.example.game;
+package com.example.game.Game3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.game.Account;
+import com.example.game.MainActivity;
+import com.example.game.R;
 
 public class Game3Activity extends AppCompatActivity {
 
