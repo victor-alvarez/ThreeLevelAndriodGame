@@ -22,13 +22,13 @@ public class CreateAccountActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_create_account);
 
+    inputName = findViewById(R.id.createName_CreateAccountActivity);
+    textView = findViewById(R.id.textView_CreateAccountActivity);
+
     mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
     if (mPreferences.getInt("Colour", 0) == 1) {
       getWindow().getDecorView().setBackgroundResource(R.color.background1);
     }
-
-    inputName = (EditText) findViewById(R.id.createName_CreateAccountActivity);
-    textView = findViewById(R.id.textView_CreateAccountActivity);
   }
 
   public void createAccount(View view){
@@ -40,12 +40,16 @@ public class CreateAccountActivity extends AppCompatActivity {
       textView.setTextColor(getColor(R.color.font1));
     } else {
       textView.setText(getResources().getText(R.string.account_already_exists));
-      textView.setTextColor(getColor(R.color.background1));
+      if (mPreferences.getInt("Colour", 0) == 1) {
+        textView.setTextColor(getResources().getColor(R.color.background2));
+      } else {
+        textView.setTextColor(getColor(R.color.background1));
+      }
     }
   }
 
   /** Called when the user taps the "Create Account" or "Back" button */
-  public void toMainMenu(View view) {
+  public void toLoginMenu(View view) {
     // The button with id R.id.createButton_CreateAccountActivity is still linked to this
     // method. Recall the previous To-do associated with this button:
 
@@ -62,7 +66,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     // Also recall that the button with id R.id.backButton_CreateAccountActivity is also
     // linked to this method, as it should be.
 
-    Intent intent = new Intent(this, MainActivity.class);
+    Intent intent = new Intent(this, LoginActivity.class);
     startActivity(intent);
   }
 }
