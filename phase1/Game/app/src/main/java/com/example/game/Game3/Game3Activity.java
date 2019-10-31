@@ -31,7 +31,7 @@ public class Game3Activity extends AppCompatActivity {
 
     /**
      * Called when user taps the "Play" Button.
-     * */
+     */
     public void toPlay(View view) {
         Intent intent = new Intent(this, Game3PlayActivity.class);
         startActivity(intent);
