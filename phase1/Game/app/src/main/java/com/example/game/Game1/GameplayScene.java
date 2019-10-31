@@ -17,7 +17,6 @@ public class GameplayScene implements Scene {
     private PlatformHandler platformHandler;
     private boolean movingPlayer = false;
     private boolean gameOver = false;
-    private long gameOverTime;
     private Rect r = new Rect();
     private int score; // Score for the game
     private int lives; // Lives for the game
@@ -65,14 +64,15 @@ public class GameplayScene implements Scene {
             obstacleManager.update();
             // When player gets hit subtract lives
             if (obstacleManager.playerCollide(player)) {
-                lives --;
-                reset();
-            }
-            // If player has no lives go to GameOverActivity
-            if (lives == 0) {
-                ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score);
                 gameOver = true;
-                gameOverTime = System.currentTimeMillis();
+                lives --;
+                // If player has no lives go to GameOverActivity
+                if (lives == 0) {
+                    ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score);
+                }
+                else {
+                    reset();
+                }
             }
         }
     }
@@ -84,11 +84,6 @@ public class GameplayScene implements Scene {
                 if (!gameOver && player.getRectangle().contains((int) event.getX(), (int) event.getY())) {
                     movingPlayer = true;
                 }
-                if (gameOver && System.currentTimeMillis() - gameOverTime >= 2000) {
-                    reset();
-                    gameOver = false;
-                }
-                break;
             case MotionEvent.ACTION_MOVE:
                 if (!gameOver && movingPlayer) {
                     playerPoint.set((int) event.getX(), (int) event.getY());
@@ -116,5 +111,6 @@ public class GameplayScene implements Scene {
         player.update(playerPoint);
         obstacleManager = new ObstacleManager(200, 350, 75, Color.BLACK);
         movingPlayer = false;
+        gameOver = false;
     }
 }
