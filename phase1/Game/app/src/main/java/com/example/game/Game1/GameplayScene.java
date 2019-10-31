@@ -7,6 +7,7 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
+import java.util.ArrayList;
 
 public class GameplayScene implements Scene {
 
@@ -18,6 +19,7 @@ public class GameplayScene implements Scene {
     private long gameOverTime;
     private Rect r = new Rect();
     private SurfaceView surfaceView;
+    private int score; // Score for the game
 
     public GameplayScene(SurfaceView surfaceView) {
         player = new RectPlayer(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
@@ -28,13 +30,6 @@ public class GameplayScene implements Scene {
         this.surfaceView = surfaceView;
     }
 
-    public void reset() {
-        playerPoint = new Point(Constants.SCREEN_WIDTH/2, 3 * Constants.SCREEN_HEIGHT/4);
-        player.update(playerPoint);
-        obstacleManager = new ObstacleManager(200, 350, 75, Color.BLACK);
-        movingPlayer = false;
-    }
-
     @Override
     public void terminate() {
         SceneManager.ACTIVE_SCENE = 0;
@@ -43,18 +38,27 @@ public class GameplayScene implements Scene {
     @Override
     public void draw(Canvas canvas) {
         canvas.drawColor(Color.WHITE);
-
         player.draw(canvas);
         obstacleManager.draw(canvas);
+        Paint paint = new Paint();
+        paint.setTextSize(100);
+        paint.setColor(Color.MAGENTA);
+        canvas.drawText("" + score, 50, 50 + paint.descent() - paint.ascent(), paint);
     }
 
     @Override
     public void update() {
         if (!gameOver) {
             player.update(playerPoint);
+            ArrayList<Obstacle> obstacles = obstacleManager.getObstacles();
+            // If obstacle goes off screen remove it, then add to our score
+            if (obstacles.get(obstacles.size() - 1).getRectangle().top >= Constants.SCREEN_HEIGHT) {
+                obstacles.remove(obstacles.size() - 1);
+                score++;
+            }
             obstacleManager.update();
             if (obstacleManager.playerCollide(player)) {
-                ((BallJumperActivity) surfaceView.getContext()).gameOver();
+                ((BallJumperActivity) surfaceView.getContext()).gameOver(score);
                 gameOver = true;
                 gameOverTime = System.currentTimeMillis();
             }
@@ -93,5 +97,12 @@ public class GameplayScene implements Scene {
         float x = cWidth / 2f - r.width() / 2f - r.left;
         float y = cHeight / 2f + r.height() / 2f - r.bottom;
         canvas.drawText(text, x, y, paint);
+    }
+
+    public void reset() {
+        playerPoint = new Point(Constants.SCREEN_WIDTH/2, 3 * Constants.SCREEN_HEIGHT/4);
+        player.update(playerPoint);
+        obstacleManager = new ObstacleManager(200, 350, 75, Color.BLACK);
+        movingPlayer = false;
     }
 }

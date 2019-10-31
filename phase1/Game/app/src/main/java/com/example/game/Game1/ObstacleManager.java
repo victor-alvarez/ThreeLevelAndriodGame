@@ -3,7 +3,6 @@ package com.example.game.Game1;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-
 import java.util.ArrayList;
 
 public class ObstacleManager {
@@ -16,7 +15,6 @@ public class ObstacleManager {
     private int color;
     private long startTime;
     private long initTime;
-    private int score = 0;
 
     public ObstacleManager(int playerGap, int obstacleGap, int obstacleHeight, int color) {
         this.playerGap = playerGap;

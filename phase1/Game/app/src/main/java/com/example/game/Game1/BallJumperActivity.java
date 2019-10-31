@@ -30,8 +30,9 @@ public class BallJumperActivity extends Activity {
     account = (Account) getIntent().getSerializableExtra("ac");
   }
 
-  public void gameOver(){
+  public void gameOver(int score){
     Intent intent = new Intent(this, GameOverActivity.class);
+    intent.putExtra("SCORE", score);
     startActivity(intent);
   }
 }
