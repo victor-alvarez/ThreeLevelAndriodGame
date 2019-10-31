@@ -3,11 +3,26 @@ package com.example.game.Game3;
 import android.content.Context;
 import android.view.SurfaceView;
 
+/**
+ * Game View class for Game 3.
+ */
 public class Game3View extends SurfaceView implements Runnable {
 
+    /**
+     * Checks if the game is still in play.
+     */
     private boolean isPlaying = true;
+
+    /**
+     * Thread
+     */
     private Thread thread;
 
+    /**
+     * Game3View constructor.
+     *
+     * @param context the instance of the class that called created an instance of this class.
+     */
     public Game3View(Context context) {
         super(context);
     }
@@ -52,5 +67,26 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     private void sleep() {
 
+    }
+
+    /**
+     * Resumes the thread.
+     */
+    void resume() {
+        isPlaying = true;
+        thread = new Thread(this);
+        thread.start();
+    }
+
+    /**
+     * Pauses the thread.
+     */
+    void pause() {
+        try {
+            isPlaying = false;
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
