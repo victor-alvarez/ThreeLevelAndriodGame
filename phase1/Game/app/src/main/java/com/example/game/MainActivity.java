@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
   }
 
+
   /** Called when the user taps the "Create Account" button */
   public void createAccount(View view) {
     Intent intent = new Intent(this, CreateAccountActivity.class);

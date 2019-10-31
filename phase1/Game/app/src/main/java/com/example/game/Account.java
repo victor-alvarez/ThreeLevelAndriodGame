@@ -1,6 +1,8 @@
 package com.example.game;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -15,6 +17,17 @@ public class Account implements Serializable{
   public String[] save;
 
   private Context context;
+
+  /**
+   * -------------------- Game 1 Instance Variables ----------------------------------
+   */
+   SharedPreferences prefrences;
+   SharedPreferences.Editor editor;
+
+
+  /**
+   * ---------------------------------------------------------------------------------
+   */
 
   /**
    * Constructor for brand new Account. Activates from Create Account button. Takes login from Enter
@@ -147,6 +160,15 @@ public class Account implements Serializable{
       System.out.println("Can't find account");
     }
   }
+
+  /**
+   * -------------------- Game 1 Methods ---------------------------------------------
+   */
+
+
+  /**
+   * ---------------------------------------------------------------------------------
+   */
 
   /*public static void main(String[] args) {
     AccountManager.createNewAccount("TEST");

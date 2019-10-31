@@ -19,12 +19,14 @@ public class GameplayScene implements Scene {
     private long gameOverTime;
     private Rect r = new Rect();
     private int score; // Score for the game
+    private int lives; // Lives for the game
 
     public GameplayScene() {
         player = new RectPlayer(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
         playerPoint = new Point(Constants.SCREEN_WIDTH/2, 3 * Constants.SCREEN_HEIGHT/4);
         player.update(playerPoint);
         obstacleManager = new ObstacleManager(200, 350, 75, Color.BLACK);
+        lives = 3;
     }
 
     @Override
@@ -40,7 +42,11 @@ public class GameplayScene implements Scene {
         Paint paint = new Paint();
         paint.setTextSize(100);
         paint.setColor(Color.MAGENTA);
+        // Draw score
         canvas.drawText("" + score, 50, 50 + paint.descent() - paint.ascent(), paint);
+        // Draw lives
+        paint.setColor(Color.GREEN);
+        canvas.drawText("Lives: " + lives, 1*Constants.SCREEN_WIDTH/2, 50 + paint.descent() - paint.ascent(), paint);
     }
 
     @Override
@@ -54,7 +60,13 @@ public class GameplayScene implements Scene {
                 score++;
             }
             obstacleManager.update();
+            // When player gets hit subtract lives
             if (obstacleManager.playerCollide(player)) {
+                lives --;
+                reset();
+            }
+            // If player has no lives go to GameOverActivity
+            if (lives == 0) {
                 ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score);
                 gameOver = true;
                 gameOverTime = System.currentTimeMillis();

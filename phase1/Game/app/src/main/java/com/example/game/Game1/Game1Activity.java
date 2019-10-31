@@ -19,7 +19,7 @@ public class Game1Activity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game1);
 
-    account = getIntent().getParcelableExtra("ac");
+    account = (Account) getIntent().getSerializableExtra("ac");
   }
 
   /** Called when the user taps the "Play" button */
