@@ -58,7 +58,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
   @Override
   public void surfaceDestroyed(SurfaceHolder holder) {
     boolean retry = true;
-    while (true) {
+    while (retry) {
       try {
         thread.setRunning(false);
         thread.join();
@@ -99,6 +99,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
       player.update(playerPoint);
       obstacleManager.update();
       if (obstacleManager.playerCollide(player)) {
+        ((BallJumperActivity) getContext()).gameOver();
         gameOver = true;
         gameOverTime = System.currentTimeMillis();
       }
@@ -114,13 +115,6 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
     player.draw(canvas);
     obstacleManager.draw(canvas);
-
-    if (gameOver) {
-      Paint paint = new Paint();
-      paint.setTextSize(100);
-      paint.setColor(Color.MAGENTA);
-      drawCenterText(canvas, paint, "GAME OVER");
-    }
   }
 
   private void drawCenterText(Canvas canvas, Paint paint, String text) {

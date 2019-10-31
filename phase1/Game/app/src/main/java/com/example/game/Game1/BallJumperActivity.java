@@ -1,6 +1,7 @@
 package com.example.game.Game1;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Window;
@@ -27,5 +28,10 @@ public class BallJumperActivity extends Activity {
 
     setContentView(new GamePanel(this));
     account = (Account) getIntent().getSerializableExtra("ac");
+  }
+
+  public void gameOver(){
+    Intent intent = new Intent(this, GameOverActivity.class);
+    startActivity(intent);
   }
 }

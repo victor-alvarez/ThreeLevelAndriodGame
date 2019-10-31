@@ -26,4 +26,6 @@
     <string name="account_created">Account successfully created</string>
     <string name="username">Username</string>
     <string name="game3_play">Play</string>
+    <string name="gane1_retry">Retry</string>
+    <string name="game1_Home">Home</string>
 </resources>
