@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
   /** Called when the user taps the "Settings" button */
   public void openOptions(View view) {
     Intent intent = new Intent(this, OptionsActivity.class);
+    intent.putExtra("ac", account);
     startActivity(intent);
   }
 
@@ -39,11 +40,5 @@ public class MainActivity extends AppCompatActivity {
       Intent intent = new Intent(this, Game1Activity.class);
       intent.putExtra("ac", account);
       startActivity(intent);
-  }
-
-  /** Called when the user taps the "Create Account" button */
-  public void createAccount(View view) {
-    Intent intent = new Intent(this, CreateAccountActivity.class);
-    startActivity(intent);
   }
 }

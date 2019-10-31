@@ -13,13 +13,16 @@ public class OptionsActivity extends AppCompatActivity {
 
   SharedPreferences mPreferences;
   SharedPreferences.Editor mEditor;
+  Account account;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_options);
 
+    account = (Account) getIntent().getSerializableExtra("ac");
     mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
     if (mPreferences.getInt("Colour", 0) == 1) {
       getWindow().getDecorView().setBackgroundResource(R.color.background1);
     }
@@ -35,9 +38,9 @@ public class OptionsActivity extends AppCompatActivity {
     switch (v.getId()) {
       case R.id.gray_button_OptionsActivity:
         if (checked)
-          // android:setTheme(R.style.AppTheme2);
           getWindow().getDecorView().setBackgroundResource(R.color.background2);
         mEditor.putInt("Colour", 0);
+
         break;
       case R.id.red_button_OptionsActivity:
         if (checked) mEditor.putInt("Colour", 1);
@@ -50,6 +53,7 @@ public class OptionsActivity extends AppCompatActivity {
   /** Called when the user taps the "Back" button */
   public void toMainMenu(View view) {
     Intent intent = new Intent(this, MainActivity.class);
+    intent.putExtra("ac", account);
     startActivity(intent);
   }
 }
