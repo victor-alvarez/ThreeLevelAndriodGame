@@ -16,7 +16,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Game1.GameOverActivity" />
-        <activity android:name=".Game3.Game3PlayActivity" />
+        <activity
+            android:name=".Game3.Game3PlayActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".Game1.ChangeSongActivity" />
         <activity android:name=".Game1.ChooseBallActivity" />
         <activity android:name=".Game1.ShopActivity" />
@@ -27,8 +29,7 @@
         <activity android:name=".Game1.Game1Activity" />
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".OptionsActivity" />
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

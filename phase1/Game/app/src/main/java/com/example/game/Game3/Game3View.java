@@ -1,6 +1,8 @@
 package com.example.game.Game3;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.view.SurfaceView;
 
 /**
@@ -58,7 +60,12 @@ public class Game3View extends SurfaceView implements Runnable {
      * Draws the game objects on the screen.
      */
     private void draw() {
-
+        if (getHolder().getSurface().isValid()) {
+            Canvas canvas = getHolder().lockCanvas();
+            super.draw(canvas);
+            canvas.drawColor(Color.DKGRAY);
+            getHolder().unlockCanvasAndPost(canvas);
+        }
     }
 
     /**
@@ -66,7 +73,11 @@ public class Game3View extends SurfaceView implements Runnable {
      * FPS.
      */
     private void sleep() {
-
+        try {
+            Thread.sleep(17);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
