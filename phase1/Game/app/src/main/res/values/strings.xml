@@ -25,4 +25,5 @@
     <string name="account_already_exists">Account already exists with given name</string>
     <string name="account_created">Account successfully created</string>
     <string name="username">Username</string>
+    <string name="game3_play">Play</string>
 </resources>
