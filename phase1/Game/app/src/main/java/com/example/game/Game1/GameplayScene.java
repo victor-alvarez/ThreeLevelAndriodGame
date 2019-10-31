@@ -18,16 +18,13 @@ public class GameplayScene implements Scene {
     private boolean gameOver = false;
     private long gameOverTime;
     private Rect r = new Rect();
-    private SurfaceView surfaceView;
     private int score; // Score for the game
 
-    public GameplayScene(SurfaceView surfaceView) {
+    public GameplayScene() {
         player = new RectPlayer(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
         playerPoint = new Point(Constants.SCREEN_WIDTH/2, 3 * Constants.SCREEN_HEIGHT/4);
         player.update(playerPoint);
-
         obstacleManager = new ObstacleManager(200, 350, 75, Color.BLACK);
-        this.surfaceView = surfaceView;
     }
 
     @Override
@@ -58,7 +55,7 @@ public class GameplayScene implements Scene {
             }
             obstacleManager.update();
             if (obstacleManager.playerCollide(player)) {
-                ((BallJumperActivity) surfaceView.getContext()).gameOver(score);
+                ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score);
                 gameOver = true;
                 gameOverTime = System.currentTimeMillis();
             }

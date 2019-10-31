@@ -10,9 +10,9 @@ public class SceneManager {
     private ArrayList<Scene> scenes = new ArrayList<>();
     public static int ACTIVE_SCENE;
 
-    public SceneManager(SurfaceView surfaceView) {
+    public SceneManager() {
          ACTIVE_SCENE = 0;
-         scenes.add(new GameplayScene(surfaceView));
+         scenes.add(new GameplayScene());
     }
 
     public void receiveTouch(MotionEvent event) {
