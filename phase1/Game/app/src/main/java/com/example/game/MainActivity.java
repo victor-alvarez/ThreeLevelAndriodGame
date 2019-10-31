@@ -13,10 +13,8 @@ import com.example.game.Game1.Game1Activity;
 
 public class MainActivity extends AppCompatActivity {
 
-  EditText inputName;
   SharedPreferences mPreferences;
   Account account;
-  TextView textView;
   AccountManager accountManager = new AccountManager();
 
   @Override
@@ -28,9 +26,6 @@ public class MainActivity extends AppCompatActivity {
     if (mPreferences.getInt("Colour", 0) == 1) {
       getWindow().getDecorView().setBackgroundResource(R.color.background1);
     }
-
-    inputName = (EditText) findViewById(R.id.accountNameText_MainActivity);
-    textView = findViewById(R.id.textView_MainActivity);
   }
 
   /** Called when the user taps the "Settings" button */
@@ -41,18 +36,10 @@ public class MainActivity extends AppCompatActivity {
 
   /** Called when the user taps the "Select Account" button */
   public void startGame(View view) {
-    Account tempAccount = accountManager.openExistingAccount(inputName.getText().toString(),
-            getApplicationContext());
-    if (tempAccount != null) {
-      account = tempAccount;
       Intent intent = new Intent(this, Game1Activity.class);
       intent.putExtra("ac", account);
       startActivity(intent);
-    } else {
-        textView.setText(R.string.invalid_username);
-    }
   }
-
 
   /** Called when the user taps the "Create Account" button */
   public void createAccount(View view) {

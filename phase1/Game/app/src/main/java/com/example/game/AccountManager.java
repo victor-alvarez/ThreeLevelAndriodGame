@@ -1,18 +1,10 @@
 package com.example.game;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.os.Environment;
-
-import androidx.core.content.ContextCompat;
-
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Optional;
 
 /** Account manager that manages accounts. */
-public class AccountManager implements Serializable {
+public class AccountManager {
 
   /**
    * Creates new account with given login. Activates from Create Account button. Takes login from
