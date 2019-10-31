@@ -1,6 +1,7 @@
 package com.example.game.Game1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -9,6 +10,8 @@ import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import java.util.ArrayList;
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
@@ -20,6 +23,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
   private boolean gameOver = false;
   private long gameOverTime;
   private Rect r = new Rect();
+
+  private int score; // Score for the game
 
   public GamePanel(Context context) {
     super(context);
@@ -37,11 +42,13 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     setFocusable(true);
   }
 
+  /** Reset the game by taking player over to game over activity, bring players current score over
+   * to new activity.
+  **/
   public void reset() {
-    playerPoint = new Point(Constants.SCREEN_WIDTH/2, 3 * Constants.SCREEN_HEIGHT/4);
-    player.update(playerPoint);
-    obstacleManager = new ObstacleManager(200, 350, 75, Color.BLACK);
-    movingPlayer = false;
+    Intent intent = new Intent(getContext(), GameOverActivity.class);
+    intent.putExtra("SCORE", score);
+    getContext().startActivity(intent);
   }
 
   @Override
@@ -97,6 +104,12 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
   public void update() {
     if (!gameOver) {
       player.update(playerPoint);
+      ArrayList<Obstacle> obstacles = obstacleManager.getObstacles();
+      // If obstacle goes off screen remove it, then add to our score
+      if (obstacles.get(obstacles.size() - 1).getRectangle().top >= Constants.SCREEN_HEIGHT) {
+        obstacles.remove(obstacles.size() - 1);
+        score++;
+      }
       obstacleManager.update();
       if (obstacleManager.playerCollide(player)) {
         ((BallJumperActivity) getContext()).gameOver();
@@ -115,6 +128,10 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
     player.draw(canvas);
     obstacleManager.draw(canvas);
+    Paint paint = new Paint();
+    paint.setTextSize(100);
+    paint.setColor(Color.MAGENTA);
+    canvas.drawText("" + score, 50, 50 + paint.descent() - paint.ascent(), paint);
   }
 
   private void drawCenterText(Canvas canvas, Paint paint, String text) {

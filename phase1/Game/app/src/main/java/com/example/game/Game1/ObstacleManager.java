@@ -57,18 +57,17 @@ public class ObstacleManager {
         if (obstacles.get(obstacles.size() - 1).getRectangle().top >= Constants.SCREEN_HEIGHT) {
             int xStart = (int) (Math.random() * (Constants.SCREEN_WIDTH - playerGap));
             obstacles.add(0, new Obstacle(obstacleHeight, color, xStart, obstacles.get(0).getRectangle().top - obstacleHeight - obstacleGap, playerGap));
-            obstacles.remove(obstacles.size() - 1);
-            score++;
         }
+    }
+
+    // Getter for list of obstacles
+    public ArrayList<Obstacle> getObstacles() {
+        return obstacles;
     }
 
     public void draw(Canvas canvas) {
         for (Obstacle ob : obstacles) {
             ob.draw(canvas);
         }
-        Paint paint = new Paint();
-        paint.setTextSize(100);
-        paint.setColor(Color.MAGENTA);
-        canvas.drawText("" + score, 50, 50 + paint.descent() - paint.ascent(), paint);
     }
 }
