@@ -36,4 +36,10 @@ public class BallJumperActivity extends Activity {
     intent.putExtra("ac", account);
     startActivity(intent);
   }
+
+  @Override
+  public void onStop(){
+    super.onStop();
+    finish();
+  }
 }
