@@ -26,10 +26,17 @@ public class PlatformHandler {
      * Construct level for game by filling up platforms with Platform objects
      */
     private void populatePlatforms() {
-        for (int x = 0; x < Constants.SCREEN_WIDTH; x += 100) {
+        for (int x = 0; x < Constants.SCREEN_WIDTH; x += 200) {
             Platform platform = new Platform(new Rect(x, 3 * Constants.SCREEN_HEIGHT/4 + 100, x + 100,
                     3 * Constants.SCREEN_HEIGHT/4 + 200), color);
-            platforms.add(platform);
+            Platform platform2 = new Platform(new Rect(x, 1 * Constants.SCREEN_HEIGHT/2, x + 100,
+                    1 * Constants.SCREEN_HEIGHT/2 + 100), color);
+            // Randomly add the obstacles
+            double yes = Math.random();
+            if (yes < 0.5) {
+                platforms.add(platform);
+            } else {platforms.add(platform2);}
+
         }
     }
 
