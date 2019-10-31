@@ -16,7 +16,7 @@ public class Game3View extends SurfaceView implements Runnable {
     private boolean isPlaying = true;
 
     /**
-     * Thread
+     * Game thread.
      */
     private Thread thread;
 
