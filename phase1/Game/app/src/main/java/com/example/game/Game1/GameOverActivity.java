@@ -23,6 +23,8 @@ public class GameOverActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
 
+        account = (Account) getIntent().getSerializableExtra("ac");
+
         // Score Labels
         TextView scoreLabel = (TextView) findViewById(R.id.scoreLabel);
         TextView highScoreLabel = (TextView) findViewById(R.id.highScoreLabel);
@@ -34,22 +36,22 @@ public class GameOverActivity extends AppCompatActivity {
         scoreLabel.setText("Score : " + score);
 
         // Saving high scores
-        SharedPreferences settings = getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
+        SharedPreferences settings = getSharedPreferences("HIGH_SCORE", Context.MODE_PRIVATE);
         int highScore = settings.getInt("HIGH_SCORE", 0);
 
         // If score is greater than highScore update highScore
         if (score > highScore) {
             highScoreLabel.setText("High Score : " + score);
 
-            // Save
             SharedPreferences.Editor editor = settings.edit();
             editor.putInt("HIGH_SCORE", score);
             editor.commit();
+
         } else {
             highScoreLabel.setText("High Score : " + highScore);
         }
 
-        account = getIntent().getParcelableExtra("ac");
+
     }
 
     /** Called when the user taps the "Retry" button */
