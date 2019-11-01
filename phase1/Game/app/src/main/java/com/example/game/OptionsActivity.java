@@ -9,7 +9,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.RadioButton;
 
-public class OptionsActivity extends AppCompatActivity {
+public class OptionsActivity extends BaseActivity {
 
   SharedPreferences mPreferences;
   SharedPreferences.Editor mEditor;
@@ -23,7 +23,7 @@ public class OptionsActivity extends AppCompatActivity {
     account = (Account) getIntent().getSerializableExtra("ac");
     mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-    if (mPreferences.getInt("Colour", 0) == 1) {
+    if (account.getCustomization()[0] == 1) {
       getWindow().getDecorView().setBackgroundResource(R.color.background1);
     }
   }
@@ -35,16 +35,20 @@ public class OptionsActivity extends AppCompatActivity {
 
     // Check which radio button was clicked
     mEditor = mPreferences.edit();
+    int[] data = account.getCustomization();
     switch (v.getId()) {
       case R.id.gray_button_OptionsActivity:
         if (checked)
           getWindow().getDecorView().setBackgroundResource(R.color.background2);
         mEditor.putInt("Colour", 0);
-
+        data[0] = 0;
+        account.setCustomisation(data);
         break;
       case R.id.red_button_OptionsActivity:
         if (checked) mEditor.putInt("Colour", 1);
         getWindow().getDecorView().setBackgroundResource(R.color.background1);
+        data[0] = 1;
+        account.setCustomisation(data);
         break;
     }
     mEditor.apply();
@@ -53,6 +57,7 @@ public class OptionsActivity extends AppCompatActivity {
   /** Called when the user taps the "Back" button */
   public void toMainMenu(View view) {
     Intent intent = new Intent(this, MainActivity.class);
+    account.saveSettings(getApplicationContext());
     intent.putExtra("ac", account);
     startActivity(intent);
   }

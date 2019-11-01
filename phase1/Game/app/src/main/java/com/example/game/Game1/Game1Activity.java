@@ -6,11 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.game.Account;
+import com.example.game.BaseActivity;
 import com.example.game.Game2.Game2Activity;
 import com.example.game.MainActivity;
 import com.example.game.R;
 
-public class Game1Activity extends AppCompatActivity {
+public class Game1Activity extends BaseActivity {
 
   Account account;
 
@@ -20,6 +21,10 @@ public class Game1Activity extends AppCompatActivity {
     setContentView(R.layout.activity_game1);
 
     account = (Account) getIntent().getSerializableExtra("ac");
+
+    if (account.getCustomization()[0] == 1) {
+      getWindow().getDecorView().setBackgroundResource(R.color.background1);
+    }
   }
 
   /** Called when the user taps the "Play" button */

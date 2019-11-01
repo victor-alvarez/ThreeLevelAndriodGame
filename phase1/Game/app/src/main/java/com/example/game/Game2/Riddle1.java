@@ -7,16 +7,22 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.game.Account;
+import com.example.game.BaseActivity;
 import com.example.game.R;
 
-public class Riddle1 extends AppCompatActivity {
+public class Riddle1 extends BaseActivity {
     Account account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game2_riddle1);
+
         account = (Account) getIntent().getSerializableExtra("ac");
+
+        if (account.getCustomization()[0] == 1) {
+            getWindow().getDecorView().setBackgroundResource(R.color.background1);
+        }
     }
 
     /** Called when the user taps the "Centillion" button */

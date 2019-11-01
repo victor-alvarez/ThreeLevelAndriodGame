@@ -7,10 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.game.Account;
+import com.example.game.BaseActivity;
 import com.example.game.MainActivity;
 import com.example.game.R;
 
-public class Game3Activity extends AppCompatActivity {
+public class Game3Activity extends BaseActivity {
 
     Account account;
 
@@ -18,7 +19,12 @@ public class Game3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game3);
+
         account = (Account) getIntent().getSerializableExtra("ac");
+
+        if (account.getCustomization()[0] == 1) {
+            getWindow().getDecorView().setBackgroundResource(R.color.background1);
+        }
     }
 
     /**
@@ -26,6 +32,7 @@ public class Game3Activity extends AppCompatActivity {
      */
     public void toMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("ac", account);
         startActivity(intent);
     }
 
@@ -34,6 +41,7 @@ public class Game3Activity extends AppCompatActivity {
      */
     public void toPlay(View view) {
         Intent intent = new Intent(this, Game3PlayActivity.class);
+        intent.putExtra("ac", account);
         startActivity(intent);
     }
 }

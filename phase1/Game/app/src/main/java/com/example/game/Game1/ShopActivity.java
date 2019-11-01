@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.game.BaseActivity;
 import com.example.game.R;
 
-public class ShopActivity extends AppCompatActivity {
+public class ShopActivity extends BaseActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

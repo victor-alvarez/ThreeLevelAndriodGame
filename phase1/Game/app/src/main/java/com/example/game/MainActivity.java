@@ -11,19 +11,17 @@ import android.widget.TextView;
 
 import com.example.game.Game1.Game1Activity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
-  SharedPreferences mPreferences;
   Account account;
-  AccountManager accountManager = new AccountManager();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-    if (mPreferences.getInt("Colour", 0) == 1) {
+    account = (Account) getIntent().getSerializableExtra("ac");
+    if (account.getCustomization()[0] == 1) {
       getWindow().getDecorView().setBackgroundResource(R.color.background1);
     }
   }

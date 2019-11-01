@@ -39,6 +39,7 @@ public class ObstacleManager {
     boolean playerCollide(RectPlayer player) {
         for(Obstacle ob : obstacles) {
             if (ob.playerCollide(player)) {
+                Constants.hitTile = ob;
                 return true;
             }
         }
@@ -48,7 +49,7 @@ public class ObstacleManager {
     /**
      * Add obstacles below each other to bottom of the screen.
      */
-    private void populateObstacles() {
+    void populateObstacles() {
         int currY = Constants.SCREEN_HEIGHT * 2;
 
         while(currY > Constants.SCREEN_HEIGHT) {

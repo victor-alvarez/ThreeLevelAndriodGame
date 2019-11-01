@@ -16,7 +16,7 @@ public class Account implements Serializable{
   /** Account's customization:
    * at index 0 - background colour:
    * 0 - grey,
-   * 1 - ###,
+   * 1 - red,
    * 2 - ###;
    * at index 1 - account icon:
    * 0 - none,
@@ -27,7 +27,7 @@ public class Account implements Serializable{
    * 1 - French,
    * 2 - Russian,
    * 3 - Spanish;*/
-  public String[] customization;
+  public int[] customization;
 
   /** Account's save data:
    * at index 0 - last level attempted (0-4):
@@ -38,8 +38,11 @@ public class Account implements Serializable{
    * at index 2 - current score (0+);
    * at index 3 - score (0+).*/
   public String[] save;
+   * at index 1 - hit points (0-100):
+   * at index 2 - current score:
+   * at index 3 - high score:*/
+  public int[] save;
 
-  private Context context;
 
   /**
    * -------------------- Game 1 Instance Variables ----------------------------------
@@ -58,13 +61,12 @@ public class Account implements Serializable{
    *
    * @param login of the Account.
    */
-  public Account(String login, Context context) {
+  public Account(String login) {
     this.login = login;
-    String[] a = {"0", "0", "0"};
+    int[] a = {0, 0, 0};
     this.customization = a;
-    String[] b = {"0", "100", "0", "0"};
+    int[] b = {0, 100, 0, 0};
     this.save = b;
-    this.context = context;
   }
 
   /**
@@ -77,8 +79,12 @@ public class Account implements Serializable{
    */
   public Account(String login, String[] customization, String[] save) {
     this.login = login;
-    this.customization = customization;
-    this.save = save;
+    int[] a = {Integer.parseInt(customization[0]), Integer.parseInt(customization[1]),
+            Integer.parseInt(customization[2])};
+    this.customization = a;
+    int[] b = {Integer.parseInt(save[0]), Integer.parseInt(save[1]), Integer.parseInt(save[2]),
+            Integer.parseInt(save[3])};
+    this.save = b;
   }
 
   /**
@@ -86,7 +92,7 @@ public class Account implements Serializable{
    *
    * @return customization settings of the Account.
    */
-  public String[] getCustomization() {
+  public int[] getCustomization() {
     return this.customization;
   }
 
@@ -95,9 +101,8 @@ public class Account implements Serializable{
    *
    * @param customization settings of the Account.
    */
-  public void setCustomisation(String[] customization) {
+  public void setCustomisation(int[] customization) {
     this.customization = customization;
-    this.saveSettings();
   }
 
   /**
@@ -105,7 +110,7 @@ public class Account implements Serializable{
    *
    * @return save data of the Account.
    */
-  public String[] getSave() {
+  public int[] getSave() {
     return this.save;
   }
 
@@ -114,12 +119,11 @@ public class Account implements Serializable{
    *
    * @param save data of the Account.
    */
-  public void setSave(String[] save) {
+  public void setSave(int[] save) {
     this.save = save;
-    this.saveProgress();
   }
 
-  public void saveSettings() {
+  public void saveSettings(Context context) {
     try {
       File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       FileReader loadAccountData = new FileReader(saveFile);
@@ -132,7 +136,7 @@ public class Account implements Serializable{
         if (this.login.equals(s)) {
           String[] l = line.split(", ");
           String save = l[4] + ", " + l[5] + ", " + l[6] + ", " + l[7];
-          String[] set = this.getCustomization();
+          int[] set = this.customization;
           String settings = set[0] + ", " + set[1] + ", " + set[2] + ", ";
           String newSettings = s + ", " + settings + save;
           old.add(newSettings);
@@ -153,7 +157,7 @@ public class Account implements Serializable{
   /**
    * Does the exact same thing as the saveSetting method, so we really only need one of them);
    */
-  public void saveProgress() {
+  public void saveProgress(Context context) {
     try {
       File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       FileReader loadAccountData = new FileReader(saveFile);
@@ -165,7 +169,7 @@ public class Account implements Serializable{
         String s = line.substring(0, i);
         if (this.login.equals(s)) {
           String[] l = line.split(", ");
-          String[] save = this.getSave();
+          int[] save = this.save;
           String set = l[1] + ", " + l[2] + ", " + l[3] + ", ";
           String sav = save[0] + ", " + save[1] + ", " + save[2] + ", " + save[3];
           String newSave = s + ", " + set + sav;

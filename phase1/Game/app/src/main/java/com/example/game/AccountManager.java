@@ -30,7 +30,7 @@ public class AccountManager {
     } catch (IOException error) {
       error.printStackTrace();
     }
-    return new Account(login, context);
+    return new Account(login);
   }
 
   /**
@@ -68,6 +68,18 @@ public class AccountManager {
     }
     return null;
   }
+
+  /**
+   * Deletes the data if it needs to be wiped for whatever reason.
+   * @param context context of the application for where to write to internal storage.
+   */
+  void deleteAccountData(Context context){
+    File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
+    if(saveFile.delete()) {
+      System.out.println("Successfully deleted");
+    }
+  }
+}
 
   public void updateHighScores(Account acc, Context context) {
     try {
