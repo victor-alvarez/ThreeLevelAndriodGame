@@ -26,6 +26,7 @@ public class GameplayScene implements Scene {
     private int lives; // Lives for the game
     private OrientationData orientationData; // orientation data
     private long frameTime; // time frame
+    private double grav; // gravity for game
 
     /**
      * Constructor for GameplayScene. Instansiates player, playerPoint, obstacles, and lives.
@@ -59,7 +60,7 @@ public class GameplayScene implements Scene {
         paint.setColor(Color.GREEN);
         canvas.drawText("Lives: " + lives, Constants.SCREEN_WIDTH/2, 50 + paint.descent() - paint.ascent(), paint);
         paint.setColor(Color.BLACK);
-        canvas.drawText(new String(new char[Constants.SCREEN_WIDTH]).replace("\0", "^"), 0, Constants.SCREEN_HEIGHT + 50, paint);
+        canvas.drawText(new String(new char[Constants.SCREEN_WIDTH]).replace("\0", "^"), 0, Constants.SCREEN_HEIGHT - 107, paint);
         canvas.drawText(new String(new char[Constants.SCREEN_WIDTH]).replace("\0", "v"), 0, 25, paint);
     }
 
@@ -91,6 +92,7 @@ public class GameplayScene implements Scene {
                 playerPoint.x = Constants.SCREEN_WIDTH;
             }
             if (playerPoint.y < 0) {
+                grav = 0.5;
                 gameOver = true;
                 lives --;
                 // If player has no lives go to GameOverActivity
@@ -104,6 +106,7 @@ public class GameplayScene implements Scene {
             }
             // If player falls off screen lose a life
             else if (playerPoint.y > Constants.SCREEN_HEIGHT) {
+                grav = 0.5;
                 gameOver = true;
                 lives --;
                 // If player has no lives go to GameOverActivity
@@ -128,11 +131,14 @@ public class GameplayScene implements Scene {
                 obstacles.remove(Constants.hitTile);
                 obstacleManager.populateObstacles();
                 score++;
-                playerPoint.y -= 250;
+                grav = 0;
+                playerPoint.y -= grav;
+                grav -= 25;
                 player.update(playerPoint);
             }
             else {
-                playerPoint.y += 9.81;
+                playerPoint.y += grav;
+                grav += 1;
                 player.update(playerPoint);
             }
         }
