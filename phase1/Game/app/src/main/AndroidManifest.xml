@@ -23,7 +23,8 @@
         <activity android:name=".Game1.ChooseBallActivity" />
         <activity android:name=".Game1.ShopActivity" />
         <activity android:name=".Game1.CustomizeActivity" />
-        <activity android:name=".Game1.BallJumperActivity" />
+        <activity android:name=".Game1.BallJumperActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Game3.Game3Activity" />
         <activity android:name=".Game2.Game2Activity" />
         <activity android:name=".Game1.Game1Activity" />
