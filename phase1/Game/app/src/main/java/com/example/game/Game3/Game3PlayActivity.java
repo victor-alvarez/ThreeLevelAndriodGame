@@ -7,12 +7,13 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.game.BaseActivity;
 import com.example.game.R;
 
 /**
  * Play Activity for Game 3.
  */
-public class Game3PlayActivity extends AppCompatActivity {
+public class Game3PlayActivity extends BaseActivity {
 
     /**
      * Game Loop for this Game.

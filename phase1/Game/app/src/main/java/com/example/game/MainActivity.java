@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.game.Game1.Game1Activity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
   SharedPreferences mPreferences;
   Account account;
