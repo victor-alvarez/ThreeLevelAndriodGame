@@ -1,5 +1,8 @@
 package com.example.game.Game2;
 
+//image used (free license):
+//https://pixabay.com/illustrations/road-sign-attention-right-of-way-808733/
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
