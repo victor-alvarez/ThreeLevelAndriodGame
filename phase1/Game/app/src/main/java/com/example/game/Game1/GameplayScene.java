@@ -104,27 +104,21 @@ public class GameplayScene implements Scene {
                 }
             }
 
-            playerPoint.y += 2;
-            player.update(playerPoint);
             ArrayList<Obstacle> obstacles = obstacleManager.getObstacles();
             // If obstacle goes off screen remove it, then add to our score
             if (obstacles.get(obstacles.size() - 1).getRectangle().bottom <= 0) {
                 obstacles.remove(obstacles.size() - 1);
             }
             obstacleManager.update();
-            // When player gets hit subtract lives
+
             if (obstacleManager.playerCollide(player)) {
                 score++;
-                gameOver = true;
-                lives --;
-                // If player has no lives go to GameOverActivity
-                if (lives == 0) {
-                    ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score);
-                }
-                else {
-                    reset();
-                    orientationData.newGame();
-                }
+                playerPoint.y -= 50;
+                player.update(playerPoint);
+            }
+            else {
+                playerPoint.y += 9.81;
+                player.update(playerPoint);
             }
         }
     }
@@ -138,7 +132,7 @@ public class GameplayScene implements Scene {
                 }
             case MotionEvent.ACTION_MOVE:
                 if (!gameOver && movingPlayer) {
-                    playerPoint.set((int) event.getX(), (int) event.getY());
+                    playerPoint.set((int) event.getX(), playerPoint.y);
                 }
                 break;
             case MotionEvent.ACTION_UP:
