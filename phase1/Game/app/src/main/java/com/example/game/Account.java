@@ -27,7 +27,7 @@ public class Account implements Serializable{
    * 1 - French,
    * 2 - Russian,
    * 3 - Spanish;*/
-  public String[] customisation;
+  public String[] customization;
 
   /** Account's save data:
    * at index 0 - last level attempted (0-4):
@@ -67,7 +67,7 @@ public class Account implements Serializable{
   public Account(String login, Context context) {
     this.login = login;
     String[] a = {"0", "0", "0"};
-    this.customisation = a;
+    this.customization = a;
     String[] b = {"0", "100", "0", "0"};
     this.save = b;
     this.context = context;
@@ -78,31 +78,31 @@ public class Account implements Serializable{
    * Login field. Uses saved values for customization settings and save data.
    *
    * @param login of the Account;
-   * @param customisation settings of the Account;
+   * @param customization settings of the Account;
    * @param save data of the Account;
    */
-  public Account(String login, String[] customisation, String[] save) {
+  public Account(String login, String[] customization, String[] save) {
     this.login = login;
-    this.customisation = customisation;
+    this.customization = customization;
     this.save = save;
   }
 
   /**
-   * Getter for the customisation instance variable.
+   * Getter for the customization instance variable.
    *
    * @return customization settings of the Account.
    */
-  public String[] getCustomisation() {
-    return this.customisation;
+  public String[] getCustomization() {
+    return this.customization;
   }
 
   /**
-   * Setter for the customisation instance variable.
+   * Setter for the customization instance variable.
    *
-   * @param customisation settings of the Account.
+   * @param customization settings of the Account.
    */
-  public void setCustomisation(String[] customisation) {
-    this.customisation = customisation;
+  public void setCustomisation(String[] customization) {
+    this.customization = customization;
     this.saveSettings();
   }
 
@@ -138,7 +138,7 @@ public class Account implements Serializable{
         if (this.login.equals(s)) {
           String[] l = line.split(", ");
           String save = l[4] + ", " + l[5] + ", " + l[6] + ", " + l[7];
-          String[] set = this.getCustomisation();
+          String[] set = this.getCustomization();
           String settings = set[0] + ", " + set[1] + ", " + set[2] + ", ";
           String newSettings = s + ", " + settings + save;
           old.add(newSettings);
@@ -208,15 +208,15 @@ public class Account implements Serializable{
     System.out.println(a[0] + c.login + c.getCustomisation()[1]);
     String[] newSave = {"1", "50", "3", "4"};
     String[] newSettings = {"1", "1", "1"};
-    c.setCustomisation(newSettings);
+    c.setCustomization(newSettings);
     c.setSave(newSave);
     a = AccountManager.openExistingAccount("TEST1");
     c = (Account) a[1];
     System.out.println(a[0]);
     System.out.println(c.login);
-    System.out.println(c.getCustomisation()[0]);
-    System.out.println(c.getCustomisation()[1]);
-    System.out.println(c.getCustomisation()[2]);
+    System.out.println(c.getCustomization()[0]);
+    System.out.println(c.getCustomization()[1]);
+    System.out.println(c.getCustomization()[2]);
     System.out.println(c.getSave()[0]);
     System.out.println(c.getSave()[1]);
     System.out.println(c.getSave()[2]);
