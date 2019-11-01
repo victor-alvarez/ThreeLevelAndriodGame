@@ -24,7 +24,7 @@ public class AccountManager {
         saveAccount.close();
       }
       FileWriter saveAccount = new FileWriter(saveFile, true);
-      saveAccount.write("\n" + login + ", 0, 0, 0, 0, 0, 0, 0");
+      saveAccount.write("\n" + login + ", 0, 0, 0, 0, 100, 0, 0");
       saveAccount.close();
     } catch (IOException error) {
       error.printStackTrace();
