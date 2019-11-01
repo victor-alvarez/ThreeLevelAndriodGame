@@ -220,6 +220,7 @@ public class Account implements Serializable{
     }
 
     public void resetValues(Context context){
+      this.save[0] = 0;
       this.save[1] = 200;
       this.save[2] = 0;
       this.saveProgress(context);
