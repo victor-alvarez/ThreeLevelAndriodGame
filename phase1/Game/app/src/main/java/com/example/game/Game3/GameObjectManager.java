@@ -12,6 +12,7 @@ import com.example.game.R;
 
 import java.lang.reflect.Array;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -28,16 +29,25 @@ public class GameObjectManager {
     private Button defendButton;
     private Boolean attack = false;
     private Boolean defend = false;
+
+    public Boolean getTurn() {
+        return isTurn;
+    }
+
+    public void setTurn(Boolean turn) {
+        isTurn = turn;
+    }
+
     private Boolean isTurn = true;
     private MoveTextObject moveTextObject;
     private int[] enemyDamage = {5, 10, 15};
+    private int hpDamage = 0;
 
     /**
      * A constructor for GameObjectManager.
      */
-    GameObjectManager(Resources res, Boolean isTurn) {
+    GameObjectManager(Resources res) {
         this.res = res;
-        //this.isTurn = isTurn;
     }
 
     void createObjects() {
@@ -143,6 +153,7 @@ public class GameObjectManager {
 
     void update() {
         if (isTurn) {
+            moveTextObject.update("PLAYER TOOK " + hpDamage + " DAMAGE", Color.RED);
             attackButton.setActive(true);
             defendButton.setActive(true);
         } else {
@@ -151,17 +162,17 @@ public class GameObjectManager {
             int damage = decideEnemyDamage();
             if (attack) {
                 enemyHealth.update(10);
-                playerHealth.update(damage);
-                moveTextObject.update("PLAYER TOOK " + damage + " DAMAGE", Color.RED);
+                moveTextObject.update("ENEMY TOOK " + 10 + " DAMAGE", Color.GREEN);
+                hpDamage = damage;
                 attack = false;
             }
             if (defend) {
                 enemyHealth.update(5);
-                playerHealth.update(damage / 2);
-                moveTextObject.update("PLAYER TOOK " + damage / 2 + " DAMAGE", Color.RED);
+                moveTextObject.update("ENEMY TOOK " + 5 + " DAMAGE", Color.GREEN);
+                hpDamage = damage / 2;
                 defend = false;
             }
-            isTurn = true;
+            playerHealth.update(hpDamage);
         }
 
     }

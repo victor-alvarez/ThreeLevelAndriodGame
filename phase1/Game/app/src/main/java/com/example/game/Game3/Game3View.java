@@ -7,6 +7,8 @@ import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Game View class for Game 3.
  */
@@ -36,7 +38,7 @@ public class Game3View extends SurfaceView implements Runnable {
     public Game3View(Context context) {
         super(context);
         paint = new Paint();
-        gameObjectManager = new GameObjectManager(getResources(), isTurn);
+        gameObjectManager = new GameObjectManager(getResources());
         gameObjectManager.createObjects();
     }
 
@@ -45,9 +47,19 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     @Override
     public void run() {
+        boolean wait;
         while (isPlaying) {
+            wait = !gameObjectManager.getTurn();
             update();
             draw();
+            if (wait) {
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                gameObjectManager.setTurn(true);
+            }
             sleep();
             checkGameEnded();
         }
