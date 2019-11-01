@@ -2,16 +2,18 @@ package com.example.game.Game3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.game.BaseActivity;
 import com.example.game.R;
 
 /**
  * Play Activity for Game 3.
  */
-public class Game3PlayActivity extends AppCompatActivity {
+public class Game3PlayActivity extends BaseActivity {
 
     /**
      * Game Loop for this Game.
@@ -43,11 +45,18 @@ public class Game3PlayActivity extends AppCompatActivity {
         game3View.resume();
     }
 
+    protected void gameOver(String winner){
+        Intent intent = new Intent(this, Game3ExitActivity.class);
+        intent.putExtra("EXTRA_WINNER", winner);
+        startActivity(intent);
+    }
+
     /**
      * Handles cases when Activity is stopped.
      */
     @Override
-    protected void onStop() {
+    protected void onStop(){
         super.onStop();
+        finish();
     }
 }

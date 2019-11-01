@@ -6,11 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.game.Account;
+import com.example.game.BaseActivity;
 import com.example.game.Game2.Game2Activity;
 import com.example.game.MainActivity;
 import com.example.game.R;
 
-public class Game1Activity extends AppCompatActivity {
+public class Game1Activity extends BaseActivity {
 
   Account account;
 

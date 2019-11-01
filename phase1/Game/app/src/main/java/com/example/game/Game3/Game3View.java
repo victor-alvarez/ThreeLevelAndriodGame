@@ -30,6 +30,8 @@ public class Game3View extends SurfaceView implements Runnable {
 
     private Boolean isTurn = true;
 
+    private final Context activityContext;
+
     /**
      * Game3View constructor.
      *
@@ -37,6 +39,7 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     public Game3View(Context context) {
         super(context);
+        activityContext = context;
         paint = new Paint();
         gameObjectManager = new GameObjectManager(getResources());
         gameObjectManager.createObjects();
@@ -49,6 +52,9 @@ public class Game3View extends SurfaceView implements Runnable {
     public void run() {
         boolean wait;
         while (isPlaying) {
+            if(checkGameEnded()){
+                break;
+            }
             wait = !gameObjectManager.getTurn();
             update();
             draw();
@@ -61,17 +67,16 @@ public class Game3View extends SurfaceView implements Runnable {
                 gameObjectManager.setTurn(true);
             }
             sleep();
-            checkGameEnded();
+
         }
+        ((Game3PlayActivity) activityContext).gameOver(gameObjectManager.checkWinner());
     }
 
     /**
      * Checks if game is done.
      */
-    private void checkGameEnded() {
-        if (gameObjectManager.gameEnded()) {
-            isPlaying = false;
-        }
+    private boolean checkGameEnded() {
+        return gameObjectManager.gameEnded();
     }
 
     /**
@@ -79,7 +84,6 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     private void update() {
         gameObjectManager.update();
-
     }
 
     /**

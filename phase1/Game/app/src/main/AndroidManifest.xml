@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Game3.Game3ExitActivity"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -23,8 +25,9 @@
         <activity android:name=".Game1.ChooseBallActivity" />
         <activity android:name=".Game1.ShopActivity" />
         <activity android:name=".Game1.CustomizeActivity" />
-        <activity android:name=".Game1.BallJumperActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Game1.BallJumperActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".Game2.Game2Activity" />
         <activity android:name=".Game2.Riddle1" />
         <activity android:name=".Game2.Riddle2" />
@@ -37,7 +40,8 @@
         <activity android:name=".Game1.Game1Activity" />
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".OptionsActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".BaseActivity"/>
     </application>
 
 </manifest>
