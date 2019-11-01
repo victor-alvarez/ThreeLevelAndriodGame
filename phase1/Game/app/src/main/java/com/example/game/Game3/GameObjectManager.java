@@ -153,7 +153,8 @@ public class GameObjectManager {
 
     void update() {
         if (isTurn) {
-            moveTextObject.update("PLAYER TOOK " + hpDamage + " DAMAGE", Color.RED);
+            moveTextObject.update(res.getString(R.string.player_took) + hpDamage +
+                    res.getString(R.string.damage), Color.RED);
             attackButton.setActive(true);
             defendButton.setActive(true);
         } else {
@@ -162,13 +163,15 @@ public class GameObjectManager {
             int damage = decideEnemyDamage();
             if (attack) {
                 enemyHealth.update(10);
-                moveTextObject.update("ENEMY TOOK " + 10 + " DAMAGE", Color.GREEN);
+                moveTextObject.update(res.getString(R.string.enemy_took) + 10 +
+                        res.getString(R.string.damage), Color.GREEN);
                 hpDamage = damage;
                 attack = false;
             }
             if (defend) {
                 enemyHealth.update(5);
-                moveTextObject.update("ENEMY TOOK " + 5 + " DAMAGE", Color.GREEN);
+                moveTextObject.update(res.getString(R.string.enemy_took) + 5 +
+                        res.getString(R.string.damage), Color.GREEN);
                 hpDamage = damage / 2;
                 defend = false;
             }
@@ -208,11 +211,11 @@ public class GameObjectManager {
 
     }
 
-    String checkWinner(){
-        if (playerHealth.getHealthLevel() == 0){
-            return "YOU WON!";
-        }else{
-            return "YOU LOST";
+    String checkWinner() {
+        if (playerHealth.getHealthLevel() == 0) {
+            return res.getString(R.string.win);
+        } else {
+            return res.getString(R.string.lost);
         }
     }
 }

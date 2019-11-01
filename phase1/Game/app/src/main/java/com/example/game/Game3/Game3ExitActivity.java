@@ -5,15 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.game.MainActivity;
 import com.example.game.R;
 
 public class Game3ExitActivity extends AppCompatActivity {
 
+    TextView gameResult;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        gameResult = findViewById(R.id.gameResult);
+//        Intent intent = getIntent();
+//        gameResult.setText(intent.getStringExtra("EXTRA_WINNER"));
         setContentView(R.layout.activity_game3_exit);
     }
 

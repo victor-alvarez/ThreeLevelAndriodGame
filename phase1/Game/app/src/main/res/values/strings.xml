@@ -49,4 +49,9 @@
     <string name="A12">"One of the above"</string>
     <string name="A13">"None of the above"</string>
     <string name="A14">"None of the above"</string>
+    <string name="win">"YOU WON!!"</string>
+    <string name="lost">"YOU LOST!!"</string>
+    <string name="player_took">"PLAYER TOOK "</string>
+    <string name="enemy_took">"ENEMY TOOK "</string>
+    <string name="damage">" DAMAGE"</string>
 </resources>
