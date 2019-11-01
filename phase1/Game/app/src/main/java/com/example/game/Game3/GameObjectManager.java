@@ -167,7 +167,7 @@ public class GameObjectManager {
 
     }
 
-    int decideEnemyDamage() {
+    private int decideEnemyDamage() {
         int damageIndex = new Random().nextInt(enemyDamage.length);
         return enemyDamage[damageIndex];
     }
