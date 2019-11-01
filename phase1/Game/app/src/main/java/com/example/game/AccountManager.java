@@ -2,10 +2,9 @@ package com.example.game;
 
 import android.content.Context;
 import java.io.*;
-import java.util.ArrayList;
 
 /** Account manager that manages the creation and opening of accounts. */
-public class AccountManager {
+class AccountManager {
 
   /**
    * Creates new account with given login. Activates from Create Account button. Takes login from
@@ -13,9 +12,8 @@ public class AccountManager {
    * file if missing.
    *
    * @param login of the Account.
-   * @return new Account with given login.
    */
-  public Account createNewAccount(String login, Context context) {
+  void createNewAccount(String login, Context context) {
     try {
       File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       if (!saveFile.exists()) {
@@ -30,7 +28,6 @@ public class AccountManager {
     } catch (IOException error) {
       error.printStackTrace();
     }
-    return new Account(login);
   }
 
   /**
@@ -41,7 +38,7 @@ public class AccountManager {
    * @return Array[boolean][Account]: account found => loaded Account, save file or account
    *     missing => null.
    */
-  public Account openExistingAccount(String login, Context context) {
+  Account openExistingAccount(String login, Context context) {
     try {
       File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       if (!saveFile.exists()) {
@@ -49,7 +46,7 @@ public class AccountManager {
       }
       FileReader loadAccountData = new FileReader(saveFile);
       BufferedReader loadAccData = new BufferedReader(loadAccountData);
-      String line = loadAccData.readLine();
+      String line;
       while ((line = loadAccData.readLine()) != null) {
         int i = line.indexOf(", ");
         String s = line.substring(0, i);
@@ -69,10 +66,8 @@ public class AccountManager {
     return null;
   }
 
-  /**
-   * Deletes the data if it needs to be wiped for whatever reason.
-   * @param context context of the application for where to write to internal storage.
-   */
+  /* For Phase 2. Left here as rough methods we were unable to implement in time
+
   void deleteAccountData(Context context){
     File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
     if(saveFile.delete()) {
@@ -132,5 +127,5 @@ public class AccountManager {
     } catch (IOException error) {
       System.out.println("Can't find account");
     }
-  }
+  }*/
 }

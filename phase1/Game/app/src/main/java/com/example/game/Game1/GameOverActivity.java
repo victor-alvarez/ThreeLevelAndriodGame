@@ -66,13 +66,6 @@ public class GameOverActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    /** Called when the user taps the "To Home" button */
-    public void toHome(View view) {
-        Intent intent = new Intent(this, Game1Activity.class);
-        intent.putExtra("ac", account);
-        startActivity(intent);
-    }
-
     /** Called when the user taps the "To Game Two" button */
     public void nextGame(View view) {
         Intent intent = new Intent(this, Game2Activity.class);
