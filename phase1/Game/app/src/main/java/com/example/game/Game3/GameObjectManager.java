@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.view.MotionEvent;
+import android.view.WindowManager;
 
 import com.example.game.R;
 
@@ -29,6 +30,7 @@ public class GameObjectManager {
     private Boolean attack = false;
     private Boolean defend = false;
     private Boolean isTurn = true;
+    private MoveTextObject moveTextObject;
 
     /**
      * A constructor for GameObjectManager.
@@ -45,6 +47,7 @@ public class GameObjectManager {
         createPlayerHealthBar();
         createAttackButton();
         createDefendButton();
+        createMoveText();
     }
 
     /**
@@ -112,6 +115,14 @@ public class GameObjectManager {
         defendButton.setY(1800);
     }
 
+    private void createMoveText(){
+        moveTextObject = new MoveTextObject();
+        moveTextObject.setTextColor(Color.WHITE);
+        moveTextObject.setMoveText("");
+        moveTextObject.setX(0);
+        moveTextObject.setY(600);
+    }
+
     void draw(Canvas canvas, Paint paint) {
         player.draw(canvas, paint);
         enemy.draw(canvas, paint);
@@ -119,7 +130,6 @@ public class GameObjectManager {
         playerHealth.draw(canvas, paint);
         attackButton.draw(canvas, paint);
         defendButton.draw(canvas, paint);
-
     }
 
     void update() {
