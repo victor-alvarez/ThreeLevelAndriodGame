@@ -3,6 +3,7 @@ package com.example.game.Game3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -18,10 +19,11 @@ public class Game3ExitActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        gameResult = findViewById(R.id.gameResult);
-//        Intent intent = getIntent();
-//        gameResult.setText(intent.getStringExtra("EXTRA_WINNER"));
         setContentView(R.layout.activity_game3_exit);
+        TextView gameResult = (TextView) findViewById(R.id.gameResult);
+        gameResult.setText(getIntent().getStringExtra("EXTRA_WINNER"));
+        gameResult.setTextColor(Color.BLUE);
+        gameResult.setTextSize(50);
     }
 
     /** Called when the user taps the "Retry" button */
