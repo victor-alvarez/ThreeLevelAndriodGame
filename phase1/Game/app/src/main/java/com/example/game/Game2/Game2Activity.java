@@ -20,7 +20,12 @@ public class Game2Activity extends BaseActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game2_title);
+
     account = (Account) getIntent().getSerializableExtra("ac");
+
+    if (account.getCustomization()[0] == 1) {
+      getWindow().getDecorView().setBackgroundResource(R.color.background1);
+    }
   }
 
   /** Called when the user taps the "START Riddles Game" button */

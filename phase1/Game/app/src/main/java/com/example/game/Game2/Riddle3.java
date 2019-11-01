@@ -17,7 +17,12 @@ public class Riddle3 extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game2_riddle3);
+
         account = (Account) getIntent().getSerializableExtra("ac");
+
+        if (account.getCustomization()[0] == 1) {
+            getWindow().getDecorView().setBackgroundResource(R.color.background1);
+        }
     }
 
     /** Called when the user taps A5 button */

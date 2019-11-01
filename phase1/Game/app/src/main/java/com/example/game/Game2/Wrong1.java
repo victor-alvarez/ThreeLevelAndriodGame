@@ -17,7 +17,12 @@ public class Wrong1 extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game2_riddle1_wrong);
+
         account = (Account) getIntent().getSerializableExtra("ac");
+
+        if (account.getCustomization()[0] == 1) {
+            getWindow().getDecorView().setBackgroundResource(R.color.background1);
+        }
     }
 
     /** Called when the user taps the "Back to the Riddle" button */

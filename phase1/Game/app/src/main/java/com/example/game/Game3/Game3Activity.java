@@ -19,7 +19,12 @@ public class Game3Activity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game3);
+
         account = (Account) getIntent().getSerializableExtra("ac");
+
+        if (account.getCustomization()[0] == 1) {
+            getWindow().getDecorView().setBackgroundResource(R.color.background1);
+        }
     }
 
     /**
@@ -27,6 +32,7 @@ public class Game3Activity extends BaseActivity {
      */
     public void toMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("ac", account);
         startActivity(intent);
     }
 
@@ -35,6 +41,7 @@ public class Game3Activity extends BaseActivity {
      */
     public void toPlay(View view) {
         Intent intent = new Intent(this, Game3PlayActivity.class);
+        intent.putExtra("ac", account);
         startActivity(intent);
     }
 }
