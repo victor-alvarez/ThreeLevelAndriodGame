@@ -51,9 +51,8 @@ public class ObstacleManager {
         }
         int elapseTime = (int) (System.currentTimeMillis() - startTime);
         startTime = System.currentTimeMillis();
-        float speed = (float) (Math.sqrt((1 + startTime - initTime)/2000.0)) * Constants.SCREEN_HEIGHT/(10000.0f);
         for (Obstacle ob : obstacles) {
-            ob.incrementY(-speed * elapseTime);
+            ob.incrementY(-1 * elapseTime);
         }
         if (obstacles.get(obstacles.size() - 1).getRectangle().bottom <= 0) {
             int xStart = (int) (Math.random() * (Constants.SCREEN_WIDTH - playerGap));
