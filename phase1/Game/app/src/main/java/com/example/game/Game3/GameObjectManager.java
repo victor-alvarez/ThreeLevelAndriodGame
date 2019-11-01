@@ -144,14 +144,13 @@ public class GameObjectManager {
             int damageIndex = new Random().nextInt(hpDamage.length);
             int damage = hpDamage[damageIndex];
             if (attack) {
-                enemyHealth.setHealthLevel(max(0, enemyHealth.getHealthLevel() - 10));
-                playerHealth.setHealthLevel(max(0, playerHealth.getHealthLevel() - damage));
+                enemyHealth.update(10);
+                playerHealth.update(damage);
                 attack = false;
             }
             if (defend) {
-                enemyHealth.setHealthLevel(max(0, enemyHealth.getHealthLevel() - 5));
-                playerHealth.setHealthLevel(max(0, playerHealth.getHealthLevel() -
-                        (damage / 2)));
+                enemyHealth.update(5);
+                playerHealth.update(damage/2);
                 defend = false;
             }
 

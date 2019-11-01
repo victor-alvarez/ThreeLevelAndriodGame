@@ -4,6 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import static java.lang.StrictMath.max;
+
 public class HealthBarObject extends Game3Object {
 
     private int color;
@@ -57,5 +59,9 @@ public class HealthBarObject extends Game3Object {
     @Override
     public void update() {
 
+    }
+
+    public void update(int damage){
+        setHealthLevel(max(0, getHealthLevel() - damage));
     }
 }
