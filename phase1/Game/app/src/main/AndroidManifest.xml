@@ -25,8 +25,15 @@
         <activity android:name=".Game1.CustomizeActivity" />
         <activity android:name=".Game1.BallJumperActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Game3.Game3Activity" />
         <activity android:name=".Game2.Game2Activity" />
+        <activity android:name=".Game2.Riddle1" />
+        <activity android:name=".Game2.Riddle2" />
+        <activity android:name=".Game2.Riddle3" />
+        <activity android:name=".Game2.Wrong1" />
+        <activity android:name=".Game2.Wrong2" />
+        <activity android:name=".Game2.Wrong3" />
+        <activity android:name=".Game2.Win" />
+        <activity android:name=".Game3.Game3Activity" />
         <activity android:name=".Game1.Game1Activity" />
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".OptionsActivity" />
