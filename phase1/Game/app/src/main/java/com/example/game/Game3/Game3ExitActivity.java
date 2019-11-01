@@ -14,8 +14,6 @@ import com.example.game.R;
 
 public class Game3ExitActivity extends BaseActivity {
 
-    TextView gameResult;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
