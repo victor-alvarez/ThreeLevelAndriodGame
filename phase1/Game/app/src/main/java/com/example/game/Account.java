@@ -184,18 +184,44 @@ public class Account implements Serializable{
     }
   }
 
+  //Note: coulour, lang and muz are numeric strings, e.g. "0", "1", "2", etc.
+    public void setBackground(String colour) {
+        this.customization[0] = colour;
+        this.saveSettings();
+    }
+
+    public void setLanguage(String lang) {
+        this.customization[1] = lang;
+        this.saveSettings();
+    }
+    public void setMusic(String muz) {
+        this.customization[2] = muz;
+        this.saveSettings();
+    }
+
     public void incrementLevel() {
-        this.save[1] += 1;
-        this.saveProgress();
+      int lvl = Integer.parseInt(this.save[0]);
+      lvl += 1;
+      this.save[0] = Integer.toString(lvl);
+      this.saveProgress();
     }
 
     public void decrementHitPoints(int reduce) {
-        this.save[1] += reduce;
+        int hp = Integer.parseInt(this.save[1]);
+        hp -= reduce;
+        this.save[1] = Integer.toString(hp);
         this.saveProgress();
     }
 
     public void incrementScore(int add) {
-        this.save[2] += add;
+        int score = Integer.parseInt(this.save[2]);
+        score += add;
+        this.save[2] = Integer.toString(score);
+        this.saveProgress();
+    }
+
+    public void setHighScore(int value) {
+        this.save[3] = Integer.toString(value);
         this.saveProgress();
     }
 
