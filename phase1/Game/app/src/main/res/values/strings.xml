@@ -54,4 +54,6 @@
     <string name="player_took">"PLAYER TOOK "</string>
     <string name="enemy_took">"ENEMY TOOK "</string>
     <string name="damage">" DAMAGE"</string>
+    <string name="start_game">"Start Game"</string>
+    <string name="resume_game">"Resume Game"</string>
 </resources>

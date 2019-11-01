@@ -196,7 +196,11 @@ public class Account implements Serializable{
     }
 
     public void incrementLevel(Context context) {
-      this.save[0] += 1;
+      if (this.save[0] < 2){
+        this.save[0] += 1;
+      } else {
+        this.save[0] = 0;
+      }
       this.saveProgress(context);
     }
 
@@ -213,6 +217,12 @@ public class Account implements Serializable{
     public void setHighScore(int value, Context context) {
         this.save[3] = value;
         this.saveProgress(context);
+    }
+
+    public void resetValues(Context context){
+      this.save[1] = 200;
+      this.save[2] = 0;
+      this.saveProgress(context);
     }
 
   /**

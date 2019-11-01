@@ -30,6 +30,8 @@ public class Win extends BaseActivity {
     /** Called when the user taps the "To Game Three" button */
     public void nextGame(View view) {
         Intent intent = new Intent(this, Game3Activity.class);
+        account.incrementLevel(getApplicationContext());
+        account.incrementScore(10, getApplicationContext());
         intent.putExtra("ac", account);
         startActivity(intent);
     }

@@ -52,7 +52,11 @@ public class GameOverActivity extends BaseActivity {
             highScoreLabel.setText("High Score : " + highScore);
         }
 
+        account = (Account) getIntent().getSerializableExtra("ac");
 
+        if (account.getCustomization()[0] == 1) {
+            getWindow().getDecorView().setBackgroundResource(R.color.background1);
+        }
     }
 
     /** Called when the user taps the "Retry" button */

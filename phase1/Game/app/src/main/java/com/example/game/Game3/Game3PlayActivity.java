@@ -56,6 +56,9 @@ public class Game3PlayActivity extends BaseActivity {
     protected void gameOver(String winner){
         Intent intent = new Intent(this, Game3ExitActivity.class);
         intent.putExtra("EXTRA_WINNER", winner);
+        account.incrementLevel(getApplicationContext());
+        account.incrementScore(15, getApplicationContext());
+        System.out.println(account.getSave()[2]);
         intent.putExtra("ac", account);
         startActivity(intent);
     }
