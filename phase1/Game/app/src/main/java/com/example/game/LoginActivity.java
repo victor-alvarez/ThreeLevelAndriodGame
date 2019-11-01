@@ -35,10 +35,9 @@ public class LoginActivity extends BaseActivity {
 
     /** Called when the user taps the "Select Account" button */
     public void login(View view) {
-        Account tempAccount = accountManager.openExistingAccount(inputName.getText().toString(),
+        account = accountManager.openExistingAccount(inputName.getText().toString(),
                 getApplicationContext());
-        if (tempAccount != null) {
-            account = tempAccount;
+        if (account != null) {
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("ac", account);
             startActivity(intent);
