@@ -3,11 +3,10 @@ package com.example.game.Game3;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-public class CharacterObject implements Game3Object {
+public class CharacterObject extends Game3Object {
 
 
-
-    CharacterObject(String name){
+    CharacterObject() {
 
     }
 

@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-public class HealthBarObject implements Game3Object {
+public class HealthBarObject extends Game3Object {
 
     private int color;
 
@@ -50,7 +50,8 @@ public class HealthBarObject implements Game3Object {
     public void draw(Canvas canvas, Paint paint) {
         paint.setColor(color);
         paint.setTextSize(textSize);
-        canvas.drawText(playerName.toUpperCase() + ": " + healthLevel, x, y, paint);
+        canvas.drawText(playerName.toUpperCase() + "'S HP: " + healthLevel, getX(), getY(),
+                paint);
     }
 
     @Override
