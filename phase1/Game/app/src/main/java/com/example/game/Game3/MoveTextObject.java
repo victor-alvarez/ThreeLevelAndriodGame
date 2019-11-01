@@ -27,11 +27,18 @@ public class MoveTextObject extends Game3Object {
 
     @Override
     void draw(Canvas canvas, Paint paint) {
-
+        paint.setColor(getTextColor());
+        canvas.drawText(moveText, getX(), getY(), paint);
     }
 
     @Override
     void update() {
+
+    }
+
+    void update(String displayText, int color) {
+        setTextColor(color);
+        setMoveText(displayText);
 
     }
 
