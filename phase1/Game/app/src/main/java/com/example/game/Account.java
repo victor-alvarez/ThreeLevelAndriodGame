@@ -13,7 +13,36 @@ public class Account implements Serializable{
   /** Account's login, customization settings and save data. */
   public String login;
 
+  /** Account's customization:
+   * at index 0 - background colour:
+   * 0 - grey,
+   * 1 - ###,
+   * 2 - ###;
+   * at index 1 - account icon:
+   * 0 - none,
+   * 1 - ###,
+   * 2 - ###;
+   * at index 2 - language:
+   * 0 - English,
+   * 1 - French,
+   * 2 - Russian,
+   * 3 - Spanish;*/
   public String[] customisation;
+
+  /** Account's save data:
+   * at index 0 - last level attempted (0-4):
+   * 0 - have not started level 1 yet,
+   * 1, 2, 3 - started level 1, 2, 3,
+   * 4 - won the last game;
+   * at index 1 - # of hit points (0-100):
+   * at index 2 - ball skin:
+   * 0 - ###,
+   * 1 - ###,
+   * 2 - ###;
+   * at index 3 - background music:
+   * 0 - ###,
+   * 1 - ###,
+   * 2 - ###;*/
   public String[] save;
 
   private Context context;
@@ -39,7 +68,7 @@ public class Account implements Serializable{
     this.login = login;
     String[] a = {"0", "0", "0"};
     this.customisation = a;
-    String[] b = {"0", "0", "0", "0"};
+    String[] b = {"0", "100", "0", "0"};
     this.save = b;
     this.context = context;
   }
@@ -177,12 +206,10 @@ public class Account implements Serializable{
     Object[] a = AccountManager.openExistingAccount("TEST1");
     Account c = (Account) a[1];
     System.out.println(a[0] + c.login + c.getCustomisation()[1]);
-    String[] newSave = {"1", "2", "3", "4"};
+    String[] newSave = {"1", "50", "3", "4"};
     String[] newSettings = {"1", "1", "1"};
     c.setCustomisation(newSettings);
     c.setSave(newSave);
-    c.saveSettings();
-    c.saveProgress();
     a = AccountManager.openExistingAccount("TEST1");
     c = (Account) a[1];
     System.out.println(a[0]);
