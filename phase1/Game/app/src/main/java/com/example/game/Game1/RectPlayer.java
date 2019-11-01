@@ -57,16 +57,15 @@ public class RectPlayer implements GameObject{
         animManager.update();
     }
 
-    public void update(Point point){
+    public void update(Point point) {
         float oldLeft = rectangle.left;
 
-        rectangle.set(point.x - rectangle.width()/2, point.y - rectangle.height()/2, point.x + rectangle.width()/2, point.y + rectangle.height()/2);
+        rectangle.set(point.x - rectangle.width() / 2, point.y - rectangle.height() / 2, point.x + rectangle.width() / 2, point.y + rectangle.height() / 2);
 
         int state = 0;
         if (rectangle.left - oldLeft > 5) {
             state = 1;
-        }
-        else if (rectangle.left - oldLeft < -5) {
+        } else if (rectangle.left - oldLeft < -5) {
             state = 2;
         }
 

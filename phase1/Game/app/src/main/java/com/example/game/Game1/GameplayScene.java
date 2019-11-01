@@ -22,6 +22,7 @@ public class GameplayScene implements Scene {
     private int lives; // Lives for the game
     private OrientationData orientationData;
     private long frameTime;
+    private long startTime;
 
     public GameplayScene() {
         player = new RectPlayer(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
@@ -30,7 +31,7 @@ public class GameplayScene implements Scene {
         obstacleManager = new ObstacleManager(200, 1000, 75, Color.BLACK);
         lives = 3;
         orientationData = new OrientationData();
-        frameTime = System.currentTimeMillis();
+        frameTime = startTime = System.currentTimeMillis();
     }
 
     @Override
@@ -80,7 +81,6 @@ public class GameplayScene implements Scene {
             else if (playerPoint.x > Constants.SCREEN_WIDTH) {
                 playerPoint.x = Constants.SCREEN_WIDTH;
             }
-
             if (playerPoint.y < 0) {
                 playerPoint.y = 0;
             }
@@ -88,6 +88,7 @@ public class GameplayScene implements Scene {
                 playerPoint.y = Constants.SCREEN_HEIGHT;
             }
 
+            playerPoint.y += 2;
             player.update(playerPoint);
             ArrayList<Obstacle> obstacles = obstacleManager.getObstacles();
             // If obstacle goes off screen remove it, then add to our score
