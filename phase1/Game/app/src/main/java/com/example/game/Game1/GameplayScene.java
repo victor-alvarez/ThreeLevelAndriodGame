@@ -60,8 +60,8 @@ public class GameplayScene implements Scene {
         paint.setColor(Color.GREEN);
         canvas.drawText("Lives: " + lives, Constants.SCREEN_WIDTH/2, 50 + paint.descent() - paint.ascent(), paint);
         paint.setColor(Color.BLACK);
-        canvas.drawText(new String(new char[Constants.SCREEN_WIDTH]).replace("\0", "^"), 0, Constants.SCREEN_HEIGHT - 107, paint);
-        canvas.drawText(new String(new char[Constants.SCREEN_WIDTH]).replace("\0", "v"), 0, 25, paint);
+        canvas.drawText(new String(new char[Constants.SCREEN_WIDTH]).replace("\0", "^"), 0, (float) 0.95 * Constants.SCREEN_HEIGHT, paint);
+        canvas.drawText(new String(new char[Constants.SCREEN_WIDTH]).replace("\0", "v"), 0, (float) 0.013 * Constants.SCREEN_HEIGHT, paint);
     }
 
     @Override

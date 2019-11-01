@@ -40,12 +40,6 @@ public class Game3ExitActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    public void toHome(View view) {
-        Intent intent = new Intent(this, Game3Activity.class);
-        intent.putExtra("ac", account);
-        startActivity(intent);
-    }
-
     /** Called when the user taps the "To Main Menu" button */
     public void toMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);

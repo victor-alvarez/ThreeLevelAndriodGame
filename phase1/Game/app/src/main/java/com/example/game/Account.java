@@ -1,8 +1,6 @@
 package com.example.game;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -11,7 +9,7 @@ import java.util.ArrayList;
 public class Account implements Serializable{
 
   /** Account's login, customization settings and save data. */
-  String login;
+  private String login;
 
   /** Account's customization:
    * at index 0 - background colour:
@@ -33,8 +31,8 @@ public class Account implements Serializable{
    * 4 - won the last game;
    * at index 1 - hit points (0-100);
    * at index 2 - current score (0+);
-   * at index 3 - score (0+).*/
-  int[] save;
+   * at index 3 - games played (addiction counter) (0+). Includes retries of games.*/
+  private int[] save;
 
   /**
    * Constructor for brand new Account. Activates from Create Account button. Takes login from Enter
@@ -110,7 +108,7 @@ public class Account implements Serializable{
       FileReader loadAccountData = new FileReader(saveFile);
       BufferedReader loadAccData = new BufferedReader(loadAccountData);
       String line;
-      ArrayList<String> old = new ArrayList<String>();
+      ArrayList<String> old = new ArrayList<>();
       while ((line = loadAccData.readLine()) != null) {
         int i = line.indexOf(", ");
         String s = line.substring(0, i);
@@ -144,7 +142,7 @@ public class Account implements Serializable{
       FileReader loadAccountData = new FileReader(saveFile);
       BufferedReader loadAccData = new BufferedReader(loadAccountData);
       String line;
-      ArrayList<String> old = new ArrayList<String>();
+      ArrayList<String> old = new ArrayList<>();
       while ((line = loadAccData.readLine()) != null) {
         int i = line.indexOf(", ");
         String s = line.substring(0, i);
@@ -190,11 +188,11 @@ public class Account implements Serializable{
     }
 
     /**
-     * Sets this accounts music setting
-     * @param muz the music setting
+     * Sets this accounts icon
+     * @param muz the icon setting
      * @param context an access to the current file state of the app
      */
-    public void setMusic(int muz, Context context) {
+    public void setIcon(int muz, Context context) {
         this.customization[2] = muz;
         this.saveSettings(context);
     }
@@ -233,12 +231,11 @@ public class Account implements Serializable{
     }
 
     /**
-     * Sets this accounts high score
-     * @param value the number that represents high score
+     * Increments the number of times the games are played on this account
      * @param context an access to the current file state of the app
      */
-    public void setHighScore(int value, Context context) {
-        this.save[3] = value;
+    public void incrementGamesPlayed(Context context) {
+        this.save[3] += 1;
         this.saveProgress(context);
     }
 
@@ -252,28 +249,4 @@ public class Account implements Serializable{
       this.save[2] = 0;
       this.saveProgress(context);
     }
-
-  /*public static void main(String[] args) {
-    AccountManager.createNewAccount("TEST");
-    AccountManager.createNewAccount("TEST1");
-    AccountManager.createNewAccount("TEST2");
-    Object[] a = AccountManager.openExistingAccount("TEST1");
-    Account c = (Account) a[1];
-    System.out.println(a[0] + c.login + c.getCustomisation()[1]);
-    String[] newSave = {"1", "50", "3", "4"};
-    String[] newSettings = {"1", "1", "1"};
-    c.setCustomization(newSettings);
-    c.setSave(newSave);
-    a = AccountManager.openExistingAccount("TEST1");
-    c = (Account) a[1];
-    System.out.println(a[0]);
-    System.out.println(c.login);
-    System.out.println(c.getCustomization()[0]);
-    System.out.println(c.getCustomization()[1]);
-    System.out.println(c.getCustomization()[2]);
-    System.out.println(c.getSave()[0]);
-    System.out.println(c.getSave()[1]);
-    System.out.println(c.getSave()[2]);
-    System.out.println(c.getSave()[3]);
-  }*/
 }
