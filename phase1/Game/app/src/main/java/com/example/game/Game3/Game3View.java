@@ -23,6 +23,8 @@ public class Game3View extends SurfaceView implements Runnable {
 
     private Paint paint;
 
+    private GameObjectManager gameObjectManager;
+
     /**
      * Game3View constructor.
      *
@@ -31,6 +33,7 @@ public class Game3View extends SurfaceView implements Runnable {
     public Game3View(Context context) {
         super(context);
         paint = new Paint();
+        gameObjectManager = new GameObjectManager(getResources());
     }
 
     /**
@@ -68,6 +71,7 @@ public class Game3View extends SurfaceView implements Runnable {
             Canvas canvas = getHolder().lockCanvas();
             super.draw(canvas);
             canvas.drawColor(Color.DKGRAY);
+            gameObjectManager.draw(canvas, paint);
             getHolder().unlockCanvasAndPost(canvas);
         }
     }
