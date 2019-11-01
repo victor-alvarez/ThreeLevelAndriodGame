@@ -24,12 +24,20 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     private Thread thread;
 
+    /**
+     * The paint used on the canvas.
+     */
     private Paint paint;
 
+
+    /**
+     * Instance that manages all the objects in the Game.
+     */
     private GameObjectManager gameObjectManager;
 
-    private Boolean isTurn = true;
-
+    /**
+     * The instance of the class that called created an instance of this class.
+     */
     private final Context activityContext;
 
     /**
@@ -42,6 +50,8 @@ public class Game3View extends SurfaceView implements Runnable {
         activityContext = context;
         paint = new Paint();
         gameObjectManager = new GameObjectManager(getResources());
+
+        //Creates all the game objects that are needed for this Game.
         gameObjectManager.createObjects();
     }
 
@@ -52,12 +62,22 @@ public class Game3View extends SurfaceView implements Runnable {
     public void run() {
         boolean wait;
         while (isPlaying) {
-            if(checkGameEnded()){
+
+            //Checks if Game has ended. If it has, it breaks from the Game Loop.
+            if (checkGameEnded()) {
                 break;
             }
+
+            //Checks if the
             wait = !gameObjectManager.getTurn();
+
+            //Updates the game objects.
             update();
+
+            //Draws the game objects
             draw();
+
+            //Gives the user 1 second to see how much HP damage they did to the Enemy.
             if (wait) {
                 try {
                     TimeUnit.SECONDS.sleep(1);
@@ -66,9 +86,12 @@ public class Game3View extends SurfaceView implements Runnable {
                 }
                 gameObjectManager.setTurn(true);
             }
-            sleep();
 
+            //Thread pauses to get a Frame Rate.
+            sleep();
         }
+
+        //Ends the game and given method takes User to Game 3 Exit Activity.
         ((Game3PlayActivity) activityContext).gameOver(gameObjectManager.checkWinner());
     }
 
@@ -90,7 +113,11 @@ public class Game3View extends SurfaceView implements Runnable {
      * Draws the game objects on the screen.
      */
     private void draw() {
+        //Checks of the surface is valid to draw on.
         if (getHolder().getSurface().isValid()) {
+
+            //Locks the canvas, sets Grey Background, then draw objects (handled by
+            // gameObjectManager.draw) and then unlocks the canvas.
             Canvas canvas = getHolder().lockCanvas();
             super.draw(canvas);
             canvas.drawColor(Color.DKGRAY);
@@ -132,9 +159,13 @@ public class Game3View extends SurfaceView implements Runnable {
         }
     }
 
+    /**
+     * Reads user's touch input and gameObjectManager handles the cases.
+     *
+     * @param event The user's movement.
+     */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
         gameObjectManager.onTouchEventHelper(event);
         return super.onTouchEvent(event);
     }
