@@ -37,8 +37,8 @@ public class AccountManager {
    * login from Enter Login field. Uses saved values for customization settings and save data.
    *
    * @param login of the Account.
-   * @return Array[boolean][Account]: account found => true + loaded Account, save file or account
-   *     missing => false + null.
+   * @return Array[boolean][Account]: account found => loaded Account, save file or account
+   *     missing => null.
    */
   public Account openExistingAccount(String login, Context context) {
     try {
