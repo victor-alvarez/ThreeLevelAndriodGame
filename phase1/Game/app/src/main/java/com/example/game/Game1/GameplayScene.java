@@ -104,6 +104,7 @@ public class GameplayScene implements Scene {
                 }
             }
 
+            playerPoint.y += 2;
             player.update(playerPoint);
             ArrayList<Obstacle> obstacles = obstacleManager.getObstacles();
             // If obstacle goes off screen remove it, then add to our score

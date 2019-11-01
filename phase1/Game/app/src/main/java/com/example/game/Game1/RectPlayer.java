@@ -9,7 +9,7 @@ import android.graphics.Rect;
 import com.example.game.R;
 
 /**
- * RectPlayet class. The actual player the user will control.
+ * RectPlayer class. The actual player the user will control.
  */
 public class RectPlayer implements GameObject{
 
