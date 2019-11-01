@@ -14,6 +14,7 @@ public class Obstacle implements GameObject{
      */
     private Rect rectangle;
     private int color;
+    private boolean destroy = false;
 
     /**
      * Constructor
@@ -53,13 +54,23 @@ public class Obstacle implements GameObject{
 
     @Override
     public void draw(Canvas canvas){
-        Paint paint = new Paint();
-        paint.setColor(color);
-        canvas.drawRect(rectangle, paint);
+        if (!destroy) {
+            Paint paint = new Paint();
+            paint.setColor(color);
+            canvas.drawRect(rectangle, paint);
+        }
     }
 
     @Override
     public void update(){
 
+    }
+
+    void destroy() {
+        destroy = true;
+    }
+
+    boolean checkDestoryed() {
+        return destroy;
     }
 }
