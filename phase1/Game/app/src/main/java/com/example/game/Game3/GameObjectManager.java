@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 
 import com.example.game.R;
 
+import java.lang.reflect.Array;
 import java.util.Random;
 
 
@@ -29,6 +30,7 @@ public class GameObjectManager {
     private Boolean defend = false;
     private Boolean isTurn = true;
     private MoveTextObject moveTextObject;
+    private int[] enemyDamage = {5, 10, 15};
 
     /**
      * A constructor for GameObjectManager.
@@ -137,33 +139,37 @@ public class GameObjectManager {
         playerHealth.draw(canvas, paint);
         attackButton.draw(canvas, paint);
         defendButton.draw(canvas, paint);
+        moveTextObject.draw(canvas, paint);
     }
 
     void update() {
         if (isTurn) {
             attackButton.setActive(true);
             defendButton.setActive(true);
-
         } else {
             attackButton.setActive(false);
             defendButton.setActive(false);
-            int[] hpDamage = {5, 10, 15};
-            int damageIndex = new Random().nextInt(hpDamage.length);
-            int damage = hpDamage[damageIndex];
+            int damage = decideEnemyDamage();
             if (attack) {
                 enemyHealth.update(10);
                 playerHealth.update(damage);
+                moveTextObject.update("PLAYER TOOK " + damage + " DAMAGE", Color.RED);
                 attack = false;
             }
             if (defend) {
                 enemyHealth.update(5);
                 playerHealth.update(damage / 2);
+                moveTextObject.update("PLAYER TOOK " + damage / 2 + " DAMAGE", Color.RED);
                 defend = false;
             }
-
             isTurn = true;
         }
 
+    }
+
+    int decideEnemyDamage() {
+        int damageIndex = new Random().nextInt(enemyDamage.length);
+        return enemyDamage[damageIndex];
     }
 
     Boolean gameEnded() {
