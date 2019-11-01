@@ -30,10 +30,20 @@ public class GameObjectManager {
     private Boolean attack = false;
     private Boolean defend = false;
 
+    /**
+     * Getter for isTurn.
+     *
+     * @return isTurn : Checks if it' the user's turn.
+     */
     public Boolean getTurn() {
         return isTurn;
     }
 
+    /**
+     * Getter for isTurn.
+     *
+     * @param turn : Checks if it' the user's turn.
+     */
     public void setTurn(Boolean turn) {
         isTurn = turn;
     }
@@ -50,6 +60,9 @@ public class GameObjectManager {
         this.res = res;
     }
 
+    /**
+     * Creates all the Objects required for this game by calling corresponding methods.
+     */
     void createObjects() {
         createPlayer();
         createEnemy();
@@ -141,6 +154,12 @@ public class GameObjectManager {
         moveTextObject.setY(600);
     }
 
+    /**
+     * Draws all the Game 3 Objects on given canvas.
+     *
+     * @param canvas The canvas to draw on.
+     * @param paint  The paint to use to draw on canvas.
+     */
     void draw(Canvas canvas, Paint paint) {
         player.draw(canvas, paint);
         enemy.draw(canvas, paint);
@@ -151,8 +170,13 @@ public class GameObjectManager {
         moveTextObject.draw(canvas, paint);
     }
 
+    /**
+     * Updates the GameObjects that require updates.
+     */
     void update() {
         if (isTurn) {
+
+            //Prints the Damage the enemy did to the player.
             moveTextObject.update(res.getString(R.string.player_took) + hpDamage +
                     res.getString(R.string.damage), Color.RED);
             attackButton.setActive(true);
@@ -162,14 +186,23 @@ public class GameObjectManager {
             defendButton.setActive(false);
             int damage = decideEnemyDamage();
             if (attack) {
+
+                //Player does 10 HP damage if he/she tapped AttackButton
                 enemyHealth.update(10);
+
+                //Player gets full damage decided randomly by decideEnemyDamage method if Attack
+                // button was tapped.
                 moveTextObject.update(res.getString(R.string.enemy_took) + 10 +
                         res.getString(R.string.damage), Color.GREEN);
                 hpDamage = damage;
                 attack = false;
             }
             if (defend) {
+
+                //Player does 5 damage if he/she tapped DefendButton
                 enemyHealth.update(5);
+
+                //Player gets half damage if decided to press Defend button.
                 moveTextObject.update(res.getString(R.string.enemy_took) + 5 +
                         res.getString(R.string.damage), Color.GREEN);
                 hpDamage = damage / 2;
@@ -180,26 +213,40 @@ public class GameObjectManager {
 
     }
 
+    /**
+     * Randomly decides how much attack the Enemy should deal. Based on picking a number randomly
+     * from an array of possible hp damage choices.
+     */
     private int decideEnemyDamage() {
         int damageIndex = new Random().nextInt(enemyDamage.length);
         return enemyDamage[damageIndex];
     }
 
+    /**
+     * Checks if the game has ended (when either of the Player's health has reached 0.
+     */
     Boolean gameEnded() {
         return (enemyHealth.getHealthLevel() == 0 || playerHealth.getHealthLevel() == 0);
     }
 
+    /**
+     * Checks if the game has ended (when either of the Player's health has reached 0).
+     */
     void onTouchEventHelper(MotionEvent event) {
         if (isTurn) {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 float touchX = event.getX();
                 float touchY = event.getY();
+
+                //Checks if the AttackButton was tapped. If so, player's turn is over.
                 if (attackButton.getButton().left <= touchX && touchX <=
                         attackButton.getButton().right && attackButton.getButton().top <= touchY &&
                         touchY <= attackButton.getButton().bottom) {
                     attack = true;
                     isTurn = false;
                 }
+
+                //Checks if the DefendButton was tapped. If so, player's turn is over.
                 if (defendButton.getButton().left <= touchX && touchX <=
                         defendButton.getButton().right && defendButton.getButton().top <= touchY &&
                         touchY <= defendButton.getButton().bottom) {
@@ -211,6 +258,10 @@ public class GameObjectManager {
 
     }
 
+    /**
+     * Check's which one of the CharacterObjects is the winner (The enemy or the Player) and return
+     * string that displays the result of the game.
+     */
     String checkWinner() {
         if (playerHealth.getHealthLevel() == 0) {
             return res.getString(R.string.lost);
