@@ -52,6 +52,9 @@ public class Game3View extends SurfaceView implements Runnable {
     public void run() {
         boolean wait;
         while (isPlaying) {
+            if(checkGameEnded()){
+                break;
+            }
             wait = !gameObjectManager.getTurn();
             update();
             draw();
@@ -64,7 +67,7 @@ public class Game3View extends SurfaceView implements Runnable {
                 gameObjectManager.setTurn(true);
             }
             sleep();
-            checkGameEnded();
+
         }
         ((Game3PlayActivity) activityContext).gameOver(gameObjectManager.checkWinner());
     }
@@ -72,10 +75,8 @@ public class Game3View extends SurfaceView implements Runnable {
     /**
      * Checks if game is done.
      */
-    private void checkGameEnded() {
-        if (gameObjectManager.gameEnded()) {
-            isPlaying = false;
-        }
+    private boolean checkGameEnded() {
+        return gameObjectManager.gameEnded();
     }
 
     /**

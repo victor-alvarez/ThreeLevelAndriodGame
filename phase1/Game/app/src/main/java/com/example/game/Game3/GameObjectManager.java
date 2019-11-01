@@ -213,9 +213,9 @@ public class GameObjectManager {
 
     String checkWinner() {
         if (playerHealth.getHealthLevel() == 0) {
-            return res.getString(R.string.win);
-        } else {
             return res.getString(R.string.lost);
+        } else {
+            return res.getString(R.string.win);
         }
     }
 }
