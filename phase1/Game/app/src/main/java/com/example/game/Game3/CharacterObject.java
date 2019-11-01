@@ -16,10 +16,6 @@ public class CharacterObject extends Game3Object {
         this.sprite = sprite;
     }
 
-    CharacterObject() {
-
-    }
-
     @Override
     public void draw(Canvas canvas, Paint paint) {
         canvas.drawBitmap(sprite, getX(), getY(), paint);
