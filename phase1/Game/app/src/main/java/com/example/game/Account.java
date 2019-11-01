@@ -34,15 +34,9 @@ public class Account implements Serializable{
    * 0 - have not started level 1 yet,
    * 1, 2, 3 - started level 1, 2, 3,
    * 4 - won the last game;
-   * at index 1 - # of hit points (0-100):
-   * at index 2 - ball skin:
-   * 0 - ###,
-   * 1 - ###,
-   * 2 - ###;
-   * at index 3 - background music:
-   * 0 - ###,
-   * 1 - ###,
-   * 2 - ###;*/
+   * at index 1 - hit points (0-100);
+   * at index 2 - current score (0+);
+   * at index 3 - score (0+).*/
   public String[] save;
 
   private Context context;
