@@ -81,7 +81,7 @@ public class GameplayScene implements Scene {
                     playerPoint.x += xSpeed * elapsedTime;
                 }
                 if (Math.abs(ySpeed * elapsedTime) > 5) {
-                    playerPoint.y += ySpeed * elapsedTime;
+                    playerPoint.y -= ySpeed * elapsedTime;
                 }
             }
             // Keep player within boundaries
@@ -151,6 +151,7 @@ public class GameplayScene implements Scene {
                 if (!gameOver && player.getRectangle().contains((int) event.getX(), (int) event.getY())) {
                     movingPlayer = true;
                 }
+                break;
             case MotionEvent.ACTION_MOVE:
                 if (!gameOver && movingPlayer) {
                     playerPoint.set((int) event.getX(), playerPoint.y);
