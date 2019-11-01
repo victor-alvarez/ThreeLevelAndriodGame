@@ -128,7 +128,7 @@ public class GameObjectManager {
         moveTextObject = new MoveTextObject();
         moveTextObject.setTextColor(Color.WHITE);
         moveTextObject.setMoveText("");
-        moveTextObject.setX(0);
+        moveTextObject.setX(275);
         moveTextObject.setY(600);
     }
 
