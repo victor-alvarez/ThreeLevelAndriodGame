@@ -53,12 +53,11 @@ public class GameObjectManager {
     /**
      * Creates a Character for the Player.
      */
-    private CharacterObject createPlayer() {
+    private void createPlayer() {
         player = new CharacterObject();
         player.setSprite(BitmapFactory.decodeResource(res, R.drawable.player));
         player.setX(-500);
         player.setY(800);
-        return player;
     }
 
     /**
@@ -167,7 +166,7 @@ public class GameObjectManager {
 
     }
 
-    int decideEnemyDamage() {
+    private int decideEnemyDamage() {
         int damageIndex = new Random().nextInt(enemyDamage.length);
         return enemyDamage[damageIndex];
     }
