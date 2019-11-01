@@ -13,7 +13,7 @@ import com.example.game.R;
 
 public class Riddle3 extends BaseActivity {
     Account account;
-    Context context;
+    //Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +29,8 @@ public class Riddle3 extends BaseActivity {
 
     /** Called when the user taps upper "None of the above" button */
     public void rightGuess3(View view) {
-        account.incrementScore(100, context);
-        account.incrementLevel(context);
+        //account.incrementScore(10, context);
+        //account.incrementLevel(context);
         Intent intent = new Intent(this, Win.class);
         intent.putExtra("ac", account);
         startActivity(intent);
@@ -38,7 +38,7 @@ public class Riddle3 extends BaseActivity {
 
     /** Called when the user taps any other button */
     public void wrongGuess3(View view) {
-        account.decrementHitPoints(1, context);
+        //account.decrementHitPoints(1, context);
         Intent intent = new Intent(this, Wrong3.class);
         intent.putExtra("ac", account);
         startActivity(intent);
