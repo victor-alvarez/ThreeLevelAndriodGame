@@ -40,7 +40,7 @@ public class GameObjectManager {
 
     private Boolean isTurn = true;
     private MoveTextObject moveTextObject;
-    private int[] enemyDamage = {5, 10, 15};
+    private int[] enemyDamage = {5, 9, 12, 10, 10, 10, 15, 15};
     private int hpDamage = 0;
 
     /**
