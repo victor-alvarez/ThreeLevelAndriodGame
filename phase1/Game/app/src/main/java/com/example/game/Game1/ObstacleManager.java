@@ -1,32 +1,42 @@
 package com.example.game.Game1;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import java.util.ArrayList;
 
+/**
+ * ObstacleManager class. Creates obstacles to be populated in game.
+ */
 public class ObstacleManager {
     // higher index = lower on screen = higher y value
 
+    /**
+     * Instance variables
+     */
     private ArrayList<Obstacle> obstacles;
-    private int playerGap;
     private int obstacleGap;
     private int obstacleHeight;
     private int color;
     private long startTime;
-    private long initTime;
 
-    public ObstacleManager(int playerGap, int obstacleGap, int obstacleHeight, int color) {
-        this.playerGap = playerGap;
+    /**
+     * Constructor for ObstacleManager
+     * @param obstacleGap - gap between spawning obstacles
+     * @param obstacleHeight - height of obstacles
+     * @param color - color of obstacles
+     */
+    ObstacleManager(int obstacleGap, int obstacleHeight, int color) {
         this.obstacleGap = obstacleGap;
         this.obstacleHeight = obstacleHeight;
         this.color = color;
-        startTime = initTime = System.currentTimeMillis();
         obstacles = new ArrayList<>();
         populateObstacles();
     }
 
-    public boolean playerCollide(RectPlayer player) {
+    /**
+     * @param player - RectPlayer player to check collision with any of the obstacles
+     * @return - true iff any obstacle in obstacles collides with player
+     */
+    boolean playerCollide(RectPlayer player) {
         for(Obstacle ob : obstacles) {
             if (ob.playerCollide(player)) {
                 return true;
@@ -35,16 +45,23 @@ public class ObstacleManager {
         return false;
     }
 
+    /**
+     * Add obstacles below each other to bottom of the screen.
+     */
     private void populateObstacles() {
         int currY = Constants.SCREEN_HEIGHT * 2;
 
         while(currY > Constants.SCREEN_HEIGHT) {
-            int xStart = (int) (Math.random() * (Constants.SCREEN_WIDTH - playerGap));
-            obstacles.add(new Obstacle(obstacleHeight, color, xStart, currY, playerGap));
+            int xStart = (int) (Math.random() * (Constants.SCREEN_WIDTH - 100));
+            obstacles.add(new Obstacle(obstacleHeight, color, xStart, currY));
             currY -= obstacleHeight + obstacleGap;
         }
     }
 
+    /**
+     * Loop through ArrayList of obstacles and move them. Check if obstacle is off screen on the
+     * top, then add new obstacle objects to the bottom.
+     */
     public void update() {
         if (startTime < Constants.INIT_TIME) {
             startTime = Constants.INIT_TIME;
@@ -55,16 +72,21 @@ public class ObstacleManager {
             ob.incrementY(-1 * elapseTime);
         }
         if (obstacles.get(obstacles.size() - 1).getRectangle().bottom <= 0) {
-            int xStart = (int) (Math.random() * (Constants.SCREEN_WIDTH - playerGap));
-            obstacles.add(0, new Obstacle(obstacleHeight, color, xStart, obstacles.get(0).getRectangle().top + obstacleHeight + obstacleGap, playerGap));
+            int xStart = (int) (Math.random() * (Constants.SCREEN_WIDTH - 100));
+            obstacles.add(0, new Obstacle(obstacleHeight, color, xStart, obstacles.get(0).getRectangle().top + obstacleHeight + obstacleGap));
         }
     }
 
-    // Getter for list of obstacles
-    public ArrayList<Obstacle> getObstacles() {
+    /**
+     * Getter for list of obstacles
+     **/
+    ArrayList<Obstacle> getObstacles() {
         return obstacles;
     }
 
+    /**
+     * @param canvas - draw to Canvas canvas
+     */
     public void draw(Canvas canvas) {
         for (Obstacle ob : obstacles) {
             ob.draw(canvas);
