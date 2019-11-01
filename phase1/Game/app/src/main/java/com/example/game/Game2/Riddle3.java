@@ -19,8 +19,10 @@ public class Riddle3 extends AppCompatActivity {
         account = (Account) getIntent().getSerializableExtra("ac");
     }
 
-    /** Called when the user taps A5 button */
+    /** Called when the user taps upper "None of the above" button */
     public void rightGuess3(View view) {
+        account.incrementScore(100);
+        account.incrementLevel();
         Intent intent = new Intent(this, Win.class);
         intent.putExtra("ac", account);
         startActivity(intent);
@@ -28,6 +30,7 @@ public class Riddle3 extends AppCompatActivity {
 
     /** Called when the user taps any other button */
     public void wrongGuess3(View view) {
+        account.decrementHitPoints(1);
         Intent intent = new Intent(this, Wrong3.class);
         intent.putExtra("ac", account);
         startActivity(intent);

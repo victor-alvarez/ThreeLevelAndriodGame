@@ -21,6 +21,7 @@ public class Riddle2 extends AppCompatActivity {
 
     /** Called when the user taps the "McMurdo Dry Valleys, Antarctica" button */
     public void rightGuess2(View view) {
+        account.incrementScore(100);
         Intent intent = new Intent(this, Riddle3.class);
         intent.putExtra("ac", account);
         startActivity(intent);
@@ -28,6 +29,7 @@ public class Riddle2 extends AppCompatActivity {
 
     /** Called when the user taps any other button */
     public void wrongGuess2(View view) {
+        account.decrementHitPoints(1);
         Intent intent = new Intent(this, Wrong2.class);
         intent.putExtra("ac", account);
         startActivity(intent);
