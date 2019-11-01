@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
 
 /**
@@ -25,6 +26,8 @@ public class Game3View extends SurfaceView implements Runnable {
 
     private GameObjectManager gameObjectManager;
 
+    private Boolean isTurn = true;
+
     /**
      * Game3View constructor.
      *
@@ -33,7 +36,8 @@ public class Game3View extends SurfaceView implements Runnable {
     public Game3View(Context context) {
         super(context);
         paint = new Paint();
-        gameObjectManager = new GameObjectManager(getResources());
+        gameObjectManager = new GameObjectManager(getResources(), isTurn);
+        gameObjectManager.createObjects();
     }
 
     /**
@@ -53,13 +57,16 @@ public class Game3View extends SurfaceView implements Runnable {
      * Checks if game is done.
      */
     private void checkGameEnded() {
-
+        if (gameObjectManager.gameEnded()) {
+            isPlaying = false;
+        }
     }
 
     /**
      * Updates the game based on the game situation.
      */
     private void update() {
+        gameObjectManager.update();
 
     }
 
@@ -107,5 +114,12 @@ public class Game3View extends SurfaceView implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        gameObjectManager.onTouchEventHelper(event);
+        return super.onTouchEvent(event);
     }
 }

@@ -6,8 +6,13 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.view.MotionEvent;
 
 import com.example.game.R;
+
+import java.util.Random;
+
+import static java.lang.StrictMath.max;
 
 /**
  * A Manager class for GameObjects.
@@ -21,15 +26,19 @@ public class GameObjectManager {
     private HealthBarObject enemyHealth;
     private Button attackButton;
     private Button defendButton;
+    private Boolean attack = false;
+    private Boolean defend = false;
+    private Boolean isTurn = true;
 
     /**
      * A constructor for GameObjectManager.
      */
-    GameObjectManager(Resources res) {
+    GameObjectManager(Resources res, Boolean isTurn) {
         this.res = res;
+        //this.isTurn = isTurn;
     }
 
-    private void createObjects() {
+    void createObjects() {
         createPlayer();
         createEnemy();
         createEnemyHealthBar();
@@ -42,8 +51,6 @@ public class GameObjectManager {
      * Creates a Character for the Player.
      */
     private CharacterObject createPlayer() {
-        //Bitmap sprite = BitmapFactory.decodeResource(res, R.drawable.character_sprite);
-
         player = new CharacterObject();
         player.setSprite(BitmapFactory.decodeResource(res, R.drawable.player));
         player.setX(-500);
@@ -106,13 +113,66 @@ public class GameObjectManager {
     }
 
     void draw(Canvas canvas, Paint paint) {
-        createObjects();
         player.draw(canvas, paint);
         enemy.draw(canvas, paint);
         enemyHealth.draw(canvas, paint);
         playerHealth.draw(canvas, paint);
         attackButton.draw(canvas, paint);
         defendButton.draw(canvas, paint);
+
+    }
+
+    void update() {
+        if (isTurn) {
+            attackButton.setActive(true);
+            defendButton.setActive(true);
+
+        } else {
+            attackButton.setActive(false);
+            defendButton.setActive(false);
+            int[] hpDamage = {5, 10, 15};
+            int damageIndex = new Random().nextInt(hpDamage.length);
+            int damage = hpDamage[damageIndex];
+            if (attack) {
+                enemyHealth.setHealthLevel(max(0, enemyHealth.getHealthLevel() - 10));
+                playerHealth.setHealthLevel(max(0, playerHealth.getHealthLevel() - damage));
+                attack = false;
+            }
+            if (defend) {
+                enemyHealth.setHealthLevel(max(0, enemyHealth.getHealthLevel() - 5));
+                playerHealth.setHealthLevel(max(0, playerHealth.getHealthLevel() -
+                        (damage / 2)));
+                defend = false;
+            }
+
+            isTurn = true;
+        }
+
+    }
+
+    Boolean gameEnded() {
+        return (enemyHealth.getHealthLevel() == 0 || playerHealth.getHealthLevel() == 0);
+    }
+
+    void onTouchEventHelper(MotionEvent event) {
+        if (isTurn) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                float touchX = event.getX();
+                float touchY = event.getY();
+                if (attackButton.getButton().left <= touchX && touchX <=
+                        attackButton.getButton().right && attackButton.getButton().top <= touchY &&
+                        touchY <= attackButton.getButton().bottom) {
+                    attack = true;
+                    isTurn = false;
+                }
+                if (defendButton.getButton().left <= touchX && touchX <=
+                        defendButton.getButton().right && defendButton.getButton().top <= touchY &&
+                        touchY <= defendButton.getButton().bottom) {
+                    defend = true;
+                    isTurn = false;
+                }
+            }
+        }
 
     }
 }
