@@ -10,7 +10,7 @@ import android.view.MotionEvent;
 import java.util.ArrayList;
 
 /**
- *  GameplayScene. Handles drawing & updating the objects, controls, and game over
+ *  GameplayScene class. Handles drawing & updating the objects, controls, and game over
  */
 public class GameplayScene implements Scene {
 
@@ -31,8 +31,8 @@ public class GameplayScene implements Scene {
      * Constructor for GameplayScene. Instansiates player, playerPoint, obstacles, and lives.
      */
     GameplayScene() {
-        player = new RectPlayer(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
-        playerPoint = new Point(Constants.SCREEN_WIDTH/2, 3 * Constants.SCREEN_HEIGHT/4);
+        player = new RectPlayer(new Rect(100, 100, 200, 200));
+        playerPoint = new Point(Constants.SCREEN_WIDTH/2, Constants.SCREEN_HEIGHT/4);
         player.update(playerPoint);
         obstacleManager = new ObstacleManager(1000, 75, Color.BLACK);
         lives = 3;
@@ -109,11 +109,11 @@ public class GameplayScene implements Scene {
             // If obstacle goes off screen remove it, then add to our score
             if (obstacles.get(obstacles.size() - 1).getRectangle().bottom <= 0) {
                 obstacles.remove(obstacles.size() - 1);
-                score++;
             }
             obstacleManager.update();
             // When player gets hit subtract lives
             if (obstacleManager.playerCollide(player)) {
+                score++;
                 gameOver = true;
                 lives --;
                 // If player has no lives go to GameOverActivity
@@ -150,7 +150,7 @@ public class GameplayScene implements Scene {
      * Reset whenever player dies
      */
     private void reset() {
-        playerPoint = new Point(Constants.SCREEN_WIDTH/2, 3 * Constants.SCREEN_HEIGHT/4);
+        playerPoint = new Point(Constants.SCREEN_WIDTH/2, Constants.SCREEN_HEIGHT/4);
         player.update(playerPoint);
         obstacleManager = new ObstacleManager(1000, 75, Color.BLACK);
         movingPlayer = false;

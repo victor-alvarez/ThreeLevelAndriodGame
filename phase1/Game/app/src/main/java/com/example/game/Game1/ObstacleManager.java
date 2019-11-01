@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import java.util.ArrayList;
 
 /**
- * ObstacleManager. Creates obstacles to be populated in game.
+ * ObstacleManager class. Creates obstacles to be populated in game.
  */
 public class ObstacleManager {
     // higher index = lower on screen = higher y value
@@ -53,7 +53,7 @@ public class ObstacleManager {
 
         while(currY > Constants.SCREEN_HEIGHT) {
             int xStart = (int) (Math.random() * (Constants.SCREEN_WIDTH - 100));
-            obstacles.add(new Obstacle(obstacleHeight, color, xStart, currY, 100));
+            obstacles.add(new Obstacle(obstacleHeight, color, xStart, currY));
             currY -= obstacleHeight + obstacleGap;
         }
     }
@@ -73,7 +73,7 @@ public class ObstacleManager {
         }
         if (obstacles.get(obstacles.size() - 1).getRectangle().bottom <= 0) {
             int xStart = (int) (Math.random() * (Constants.SCREEN_WIDTH - 100));
-            obstacles.add(0, new Obstacle(obstacleHeight, color, xStart, obstacles.get(0).getRectangle().top + obstacleHeight + obstacleGap, 100));
+            obstacles.add(0, new Obstacle(obstacleHeight, color, xStart, obstacles.get(0).getRectangle().top + obstacleHeight + obstacleGap));
         }
     }
 
