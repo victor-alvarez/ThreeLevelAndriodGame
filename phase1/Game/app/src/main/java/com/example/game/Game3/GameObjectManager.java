@@ -207,4 +207,12 @@ public class GameObjectManager {
         }
 
     }
+
+    String checkWinner(){
+        if (playerHealth.getHealthLevel() == 0){
+            return "YOU WON!";
+        }else{
+            return "YOU LOST";
+        }
+    }
 }
