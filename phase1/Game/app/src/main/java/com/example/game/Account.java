@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Account implements Serializable{
 
   /** Account's login, customization settings and save data. */
-  public String login;
+  String login;
 
   /** Account's customization:
    * at index 0 - background colour:
@@ -24,7 +24,7 @@ public class Account implements Serializable{
    * 1 - French,
    * 2 - Russian,
    * 3 - Spanish;*/
-  public int[] customization;
+  private int[] customization;
 
   /** Account's save data:
    * at index 0 - last level attempted (0-4):
@@ -34,19 +34,7 @@ public class Account implements Serializable{
    * at index 1 - hit points (0-100);
    * at index 2 - current score (0+);
    * at index 3 - score (0+).*/
-  public int[] save;
-
-
-  /**
-   * -------------------- Game 1 Instance Variables ----------------------------------
-   */
-   SharedPreferences prefrences;
-   SharedPreferences.Editor editor;
-
-
-  /**
-   * ---------------------------------------------------------------------------------
-   */
+  int[] save;
 
   /**
    * Constructor for brand new Account. Activates from Create Account button. Takes login from Enter
@@ -94,7 +82,7 @@ public class Account implements Serializable{
    *
    * @param customization settings of the Account.
    */
-  public void setCustomisation(int[] customization) {
+  void setCustomisation(int[] customization) {
     this.customization = customization;
   }
 
@@ -103,7 +91,7 @@ public class Account implements Serializable{
    *
    * @return save data of the Account.
    */
-  public int[] getSave() {
+  int[] getSave() {
     return this.save;
   }
 
@@ -116,7 +104,7 @@ public class Account implements Serializable{
     this.save = save;
   }
 
-  public void saveSettings(Context context) {
+  private void saveSettings(Context context) {
     try {
       File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       FileReader loadAccountData = new FileReader(saveFile);
@@ -150,7 +138,7 @@ public class Account implements Serializable{
   /**
    * Does the exact same thing as the saveSetting method, so we really only need one of them);
    */
-  public void saveProgress(Context context) {
+  private void saveProgress(Context context) {
     try {
       File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       FileReader loadAccountData = new FileReader(saveFile);
@@ -181,12 +169,12 @@ public class Account implements Serializable{
     }
   }
 
-    public void setBackground(int colour, Context context) {
+    void setBackground(int colour, Context context) {
         this.customization[0] = colour;
         this.saveSettings(context);
     }
 
-    public void setLanguage(int lang, Context context) {
+    void setLanguage(int lang, Context context) {
         this.customization[1] = lang;
         this.saveSettings(context);
     }
@@ -219,21 +207,12 @@ public class Account implements Serializable{
         this.saveProgress(context);
     }
 
-    public void resetValues(Context context){
+    void resetValues(Context context){
       this.save[0] = 0;
       this.save[1] = 200;
       this.save[2] = 0;
       this.saveProgress(context);
     }
-
-  /**
-   * -------------------- Game 1 Methods ---------------------------------------------
-   */
-
-
-  /**
-   * ---------------------------------------------------------------------------------
-   */
 
   /*public static void main(String[] args) {
     AccountManager.createNewAccount("TEST");

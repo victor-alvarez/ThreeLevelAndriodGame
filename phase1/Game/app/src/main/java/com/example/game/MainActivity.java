@@ -13,8 +13,15 @@ import com.example.game.Game1.Game1Activity;
 import com.example.game.Game2.Game2Activity;
 import com.example.game.Game3.Game3Activity;
 
+/**
+ * Main menu activity in which the player may navigate to the settings menu, load their game from
+ * the previous point they left off at or start a new game.
+ */
 public class MainActivity extends BaseActivity {
 
+  /**
+   * The player's account. It holds information about the player and can record its information
+   */
   Account account;
 
   @Override
@@ -23,6 +30,7 @@ public class MainActivity extends BaseActivity {
     setContentView(R.layout.activity_main);
 
     account = (Account) getIntent().getSerializableExtra("ac");
+
     if (account.getCustomization()[0] == 1) {
       getWindow().getDecorView().setBackgroundResource(R.color.background1);
     }
@@ -33,6 +41,7 @@ public class MainActivity extends BaseActivity {
     int level = account.getSave()[0];
     Intent intent;
     if (level == 0){
+      // Resets most of the values for the player as they are starting a new game
       account.resetValues(getApplicationContext());
       intent = new Intent(this, Game1Activity.class);
     } else if (level == 1){
@@ -51,9 +60,10 @@ public class MainActivity extends BaseActivity {
     startActivity(intent);
   }
 
-  /** Called when the user taps the "Select Account" button */
+  /** Called when the user taps the "Start Game" button */
   public void startGame(View view) {
       Intent intent = new Intent(this, Game1Activity.class);
+      // Resets most of the values for the player as they are starting a new game
       account.resetValues(getApplicationContext());
       intent.putExtra("ac", account);
       startActivity(intent);

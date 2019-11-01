@@ -10,12 +10,31 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * Login activity for login the user in. Lets the user enter a username and if it exists they may
+ * then sign into that account and play the game.
+ */
 public class LoginActivity extends BaseActivity {
 
+    /**
+     * Text field which contains the user input
+     */
     EditText inputName;
+
+    /**
+     * Shared preference used to determine background colour
+     */
     SharedPreferences mPreferences;
-    Account account;
+
+    /**
+     * Text displayed to show if the input is not an existing account
+     */
     TextView textView;
+
+    /**
+     * Determines the existence of a users account on the system and creates an account object for
+     * them to login with.
+     */
     private AccountManager accountManager = new AccountManager();
 
     @Override
@@ -35,8 +54,11 @@ public class LoginActivity extends BaseActivity {
 
     /** Called when the user taps the "Select Account" button */
     public void login(View view) {
+        Account account;
         account = accountManager.openExistingAccount(inputName.getText().toString(),
                 getApplicationContext());
+
+        //If account with name exists, login with that account. If not display that is does not.
         if (account != null) {
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("ac", account);

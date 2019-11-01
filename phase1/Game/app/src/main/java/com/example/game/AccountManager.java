@@ -4,7 +4,7 @@ import android.content.Context;
 import java.io.*;
 import java.util.ArrayList;
 
-/** Account manager that manages accounts. */
+/** Account manager that manages the creation and opening of accounts. */
 public class AccountManager {
 
   /**
