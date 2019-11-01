@@ -24,22 +24,9 @@
         android:layout_width="169dp"
         android:layout_height="105dp"
         android:layout_marginStart="120dp"
-        android:layout_marginTop="296dp"
+        android:layout_marginTop="240dp"
         android:onClick="nextGame"
         android:text="@string/next1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/game1Button9"
-        android:layout_width="169dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="184dp"
-        android:onClick="toHome"
-        android:text="@string/game1_Home"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"

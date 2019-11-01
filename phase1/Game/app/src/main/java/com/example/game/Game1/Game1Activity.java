@@ -48,13 +48,6 @@ public class Game1Activity extends BaseActivity {
     startActivity(intent);
   }
 
-  /** Called when the user taps the "To Game Two" button */
-  public void nextGame(View view) {
-    Intent intent = new Intent(this, Game2Activity.class);
-    intent.putExtra("ac", account);
-    startActivity(intent);
-  }
-
   /** Called when the user taps the "To Main Menu" button */
   public void toMainMenu(View view) {
     Intent intent = new Intent(this, MainActivity.class);
