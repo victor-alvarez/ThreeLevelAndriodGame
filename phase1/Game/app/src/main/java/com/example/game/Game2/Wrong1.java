@@ -7,9 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.game.Account;
+import com.example.game.BaseActivity;
 import com.example.game.R;
 
-public class Wrong1 extends AppCompatActivity {
+public class Wrong1 extends BaseActivity {
     Account account;
 
     @Override

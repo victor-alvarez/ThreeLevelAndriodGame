@@ -8,8 +8,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.game.Account;
+import com.example.game.BaseActivity;
 
-public class BallJumperActivity extends Activity {
+public class BallJumperActivity extends BaseActivity {
 
   Account account;
 

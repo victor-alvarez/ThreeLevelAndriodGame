@@ -8,10 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.game.BaseActivity;
 import com.example.game.MainActivity;
 import com.example.game.R;
 
-public class Game3ExitActivity extends AppCompatActivity {
+public class Game3ExitActivity extends BaseActivity {
 
     TextView gameResult;
 

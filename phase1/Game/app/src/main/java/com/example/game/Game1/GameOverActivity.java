@@ -10,11 +10,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.game.Account;
+import com.example.game.BaseActivity;
 import com.example.game.Game2.Game2Activity;
 import com.example.game.MainActivity;
 import com.example.game.R;
 
-public class GameOverActivity extends AppCompatActivity {
+public class GameOverActivity extends BaseActivity {
 
     Account account;
 

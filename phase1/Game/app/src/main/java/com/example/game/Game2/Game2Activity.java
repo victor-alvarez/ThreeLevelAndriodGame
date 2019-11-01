@@ -10,9 +10,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.game.Account;
+import com.example.game.BaseActivity;
 import com.example.game.R;
 
-public class Game2Activity extends AppCompatActivity {
+public class Game2Activity extends BaseActivity {
   Account account;
 
   @Override

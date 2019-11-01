@@ -9,7 +9,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.RadioButton;
 
-public class OptionsActivity extends AppCompatActivity {
+public class OptionsActivity extends BaseActivity {
 
   SharedPreferences mPreferences;
   SharedPreferences.Editor mEditor;
