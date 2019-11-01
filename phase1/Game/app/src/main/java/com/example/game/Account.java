@@ -184,6 +184,21 @@ public class Account implements Serializable{
     }
   }
 
+    public void incrementLevel() {
+        this.save[1] += 1;
+        this.saveProgress();
+    }
+
+    public void decrementHitPoints(int reduce) {
+        this.save[1] += reduce;
+        this.saveProgress();
+    }
+
+    public void incrementScore(int add) {
+        this.save[2] += add;
+        this.saveProgress();
+    }
+
   /**
    * -------------------- Game 1 Methods ---------------------------------------------
    */
