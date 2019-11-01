@@ -79,7 +79,6 @@ public class AccountManager {
       System.out.println("Successfully deleted");
     }
   }
-}
 
   public void updateHighScores(Account acc, Context context) {
     try {
@@ -95,7 +94,7 @@ public class AccountManager {
       String Winner1 = l[0];
       String Winner2 = l[2];
       String Winner3 = l[4];
-      int hs = Integer.parseInt(acc.save[2]);
+      int hs = acc.save[2];
       String w = acc.login;
       if (hs > highscore1) {
         String s = w+", "+hs+", "+Winner1+", "+highscore1+", "+Winner2+", "+highscore2;

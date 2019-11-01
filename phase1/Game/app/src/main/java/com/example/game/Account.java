@@ -16,12 +16,9 @@ public class Account implements Serializable{
   /** Account's customization:
    * at index 0 - background colour:
    * 0 - grey,
-   * 1 - red,
-   * 2 - ###;
+   * 1 - red;
    * at index 1 - account icon:
-   * 0 - none,
-   * 1 - ###,
-   * 2 - ###;
+   * 0 - none;
    * at index 2 - language:
    * 0 - English,
    * 1 - French,
@@ -37,10 +34,6 @@ public class Account implements Serializable{
    * at index 1 - hit points (0-100);
    * at index 2 - current score (0+);
    * at index 3 - score (0+).*/
-  public String[] save;
-   * at index 1 - hit points (0-100):
-   * at index 2 - current score:
-   * at index 3 - high score:*/
   public int[] save;
 
 
@@ -188,45 +181,38 @@ public class Account implements Serializable{
     }
   }
 
-  //Note: coulour, lang and muz are numeric strings, e.g. "0", "1", "2", etc.
-    public void setBackground(String colour) {
+    public void setBackground(int colour, Context context) {
         this.customization[0] = colour;
-        this.saveSettings();
+        this.saveSettings(context);
     }
 
-    public void setLanguage(String lang) {
+    public void setLanguage(int lang, Context context) {
         this.customization[1] = lang;
-        this.saveSettings();
+        this.saveSettings(context);
     }
-    public void setMusic(String muz) {
+    public void setMusic(int muz, Context context) {
         this.customization[2] = muz;
-        this.saveSettings();
+        this.saveSettings(context);
     }
 
-    public void incrementLevel() {
-      int lvl = Integer.parseInt(this.save[0]);
-      lvl += 1;
-      this.save[0] = Integer.toString(lvl);
-      this.saveProgress();
+    public void incrementLevel(Context context) {
+      this.save[0] += 1;
+      this.saveProgress(context);
     }
 
-    public void decrementHitPoints(int reduce) {
-        int hp = Integer.parseInt(this.save[1]);
-        hp -= reduce;
-        this.save[1] = Integer.toString(hp);
-        this.saveProgress();
+    public void decrementHitPoints(int reduce, Context context) {
+        this.save[1] -= reduce;
+        this.saveProgress(context);
     }
 
-    public void incrementScore(int add) {
-        int score = Integer.parseInt(this.save[2]);
-        score += add;
-        this.save[2] = Integer.toString(score);
-        this.saveProgress();
+    public void incrementScore(int add, Context context) {
+        this.save[2] += add;
+        this.saveProgress(context);
     }
 
-    public void setHighScore(int value) {
-        this.save[3] = Integer.toString(value);
-        this.saveProgress();
+    public void setHighScore(int value, Context context) {
+        this.save[3] = value;
+        this.saveProgress(context);
     }
 
   /**
