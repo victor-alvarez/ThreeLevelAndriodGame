@@ -7,13 +7,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.view.MotionEvent;
-import android.view.WindowManager;
 
 import com.example.game.R;
 
 import java.util.Random;
 
-import static java.lang.StrictMath.max;
 
 /**
  * A Manager class for GameObjects.
@@ -115,7 +113,7 @@ public class GameObjectManager {
         defendButton.setY(1800);
     }
 
-    private void createMoveText(){
+    private void createMoveText() {
         moveTextObject = new MoveTextObject();
         moveTextObject.setTextColor(Color.WHITE);
         moveTextObject.setMoveText("");
@@ -150,7 +148,7 @@ public class GameObjectManager {
             }
             if (defend) {
                 enemyHealth.update(5);
-                playerHealth.update(damage/2);
+                playerHealth.update(damage / 2);
                 defend = false;
             }
 

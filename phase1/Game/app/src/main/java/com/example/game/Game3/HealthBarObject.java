@@ -61,7 +61,7 @@ public class HealthBarObject extends Game3Object {
 
     }
 
-    public void update(int damage){
+    public void update(int damage) {
         setHealthLevel(max(0, getHealthLevel() - damage));
     }
 }
