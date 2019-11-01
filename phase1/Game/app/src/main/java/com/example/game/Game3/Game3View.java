@@ -3,6 +3,7 @@ package com.example.game.Game3;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.SurfaceView;
 
 /**
@@ -20,6 +21,8 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     private Thread thread;
 
+    private Paint paint;
+
     /**
      * Game3View constructor.
      *
@@ -27,6 +30,7 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     public Game3View(Context context) {
         super(context);
+        paint = new Paint();
     }
 
     /**

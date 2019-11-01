@@ -15,7 +15,6 @@ public class GameplayScene implements Scene {
     private RectPlayer player;
     private Point playerPoint;
     private ObstacleManager obstacleManager;
-    private PlatformHandler platformHandler;
     private boolean movingPlayer = false;
     private boolean gameOver = false;
     private Rect r = new Rect();
@@ -29,7 +28,6 @@ public class GameplayScene implements Scene {
         playerPoint = new Point(Constants.SCREEN_WIDTH/2, 3 * Constants.SCREEN_HEIGHT/4);
         player.update(playerPoint);
         obstacleManager = new ObstacleManager(200, 350, 75, Color.BLACK);
-        platformHandler = new PlatformHandler(Color.BLUE);
         lives = 3;
         orientationData = new OrientationData();
         frameTime = System.currentTimeMillis();
@@ -44,7 +42,6 @@ public class GameplayScene implements Scene {
     public void draw(Canvas canvas) {
         canvas.drawColor(Color.WHITE);
         player.draw(canvas);
-        platformHandler.draw(canvas);
         obstacleManager.draw(canvas);
         Paint paint = new Paint();
         paint.setTextSize(100);
@@ -94,7 +91,7 @@ public class GameplayScene implements Scene {
             player.update(playerPoint);
             ArrayList<Obstacle> obstacles = obstacleManager.getObstacles();
             // If obstacle goes off screen remove it, then add to our score
-            if (obstacles.get(obstacles.size() - 1).getRectangle().top >= Constants.SCREEN_HEIGHT) {
+            if (obstacles.get(obstacles.size() - 1).getRectangle().bottom <= 0) {
                 obstacles.remove(obstacles.size() - 1);
                 score++;
             }
