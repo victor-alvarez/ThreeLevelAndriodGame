@@ -58,6 +58,8 @@ public class Game3PlayActivity extends BaseActivity {
         intent.putExtra("EXTRA_WINNER", winner);
         account.incrementLevel(getApplicationContext());
         account.incrementScore(15, getApplicationContext());
+        //TODO: add hit point decrement
+        //account.decrementHitPoints();
         intent.putExtra("ac", account);
         startActivity(intent);
     }

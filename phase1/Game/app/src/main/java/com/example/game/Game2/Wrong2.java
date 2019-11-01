@@ -29,6 +29,8 @@ public class Wrong2 extends BaseActivity {
     /** Called when the user taps the "Back to the Riddle" button */
     public void back2(View view) {
         Intent intent = new Intent(this, Riddle2.class);
+        account.decrementHitPoints(5, getApplicationContext());
+        account.incrementScore(-3, getApplicationContext());
         intent.putExtra("ac", account);
         startActivity(intent);
     }

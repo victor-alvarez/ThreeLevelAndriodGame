@@ -31,7 +31,7 @@ public class Win extends BaseActivity {
     public void nextGame(View view) {
         Intent intent = new Intent(this, Game3Activity.class);
         account.incrementLevel(getApplicationContext());
-        account.incrementScore(10, getApplicationContext());
+        account.incrementScore(20, getApplicationContext());
         intent.putExtra("ac", account);
         startActivity(intent);
     }

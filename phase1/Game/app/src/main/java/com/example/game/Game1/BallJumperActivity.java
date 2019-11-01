@@ -36,6 +36,8 @@ public class BallJumperActivity extends BaseActivity {
     intent.putExtra("SCORE", score);
     account.incrementLevel(getApplicationContext());
     account.incrementScore(score, getApplicationContext());
+    //TODO: add value for this
+    //account.decrementHitPoints();
     intent.putExtra("ac", account);
     startActivity(intent);
   }

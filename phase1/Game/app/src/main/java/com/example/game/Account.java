@@ -46,7 +46,7 @@ public class Account implements Serializable{
     this.login = login;
     int[] a = {0, 0, 0};
     this.customization = a;
-    int[] b = {0, 100, 0, 0};
+    int[] b = {0, 200, 0, 0};
     this.save = b;
   }
 
@@ -169,20 +169,40 @@ public class Account implements Serializable{
     }
   }
 
+    /**
+     * Sets this account's background colour to selected colour and records it
+     * @param colour the number that respresents a background colour for this account
+     * @param context an access to the current file state of the app
+     */
     void setBackground(int colour, Context context) {
         this.customization[0] = colour;
         this.saveSettings(context);
     }
 
+    /**
+     * Sets this account's language and records the setting
+     * @param lang the number that respresents a language for this account
+     * @param context an access to the current file state of the app
+     */
     void setLanguage(int lang, Context context) {
         this.customization[1] = lang;
         this.saveSettings(context);
     }
+
+    /**
+     * Sets this accounts music setting
+     * @param muz the music setting
+     * @param context an access to the current file state of the app
+     */
     public void setMusic(int muz, Context context) {
         this.customization[2] = muz;
         this.saveSettings(context);
     }
 
+    /**
+     * Increments level or resets it where appropriate and records it
+     * @param context an access to the current file state of the app
+     */
     public void incrementLevel(Context context) {
       if (this.save[0] < 2){
         this.save[0] += 1;
@@ -192,21 +212,40 @@ public class Account implements Serializable{
       this.saveProgress(context);
     }
 
+    /**
+     * Reduces hitpoints by a set amount and records it
+     * @param reduce the amount by which hit points are reduced
+     * @param context an access to the current file state of the app
+     */
     public void decrementHitPoints(int reduce, Context context) {
         this.save[1] -= reduce;
         this.saveProgress(context);
     }
 
+    /**
+     * Changes score by amount add
+     * @param add the amount to be added to the score
+     * @param context an access to the current file state of the app
+     */
     public void incrementScore(int add, Context context) {
         this.save[2] += add;
         this.saveProgress(context);
     }
 
+    /**
+     * Sets this accounts high score
+     * @param value the number that represents high score
+     * @param context an access to the current file state of the app
+     */
     public void setHighScore(int value, Context context) {
         this.save[3] = value;
         this.saveProgress(context);
     }
 
+    /**
+     * Sets this account's stats to starting ones
+     * @param context an access to the current file state of the app
+     */
     void resetValues(Context context){
       this.save[0] = 0;
       this.save[1] = 200;
