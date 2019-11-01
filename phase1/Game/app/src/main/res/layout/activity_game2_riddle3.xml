@@ -14,7 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="96dp"
         android:layout_marginEnd="16dp"
-        android:text="Which answer is correct?"
+        android:text="@string/Riddle3"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:onClick="wrongGuess3"
-        android:text="All of the below"
+        android:text="@string/A9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Riddle3" />
@@ -42,7 +42,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:onClick="wrongGuess3"
-        android:text="None of the below"
+        android:text="@string/A10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/A9" />
@@ -55,7 +55,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:onClick="wrongGuess3"
-        android:text="All of the above"
+        android:text="@string/A11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/A10" />
@@ -68,7 +68,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:onClick="wrongGuess3"
-        android:text="One of the above"
+        android:text="@string/A12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/A11" />
@@ -81,7 +81,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:onClick="rightGuess3"
-        android:text="None of the above"
+        android:text="@string/A13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/A12" />
@@ -94,7 +94,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:onClick="wrongGuess3"
-        android:text="None of the above"
+        android:text="@string/A14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/A13" />
