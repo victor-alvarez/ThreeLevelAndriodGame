@@ -28,4 +28,25 @@
     <string name="game3_play">Play</string>
     <string name="gane1_retry">Retry</string>
     <string name="game1_Home">Home</string>
+    <string name="START_Riddles_Game">"START Riddles Game"</string>
+    <string name="Nope">"Nope...wanna try again?"</string>
+    <string name="Back_to_Riddle">"Back to the Riddle"</string>
+    <string name="Congratulations">"Congratulations!!!"</string>
+    <string name="Riddle1">"Which of these is the largest number?"</string>
+    <string name="Riddle2">"What is the driest place on Earth?"</string>
+    <string name="Riddle3">"Which answer is correct?"</string>
+    <string name="A1">"Sextillion"</string>
+    <string name="A2">"Centillion"</string>
+    <string name="A3">"Googol"</string>
+    <string name="A4">"Quintillion"</string>
+    <string name="A5">"McMurdo Dry Valleys, Antarctica"</string>
+    <string name="A6">"Atacama Desert, South America"</string>
+    <string name="A7">"Death Valley, North America"</string>
+    <string name="A8">"Sahara Desert, Africa"</string>
+    <string name="A9">"All of the below"</string>
+    <string name="A10">"None of the below"</string>
+    <string name="A11">"All of the above"</string>
+    <string name="A12">"One of the above"</string>
+    <string name="A13">"None of the above"</string>
+    <string name="A14">"None of the above"</string>
 </resources>
