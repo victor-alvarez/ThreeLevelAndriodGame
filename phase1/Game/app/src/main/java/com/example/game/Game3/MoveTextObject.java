@@ -34,5 +34,5 @@ public class MoveTextObject extends Game3Object {
     void update() {
 
     }
-    
+
 }

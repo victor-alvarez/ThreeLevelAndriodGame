@@ -93,6 +93,9 @@ public class GameObjectManager {
         playerHealth.setTextSize(50);
     }
 
+    /**
+     * Creates a Attack Button.
+     */
     private void createAttackButton() {
         attackButton = new Button();
         attackButton.setButton(new Rect(155, 1700, 455, 1875));
@@ -103,6 +106,9 @@ public class GameObjectManager {
         attackButton.setY(1800);
     }
 
+    /**
+     * Creates a Defend Button.
+     */
     private void createDefendButton() {
         defendButton = new Button();
         defendButton.setButton(new Rect(655, 1700, 955, 1875));
@@ -113,6 +119,9 @@ public class GameObjectManager {
         defendButton.setY(1800);
     }
 
+    /**
+     * Creates a Text to show Player and Enemy moves.
+     */
     private void createMoveText() {
         moveTextObject = new MoveTextObject();
         moveTextObject.setTextColor(Color.WHITE);
