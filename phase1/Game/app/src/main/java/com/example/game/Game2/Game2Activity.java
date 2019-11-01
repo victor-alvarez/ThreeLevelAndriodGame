@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.game.Account;
-import com.example.game.Game3.Game3Activity;
 import com.example.game.R;
 
 public class Game2Activity extends AppCompatActivity {
@@ -16,13 +15,13 @@ public class Game2Activity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_game2);
+    setContentView(R.layout.activity_game2_title);
     account = (Account) getIntent().getSerializableExtra("ac");
   }
 
-  /** Called when the user taps the "To Game Three" button */
-  public void nextGame(View view) {
-    Intent intent = new Intent(this, Game3Activity.class);
+  /** Called when the user taps the "START Riddles Game" button */
+  public void nextRiddle1(View view) {
+    Intent intent = new Intent(this, Riddle1.class);
     intent.putExtra("ac", account);
     startActivity(intent);
   }
