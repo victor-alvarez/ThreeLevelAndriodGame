@@ -1,5 +1,6 @@
 package com.example.game.Game1;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -20,6 +21,8 @@ public class GameplayScene implements Scene {
     private Rect r = new Rect();
     private int score; // Score for the game
     private int lives; // Lives for the game
+    private OrientationData orientationData;
+    private long frameTime;
 
     public GameplayScene() {
         player = new RectPlayer(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
@@ -28,6 +31,8 @@ public class GameplayScene implements Scene {
         obstacleManager = new ObstacleManager(200, 350, 75, Color.BLACK);
         platformHandler = new PlatformHandler(Color.BLUE);
         lives = 3;
+        orientationData = new OrientationData();
+        frameTime = System.currentTimeMillis();
     }
 
     @Override
@@ -54,6 +59,38 @@ public class GameplayScene implements Scene {
     @Override
     public void update() {
         if (!gameOver) {
+            if (frameTime < Constants.INIT_TIME) {
+                frameTime = Constants.INIT_TIME;
+            }
+            int elapsedTime = (int) (System.currentTimeMillis() - frameTime);
+            frameTime = System.currentTimeMillis();
+            if (orientationData.getOrientation() != null && orientationData.getStartOrientation() != null) {
+                float pitch = orientationData.getOrientation()[1] - orientationData.getStartOrientation()[1];
+                float roll = orientationData.getOrientation()[2] - orientationData.getStartOrientation()[2];
+                float xSpeed = 2 * roll * Constants.SCREEN_WIDTH/1000f;
+                float ySpeed = pitch * Constants.SCREEN_HEIGHT/1000f;
+                if (Math.abs(xSpeed * elapsedTime) > 5) {
+                    playerPoint.x += xSpeed * elapsedTime;
+                }
+                if (Math.abs(ySpeed * elapsedTime) > 5) {
+                    playerPoint.y += ySpeed * elapsedTime;
+                }
+            }
+
+            if (playerPoint.x < 0) {
+                playerPoint.x = 0;
+            }
+            else if (playerPoint.x > Constants.SCREEN_WIDTH) {
+                playerPoint.x = Constants.SCREEN_WIDTH;
+            }
+
+            if (playerPoint.y < 0) {
+                playerPoint.y = 0;
+            }
+            else if (playerPoint.y > Constants.SCREEN_HEIGHT) {
+                playerPoint.y = Constants.SCREEN_HEIGHT;
+            }
+
             player.update(playerPoint);
             ArrayList<Obstacle> obstacles = obstacleManager.getObstacles();
             // If obstacle goes off screen remove it, then add to our score
@@ -72,6 +109,7 @@ public class GameplayScene implements Scene {
                 }
                 else {
                     reset();
+                    orientationData.newGame();
                 }
             }
         }
