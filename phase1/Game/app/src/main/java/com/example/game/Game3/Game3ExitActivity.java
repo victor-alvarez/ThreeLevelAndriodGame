@@ -8,11 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.game.Account;
 import com.example.game.BaseActivity;
 import com.example.game.MainActivity;
 import com.example.game.R;
 
 public class Game3ExitActivity extends BaseActivity {
+
+    Account account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,25 +25,31 @@ public class Game3ExitActivity extends BaseActivity {
         gameResult.setText(getIntent().getStringExtra("EXTRA_WINNER"));
         gameResult.setTextColor(Color.BLUE);
         gameResult.setTextSize(50);
+
+        account = (Account) getIntent().getSerializableExtra("ac");
+
+        if (account.getCustomization()[0] == 1) {
+            getWindow().getDecorView().setBackgroundResource(R.color.background1);
+        }
     }
 
     /** Called when the user taps the "Retry" button */
     public void retry(View view) {
         Intent intent = new Intent(this, Game3PlayActivity.class);
-        //intent.putExtra("ac", account);
+        intent.putExtra("ac", account);
         startActivity(intent);
     }
 
     public void toHome(View view) {
         Intent intent = new Intent(this, Game3Activity.class);
-        //intent.putExtra("ac", account);
+        intent.putExtra("ac", account);
         startActivity(intent);
     }
 
     /** Called when the user taps the "To Main Menu" button */
     public void toMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        //intent.putExtra("ac", account);
+        intent.putExtra("ac", account);
         startActivity(intent);
     }
 }

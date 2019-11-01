@@ -21,6 +21,10 @@ public class Game1Activity extends BaseActivity {
     setContentView(R.layout.activity_game1);
 
     account = (Account) getIntent().getSerializableExtra("ac");
+
+    if (account.getCustomization()[0] == 1) {
+      getWindow().getDecorView().setBackgroundResource(R.color.background1);
+    }
   }
 
   /** Called when the user taps the "Play" button */
