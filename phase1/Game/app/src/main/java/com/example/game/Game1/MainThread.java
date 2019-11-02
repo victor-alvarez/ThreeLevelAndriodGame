@@ -3,19 +3,34 @@ package com.example.game.Game1;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
+/**
+ * MainThread class. Runs game loop under fps.
+ */
 public class MainThread extends Thread {
+    /**
+     * Instance Variables
+     */
     private static final int MAX_FPS = 30;
     private final SurfaceHolder surfaceHolder;
     private GamePanel gamePanel;
     private boolean running;
     public static Canvas canvas;
 
+    /**
+     * Constructor
+     *
+     * @param surfaceHolder - sets the surface holder
+     * @param gamePanel     - sets the game panel
+     */
     MainThread(SurfaceHolder surfaceHolder, GamePanel gamePanel) {
         super();
         this.surfaceHolder = surfaceHolder;
         this.gamePanel = gamePanel;
     }
 
+    /**
+     * @param running - sets running to be t/f
+     */
     void setRunning(boolean running) {
         this.running = running;
     }

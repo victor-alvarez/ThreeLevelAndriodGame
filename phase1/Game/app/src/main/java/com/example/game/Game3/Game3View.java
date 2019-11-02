@@ -93,7 +93,7 @@ public class Game3View extends SurfaceView implements Runnable {
 
         //Ends the game and given method takes User to Game 3 Exit Activity.
         ((Game3PlayActivity) activityContext).gameOver(gameObjectManager.checkWinner(),
-                gameObjectManager.updateHitpoints());
+                gameObjectManager.updateHitpoints(), gameObjectManager.getNumMoves());
     }
 
     /**
