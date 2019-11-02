@@ -80,6 +80,7 @@ public class Game3PlayActivity extends BaseActivity {
         account.incrementLevel(getApplicationContext());
         account.incrementScore(hitpoints, getApplicationContext());
         account.decrementHitPoints(100 - hitpoints, getApplicationContext());
+        account.incrementGamesPlayed(getApplicationContext());
         if (account.getSave()[1] <= 0){
             //Ran out of lives
             intent = new Intent(this, GameOver.class);
