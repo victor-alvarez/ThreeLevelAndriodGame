@@ -1,3 +1,5 @@
+/*
+* Saving for phase 2 COMING SOOOOOOOON
 package com.example.game.Game1;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,9 +18,10 @@ public class ChooseBallActivity extends BaseActivity {
     setContentView(R.layout.activity_choose_ball);
   }
 
-  /** Called when the user taps the "X" button */
+   Called when the user taps the "X" button
   public void toCustomize(View view) {
     Intent intent = new Intent(this, CustomizeActivity.class);
     startActivity(intent);
   }
 }
+*/
