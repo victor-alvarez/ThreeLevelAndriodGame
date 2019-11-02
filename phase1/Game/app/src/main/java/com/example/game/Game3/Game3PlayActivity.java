@@ -72,9 +72,10 @@ public class Game3PlayActivity extends BaseActivity {
      * @param winner    The winner of the game.
      * @param hitpoints The hitpoints the Player earned.
      */
-    protected void gameOver(String winner, int hitpoints) {
+    protected void gameOver(String winner, int hitpoints, int numMoves) {
         Intent intent = new Intent(this, Game3ExitActivity.class);
         intent.putExtra("EXTRA_WINNER", winner);
+        intent.putExtra("EXTRA_MOVES", numMoves);
         account.incrementLevel(getApplicationContext());
         account.incrementScore(hitpoints, getApplicationContext());
         //TODO: add hit point decrement

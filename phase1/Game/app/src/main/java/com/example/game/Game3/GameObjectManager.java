@@ -72,6 +72,29 @@ public class GameObjectManager {
     private int hitpoints = 0;
 
     /**
+     * Number of moves made by the player to win/lose the game.
+     */
+    private int numMoves = 0;
+
+    /**
+     * Getter for number of moves.
+     *
+     * @return numMoves : The number of moves for the Player.
+     */
+    public int getNumMoves() {
+        return numMoves;
+    }
+
+    /**
+     * Setter for number of moves.
+     *
+     * @param numMoves: The number of moves for the Player.
+     */
+    public void setNumMoves(int numMoves) {
+        this.numMoves = numMoves;
+    }
+
+    /**
      * Getter for hitpoints.
      *
      * @return hitpoints : The hitpoints for the Player.
@@ -303,6 +326,7 @@ public class GameObjectManager {
                         touchY <= attackButton.getButton().bottom) {
                     attack = true;
                     isTurn = false;
+                    numMoves += 1;
                 }
 
                 //Checks if the DefendButton was tapped. If so, player's turn is over.
@@ -311,6 +335,7 @@ public class GameObjectManager {
                         touchY <= defendButton.getButton().bottom) {
                     defend = true;
                     isTurn = false;
+                    numMoves += 1;
                 }
             }
         }
