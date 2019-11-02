@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.game.Account;
 import com.example.game.BaseActivity;
+import com.example.game.GameEnd;
 import com.example.game.MainActivity;
 import com.example.game.R;
 
@@ -80,10 +81,8 @@ public class Game3ExitActivity extends BaseActivity {
      *
      * @param view The View of the Activity.
      */
-    public void toMainMenu(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-
-        //Passes the account into Intent so it can be used accessed in MainActivity.
+    public void toEndGame(View view) {
+        Intent intent = new Intent(this, GameEnd.class);
         intent.putExtra("ac", account);
         startActivity(intent);
     }

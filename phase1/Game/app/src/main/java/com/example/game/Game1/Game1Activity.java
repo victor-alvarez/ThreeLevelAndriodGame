@@ -42,12 +42,12 @@ public class Game1Activity extends BaseActivity {
   }
    */
 
-  /** Called when the user taps the "Shop" button */
+  /** Called when the user taps the "Shop" button
   public void toShop(View view) {
     Intent intent = new Intent(this, ShopActivity.class);
     intent.putExtra("ac", account);
     startActivity(intent);
-  }
+  }*/
 
   /** Called when the user taps the "To Main Menu" button */
   public void toMainMenu(View view) {

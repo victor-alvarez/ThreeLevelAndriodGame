@@ -64,4 +64,5 @@
     <string name="player">"PLAYER"</string>
     <string name="enemy">"ENEMY"</string>
     <string name="hp">" HP: "</string>
+    <string name="game_over">"Game Over"</string>
 </resources>

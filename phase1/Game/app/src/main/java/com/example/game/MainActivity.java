@@ -63,9 +63,9 @@ public class MainActivity extends BaseActivity {
       account.resetValues(getApplicationContext());
       intent = new Intent(this, Game1Activity.class);
     } else if (level == 1){
-      intent = new Intent(this, Game2Activity.class);
-    } else if (level == 2){
       intent = new Intent(this, GameOverActivity.class);
+    } else if (level == 2){
+      intent = new Intent(this, Game2Activity.class);
     } else if (level == 3){
       intent = new Intent(this, Game3Activity.class);
     } else {
