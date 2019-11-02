@@ -2,6 +2,7 @@ package com.example.game;
 
 import android.content.Context;
 import java.io.*;
+import java.util.ArrayList;
 
 /** Account manager that manages the creation and opening of accounts. */
 class AccountManager {
@@ -22,10 +23,19 @@ class AccountManager {
         saveAccount.write("*Empty, 0, Empty 0, Empty, 0");
         saveAccount.close();
       }
-      FileWriter saveAccount = new FileWriter(saveFile, true);
-      saveAccount.write("\n" + login + ", 0, 0, 0, 0, 200, 0, 0" );
-      saveAccount.flush();
-      saveAccount.close();
+      FileReader loadAccountData = new FileReader(saveFile);
+      BufferedReader loadAccData = new BufferedReader(loadAccountData);
+      String line;
+      ArrayList<String> old = new ArrayList<>();
+      while ((line = loadAccData.readLine()) != null) {
+        old.add(line);
+      }
+      old.add(login + ", 0, 0, 0, 0, 200, 0, 0" );
+      PrintWriter updateSave = new PrintWriter(saveFile);
+      for (String i : old) {
+        updateSave.println(i);
+      }
+      updateSave.close();
     } catch (IOException error) {
       error.printStackTrace();
     }
