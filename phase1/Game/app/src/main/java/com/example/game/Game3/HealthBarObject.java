@@ -4,6 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import com.example.game.R;
+
 import static java.lang.StrictMath.max;
 
 /**
@@ -113,8 +115,7 @@ public class HealthBarObject extends Game3Object {
     public void draw(Canvas canvas, Paint paint) {
         paint.setColor(color);
         paint.setTextSize(textSize);
-        canvas.drawText(playerName.toUpperCase() + "'S HP: " + healthLevel, getX(), getY(),
-                paint);
+        canvas.drawText(playerName.toUpperCase() + getHealthLevel(), getX(), getY(), paint);
     }
 
     /**

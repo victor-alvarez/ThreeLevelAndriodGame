@@ -6,31 +6,44 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
+/**
+ * OrientationData class.
+ */
 public class OrientationData implements SensorEventListener {
 
-    private SensorManager manager;
-    private Sensor accelerometer;
-    private Sensor magnometer;
+    /**
+     * Instance variables.
+     */
     private float[] accelOutput;
     private float[] magOutput;
     private float[] orientation = new float[3];
     private float[] startOrientation = null;
 
+    /**
+     * Constructor
+     */
     OrientationData() {
-        manager = (SensorManager) Constants.CURRENT_CONTEXT.getSystemService(Context.SENSOR_SERVICE);
+        SensorManager manager = (SensorManager) Constants.CURRENT_CONTEXT.getSystemService(Context.SENSOR_SERVICE);
         assert manager != null;
-        accelerometer = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        magnometer = manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
     }
 
+    /**
+     * @return - orientation
+     */
     float[] getOrientation() {
         return orientation;
     }
 
+    /**
+     * @return - startOrientation
+     */
     float[] getStartOrientation() {
         return startOrientation;
     }
 
+    /**
+     * starts newGame
+     */
     void newGame() {
         startOrientation = null;
     }
@@ -60,7 +73,7 @@ public class OrientationData implements SensorEventListener {
         }
     }
 
-    /**
+    /*
      public void register() {
      manager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
      manager.registerListener(this, magnometer, SensorManager.SENSOR_DELAY_GAME);

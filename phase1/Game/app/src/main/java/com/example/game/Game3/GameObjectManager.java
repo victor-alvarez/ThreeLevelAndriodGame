@@ -150,7 +150,7 @@ public class GameObjectManager {
         enemyHealth.setX(600);
         enemyHealth.setY(200);
         enemyHealth.setColor(Color.RED);
-        enemyHealth.setPlayerName("ENEMY");
+        enemyHealth.setPlayerName(res.getString(R.string.enemy) + res.getString(R.string.hp));
         enemyHealth.setTextSize(50);
     }
 
@@ -172,7 +172,7 @@ public class GameObjectManager {
         playerHealth.setX(100);
         playerHealth.setY(200);
         playerHealth.setColor(Color.GREEN);
-        playerHealth.setPlayerName("PLAYER");
+        playerHealth.setPlayerName(res.getString(R.string.player) + res.getString(R.string.hp));
         playerHealth.setTextSize(50);
     }
 
@@ -184,7 +184,7 @@ public class GameObjectManager {
         attackButton.setButton(new Rect(155, 1700, 455, 1875));
         attackButton.setBtnColor(Color.BLACK);
         attackButton.setTextColor(Color.WHITE);
-        attackButton.setBtnName("ATTACK");
+        attackButton.setBtnName(res.getString(R.string.attack));
         attackButton.setX(200);
         attackButton.setY(1800);
     }
@@ -197,7 +197,7 @@ public class GameObjectManager {
         defendButton.setButton(new Rect(655, 1700, 955, 1875));
         defendButton.setBtnColor(Color.BLACK);
         defendButton.setTextColor(Color.WHITE);
-        defendButton.setBtnName("DEFEND");
+        defendButton.setBtnName(res.getString(R.string.defend));
         defendButton.setX(700);
         defendButton.setY(1800);
     }
