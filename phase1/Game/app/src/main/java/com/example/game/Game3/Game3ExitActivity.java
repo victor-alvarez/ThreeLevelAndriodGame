@@ -13,36 +13,65 @@ import com.example.game.BaseActivity;
 import com.example.game.MainActivity;
 import com.example.game.R;
 
+/**
+ * Exit Activity for Game 3.
+ */
 public class Game3ExitActivity extends BaseActivity {
 
+    /**
+     * Account of the User currently playing this game.
+     */
     Account account;
 
+    /**
+     * Code to execute when the Activity is created.
+     *
+     * @param savedInstanceState A Bundle containing possibly previous states of this Activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //Sets the view for this Activity.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game3_exit);
+
+        //Draws the TextView showing the Result of the game that just ended.
         TextView gameResult = (TextView) findViewById(R.id.gameResult);
         gameResult.setText(getIntent().getStringExtra("EXTRA_WINNER"));
         gameResult.setTextColor(Color.BLUE);
         gameResult.setTextSize(50);
 
+        //Account information is passed in.
         account = (Account) getIntent().getSerializableExtra("ac");
 
+        //Customizes the Activity based on User preference.
         if (account.getCustomization()[0] == 1) {
             getWindow().getDecorView().setBackgroundResource(R.color.background1);
         }
     }
 
-    /** Called when the user taps the "Retry" button */
+    /**
+     * Called when the user taps the "Retry" button. Restarts the game for the User.
+     *
+     * @param view The View of the Activity.
+     */
     public void retry(View view) {
         Intent intent = new Intent(this, Game3PlayActivity.class);
+
+        //Passes the account into Intent so it can be used accessed in Game3PlayActivity.
         intent.putExtra("ac", account);
         startActivity(intent);
     }
 
-    /** Called when the user taps the "To Main Menu" button */
+    /**
+     * Called when the user taps the "To Main Menu" button. Takes User to the main menu of the App.
+     *
+     * @param view The View of the Activity.
+     */
     public void toMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+
+        //Passes the account into Intent so it can be used accessed in MainActivity.
         intent.putExtra("ac", account);
         startActivity(intent);
     }
