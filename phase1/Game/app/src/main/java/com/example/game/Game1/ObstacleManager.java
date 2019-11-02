@@ -1,12 +1,13 @@
 package com.example.game.Game1;
 
 import android.graphics.Canvas;
+
 import java.util.ArrayList;
 
 /**
  * ObstacleManager class. Creates obstacles to be populated in game.
  */
-public class ObstacleManager {
+class ObstacleManager {
     // higher index = lower on screen = higher y value
 
     /**
@@ -20,9 +21,10 @@ public class ObstacleManager {
 
     /**
      * Constructor for ObstacleManager
-     * @param obstacleGap - gap between spawning obstacles
+     *
+     * @param obstacleGap    - gap between spawning obstacles
      * @param obstacleHeight - height of obstacles
-     * @param color - color of obstacles
+     * @param color          - color of obstacles
      */
     ObstacleManager(int obstacleGap, int obstacleHeight, int color) {
         this.obstacleGap = obstacleGap;
@@ -37,7 +39,7 @@ public class ObstacleManager {
      * @return - true iff any obstacle in obstacles collides with player
      */
     boolean playerCollide(RectPlayer player) {
-        for(Obstacle ob : obstacles) {
+        for (Obstacle ob : obstacles) {
             if (ob.playerCollide(player)) {
                 Constants.hitTile = ob;
                 return true;
@@ -52,7 +54,7 @@ public class ObstacleManager {
     void populateObstacles() {
         int currY = Constants.SCREEN_HEIGHT * 2;
 
-        while(currY > Constants.SCREEN_HEIGHT) {
+        while (currY > Constants.SCREEN_HEIGHT) {
             int xStart = (int) (Math.random() * (Constants.SCREEN_WIDTH - 100));
             obstacles.add(new Obstacle(obstacleHeight, color, xStart, currY));
             currY -= obstacleHeight + obstacleGap;

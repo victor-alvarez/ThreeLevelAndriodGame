@@ -6,12 +6,13 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.Rect;
+
 import com.example.game.R;
 
 /**
  * RectPlayer class. The actual player the user will control.
  */
-public class RectPlayer implements GameObject{
+public class RectPlayer implements GameObject {
 
     /**
      * Instance variables
@@ -21,9 +22,10 @@ public class RectPlayer implements GameObject{
 
     /**
      * Constructor
+     *
      * @param rectangle - the players rectangle
      */
-    RectPlayer(Rect rectangle){
+    RectPlayer(Rect rectangle) {
         this.rectangle = rectangle;
 
         Bitmap idleImg = BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.alienblue_badge1);
@@ -46,12 +48,12 @@ public class RectPlayer implements GameObject{
     /**
      * @return - this players rectangle
      */
-    Rect getRectangle(){
+    Rect getRectangle() {
         return rectangle;
     }
 
     @Override
-    public void draw(Canvas canvas){
+    public void draw(Canvas canvas) {
         // Paint paint = new Paint();
         // paint.setColor(color);
         // canvas.drawRect(rectangle, paint);
@@ -59,23 +61,22 @@ public class RectPlayer implements GameObject{
     }
 
     @Override
-    public void update(){
+    public void update() {
         animManager.update();
     }
 
     /**
      * @param point - Take in coordinates and move player to those coordinates
      */
-    public void update(Point point){
+    public void update(Point point) {
         float oldLeft = rectangle.left;
 
-        rectangle.set(point.x - rectangle.width()/2, point.y - rectangle.height()/2, point.x + rectangle.width()/2, point.y + rectangle.height()/2);
+        rectangle.set(point.x - rectangle.width() / 2, point.y - rectangle.height() / 2, point.x + rectangle.width() / 2, point.y + rectangle.height() / 2);
 
         int state = 0;
         if (rectangle.left - oldLeft > 5) {
             state = 1;
-        }
-        else if (rectangle.left - oldLeft < -5) {
+        } else if (rectangle.left - oldLeft < -5) {
             state = 2;
         }
 
