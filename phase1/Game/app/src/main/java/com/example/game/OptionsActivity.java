@@ -43,6 +43,14 @@ public class OptionsActivity extends BaseActivity {
     account = (Account) getIntent().getSerializableExtra("ac");
     mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+    Button changeIcon = findViewById(R.id.choose_icon);
+    changeIcon.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        showChangeIconDialog(v.getContext());
+      }
+    });
+
     Button changeLang = findViewById(R.id.language_select_button);
     changeLang.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -103,6 +111,32 @@ public class OptionsActivity extends BaseActivity {
         }
         else if(which == 2){
           setNewLocale(LocaleManager.RUSSIAN);
+        }
+        dialog.dismiss();
+      }
+    });
+
+    AlertDialog mDialog = mBuilder.create();
+
+    mDialog.show();
+
+  }
+
+  private void showChangeIconDialog(final Context context) {
+    final String[] listItems = {"Male", "Female", "Robot"};
+    AlertDialog.Builder mBuilder = new AlertDialog.Builder(OptionsActivity.this);
+    mBuilder.setTitle("Choose Icon...");
+    mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+      @Override
+      public void onClick(DialogInterface dialog, int which) {
+        if(which == 0){
+          account.setIcon(0, context);
+        }
+        else if(which == 1){
+          account.setIcon(1, context);
+        }
+        else if(which == 2){
+          account.setIcon(2, context);
         }
         dialog.dismiss();
       }
