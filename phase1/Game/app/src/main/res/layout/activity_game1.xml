@@ -6,51 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Game1.Game1Activity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/textLife_Game1Activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="40dp"
-            android:text="@string/life"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/livesText_Game1Activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/textLife_Game1Activity"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/scoreText_Game1Activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textScore_Game1Activity"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textScore_Game1Activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/score"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/game1Button5"
         android:layout_width="169dp"
@@ -72,6 +27,18 @@
         android:layout_marginTop="184dp"
         android:onClick="toCustomization"
         android:text="@string/game1_customize"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/game1Button3"
+        android:layout_width="169dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="296dp"
+        android:text="@string/game1_shop"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
