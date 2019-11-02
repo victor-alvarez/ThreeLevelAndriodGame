@@ -1,5 +1,6 @@
 package com.example.game.Game1;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,8 +14,14 @@ import com.example.game.Game2.Game2Activity;
 import com.example.game.MainActivity;
 import com.example.game.R;
 
+/**
+ * GameOverActivity class. This is what the player will see when they lose.
+ */
 public class GameOverActivity extends BaseActivity {
 
+    /**
+     * Instance variables
+     */
     Account account;
 
     /**
@@ -22,6 +29,7 @@ public class GameOverActivity extends BaseActivity {
      */
     TextView lives, scores;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +38,8 @@ public class GameOverActivity extends BaseActivity {
         account = (Account) getIntent().getSerializableExtra("ac");
 
         // Score Labels
-        TextView scoreLabel = (TextView) findViewById(R.id.scoreLabel);
-        TextView highScoreLabel = (TextView) findViewById(R.id.highScoreLabel);
+        TextView scoreLabel = findViewById(R.id.scoreLabel);
+        TextView highScoreLabel = findViewById(R.id.highScoreLabel);
 
         // Get score from players session
         int score = getIntent().getIntExtra("SCORE", 0);
@@ -49,7 +57,7 @@ public class GameOverActivity extends BaseActivity {
 
             SharedPreferences.Editor editor = settings.edit();
             editor.putInt("HIGH_SCORE", score);
-            editor.commit();
+            editor.apply();
 
         } else {
             highScoreLabel.setText("High Score : " + highScore);
@@ -57,6 +65,7 @@ public class GameOverActivity extends BaseActivity {
 
         account = (Account) getIntent().getSerializableExtra("ac");
 
+        assert account != null;
         if (account.getCustomization()[0] == 1) {
             getWindow().getDecorView().setBackgroundResource(R.color.background1);
         }
