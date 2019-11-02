@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.game.Account;
 import com.example.game.BaseActivity;
@@ -20,6 +21,11 @@ public class Game3Activity extends BaseActivity {
      * Account of the User currently playing this game.
      */
     Account account;
+
+    /**
+     * Text displaying player stats
+     */
+    TextView lives, scores;
 
     /**
      * Code to execute when the Activity is created.
@@ -40,6 +46,12 @@ public class Game3Activity extends BaseActivity {
         if (account.getCustomization()[0] == 1) {
             getWindow().getDecorView().setBackgroundResource(R.color.background1);
         }
+
+        lives = findViewById(R.id.livesText_Game3Activity);
+        lives.setText(String.valueOf(account.getSave()[1]));
+
+        scores = findViewById(R.id.scoreText_Game3Activity);
+        scores.setText(String.valueOf(account.getSave()[2]));
     }
 
     /**

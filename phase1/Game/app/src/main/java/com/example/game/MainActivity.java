@@ -1,17 +1,15 @@
 package com.example.game;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.game.Game1.Game1Activity;
+import com.example.game.Game1.GameOverActivity;
 import com.example.game.Game2.Game2Activity;
 import com.example.game.Game3.Game3Activity;
+import com.example.game.Game3.Game3ExitActivity;
 
 /**
  * Main menu activity in which the player may navigate to the settings menu, load their game from
@@ -24,6 +22,17 @@ public class MainActivity extends BaseActivity {
    */
   Account account;
 
+  /**
+   * Text displaying player stats. addCoun is for addition counter, a counter for number of games
+   * played including retries.
+   */
+  TextView addCoun, lives, scores;;
+
+  /**
+   * Code to execute when the Activity is created.
+   *
+   * @param savedInstanceState A Bundle containing possibly previous states of this Activity.
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -34,6 +43,15 @@ public class MainActivity extends BaseActivity {
     if (account.getCustomization()[0] == 1) {
       getWindow().getDecorView().setBackgroundResource(R.color.background1);
     }
+
+    addCoun = findViewById(R.id.addCoun_MainActivity);
+    addCoun.setText(String.valueOf(account.getSave()[3]));
+
+    lives = findViewById(R.id.livesText_MainActivity);
+    lives.setText(String.valueOf(account.getSave()[1]));
+
+    scores = findViewById(R.id.scoreText_MainActivity);
+    scores.setText(String.valueOf(account.getSave()[2]));
   }
 
   /** Called when the user taps the "Resume Game" button */
@@ -46,8 +64,12 @@ public class MainActivity extends BaseActivity {
       intent = new Intent(this, Game1Activity.class);
     } else if (level == 1){
       intent = new Intent(this, Game2Activity.class);
-    } else {
+    } else if (level == 2){
+      intent = new Intent(this, GameOverActivity.class);
+    } else if (level == 3){
       intent = new Intent(this, Game3Activity.class);
+    } else {
+      intent = new Intent(this, Game3ExitActivity.class);
     }
     intent.putExtra("ac", account);
     startActivity(intent);
