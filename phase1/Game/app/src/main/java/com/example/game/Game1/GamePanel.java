@@ -1,22 +1,28 @@
 package com.example.game.Game1;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import java.util.ArrayList;
 
+/**
+ * GamePanel class.
+ */
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
+    /**
+     * Instance variables
+     */
     private MainThread thread;
     private SceneManager manager;
 
+    /**
+     * Constructor
+     *
+     * @param context - the context
+     */
     public GamePanel(Context context) {
         super(context);
         getHolder().addCallback(this);
@@ -52,6 +58,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         manager.receiveTouch(event);
@@ -59,6 +66,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         // return super.onTouchEvent(event);
     }
 
+    /**
+     * updates manager
+     */
     public void update() {
         manager.update();
     }
