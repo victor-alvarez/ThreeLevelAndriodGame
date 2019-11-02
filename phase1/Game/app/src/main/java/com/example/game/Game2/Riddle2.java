@@ -1,11 +1,9 @@
 package com.example.game.Game2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.game.Account;
 import com.example.game.BaseActivity;
@@ -13,8 +11,17 @@ import com.example.game.R;
 
 public class Riddle2 extends BaseActivity {
     Account account;
-    //Context context;
 
+    /**
+     * Text displaying player stats
+     */
+    TextView lives, scores;
+
+    /**
+     * Code to execute when the Activity is created.
+     *
+     * @param savedInstanceState A Bundle containing possibly previous states of this Activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +32,12 @@ public class Riddle2 extends BaseActivity {
         if (account.getCustomization()[0] == 1) {
             getWindow().getDecorView().setBackgroundResource(R.color.background1);
         }
+
+        lives = findViewById(R.id.livesText_Riddle2);
+        lives.setText(String.valueOf(account.getSave()[1]));
+
+        scores = findViewById(R.id.scoreText_Riddle2);
+        scores.setText(String.valueOf(account.getSave()[2]));
     }
 
     /** Called when the user taps the "McMurdo Dry Valleys, Antarctica" button */

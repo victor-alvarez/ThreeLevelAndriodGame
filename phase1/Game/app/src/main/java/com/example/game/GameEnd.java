@@ -1,4 +1,4 @@
-package com.example.game.Game3;
+package com.example.game;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,19 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.game.Account;
-import com.example.game.BaseActivity;
-import com.example.game.MainActivity;
-import com.example.game.R;
+public class GameEnd extends AppCompatActivity {
 
-/**
- * Activity Class for Game 3
- */
-public class Game3Activity extends BaseActivity {
-
-    /**
-     * Account of the User currently playing this game.
-     */
     Account account;
 
     /**
@@ -34,10 +23,8 @@ public class Game3Activity extends BaseActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        //Sets the view for this Activity.
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game3);
+        setContentView(R.layout.activity_game_end);
 
         //Account information is passed in.
         account = (Account) getIntent().getSerializableExtra("ac");
@@ -47,35 +34,23 @@ public class Game3Activity extends BaseActivity {
             getWindow().getDecorView().setBackgroundResource(R.color.background1);
         }
 
-        lives = findViewById(R.id.livesText_Game3Activity);
+        lives = findViewById(R.id.livesText_GameEnd);
         lives.setText(String.valueOf(account.getSave()[1]));
 
-        scores = findViewById(R.id.scoreText_Game3Activity);
+        scores = findViewById(R.id.scoreText_GameEnd);
         scores.setText(String.valueOf(account.getSave()[2]));
     }
 
     /**
-     * Called when the user taps the "To Main Menu" button. Takes User to main menu of the App.
+     * Called when the user taps the "To Main Menu" button. Takes User to the main menu of the App.
      *
-     * @param view The View of this Activity.
+     * @param view The View of the Activity.
      */
     public void toMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
 
         //Passes the account into Intent so it can be used accessed in MainActivity.
-        intent.putExtra("ac", account);
-        startActivity(intent);
-    }
-
-    /**
-     * Called when user taps the "Play" Button. Takes User to Game 3 play screen.
-     *
-     * @param view The View of this Activity.
-     */
-    public void toPlay(View view) {
-        Intent intent = new Intent(this, Game3PlayActivity.class);
-
-        //Passes the account into Intent so it can be used accessed in GamePlay3Activity.
+        account.resetValues(getApplicationContext());
         intent.putExtra("ac", account);
         startActivity(intent);
     }

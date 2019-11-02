@@ -19,6 +19,11 @@ public class GameOverActivity extends BaseActivity {
 
     Account account;
 
+    /**
+     * Text displaying the addiction counter (so the number of games played including retries)
+     */
+    TextView lives, scores;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,11 +62,18 @@ public class GameOverActivity extends BaseActivity {
         if (account.getCustomization()[0] == 1) {
             getWindow().getDecorView().setBackgroundResource(R.color.background1);
         }
+
+        lives = findViewById(R.id.livesText_GameOverActivity);
+        lives.setText(String.valueOf(account.getSave()[1]));
+
+        scores = findViewById(R.id.scoreText_GameOverActivity);
+        scores.setText(String.valueOf(account.getSave()[2]));
     }
 
     /** Called when the user taps the "Retry" button */
     public void retry(View view) {
         Intent intent = new Intent(this, BallJumperActivity.class);
+        account.decrementLevel(getApplicationContext());
         intent.putExtra("ac", account);
         startActivity(intent);
     }

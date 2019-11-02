@@ -72,16 +72,7 @@ public class Account implements Serializable{
    * @return customization settings of the Account.
    */
   public int[] getCustomization() {
-    return this.customization;
-  }
-
-  /**
-   * Setter for the customization instance variable.
-   *
-   * @param customization settings of the Account.
-   */
-  void setCustomisation(int[] customization) {
-    this.customization = customization;
+      return this.customization;
   }
 
   /**
@@ -89,17 +80,8 @@ public class Account implements Serializable{
    *
    * @return save data of the Account.
    */
-  int[] getSave() {
+  public int[] getSave() {
     return this.save;
-  }
-
-  /**
-   * Setter for the save instance variable.
-   *
-   * @param save data of the Account.
-   */
-  public void setSave(int[] save) {
-    this.save = save;
   }
 
   private void saveSettings(Context context) {
@@ -202,13 +184,24 @@ public class Account implements Serializable{
      * @param context an access to the current file state of the app
      */
     public void incrementLevel(Context context) {
-      if (this.save[0] < 2){
+      if (this.save[0] < 4){
         this.save[0] += 1;
       } else {
         this.save[0] = 0;
       }
       this.saveProgress(context);
     }
+
+  /**
+   * Decrements level for purposes of retrying where appropriate and records it
+   * @param context an access to the current file state of the app
+   */
+  public void decrementLevel(Context context) {
+    if (this.save[0] > 0){
+      this.save[0] -= 1;
+    }
+    this.saveProgress(context);
+  }
 
     /**
      * Reduces hitpoints by a set amount and records it

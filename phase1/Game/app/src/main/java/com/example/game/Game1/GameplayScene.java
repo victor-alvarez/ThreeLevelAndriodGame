@@ -10,7 +10,7 @@ import android.view.MotionEvent;
 import java.util.ArrayList;
 
 /**
- *  GameplayScene class. Handles drawing & updating the objects, controls, and game over
+ * GameplayScene class. Handles drawing & updating the objects, controls, and game over
  */
 public class GameplayScene implements Scene {
 
@@ -35,10 +35,10 @@ public class GameplayScene implements Scene {
      */
     GameplayScene() {
         player = new RectPlayer(new Rect(100, 100, 200, 200));
-        playerPoint = new Point(Constants.SCREEN_WIDTH/2, Constants.SCREEN_HEIGHT/4);
+        playerPoint = new Point(Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 4);
         player.update(playerPoint);
         obstacleManager = new ObstacleManager(1000, 75, Color.BLACK);
-        startingPlat = new Obstacle(50, Color.BLUE, Constants.SCREEN_WIDTH/2, Constants.SCREEN_HEIGHT/2);
+        startingPlat = new Obstacle(50, Color.BLUE, Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 2);
         lives = 3;
         orientationData = new OrientationData();
         frameTime = System.currentTimeMillis();
@@ -57,7 +57,7 @@ public class GameplayScene implements Scene {
         canvas.drawText("" + score, 50, 50 + paint.descent() - paint.ascent(), paint);
         // Draw lives
         paint.setColor(Color.GREEN);
-        canvas.drawText("Lives: " + lives, Constants.SCREEN_WIDTH/2, 50 + paint.descent() - paint.ascent(), paint);
+        canvas.drawText("Lives: " + lives, Constants.SCREEN_WIDTH / 2, 50 + paint.descent() - paint.ascent(), paint);
         paint.setColor(Color.BLACK);
         canvas.drawText(new String(new char[Constants.SCREEN_WIDTH]).replace("\0", "^"), 0, (float) 0.95 * Constants.SCREEN_HEIGHT, paint);
         canvas.drawText(new String(new char[Constants.SCREEN_WIDTH]).replace("\0", "v"), 0, (float) 0.013 * Constants.SCREEN_HEIGHT, paint);
@@ -74,8 +74,8 @@ public class GameplayScene implements Scene {
             if (orientationData.getOrientation() != null && orientationData.getStartOrientation() != null) {
                 float pitch = orientationData.getOrientation()[1] - orientationData.getStartOrientation()[1];
                 float roll = orientationData.getOrientation()[2] - orientationData.getStartOrientation()[2];
-                float xSpeed = 2 * roll * Constants.SCREEN_WIDTH/1000f;
-                float ySpeed = pitch * Constants.SCREEN_HEIGHT/1000f;
+                float xSpeed = 2 * roll * Constants.SCREEN_WIDTH / 1000f;
+                float ySpeed = pitch * Constants.SCREEN_HEIGHT / 1000f;
                 if (Math.abs(xSpeed * elapsedTime) > 5) {
                     playerPoint.x += xSpeed * elapsedTime;
                 }
@@ -86,19 +86,17 @@ public class GameplayScene implements Scene {
             // Keep player within boundaries
             if (playerPoint.x < 0) {
                 playerPoint.x = 0;
-            }
-            else if (playerPoint.x > Constants.SCREEN_WIDTH) {
+            } else if (playerPoint.x > Constants.SCREEN_WIDTH) {
                 playerPoint.x = Constants.SCREEN_WIDTH;
             }
             if (playerPoint.y < 0) {
                 grav = 0.5;
                 gameOver = true;
-                lives --;
+                lives--;
                 // If player has no lives go to GameOverActivity
                 if (lives == 0) {
                     ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score, hitPoints);
-                }
-                else {
+                } else {
                     reset();
                     orientationData.newGame();
                 }
@@ -107,12 +105,11 @@ public class GameplayScene implements Scene {
             else if (playerPoint.y > Constants.SCREEN_HEIGHT) {
                 grav = 0.5;
                 gameOver = true;
-                lives --;
+                lives--;
                 // If player has no lives go to GameOverActivity
                 if (lives == 0) {
                     ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score, hitPoints);
-                }
-                else {
+                } else {
                     reset();
                     orientationData.newGame();
                 }
@@ -143,8 +140,7 @@ public class GameplayScene implements Scene {
                 playerPoint.y -= grav;
                 grav -= 25;
                 player.update(playerPoint);
-            }
-            else {
+            } else {
                 playerPoint.y += grav;
                 grav += 1;
                 player.update(playerPoint);
@@ -175,8 +171,8 @@ public class GameplayScene implements Scene {
      * Reset whenever player dies
      */
     private void reset() {
-        startingPlat = new Obstacle(50, Color.BLUE, Constants.SCREEN_WIDTH/2, Constants.SCREEN_HEIGHT/2);
-        playerPoint = new Point(Constants.SCREEN_WIDTH/2, Constants.SCREEN_HEIGHT/4);
+        startingPlat = new Obstacle(50, Color.BLUE, Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 2);
+        playerPoint = new Point(Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 4);
         player.update(playerPoint);
         obstacleManager = new ObstacleManager(1000, 75, Color.BLACK);
         movingPlayer = false;
