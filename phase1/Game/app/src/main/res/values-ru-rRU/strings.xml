@@ -60,14 +60,14 @@
     <string name="hp">"HP: "</string>
     <string name="language_select">Выберите язык</string>
     <string name="life">ЖИЗНИ:</string>
-    <string name="lost">ТЫ ПРОИГРАЛА!!</string>
+    <string name="lost">ПОРАЖЕНИЕ!</string>
     <string name="player">ИГРОК</string>
     <string name="player_took">ИГРОК СОСТОЯЛСЯ</string>
     <string name="resume_game">Продолжить игру</string>
     <string name="score">ОБЩИЙ СЧЕТ:</string>
     <string name="start_game">Начать игру</string>
-    <string name="win">ТЫ ПОБЕДИЛ!!</string>
+    <string name="win">ПОБЕДА!!!</string>
     <string name="Choose_icon">Выберите иконку</string>
-    <string name="female_icon">женщина</string>
-    <string name="male_icon">мужской</string>
+    <string name="female_icon">Женщина</string>
+    <string name="male_icon">Мужчина</string>
 </resources>
