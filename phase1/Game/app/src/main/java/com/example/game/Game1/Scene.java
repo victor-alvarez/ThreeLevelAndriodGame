@@ -7,7 +7,7 @@ import android.view.MotionEvent;
  * Scene interface.
  */
 public interface Scene {
-    void update();
-    void draw(Canvas canvas);
-    void receiveTouch(MotionEvent event);
+    void update(); // Update scene
+    void draw(Canvas canvas); // Draw onto Canvas canvas
+    void receiveTouch(MotionEvent event); // Handle player interactions with screen
 }
