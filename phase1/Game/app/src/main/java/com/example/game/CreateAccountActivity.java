@@ -77,4 +77,9 @@ public class CreateAccountActivity extends BaseActivity {
     Intent intent = new Intent(this, LoginActivity.class);
     startActivity(intent);
   }
+
+  /** Called when the user taps the "Back" button */
+  public void deleteData(View view) {
+    accountManager.deleteAccountData(getApplicationContext());
+  }
 }
