@@ -70,6 +70,7 @@ public class GameOverActivity extends BaseActivity {
     public void nextGame(View view) {
         Intent intent = new Intent(this, Game2Activity.class);
         intent.putExtra("ac", account);
+        account.incrementLevel(getApplicationContext());
         startActivity(intent);
     }
 

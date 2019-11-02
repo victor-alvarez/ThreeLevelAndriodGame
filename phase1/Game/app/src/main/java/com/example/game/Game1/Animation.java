@@ -21,8 +21,8 @@ public class Animation {
     /**
      * Creates a new Animation.
      *
-     * @param frames   the name of this Monster.
-     * @param animTime the size of this Monster.
+     * @param frames   the images.
+     * @param animTime the animation time.
      */
     public Animation(Bitmap[] frames, float animTime) {
         this.frames = frames;
@@ -56,6 +56,9 @@ public class Animation {
 
     /**
      * Draws this animation on the canvas.
+     *
+     * @param canvas      the canvas on which to draw.
+     * @param destination the rectangle that will be "drawn" on the canvas.
      */
     public void draw(Canvas canvas, Rect destination) {
         if (!isPlaying) {
@@ -69,6 +72,8 @@ public class Animation {
 
     /**
      * Scales the given rectangle for the draw method.
+     *
+     * @param rect the rectangle to be scaled.
      */
     private void scaleRect(Rect rect) {
         float whRatio = (float) (frames[frameIndex].getWidth()) / frames[frameIndex].getHeight();
