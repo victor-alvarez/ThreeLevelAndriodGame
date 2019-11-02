@@ -13,7 +13,7 @@ class AccountManager {
    *
    * @param login of the Account.
    */
-  Account createNewAccount(String login, Context context) {
+  void createNewAccount(String login, Context context) {
     try {
       File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       if (!saveFile.exists()) {
@@ -24,11 +24,11 @@ class AccountManager {
       }
       FileWriter saveAccount = new FileWriter(saveFile, true);
       saveAccount.write("\n" + login + ", 0, 0, 0, 0, 200, 0, 0" );
+      saveAccount.flush();
       saveAccount.close();
     } catch (IOException error) {
       error.printStackTrace();
     }
-    return new Account(login);
   }
 
   /**
@@ -50,6 +50,7 @@ class AccountManager {
       String line;
       while ((line = loadAccData.readLine()) != null) {
         int i = line.indexOf(", ");
+        System.out.println(line);
         String s = line.substring(0, i);
         if (login.equals(s)) {
           String[] l = line.split(", ");
