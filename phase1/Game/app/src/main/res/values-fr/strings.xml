@@ -67,4 +67,5 @@
     <string name="start_game">Commence le jeu</string>
     <string name="title_activity_login">Connecter</string>
     <string name="username">Nom d\'utilisateur</string>
+    <string name="Choose_icon">Choisir un icon</string>
 </resources>

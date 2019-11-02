@@ -67,4 +67,5 @@
     <string name="score">ГОЛ:</string>
     <string name="start_game">Начать игру</string>
     <string name="win">ТЫ ПОБЕДИЛ!!</string>
+    <string name="Choose_icon">Выберите иконку</string>
 </resources>
