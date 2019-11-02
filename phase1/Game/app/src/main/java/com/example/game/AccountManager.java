@@ -67,15 +67,16 @@ class AccountManager {
     return null;
   }
 
-  /* For Phase 2. Left here as rough methods we were unable to implement in time
-*/
+  // Deletes all accounts
   void deleteAccountData(Context context){
     File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
     if(saveFile.delete()) {
       System.out.println("Successfully deleted");
     }
   }
-/*
+
+  /* For Phase 2. Left here as rough methods we were unable to implement in time
+
   public void updateHighScores(Account acc, Context context) {
     try {
       File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
