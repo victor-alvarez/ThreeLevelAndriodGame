@@ -18,8 +18,9 @@ public class MainThread extends Thread {
 
     /**
      * Constructor
+     *
      * @param surfaceHolder - sets the surface holder
-     * @param gamePanel - sets the game panel
+     * @param gamePanel     - sets the game panel
      */
     MainThread(SurfaceHolder surfaceHolder, GamePanel gamePanel) {
         super();
