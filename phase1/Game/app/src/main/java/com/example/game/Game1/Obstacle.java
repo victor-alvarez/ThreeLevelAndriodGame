@@ -7,7 +7,7 @@ import android.graphics.Rect;
 /**
  * Obstacle class. These are the individual obstacles to be spawned by ObstacleManager
  */
-public class Obstacle implements GameObject{
+public class Obstacle implements GameObject {
 
     /**
      * Instance variables
@@ -18,12 +18,13 @@ public class Obstacle implements GameObject{
 
     /**
      * Constructor
+     *
      * @param rectHeight - the height of the obstacle
-     * @param color - the color of the obstacle
-     * @param startX - the starting x position of the obstacle
-     * @param startY - the starting y position of the obstacle
+     * @param color      - the color of the obstacle
+     * @param startX     - the starting x position of the obstacle
+     * @param startY     - the starting y position of the obstacle
      */
-    Obstacle(int rectHeight, int color, int startX, int startY){
+    Obstacle(int rectHeight, int color, int startX, int startY) {
         this.color = color;
         //l,t,r,b
         rectangle = new Rect(startX, startY, startX + 100, startY + rectHeight);
@@ -32,7 +33,7 @@ public class Obstacle implements GameObject{
     /**
      * @return - rectangle
      */
-    Rect getRectangle(){
+    Rect getRectangle() {
         return rectangle;
     }
 
@@ -48,12 +49,12 @@ public class Obstacle implements GameObject{
      * @param player - RectPlayer player to be checked collision with
      * @return - return true iff player's rectangle intersects with obstacles rectangle
      */
-    boolean playerCollide(RectPlayer player){
+    boolean playerCollide(RectPlayer player) {
         return Rect.intersects(rectangle, player.getRectangle());
     }
 
     @Override
-    public void draw(Canvas canvas){
+    public void draw(Canvas canvas) {
         if (!destroy) {
             Paint paint = new Paint();
             paint.setColor(color);
@@ -62,14 +63,20 @@ public class Obstacle implements GameObject{
     }
 
     @Override
-    public void update(){
+    public void update() {
 
     }
 
+    /**
+     * Destroys Obstacle
+     */
     void destroy() {
         destroy = true;
     }
 
+    /**
+     * @return - whether Obstacle has been destroyed
+     */
     boolean checkDestoryed() {
         return destroy;
     }

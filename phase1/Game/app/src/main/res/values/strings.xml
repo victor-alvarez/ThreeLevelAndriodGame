@@ -59,4 +59,10 @@
     <string name="score">"SCORE: "</string>
     <string name="game">"GAMES: "</string>
     <string name="life">"LIVES: "</string>
+    <string name="attack">"ATTACK"</string>
+    <string name="defend">"DEFEND"</string>
+    <string name="player">"PLAYER"</string>
+    <string name="enemy">"ENEMY"</string>
+    <string name="hp">" HP: "</string>
+    <string name="game_over">"Game Over"</string>
 </resources>

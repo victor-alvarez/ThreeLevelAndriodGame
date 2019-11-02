@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.game.Account;
 import com.example.game.BaseActivity;
+import com.example.game.GameEnd;
 import com.example.game.MainActivity;
 import com.example.game.R;
 
@@ -22,6 +23,11 @@ public class Game3ExitActivity extends BaseActivity {
      * Account of the User currently playing this game.
      */
     Account account;
+
+    /**
+     * Text displaying player stats
+     */
+    TextView lives, scores;
 
     /**
      * Code to execute when the Activity is created.
@@ -48,6 +54,12 @@ public class Game3ExitActivity extends BaseActivity {
         if (account.getCustomization()[0] == 1) {
             getWindow().getDecorView().setBackgroundResource(R.color.background1);
         }
+
+        lives = findViewById(R.id.livesText_Game3Activity2);
+        lives.setText(String.valueOf(account.getSave()[1]));
+
+        scores = findViewById(R.id.scoreText_Game3Activity2);
+        scores.setText(String.valueOf(account.getSave()[2]));
     }
 
     /**
@@ -58,6 +70,7 @@ public class Game3ExitActivity extends BaseActivity {
     public void retry(View view) {
         Intent intent = new Intent(this, Game3PlayActivity.class);
 
+        account.decrementLevel(getApplicationContext());
         //Passes the account into Intent so it can be used accessed in Game3PlayActivity.
         intent.putExtra("ac", account);
         startActivity(intent);
@@ -68,10 +81,8 @@ public class Game3ExitActivity extends BaseActivity {
      *
      * @param view The View of the Activity.
      */
-    public void toMainMenu(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-
-        //Passes the account into Intent so it can be used accessed in MainActivity.
+    public void toEndGame(View view) {
+        Intent intent = new Intent(this, GameEnd.class);
         intent.putExtra("ac", account);
         startActivity(intent);
     }

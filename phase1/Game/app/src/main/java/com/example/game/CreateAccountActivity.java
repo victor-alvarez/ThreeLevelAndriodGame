@@ -32,6 +32,11 @@ public class CreateAccountActivity extends BaseActivity {
    */
   private AccountManager accountManager = new AccountManager();
 
+  /**
+   * Code to execute when the Activity is created.
+   *
+   * @param savedInstanceState A Bundle containing possibly previous states of this Activity.
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
