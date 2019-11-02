@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:textSize="80sp"
+        android:textSize="60sp"
         app:layout_constraintStart_toEndOf="@+id/textLife_GameEnd"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,7 +35,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="100dp"
         android:text="@string/life"
-        android:textSize="80sp"
+        android:textSize="60sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,8 +43,8 @@
         android:id="@+id/scoreText_GameEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:textSize="80sp"
+        android:layout_marginTop="10dp"
+        android:textSize="60sp"
         app:layout_constraintStart_toEndOf="@+id/textScore_GameEnd"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,7 +55,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="@string/score"
-        android:textSize="80sp"
+        android:textSize="60sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

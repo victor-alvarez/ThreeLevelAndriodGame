@@ -133,19 +133,17 @@ public class Account implements Serializable{
           int[] save = this.save;
           String set = l[1] + ", " + l[2] + ", " + l[3] + ", ";
           String sav = save[0] + ", " + save[1] + ", " + save[2] + ", " + save[3];
-          String newSave = "\n" + s + ", " + set + sav;
+          String newSave = s + ", " + set + sav;
           old.add(newSave);
         } else {
           old.add(line);
         }
       }
-      FileWriter saveAccount = new FileWriter(saveFile, false);
-      saveAccount.write(old.get(0));
-      for(int i = 1; i < old.size(); i ++){
-        saveAccount.write(old.get(i));
+      PrintWriter updateSave = new PrintWriter(saveFile);
+      for (String i : old) {
+        updateSave.println(i);
       }
-      saveAccount.flush();
-      saveAccount.close();
+      updateSave.close();
     } catch (IOException error) {
       System.out.println("Can't find account");
     }
