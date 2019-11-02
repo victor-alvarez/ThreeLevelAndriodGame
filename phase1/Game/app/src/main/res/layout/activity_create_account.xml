@@ -48,10 +48,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="102dp"
         android:layout_marginTop="183dp"
-        android:autofillHints=""
+        android:autofillHints="@string/username"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/username"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="11dp"
+        android:onClick="deleteData"
+        android:text="Delete All"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -13,21 +13,22 @@ class AccountManager {
    *
    * @param login of the Account.
    */
-  void createNewAccount(String login, Context context) {
+  Account createNewAccount(String login, Context context) {
     try {
       File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       if (!saveFile.exists()) {
         saveFile.createNewFile();
         FileWriter saveAccount = new FileWriter(saveFile);
-        saveAccount.write("Empty, 0, Empty 0, Empty, 0");
+        saveAccount.write("*Empty, 0, Empty 0, Empty, 0");
         saveAccount.close();
       }
       FileWriter saveAccount = new FileWriter(saveFile, true);
-      saveAccount.write("\n" + login + ", 0, 0, 0, 0, 100, 0, 0");
+      saveAccount.write("\n" + login + ", 0, 0, 0, 0, 200, 0, 0" );
       saveAccount.close();
     } catch (IOException error) {
       error.printStackTrace();
     }
+    return new Account(login);
   }
 
   /**
@@ -66,14 +67,15 @@ class AccountManager {
     return null;
   }
 
-  /* For Phase 2. Left here as rough methods we were unable to implement in time
-
+  // Deletes all accounts
   void deleteAccountData(Context context){
     File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
     if(saveFile.delete()) {
       System.out.println("Successfully deleted");
     }
   }
+
+  /* For Phase 2. Left here as rough methods we were unable to implement in time
 
   public void updateHighScores(Account acc, Context context) {
     try {
