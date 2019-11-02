@@ -28,6 +28,7 @@ public class GameplayScene implements Scene {
     private long frameTime; // time frame
     private double grav; // gravity for game
     private Obstacle startingPlat;
+    private int hitPoints;
 
     /**
      * Constructor for GameplayScene. Instansiates player, playerPoint, obstacles, and lives.
@@ -100,7 +101,7 @@ public class GameplayScene implements Scene {
                 lives --;
                 // If player has no lives go to GameOverActivity
                 if (lives == 0) {
-                    ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score);
+                    ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score, hitPoints);
                 }
                 else {
                     reset();
@@ -114,7 +115,7 @@ public class GameplayScene implements Scene {
                 lives --;
                 // If player has no lives go to GameOverActivity
                 if (lives == 0) {
-                    ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score);
+                    ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score, hitPoints);
                 }
                 else {
                     reset();
@@ -123,9 +124,10 @@ public class GameplayScene implements Scene {
             }
 
             ArrayList<Obstacle> obstacles = obstacleManager.getObstacles();
-            // If obstacle goes off screen remove it, then add to our score
+            // If obstacle goes off screen remove it, then add to hitPoints
             if (obstacles.get(obstacles.size() - 1).getRectangle().bottom <= 0) {
                 obstacles.remove(obstacles.size() - 1);
+                hitPoints++;
             }
 
             obstacleManager.update();
