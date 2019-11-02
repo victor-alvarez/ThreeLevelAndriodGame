@@ -60,7 +60,6 @@ class AccountManager {
       String line;
       while ((line = loadAccData.readLine()) != null) {
         int i = line.indexOf(", ");
-        System.out.println(line);
         String s = line.substring(0, i);
         if (login.equals(s)) {
           String[] l = line.split(", ");
