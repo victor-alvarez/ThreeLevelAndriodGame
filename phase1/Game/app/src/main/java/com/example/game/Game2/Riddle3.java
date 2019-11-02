@@ -48,6 +48,7 @@ public class Riddle3 extends BaseActivity {
         Intent intent = new Intent(this, Win.class);
         account.incrementLevel(getApplicationContext());
         account.incrementScore(20, getApplicationContext());
+        account.incrementGamesPlayed(getApplicationContext());
         intent.putExtra("ac", account);
         startActivity(intent);
     }
