@@ -24,7 +24,7 @@ public class Animation {
      * @param frames   the images.
      * @param animTime the animation time.
      */
-    public Animation(Bitmap[] frames, float animTime) {
+    Animation(Bitmap[] frames, float animTime) {
         this.frames = frames;
         frameIndex = 0;
         frameTime = animTime / frames.length;
@@ -34,14 +34,14 @@ public class Animation {
     /**
      * A getter method for isPlaying.
      */
-    public boolean isPlaying() {
+    boolean isPlaying() {
         return isPlaying;
     }
 
     /**
      * Sets isPlaying to true, frameIndex to 0, and lastFrame to the current time in milliseconds.
      */
-    public void play() {
+    void play() {
         isPlaying = true;
         frameIndex = 0;
         lastFrame = System.currentTimeMillis();
@@ -50,7 +50,7 @@ public class Animation {
     /**
      * Sets isPlaying to false.
      */
-    public void stop() {
+    void stop() {
         isPlaying = false;
     }
 

@@ -1,7 +1,5 @@
 package com.example.game.Game1;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -70,7 +68,9 @@ public class GameOverActivity extends BaseActivity {
         scores.setText(String.valueOf(account.getSave()[2]));
     }
 
-    /** Called when the user taps the "Retry" button */
+    /**
+     * Called when the user taps the "Retry" button
+     */
     public void retry(View view) {
         Intent intent = new Intent(this, BallJumperActivity.class);
         account.decrementLevel(getApplicationContext());
@@ -78,7 +78,9 @@ public class GameOverActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    /** Called when the user taps the "To Game Two" button */
+    /**
+     * Called when the user taps the "To Game Two" button
+     */
     public void nextGame(View view) {
         Intent intent = new Intent(this, Game2Activity.class);
         intent.putExtra("ac", account);
@@ -86,7 +88,9 @@ public class GameOverActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    /** Called when the user taps the "To Main Menu" button */
+    /**
+     * Called when the user taps the "To Main Menu" button
+     */
     public void toMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("ac", account);

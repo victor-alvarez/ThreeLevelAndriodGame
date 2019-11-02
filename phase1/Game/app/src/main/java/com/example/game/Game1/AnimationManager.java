@@ -18,7 +18,7 @@ public class AnimationManager {
      *
      * @param animations the array of animations that is stored.
      */
-    public AnimationManager(Animation[] animations) {
+    AnimationManager(Animation[] animations) {
         this.animations = animations;
     }
 
@@ -27,7 +27,7 @@ public class AnimationManager {
      *
      * @param index the index where we want to play the animation.
      */
-    public void playAnim(int index) {
+    void playAnim(int index) {
         for (int i = 0; i < animations.length; i++) {
             if (i == index) {
                 if (!animations[index].isPlaying()) {
