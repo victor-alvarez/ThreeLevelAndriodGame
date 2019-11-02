@@ -34,12 +34,13 @@ public class Game1Activity extends BaseActivity {
     startActivity(intent);
   }
 
-  /** Called when the user taps the "Customize" button */
+  /** Called when the user taps the "Customize" button
   public void toCustomization(View view) {
     Intent intent = new Intent(this, CustomizeActivity.class);
     intent.putExtra("ac", account);
     startActivity(intent);
   }
+   */
 
   /** Called when the user taps the "Shop" button */
   public void toShop(View view) {
