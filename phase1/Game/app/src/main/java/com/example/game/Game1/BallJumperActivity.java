@@ -31,13 +31,12 @@ public class BallJumperActivity extends BaseActivity {
     account = (Account) getIntent().getSerializableExtra("ac");
   }
 
-  public void gameOver(int score){
+  public void gameOver(int score, int hitPoints){
     Intent intent = new Intent(this, GameOverActivity.class);
     intent.putExtra("SCORE", score);
-    account.incrementLevel(getApplicationContext());
     account.incrementScore(score, getApplicationContext());
-    //TODO: add value for this
-    //account.decrementHitPoints();
+    account.decrementHitPoints(hitPoints, getApplicationContext());
+    account.incrementGamesPlayed(getApplicationContext());
     intent.putExtra("ac", account);
     startActivity(intent);
   }
