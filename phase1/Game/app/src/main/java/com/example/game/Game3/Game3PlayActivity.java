@@ -20,16 +20,29 @@ public class Game3PlayActivity extends BaseActivity {
      * Game Loop for this Game.
      */
     private Game3View game3View;
+
+    /**
+     * Account of the User currently playing this game.
+     */
     Account account;
 
+    /**
+     * Code to execute when the Activity is created.
+     *
+     * @param savedInstanceState A Bundle containing possibly previous states of this Activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //Creates view for Game 3.
         super.onCreate(savedInstanceState);
         game3View = new Game3View(this);
         setContentView(game3View);
 
+        //Account information is passed in.
         account = (Account) getIntent().getSerializableExtra("ac");
 
+        //Customizes the Activity based on User preference.
         if (account.getCustomization()[0] == 1) {
             getWindow().getDecorView().setBackgroundResource(R.color.background1);
         }
@@ -53,11 +66,17 @@ public class Game3PlayActivity extends BaseActivity {
         game3View.resume();
     }
 
-    protected void gameOver(String winner){
+    /**
+     * Handles the case when the game is done.
+     *
+     * @param winner    The winner of the game.
+     * @param hitpoints The hitpoints the Player earned.
+     */
+    protected void gameOver(String winner, int hitpoints) {
         Intent intent = new Intent(this, Game3ExitActivity.class);
         intent.putExtra("EXTRA_WINNER", winner);
         account.incrementLevel(getApplicationContext());
-        account.incrementScore(15, getApplicationContext());
+        account.incrementScore(hitpoints, getApplicationContext());
         //TODO: add hit point decrement
         //account.decrementHitPoints();
         intent.putExtra("ac", account);
@@ -68,7 +87,7 @@ public class Game3PlayActivity extends BaseActivity {
      * Handles cases when Activity is stopped.
      */
     @Override
-    protected void onStop(){
+    protected void onStop() {
         super.onStop();
         finish();
     }
