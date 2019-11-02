@@ -1,8 +1,6 @@
 package com.example.game;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -11,7 +9,7 @@ import java.util.ArrayList;
 public class Account implements Serializable{
 
   /** Account's login, customization settings and save data. */
-  public String login;
+  private String login;
 
   /** Account's customization:
    * at index 0 - background colour:
@@ -24,7 +22,7 @@ public class Account implements Serializable{
    * 1 - French,
    * 2 - Russian,
    * 3 - Spanish;*/
-  public int[] customization;
+  private int[] customization;
 
   /** Account's save data:
    * at index 0 - last level attempted (0-4):
@@ -33,20 +31,8 @@ public class Account implements Serializable{
    * 4 - won the last game;
    * at index 1 - hit points (0-100);
    * at index 2 - current score (0+);
-   * at index 3 - score (0+).*/
-  public int[] save;
-
-
-  /**
-   * -------------------- Game 1 Instance Variables ----------------------------------
-   */
-   SharedPreferences prefrences;
-   SharedPreferences.Editor editor;
-
-
-  /**
-   * ---------------------------------------------------------------------------------
-   */
+   * at index 3 - games played (addiction counter) (0+). Includes retries of games.*/
+  private int[] save;
 
   /**
    * Constructor for brand new Account. Activates from Create Account button. Takes login from Enter
@@ -58,7 +44,7 @@ public class Account implements Serializable{
     this.login = login;
     int[] a = {0, 0, 0};
     this.customization = a;
-    int[] b = {0, 100, 0, 0};
+    int[] b = {0, 200, 0, 0};
     this.save = b;
   }
 
@@ -86,16 +72,7 @@ public class Account implements Serializable{
    * @return customization settings of the Account.
    */
   public int[] getCustomization() {
-    return this.customization;
-  }
-
-  /**
-   * Setter for the customization instance variable.
-   *
-   * @param customization settings of the Account.
-   */
-  public void setCustomisation(int[] customization) {
-    this.customization = customization;
+      return this.customization;
   }
 
   /**
@@ -107,22 +84,13 @@ public class Account implements Serializable{
     return this.save;
   }
 
-  /**
-   * Setter for the save instance variable.
-   *
-   * @param save data of the Account.
-   */
-  public void setSave(int[] save) {
-    this.save = save;
-  }
-
-  public void saveSettings(Context context) {
+  private void saveSettings(Context context) {
     try {
       File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       FileReader loadAccountData = new FileReader(saveFile);
       BufferedReader loadAccData = new BufferedReader(loadAccountData);
       String line;
-      ArrayList<String> old = new ArrayList<String>();
+      ArrayList<String> old = new ArrayList<>();
       while ((line = loadAccData.readLine()) != null) {
         int i = line.indexOf(", ");
         String s = line.substring(0, i);
@@ -150,13 +118,13 @@ public class Account implements Serializable{
   /**
    * Does the exact same thing as the saveSetting method, so we really only need one of them);
    */
-  public void saveProgress(Context context) {
+  private void saveProgress(Context context) {
     try {
       File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
       FileReader loadAccountData = new FileReader(saveFile);
       BufferedReader loadAccData = new BufferedReader(loadAccountData);
       String line;
-      ArrayList<String> old = new ArrayList<String>();
+      ArrayList<String> old = new ArrayList<>();
       while ((line = loadAccData.readLine()) != null) {
         int i = line.indexOf(", ");
         String s = line.substring(0, i);
@@ -181,70 +149,97 @@ public class Account implements Serializable{
     }
   }
 
-    public void setBackground(int colour, Context context) {
+    /**
+     * Sets this account's background colour to selected colour and records it
+     * @param colour the number that respresents a background colour for this account
+     * @param context an access to the current file state of the app
+     */
+    void setBackground(int colour, Context context) {
         this.customization[0] = colour;
         this.saveSettings(context);
     }
 
-    public void setLanguage(int lang, Context context) {
+    /**
+     * Sets this account's language and records the setting
+     * @param lang the number that respresents a language for this account
+     * @param context an access to the current file state of the app
+     */
+    void setLanguage(int lang, Context context) {
         this.customization[1] = lang;
         this.saveSettings(context);
     }
-    public void setMusic(int muz, Context context) {
+
+    /**
+     * Sets this accounts icon
+     * @param muz the icon setting
+     * @param context an access to the current file state of the app
+     */
+    public void setIcon(int muz, Context context) {
         this.customization[2] = muz;
         this.saveSettings(context);
     }
 
+    /**
+     * Increments level or resets it where appropriate and records it
+     * @param context an access to the current file state of the app
+     */
     public void incrementLevel(Context context) {
-      this.save[0] += 1;
+      if (this.save[0] < 4){
+        this.save[0] += 1;
+      } else {
+        this.save[0] = 0;
+      }
       this.saveProgress(context);
     }
 
+  /**
+   * Decrements level for purposes of retrying where appropriate and records it
+   * @param context an access to the current file state of the app
+   */
+  public void decrementLevel(Context context) {
+    if (this.save[0] > 0){
+      this.save[0] -= 1;
+    }
+    this.saveProgress(context);
+  }
+
+    /**
+     * Reduces hitpoints by a set amount and records it
+     * @param reduce the amount by which hit points are reduced
+     * @param context an access to the current file state of the app
+     */
     public void decrementHitPoints(int reduce, Context context) {
         this.save[1] -= reduce;
         this.saveProgress(context);
     }
 
+    /**
+     * Changes score by amount add
+     * @param add the amount to be added to the score
+     * @param context an access to the current file state of the app
+     */
     public void incrementScore(int add, Context context) {
         this.save[2] += add;
         this.saveProgress(context);
     }
 
-    public void setHighScore(int value, Context context) {
-        this.save[3] = value;
+    /**
+     * Increments the number of times the games are played on this account
+     * @param context an access to the current file state of the app
+     */
+    public void incrementGamesPlayed(Context context) {
+        this.save[3] += 1;
         this.saveProgress(context);
     }
 
-  /**
-   * -------------------- Game 1 Methods ---------------------------------------------
-   */
-
-
-  /**
-   * ---------------------------------------------------------------------------------
-   */
-
-  /*public static void main(String[] args) {
-    AccountManager.createNewAccount("TEST");
-    AccountManager.createNewAccount("TEST1");
-    AccountManager.createNewAccount("TEST2");
-    Object[] a = AccountManager.openExistingAccount("TEST1");
-    Account c = (Account) a[1];
-    System.out.println(a[0] + c.login + c.getCustomisation()[1]);
-    String[] newSave = {"1", "50", "3", "4"};
-    String[] newSettings = {"1", "1", "1"};
-    c.setCustomization(newSettings);
-    c.setSave(newSave);
-    a = AccountManager.openExistingAccount("TEST1");
-    c = (Account) a[1];
-    System.out.println(a[0]);
-    System.out.println(c.login);
-    System.out.println(c.getCustomization()[0]);
-    System.out.println(c.getCustomization()[1]);
-    System.out.println(c.getCustomization()[2]);
-    System.out.println(c.getSave()[0]);
-    System.out.println(c.getSave()[1]);
-    System.out.println(c.getSave()[2]);
-    System.out.println(c.getSave()[3]);
-  }*/
+    /**
+     * Sets this account's stats to starting ones
+     * @param context an access to the current file state of the app
+     */
+    void resetValues(Context context){
+      this.save[0] = 0;
+      this.save[1] = 200;
+      this.save[2] = 0;
+      this.saveProgress(context);
+    }
 }

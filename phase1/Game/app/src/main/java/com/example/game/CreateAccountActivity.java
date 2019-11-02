@@ -12,11 +12,31 @@ import android.widget.TextView;
 
 public class CreateAccountActivity extends BaseActivity {
 
+  /**
+   * Text field which contains the user input
+   */
   EditText inputName;
-  AccountManager accountManager = new AccountManager();
+
+  /**
+   * Shared preference used to determine background colour
+   */
   SharedPreferences mPreferences;
+
+  /**
+   * Text displayed to show the success of the create account button
+   */
   TextView textView;
 
+  /**
+   * Determines the existence of a users account on the system and creates new accounts
+   */
+  private AccountManager accountManager = new AccountManager();
+
+  /**
+   * Code to execute when the Activity is created.
+   *
+   * @param savedInstanceState A Bundle containing possibly previous states of this Activity.
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -31,6 +51,10 @@ public class CreateAccountActivity extends BaseActivity {
     }
   }
 
+  /**
+   * Creates a new account if one with the login name does not already exist.
+   * @param view the create account button's view
+   */
   public void createAccount(View view){
     Account tempAccount = accountManager.openExistingAccount(inputName.getText().toString(),
             getApplicationContext());
@@ -48,25 +72,14 @@ public class CreateAccountActivity extends BaseActivity {
     }
   }
 
-  /** Called when the user taps the "Create Account" or "Back" button */
+  /** Called when the user taps the "Back" button */
   public void toLoginMenu(View view) {
-    // The button with id R.id.createButton_CreateAccountActivity is still linked to this
-    // method. Recall the previous To-do associated with this button:
-
-    // Todo: create account (perhaps by passing info back to MainActivity).
-    //  May also send this back to main. For now it will do that.
-
-    // if()
-    // toMainMenu()
-
-    // Should probably create a new method for the R.id.createButton_CreateAccountActivity
-    // button OR check the id of the view parameter to determine what to do. But for now, as stated
-    // in the To-do, it will just call this method.
-
-    // Also recall that the button with id R.id.backButton_CreateAccountActivity is also
-    // linked to this method, as it should be.
-
     Intent intent = new Intent(this, LoginActivity.class);
     startActivity(intent);
+  }
+
+  /** Called when the user taps the "Back" button */
+  public void deleteData(View view) {
+    accountManager.deleteAccountData(getApplicationContext());
   }
 }

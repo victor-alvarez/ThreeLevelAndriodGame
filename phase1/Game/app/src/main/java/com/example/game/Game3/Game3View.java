@@ -45,7 +45,7 @@ public class Game3View extends SurfaceView implements Runnable {
      *
      * @param context the instance of the class that called created an instance of this class.
      */
-    public Game3View(Context context) {
+    Game3View(Context context) {
         super(context);
         activityContext = context;
         paint = new Paint();
@@ -92,7 +92,8 @@ public class Game3View extends SurfaceView implements Runnable {
         }
 
         //Ends the game and given method takes User to Game 3 Exit Activity.
-        ((Game3PlayActivity) activityContext).gameOver(gameObjectManager.checkWinner());
+        ((Game3PlayActivity) activityContext).gameOver(gameObjectManager.checkWinner(),
+                gameObjectManager.updateHitpoints(), gameObjectManager.getNumMoves());
     }
 
     /**

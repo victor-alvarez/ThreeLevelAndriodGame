@@ -3,6 +3,7 @@
     <string name="Option">Settings</string>
     <string name="Red">Red_Colour</string>
     <string name="Gray">Gray_Colour</string>
+    <string name="language_select">Select a Language</string>
     <string name="title_activity_login">Sign in</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
@@ -54,4 +55,19 @@
     <string name="player_took">"PLAYER TOOK "</string>
     <string name="enemy_took">"ENEMY TOOK "</string>
     <string name="damage">" DAMAGE"</string>
+    <string name="start_game">"Start Game"</string>
+    <string name="resume_game">"Resume Game"</string>
+    <string name="score">"TOTAL SCORE: "</string>
+    <string name="game">"GAMES: "</string>
+    <string name="life">"LIVES: "</string>
+    <string name="attack">"ATTACK"</string>
+    <string name="defend">"DEFEND"</string>
+    <string name="player">"PLAYER"</string>
+    <string name="enemy">"ENEMY"</string>
+    <string name="hp">" HP: "</string>
+    <string name="game_over">"Game Over"</string>
+    <string name="Choose_icon">Choose Icon</string>
+    <string name="male_icon">Male</string>
+    <string name="female_icon">Female</string>
+    <string name="robot_icon">Robot</string>
 </resources>

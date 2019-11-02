@@ -1,3 +1,5 @@
+/*
+ * SAVING FOR PHASE 2 COMING SOOOOOOOOON
 package com.example.game.Game1;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,9 +18,10 @@ public class ShopActivity extends BaseActivity {
     setContentView(R.layout.activity_shop);
   }
 
-  /** Called when the user taps the "X" button */
+   //Called when the user taps the "X" button
   public void toGame1Home(View view) {
     Intent intent = new Intent(this, Game1Activity.class);
     startActivity(intent);
   }
 }
+*/
