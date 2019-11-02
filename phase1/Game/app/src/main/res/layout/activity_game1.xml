@@ -38,7 +38,6 @@
         android:layout_height="105dp"
         android:layout_marginStart="120dp"
         android:layout_marginTop="296dp"
-        android:onClick="toShop"
         android:text="@string/game1_shop"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
