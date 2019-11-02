@@ -45,11 +45,6 @@ public class GameplayScene implements Scene {
     }
 
     @Override
-    public void terminate() {
-        SceneManager.ACTIVE_SCENE = 0;
-    }
-
-    @Override
     public void draw(Canvas canvas) {
         canvas.drawColor(Color.WHITE);
         startingPlat.draw(canvas);
