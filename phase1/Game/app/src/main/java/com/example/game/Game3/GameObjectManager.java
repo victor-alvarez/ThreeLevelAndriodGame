@@ -20,15 +20,74 @@ import java.util.concurrent.TimeUnit;
  */
 public class GameObjectManager {
 
+    /**
+     * The Resources needed to access some files in creating objects.
+     */
     private Resources res;
+
+    /**
+     * The Player CharacterObject who will be represented by the User.
+     */
     private CharacterObject player;
+
+    /**
+     * The Enemy CharacterObject who will be represented by the Computer AI.
+     */
     private CharacterObject enemy;
+
+    /**
+     * The Player's Health Bar.
+     */
     private HealthBarObject playerHealth;
+
+    /**
+     * The Enemy's Health Bar.
+     */
     private HealthBarObject enemyHealth;
+
+    /**
+     * The Attack Button.
+     */
     private Button attackButton;
+
+    /**
+     * The Defend Button.
+     */
     private Button defendButton;
+
+    /**
+     * Checks whether the Player decides to attack or not.
+     */
     private Boolean attack = false;
+
+    /**
+     * Checks whether the Player decides to defend or not.
+     */
     private Boolean defend = false;
+
+    /**
+     * The statistic that tracks hitpoints at the end (0 if User loses, 2*remaing Health Level if
+     * player wins).
+     */
+    private int hitpoints = 0;
+
+    /**
+     * Getter for hitpoints.
+     *
+     * @return hitpoints : The hitpoints for the Player.
+     */
+    public int getHitpoints() {
+        return hitpoints;
+    }
+
+    /**
+     * Setter for hitpoints.
+     *
+     * @param hitpoints : The hitpoints for the Player.
+     */
+    public void setHitpoints(int hitpoints) {
+        this.hitpoints = hitpoints;
+    }
 
     /**
      * Getter for isTurn.
@@ -50,7 +109,7 @@ public class GameObjectManager {
 
     private Boolean isTurn = true;
     private MoveTextObject moveTextObject;
-    private int[] enemyDamage = {5, 9, 12, 10, 10, 10, 15, 15};
+    private int[] enemyDamage = {5, 9, 12, 11, 11, 10, 15, 15};
     private int hpDamage = 0;
 
     /**
@@ -187,8 +246,8 @@ public class GameObjectManager {
             int damage = decideEnemyDamage();
             if (attack) {
 
-                //Player does 10 HP damage if he/she tapped AttackButton
-                enemyHealth.update(10);
+                //Player does 12 HP damage if he/she tapped AttackButton
+                enemyHealth.update(12);
 
                 //Player gets full damage decided randomly by decideEnemyDamage method if Attack
                 // button was tapped.
@@ -199,8 +258,8 @@ public class GameObjectManager {
             }
             if (defend) {
 
-                //Player does 5 damage if he/she tapped DefendButton
-                enemyHealth.update(5);
+                //Player does 7 damage if he/she tapped DefendButton
+                enemyHealth.update(7);
 
                 //Player gets half damage if decided to press Defend button.
                 moveTextObject.update(res.getString(R.string.enemy_took) + 5 +
@@ -260,7 +319,9 @@ public class GameObjectManager {
 
     /**
      * Check's which one of the CharacterObjects is the winner (The enemy or the Player) and return
-     * string that displays the result of the game.
+     * string that displays the result of the game. Also updates the hitpoints for the player.
+     *
+     * @return result : The result of the game.
      */
     String checkWinner() {
         if (playerHealth.getHealthLevel() == 0) {
@@ -268,5 +329,17 @@ public class GameObjectManager {
         } else {
             return res.getString(R.string.win);
         }
+    }
+
+    /**
+     * Updates the hitpoints after the game is done.
+     */
+    int updateHitpoints() {
+        if (playerHealth.getHealthLevel() == 0) {
+            setHitpoints(0);
+        } else {
+            setHitpoints(2 * playerHealth.getHealthLevel());
+        }
+        return getHitpoints();
     }
 }
