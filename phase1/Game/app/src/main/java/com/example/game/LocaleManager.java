@@ -8,33 +8,31 @@ import android.preference.PreferenceManager;
 
 import java.util.Locale;
 
-public class LocaleManager {
-    public static final String ENGLISH = "en";
-    public static final String FRENCH = "fr";
-    public static final String RUSSIAN = "ru";
-    public static final String SPANISH = "es";
-    public static final String LANGUAGE_KEY = "language_key";
+class LocaleManager {
+    private static final String LANGUAGE_KEY = "language_key";
+    static final String ENGLISH = "en";
+    static final String FRENCH = "fr";
+    static final String RUSSIAN = "ru";
 
     private final SharedPreferences prefs;
 
-    public LocaleManager(Context context) {
+    /** Creates a LocaleManager, which saves changed to global ChangedPreferences */
+    LocaleManager(Context context) {
         prefs = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public static Locale getLocale(Resources resources) {
-        Configuration configuration = resources.getConfiguration();
-        return configuration.getLocales().get(0);
-    }
-
-    public Context setLocale(Context context) {
+    /** sets the current language */
+    Context setLocale(Context context) {
         return updateResources(context, prefs.getString(LANGUAGE_KEY, ENGLISH));
     }
 
-    public Context setNewLocale(Context context, String language) {
-        prefs.edit().putString(LANGUAGE_KEY, language).commit();
-        return updateResources(context, language);
+    /** sets the language to the given language */
+    void setNewLocale(Context context, String language) {
+        prefs.edit().putString(LANGUAGE_KEY, language).apply();
+        updateResources(context, language);
     }
 
+    /** updates the language through baseActivity context */
     private Context updateResources(Context context, String language) {
         Locale locale = new Locale(language);
         Locale.setDefault(locale);

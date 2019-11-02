@@ -67,5 +67,8 @@
     <string name="start_game">Commence le jeu</string>
     <string name="title_activity_login">Connecter</string>
     <string name="username">Nom d\'utilisateur</string>
-    <string name="Choose_icon">Choisir un icon</string>
+    <string name="Choose_icon">Choisir une icône</string>
+    <string name="female_icon">Femelle</string>
+    <string name="male_icon">Mâle</string>
+    <string name="robot_icon">Robot</string>
 </resources>

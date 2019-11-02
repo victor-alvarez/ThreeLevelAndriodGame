@@ -55,7 +55,7 @@ public class OptionsActivity extends BaseActivity {
     changeLang.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        showChangeLanguageDialog(v.getContext());
+        showChangeLanguageDialog();
       }
     });
 
@@ -96,7 +96,8 @@ public class OptionsActivity extends BaseActivity {
     startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
   }
 
-  private void showChangeLanguageDialog(final Context context) {
+  /** Creates list dialog to choose new language */
+  private void showChangeLanguageDialog() {
     final String[] listItems = {"Francais", "English", "русский"};
     AlertDialog.Builder mBuilder = new AlertDialog.Builder(OptionsActivity.this);
     mBuilder.setTitle("Choose Language...");
@@ -122,8 +123,10 @@ public class OptionsActivity extends BaseActivity {
 
   }
 
+  /** Creates list dialog to choose new icon */
   private void showChangeIconDialog(final Context context) {
-    final String[] listItems = {"Male", "Female", "Robot"};
+    final String[] listItems = {getString(R.string.male_icon), getString(R.string.female_icon),
+            getString(R.string.robot_icon)};
     AlertDialog.Builder mBuilder = new AlertDialog.Builder(OptionsActivity.this);
     mBuilder.setTitle("Choose Icon...");
     mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
