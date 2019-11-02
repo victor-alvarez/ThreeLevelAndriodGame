@@ -91,7 +91,7 @@ public class OptionsActivity extends BaseActivity {
   private void setNewLocale(String language) {
     localeManager.setNewLocale(this, language);
 
-    Intent i = new Intent(this, MainActivity.class);
+    Intent i = new Intent(this, OptionsActivity.class);
     i.putExtra("ac", account);
     startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
   }
