@@ -1,20 +1,28 @@
 package com.example.game.Game1;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.game.Account;
 import com.example.game.BaseActivity;
-import com.example.game.Game2.Game2Activity;
 import com.example.game.MainActivity;
 import com.example.game.R;
 
 public class Game1Activity extends BaseActivity {
+  /**
+   * The main UI for Game1.
+   */
+
+  // === Instance Variables ===
 
   Account account;
 
+  /**
+   * Creates layout that is displayed on screen.
+   *
+   * @param savedInstanceState the saved instance state.
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -27,7 +35,11 @@ public class Game1Activity extends BaseActivity {
     }
   }
 
-  /** Called when the user taps the "Play" button */
+  /**
+   * Called when the user taps the "Play" button
+   *
+   * @param view  the view that is connected to this method.
+   */
   public void playGame(View view) {
     Intent intent = new Intent(this, BallJumperActivity.class);
     intent.putExtra("ac", account);
@@ -49,7 +61,10 @@ public class Game1Activity extends BaseActivity {
     startActivity(intent);
   }*/
 
-  /** Called when the user taps the "To Main Menu" button */
+  /** Called when the user taps the "To Main Menu" button
+   * 
+   * @param view  the view that is connected to this method.
+   */
   public void toMainMenu(View view) {
     Intent intent = new Intent(this, MainActivity.class);
     intent.putExtra("ac", account);
