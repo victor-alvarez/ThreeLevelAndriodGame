@@ -2,7 +2,11 @@ package com.example.game.Game1;
 
 import android.graphics.Canvas;
 
+/**
+ * GameObject interface.
+ */
 public interface GameObject {
-    public void draw(Canvas canvas);
-    public void update();
+    void draw(Canvas canvas); // Draw GameObject
+
+    void update(); // Update GameObject
 }
