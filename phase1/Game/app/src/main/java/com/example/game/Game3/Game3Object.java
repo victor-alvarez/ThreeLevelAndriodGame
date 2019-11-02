@@ -22,7 +22,7 @@ abstract class Game3Object {
      *
      * @return x : The x position of the Object.
      */
-    public int getX() {
+    int getX() {
         return x;
     }
 
@@ -31,7 +31,7 @@ abstract class Game3Object {
      *
      * @param x The x position of the Object.
      */
-    public void setX(int x) {
+    void setX(int x) {
         this.x = x;
     }
 
@@ -40,7 +40,7 @@ abstract class Game3Object {
      *
      * @return y : The y position of the Object.
      */
-    public int getY() {
+    int getY() {
         return y;
     }
 
@@ -49,7 +49,7 @@ abstract class Game3Object {
      *
      * @param y The y position of the Object.
      */
-    public void setY(int y) {
+    void setY(int y) {
         this.y = y;
     }
 

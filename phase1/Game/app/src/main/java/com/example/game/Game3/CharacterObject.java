@@ -7,7 +7,7 @@ import android.graphics.Paint;
 /**
  * Character Object class. Subclass of abstract class Game3Object.
  */
-public class CharacterObject extends Game3Object {
+class CharacterObject extends Game3Object {
 
     /**
      * The physical appearance of the Character as a Bitmap.
@@ -19,7 +19,7 @@ public class CharacterObject extends Game3Object {
      *
      * @return sprite : The physical appearance of the Character.
      */
-    public Bitmap getSprite() {
+    Bitmap getSprite() {
         return sprite;
     }
 
@@ -28,7 +28,7 @@ public class CharacterObject extends Game3Object {
      *
      * @param sprite The physical appearance of the Character.
      */
-    public void setSprite(Bitmap sprite) {
+    void setSprite(Bitmap sprite) {
         this.sprite = sprite;
     }
 
@@ -39,7 +39,7 @@ public class CharacterObject extends Game3Object {
      * @param paint  The paint to use to draw on canvas.
      */
     @Override
-    public void draw(Canvas canvas, Paint paint) {
+    void draw(Canvas canvas, Paint paint) {
         canvas.drawBitmap(sprite, getX(), getY(), paint);
     }
 
@@ -47,7 +47,7 @@ public class CharacterObject extends Game3Object {
      * Overrides update for the CharacterObject from GabeObject class.
      */
     @Override
-    public void update() {
+    void update() {
 
     }
 }

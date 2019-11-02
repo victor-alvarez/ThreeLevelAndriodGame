@@ -81,7 +81,7 @@ public class GameObjectManager {
      *
      * @return numMoves : The number of moves for the Player.
      */
-    public int getNumMoves() {
+    int getNumMoves() {
         return numMoves;
     }
 
@@ -90,7 +90,7 @@ public class GameObjectManager {
      *
      * @param numMoves: The number of moves for the Player.
      */
-    public void setNumMoves(int numMoves) {
+    void setNumMoves(int numMoves) {
         this.numMoves = numMoves;
     }
 
@@ -99,7 +99,7 @@ public class GameObjectManager {
      *
      * @return hitpoints : The hitpoints for the Player.
      */
-    public int getHitpoints() {
+    int getHitpoints() {
         return hitpoints;
     }
 
@@ -108,7 +108,7 @@ public class GameObjectManager {
      *
      * @param hitpoints : The hitpoints for the Player.
      */
-    public void setHitpoints(int hitpoints) {
+    void setHitpoints(int hitpoints) {
         this.hitpoints = hitpoints;
     }
 
@@ -117,7 +117,7 @@ public class GameObjectManager {
      *
      * @return isTurn : Checks if it' the user's turn.
      */
-    public Boolean getTurn() {
+    Boolean getTurn() {
         return isTurn;
     }
 
@@ -126,7 +126,7 @@ public class GameObjectManager {
      *
      * @param turn : Checks if it' the user's turn.
      */
-    public void setTurn(Boolean turn) {
+    void setTurn(Boolean turn) {
         isTurn = turn;
     }
 
@@ -287,7 +287,7 @@ public class GameObjectManager {
                 //Player gets 2/3 the damage if decided to press Defend button.
                 moveTextObject.update(res.getString(R.string.enemy_took) + 5 +
                         res.getString(R.string.damage), Color.GREEN);
-                hpDamage = 2* (damage / 3);
+                hpDamage = 2 * (damage / 3);
                 defend = false;
             }
             playerHealth.update(hpDamage);

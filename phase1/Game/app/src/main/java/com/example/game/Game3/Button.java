@@ -40,7 +40,7 @@ public class Button extends Game3Object {
      *
      * @return btnName : The Button Name.
      */
-    public String getBtnName() {
+    String getBtnName() {
         return btnName;
     }
 
@@ -49,7 +49,7 @@ public class Button extends Game3Object {
      *
      * @param btnName The Button Name.
      */
-    public void setBtnName(String btnName) {
+    void setBtnName(String btnName) {
         this.btnName = btnName;
     }
 
@@ -58,7 +58,7 @@ public class Button extends Game3Object {
      *
      * @return textColor : The color of the Button Label.
      */
-    public int getTextColor() {
+    int getTextColor() {
         return textColor;
     }
 
@@ -67,7 +67,7 @@ public class Button extends Game3Object {
      *
      * @param textColor : The color of the Button Label.
      */
-    public void setTextColor(int textColor) {
+    void setTextColor(int textColor) {
         this.textColor = textColor;
     }
 
@@ -76,7 +76,7 @@ public class Button extends Game3Object {
      *
      * @return btnColor : the color of the Button.
      */
-    public int getBtnColor() {
+    int getBtnColor() {
         return btnColor;
     }
 
@@ -85,7 +85,7 @@ public class Button extends Game3Object {
      *
      * @param color The color of the Button.
      */
-    public void setBtnColor(int color) {
+    void setBtnColor(int color) {
         this.btnColor = color;
     }
 
@@ -103,7 +103,7 @@ public class Button extends Game3Object {
      *
      * @param active Sets the button active or not.
      */
-    public void setActive(boolean active) {
+    void setActive(boolean active) {
         this.active = active;
     }
 
@@ -113,7 +113,7 @@ public class Button extends Game3Object {
      *
      * @return button : The physical representation of the Button.
      */
-    public Rect getButton() {
+    Rect getButton() {
         return button;
     }
 
@@ -122,7 +122,7 @@ public class Button extends Game3Object {
      *
      * @param button The physical representation of the Button.
      */
-    public void setButton(Rect button) {
+    void setButton(Rect button) {
         this.button = button;
     }
 

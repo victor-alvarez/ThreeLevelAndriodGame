@@ -6,7 +6,7 @@ import android.graphics.Paint;
 /**
  * A Move Text Game 3 Object class that displays the Move a Character makes
  */
-public class MoveTextObject extends Game3Object {
+class MoveTextObject extends Game3Object {
 
     /**
      * The color of the Text to display.
@@ -23,7 +23,7 @@ public class MoveTextObject extends Game3Object {
      *
      * @return textColor : The color of the Text to display.
      */
-    public int getTextColor() {
+    int getTextColor() {
         return textColor;
     }
 
@@ -32,7 +32,7 @@ public class MoveTextObject extends Game3Object {
      *
      * @param textColor The color of the Text to display.
      */
-    public void setTextColor(int textColor) {
+    void setTextColor(int textColor) {
         this.textColor = textColor;
     }
 
@@ -41,7 +41,7 @@ public class MoveTextObject extends Game3Object {
      *
      * @return moveText : The Text to display.
      */
-    public String getMoveText() {
+    String getMoveText() {
         return moveText;
     }
 
@@ -50,7 +50,7 @@ public class MoveTextObject extends Game3Object {
      *
      * @param moveText : The Text to display.
      */
-    public void setMoveText(String moveText) {
+    void setMoveText(String moveText) {
         this.moveText = moveText;
     }
 

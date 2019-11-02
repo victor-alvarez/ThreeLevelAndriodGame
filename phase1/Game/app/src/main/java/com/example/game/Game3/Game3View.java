@@ -45,7 +45,7 @@ public class Game3View extends SurfaceView implements Runnable {
      *
      * @param context the instance of the class that called created an instance of this class.
      */
-    public Game3View(Context context) {
+    Game3View(Context context) {
         super(context);
         activityContext = context;
         paint = new Paint();

@@ -11,7 +11,7 @@ import static java.lang.StrictMath.max;
 /**
  * A Health Bar Game 3 Object class.
  */
-public class HealthBarObject extends Game3Object {
+class HealthBarObject extends Game3Object {
 
     /**
      * Color of the Health Bar
@@ -38,7 +38,7 @@ public class HealthBarObject extends Game3Object {
      *
      * @return healthLevel : The health level of the Health Bar.
      */
-    public int getHealthLevel() {
+    int getHealthLevel() {
         return healthLevel;
     }
 
@@ -47,7 +47,7 @@ public class HealthBarObject extends Game3Object {
      *
      * @param healthLevel The health level of this Health Bar.
      */
-    public void setHealthLevel(int healthLevel) {
+    void setHealthLevel(int healthLevel) {
         this.healthLevel = healthLevel;
     }
 
@@ -56,7 +56,7 @@ public class HealthBarObject extends Game3Object {
      *
      * @return playerName: The name of the Player with this Health Bar.
      */
-    public String getPlayerName() {
+    String getPlayerName() {
         return playerName;
     }
 
@@ -65,7 +65,7 @@ public class HealthBarObject extends Game3Object {
      *
      * @param playerName The name of the Player with this Health Bar.
      */
-    public void setPlayerName(String playerName) {
+    void setPlayerName(String playerName) {
         this.playerName = playerName;
     }
 
@@ -74,7 +74,7 @@ public class HealthBarObject extends Game3Object {
      *
      * @return textSize : the size of the text that displays the health level.
      */
-    public int getTextSize() {
+    int getTextSize() {
         return textSize;
     }
 
@@ -83,7 +83,7 @@ public class HealthBarObject extends Game3Object {
      *
      * @param textSize : the size of the text that displays the health level.
      */
-    public void setTextSize(int textSize) {
+    void setTextSize(int textSize) {
         this.textSize = textSize;
     }
 
@@ -92,7 +92,7 @@ public class HealthBarObject extends Game3Object {
      *
      * @return color : the color of the Health Bar.
      */
-    public int getColor() {
+    int getColor() {
         return color;
     }
 
@@ -101,7 +101,7 @@ public class HealthBarObject extends Game3Object {
      *
      * @param color The color of the Health Bar.
      */
-    public void setColor(int color) {
+    void setColor(int color) {
         this.color = color;
     }
 
@@ -112,7 +112,7 @@ public class HealthBarObject extends Game3Object {
      * @param paint  The paint to use to draw on canvas.
      */
     @Override
-    public void draw(Canvas canvas, Paint paint) {
+    void draw(Canvas canvas, Paint paint) {
         paint.setColor(color);
         paint.setTextSize(textSize);
         canvas.drawText(playerName.toUpperCase() + getHealthLevel(), getX(), getY(), paint);
@@ -122,7 +122,7 @@ public class HealthBarObject extends Game3Object {
      * Overridden method that updates the Health Bar object.
      */
     @Override
-    public void update() {
+    void update() {
 
     }
 
@@ -131,7 +131,7 @@ public class HealthBarObject extends Game3Object {
      *
      * @param damage The amount of health to reduce from the health level.
      */
-    public void update(int damage) {
+    void update(int damage) {
         setHealthLevel(max(0, getHealthLevel() - damage));
     }
 }
