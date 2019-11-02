@@ -16,31 +16,23 @@ public class OrientationData implements SensorEventListener {
     private float[] orientation = new float[3];
     private float[] startOrientation = null;
 
-    public OrientationData() {
+    OrientationData() {
         manager = (SensorManager) Constants.CURRENT_CONTEXT.getSystemService(Context.SENSOR_SERVICE);
+        assert manager != null;
         accelerometer = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         magnometer = manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
     }
 
-    public float[] getOrientation() {
+    float[] getOrientation() {
         return orientation;
     }
 
-    public float[] getStartOrientation() {
+    float[] getStartOrientation() {
         return startOrientation;
     }
 
-    public void newGame() {
+    void newGame() {
         startOrientation = null;
-    }
-
-    public void register() {
-        manager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
-        manager.registerListener(this, magnometer, SensorManager.SENSOR_DELAY_GAME);
-    }
-
-    public void pause() {
-        manager.unregisterListener(this);
     }
 
     @Override
@@ -67,4 +59,15 @@ public class OrientationData implements SensorEventListener {
             }
         }
     }
+
+    /**
+     public void register() {
+     manager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
+     manager.registerListener(this, magnometer, SensorManager.SENSOR_DELAY_GAME);
+     }
+
+     public void pause() {
+     manager.unregisterListener(this);
+     }
+     */
 }
