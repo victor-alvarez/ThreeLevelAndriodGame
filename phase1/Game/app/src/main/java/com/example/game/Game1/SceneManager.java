@@ -2,7 +2,6 @@ package com.example.game.Game1;
 
 import android.graphics.Canvas;
 import android.view.MotionEvent;
-import android.view.SurfaceView;
 
 import java.util.ArrayList;
 
