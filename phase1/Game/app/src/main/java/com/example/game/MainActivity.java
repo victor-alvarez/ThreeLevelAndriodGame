@@ -3,6 +3,7 @@ package com.example.game;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.game.Game1.Game1Activity;
@@ -40,8 +41,18 @@ public class MainActivity extends BaseActivity {
 
     account = (Account) getIntent().getSerializableExtra("ac");
 
+    ImageView icon = findViewById(R.id.User_Icon);
+
     if (account.getCustomization()[0] == 1) {
       getWindow().getDecorView().setBackgroundResource(R.color.background1);
+    }
+
+    if (account.getCustomization()[2] == 0){
+      icon.setImageResource(R.drawable.user_male);
+    } else if (account.getCustomization()[2] == 0){
+      icon.setImageResource(R.drawable.user_female);
+    } else{
+      icon.setImageResource(R.drawable.robot);
     }
 
     addCoun = findViewById(R.id.addCoun_MainActivity);
