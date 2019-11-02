@@ -38,6 +38,7 @@ public class Riddle1 extends BaseActivity {
     /** Called when the user taps any other button */
     public void wrongGuess1(View view) {
         //account.decrementHitPoints(1, context);
+        //if (account.save[1] ==0) {//lose screen}
         Intent intent = new Intent(this, Wrong1.class);
         intent.putExtra("ac", account);
         startActivity(intent);

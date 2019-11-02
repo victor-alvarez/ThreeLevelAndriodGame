@@ -30,6 +30,7 @@ public class Riddle2 extends BaseActivity {
     /** Called when the user taps the "McMurdo Dry Valleys, Antarctica" button */
     public void rightGuess2(View view) {
         //account.incrementScore(10, context);
+        //if (account.save[1] ==0) {//lose screen}
         Intent intent = new Intent(this, Riddle3.class);
         intent.putExtra("ac", account);
         startActivity(intent);

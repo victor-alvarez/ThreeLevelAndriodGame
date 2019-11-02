@@ -50,4 +50,9 @@
     <string name="A12">"Один выше"</string>
     <string name="A13">"Ни одного выше"</string>
     <string name="A14">"Ни одного выше"</string>
+    <string name="win">"ПОБЕДА!!!"</string>
+    <string name="lost">"ПОРАЖЕНИЕ!"</string>
+    <string name="player_took">"Игрок взял "</string>
+    <string name="enemy_took">"Противник взял "</string>
+    <string name="damage">" урон"</string>
 </resources>
