@@ -31,13 +31,14 @@ public class LocaleManager {
     }
 
     public Context setNewLocale(Context context, String language) {
-        prefs.edit().putString(LANGUAGE_KEY, language).apply();
+        prefs.edit().putString(LANGUAGE_KEY, language).commit();
         return updateResources(context, language);
     }
 
     private Context updateResources(Context context, String language) {
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
+
         Resources resources = context.getResources();
         Configuration configuration = new Configuration(resources.getConfiguration());
         configuration.setLocale(locale);

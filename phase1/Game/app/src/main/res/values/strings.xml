@@ -3,6 +3,7 @@
     <string name="Option">Settings</string>
     <string name="Red">Red_Colour</string>
     <string name="Gray">Gray_Colour</string>
+    <string name="language_select">Select a Language</string>
     <string name="title_activity_login">Sign in</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>

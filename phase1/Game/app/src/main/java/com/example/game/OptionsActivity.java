@@ -1,12 +1,16 @@
 package com.example.game;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 
 /**
@@ -32,12 +36,20 @@ public class OptionsActivity extends BaseActivity {
    * @param savedInstanceState A Bundle containing possibly previous states of this Activity.
    */
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_options);
 
     account = (Account) getIntent().getSerializableExtra("ac");
     mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+    Button changeLang = findViewById(R.id.language_select_button);
+    changeLang.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        showChangeLanguageDialog(v.getContext());
+      }
+    });
 
     if (account.getCustomization()[0] == 1) {
       getWindow().getDecorView().setBackgroundResource(R.color.background1);
@@ -66,6 +78,40 @@ public class OptionsActivity extends BaseActivity {
         break;
     }
     mEditor.apply();
+  }
+
+  private void setNewLocale(String language) {
+    localeManager.setNewLocale(this, language);
+
+    Intent i = new Intent(this, MainActivity.class);
+    i.putExtra("ac", account);
+    startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+  }
+
+  private void showChangeLanguageDialog(final Context context) {
+    final String[] listItems = {"Francais", "English", "русский"};
+    AlertDialog.Builder mBuilder = new AlertDialog.Builder(OptionsActivity.this);
+    mBuilder.setTitle("Choose Language...");
+    mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+      @Override
+      public void onClick(DialogInterface dialog, int which) {
+        if(which == 0){
+          setNewLocale(LocaleManager.FRENCH);
+        }
+        else if(which == 1){
+          setNewLocale(LocaleManager.ENGLISH);
+        }
+        else if(which == 2){
+          setNewLocale(LocaleManager.RUSSIAN);
+        }
+        dialog.dismiss();
+      }
+    });
+
+    AlertDialog mDialog = mBuilder.create();
+
+    mDialog.show();
+
   }
 
   /** Called when the user taps the "Back" button */

@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Game</string>
+    <string name="Red">Couleur Rouge</string>
+    <string name="win">VOUS AVEZ GANGER!</string>
+    <string name="welcome">Bienvenue!</string>
+    <string name="next1">Jeux 2</string>
+    <string name="next2">Jeux 3</string>
+    <string name="player">JOUEUR</string>
+    <string name="player_took">JOUEUR A PRIS</string>
 </resources>
