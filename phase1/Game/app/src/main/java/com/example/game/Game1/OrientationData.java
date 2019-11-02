@@ -49,14 +49,14 @@ public class OrientationData implements SensorEventListener {
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             accelOutput = event.values;
-        }
-        else if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+        } else if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
             magOutput = event.values;
         }
         if (accelOutput != null && magOutput != null) {
