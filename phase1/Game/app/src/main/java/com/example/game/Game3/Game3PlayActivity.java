@@ -9,6 +9,7 @@ import android.view.WindowManager;
 
 import com.example.game.Account;
 import com.example.game.BaseActivity;
+import com.example.game.GameOver;
 import com.example.game.R;
 
 /**
@@ -77,8 +78,11 @@ public class Game3PlayActivity extends BaseActivity {
         intent.putExtra("EXTRA_WINNER", winner);
         account.incrementLevel(getApplicationContext());
         account.incrementScore(hitpoints, getApplicationContext());
-        //TODO: add hit point decrement
-        //account.decrementHitPoints();
+        account.decrementHitPoints(100 - hitpoints, getApplicationContext());
+        if (account.getSave()[1] <= 0){
+            //Ran out of lives
+            intent = new Intent(this, GameOver.class);
+        }
         intent.putExtra("ac", account);
         startActivity(intent);
     }

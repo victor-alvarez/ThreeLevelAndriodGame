@@ -9,6 +9,7 @@ import android.view.WindowManager;
 
 import com.example.game.Account;
 import com.example.game.BaseActivity;
+import com.example.game.GameOver;
 
 public class BallJumperActivity extends BaseActivity {
 
@@ -34,9 +35,14 @@ public class BallJumperActivity extends BaseActivity {
   public void gameOver(int score, int hitPoints){
     Intent intent = new Intent(this, GameOverActivity.class);
     intent.putExtra("SCORE", score);
+    account.incrementLevel(getApplicationContext());
     account.incrementScore(score, getApplicationContext());
     account.decrementHitPoints(hitPoints, getApplicationContext());
     account.incrementGamesPlayed(getApplicationContext());
+    if (account.getSave()[1] <= 0){
+      //Ran out of lives
+      intent = new Intent(this, GameOver.class);
+    }
     intent.putExtra("ac", account);
     startActivity(intent);
   }
