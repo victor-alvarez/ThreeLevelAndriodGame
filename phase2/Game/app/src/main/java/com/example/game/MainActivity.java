@@ -21,13 +21,13 @@ public class MainActivity extends BaseActivity {
     /**
      * The player's account. It holds information about the player and can record its information
      */
-    Account account;
+    private Account account;
 
     /**
      * Text displaying player stats. addCoun is for addition counter, a counter for number of games
      * played including retries.
      */
-    TextView addCoun, lives, scores;
+    private TextView addCoun, lives, scores;
     ;
 
     /**

@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class GameOver extends AppCompatActivity {
 
-    Account account;
+    private Account account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

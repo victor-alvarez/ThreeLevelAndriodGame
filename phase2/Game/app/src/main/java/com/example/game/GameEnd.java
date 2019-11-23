@@ -9,12 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class GameEnd extends AppCompatActivity {
 
-    Account account;
+    private Account account;
 
     /**
      * Text displaying player stats
      */
-    TextView lives, scores;
+    private TextView lives, scores;
 
     /**
      * Code to execute when the Activity is created.

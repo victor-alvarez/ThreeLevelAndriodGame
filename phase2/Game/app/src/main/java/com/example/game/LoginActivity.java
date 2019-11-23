@@ -17,17 +17,17 @@ public class LoginActivity extends BaseActivity {
     /**
      * Text field which contains the user input
      */
-    EditText inputName;
+    private EditText inputName;
 
     /**
      * Shared preference used to determine background colour
      */
-    SharedPreferences mPreferences;
+    private SharedPreferences mPreferences;
 
     /**
      * Text displayed to show if the input is not an existing account
      */
-    TextView textView;
+    private TextView textView;
 
     /**
      * Determines the existence of a users account on the system and creates an account object for

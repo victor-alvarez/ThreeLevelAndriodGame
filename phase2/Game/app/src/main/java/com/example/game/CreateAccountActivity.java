@@ -13,17 +13,17 @@ public class CreateAccountActivity extends BaseActivity {
     /**
      * Text field which contains the user input
      */
-    EditText inputName;
+    private EditText inputName;
 
     /**
      * Shared preference used to determine background colour
      */
-    SharedPreferences mPreferences;
+    private SharedPreferences mPreferences;
 
     /**
      * Text displayed to show the success of the create account button
      */
-    TextView textView;
+    private TextView textView;
 
     /**
      * Determines the existence of a users account on the system and creates new accounts

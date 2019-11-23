@@ -22,13 +22,13 @@ public class OptionsActivity extends BaseActivity {
      * Share preferences allows for access to these variables anywhere, even outside of where the
      * account in logged in
      */
-    SharedPreferences mPreferences;
-    SharedPreferences.Editor mEditor;
+    private SharedPreferences mPreferences;
+    private SharedPreferences.Editor mEditor;
 
     /**
      * The player's account. It holds information about the player and can record its information
      */
-    Account account;
+    private Account account;
 
     /**
      * Code to execute when the Activity is created.
