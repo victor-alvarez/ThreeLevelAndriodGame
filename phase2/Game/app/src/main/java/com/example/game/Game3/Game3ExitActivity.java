@@ -1,7 +1,5 @@
 package com.example.game.Game3;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,7 +9,6 @@ import android.widget.TextView;
 import com.example.game.Account;
 import com.example.game.BaseActivity;
 import com.example.game.GameEnd;
-import com.example.game.MainActivity;
 import com.example.game.R;
 
 /**

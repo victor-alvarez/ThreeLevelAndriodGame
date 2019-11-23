@@ -10,9 +10,7 @@ import android.view.MotionEvent;
 
 import com.example.game.R;
 
-import java.lang.reflect.Array;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 
 /**

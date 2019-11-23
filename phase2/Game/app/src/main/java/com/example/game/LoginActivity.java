@@ -1,7 +1,5 @@
 package com.example.game;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -57,7 +55,9 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
-    /** Called when the user taps the "Select Account" button */
+    /**
+     * Called when the user taps the "Select Account" button
+     */
     public void login(View view) {
         Account account;
         account = accountManager.openExistingAccount(inputName.getText().toString(),
@@ -73,7 +73,9 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
-    /** Called when the user taps the "Create Account" button */
+    /**
+     * Called when the user taps the "Create Account" button
+     */
     public void createAccount(View view) {
         Intent intent = new Intent(this, CreateAccountActivity.class);
         startActivity(intent);
