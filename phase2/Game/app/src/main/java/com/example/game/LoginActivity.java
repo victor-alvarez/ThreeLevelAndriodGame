@@ -12,7 +12,7 @@ import android.widget.TextView;
  * Login activity for login the user in. Lets the user enter a username and if it exists they may
  * then sign into that account and play the game.
  */
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements LoginActions{
 
     /**
      * Text field which contains the user input
@@ -36,6 +36,11 @@ public class LoginActivity extends BaseActivity {
     private AccountManager accountManager = new AccountManager();
 
     /**
+     * Presenter which interacts with the login for this activity.
+     */
+    private LoginPresenter loginPresenter;
+
+    /**
      * Code to execute when the Activity is created.
      *
      * @param savedInstanceState A Bundle containing possibly previous states of this Activity.
@@ -47,6 +52,7 @@ public class LoginActivity extends BaseActivity {
 
         inputName = findViewById(R.id.accountNameText_LoginActivity);
         textView = findViewById(R.id.textView_LoginActivity);
+        loginPresenter = new LoginPresenter(this, new LoginUseCases());
 
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (mPreferences.getInt("Colour", 0) == 1) {
@@ -56,21 +62,11 @@ public class LoginActivity extends BaseActivity {
     }
 
     /**
-     * Called when the user taps the "Select Account" button
+     * Called when the user taps the "Select Account" button. Will attempt a login based off the
+     * currently entered in textfield inputName.
      */
     public void login(View view) {
-        Account account;
-        account = accountManager.openExistingAccount(inputName.getText().toString(),
-                getApplicationContext());
-
-        //If account with name exists, login with that account. If not display that is does not.
-        if (account != null) {
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("ac", account);
-            startActivity(intent);
-        } else {
-            textView.setText(R.string.invalid_username);
-        }
+        loginPresenter.login(inputName.getText().toString(), getApplicationContext());
     }
 
     /**
@@ -78,6 +74,18 @@ public class LoginActivity extends BaseActivity {
      */
     public void createAccount(View view) {
         Intent intent = new Intent(this, CreateAccountActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void incorrectUsername() {
+        textView.setText(R.string.invalid_username);
+    }
+
+    @Override
+    public void moveToMainMenu(Account account) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("ac", account);
         startActivity(intent);
     }
 }
