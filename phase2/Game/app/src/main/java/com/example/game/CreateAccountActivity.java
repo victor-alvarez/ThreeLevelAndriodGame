@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class CreateAccountActivity extends BaseActivity {
+import com.example.game.Domain.CreateAccountActions;
+
+public class CreateAccountActivity extends BaseActivity implements CreateAccountActions {
 
     /**
      * Text field which contains the user input
@@ -30,6 +32,8 @@ public class CreateAccountActivity extends BaseActivity {
      */
     private AccountManager accountManager = new AccountManager();
 
+    private CreateAccountPresenter presenter;
+
     /**
      * Code to execute when the Activity is created.
      *
@@ -43,6 +47,8 @@ public class CreateAccountActivity extends BaseActivity {
         inputName = findViewById(R.id.createName_CreateAccountActivity);
         textView = findViewById(R.id.textView_CreateAccountActivity);
 
+        presenter = new CreateAccountPresenter(this, new CreateAccountUseCases());
+
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (mPreferences.getInt("Colour", 0) == 1) {
             getWindow().getDecorView().setBackgroundResource(R.color.background1);
@@ -55,20 +61,7 @@ public class CreateAccountActivity extends BaseActivity {
      * @param view the create account button's view
      */
     public void createAccount(View view) {
-        Account tempAccount = accountManager.openExistingAccount(inputName.getText().toString(),
-                getApplicationContext());
-        if (tempAccount == null) {
-            accountManager.createNewAccount(inputName.getText().toString(), getApplicationContext());
-            textView.setText(getResources().getText(R.string.account_created));
-            textView.setTextColor(getColor(R.color.font1));
-        } else {
-            textView.setText(getResources().getText(R.string.account_already_exists));
-            if (mPreferences.getInt("Colour", 0) == 1) {
-                textView.setTextColor(getResources().getColor(R.color.background2));
-            } else {
-                textView.setTextColor(getColor(R.color.background1));
-            }
-        }
+        presenter.createAccount(inputName.getText().toString(), getApplicationContext());
     }
 
     /**
@@ -84,5 +77,27 @@ public class CreateAccountActivity extends BaseActivity {
      */
     public void deleteData(View view) {
         accountManager.deleteAccountData(getApplicationContext());
+    }
+
+    /**
+     * If account creation has failed then display a message stating so for the user.
+     */
+    @Override
+    public void accountCreationFailed() {
+        textView.setText(getResources().getText(R.string.account_already_exists));
+        if (mPreferences.getInt("Colour", 0) == 1) {
+            textView.setTextColor(getResources().getColor(R.color.background2));
+        } else {
+            textView.setTextColor(getColor(R.color.background1));
+        }
+    }
+
+    /**
+     * If account create has succeded display a message stating so for the user.
+     */
+    @Override
+    public void accountCreationSuccess() {
+        textView.setText(getResources().getText(R.string.account_created));
+        textView.setTextColor(getColor(R.color.font1));
     }
 }

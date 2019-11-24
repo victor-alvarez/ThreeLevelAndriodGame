@@ -2,11 +2,14 @@ package com.example.game;
 
 import android.content.Context;
 
+import com.example.game.Domain.LoginActions;
+import com.example.game.Domain.LoginReactor;
+
 /**
  * Presenter for LoginActivity. It communicates with LoginActivity to determine actions related
  * to logging in.
  */
-public class LoginPresenter implements LoginReactor{
+public class LoginPresenter implements LoginReactor {
 
     /**
      * UI which this presenter interacts with.

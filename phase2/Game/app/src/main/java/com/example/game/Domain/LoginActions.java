@@ -1,9 +1,11 @@
-package com.example.game;
+package com.example.game.Domain;
+
+import com.example.game.Account;
 
 /**
  * List of methods/capabilities of a login method.
  */
-interface LoginActions {
+public interface LoginActions {
     void incorrectUsername();
 
     abstract void moveToMainMenu(Account account);

@@ -8,11 +8,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.game.Domain.LoginActions;
+
 /**
  * Login activity for login the user in. Lets the user enter a username and if it exists they may
  * then sign into that account and play the game.
  */
-public class LoginActivity extends BaseActivity implements LoginActions{
+public class LoginActivity extends BaseActivity implements LoginActions {
 
     /**
      * Text field which contains the user input
@@ -22,6 +24,7 @@ public class LoginActivity extends BaseActivity implements LoginActions{
     /**
      * Shared preference used to determine background colour
      */
+    //TODO: Since all activities use this, move to superclass?
     private SharedPreferences mPreferences;
 
     /**
