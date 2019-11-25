@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.game.Domain.CreateAccountActions;
+import com.example.game.domain.CreateAccountActions;
 
 public class CreateAccountActivity extends BaseActivity implements CreateAccountActions {
 
@@ -47,7 +47,8 @@ public class CreateAccountActivity extends BaseActivity implements CreateAccount
         inputName = findViewById(R.id.createName_CreateAccountActivity);
         textView = findViewById(R.id.textView_CreateAccountActivity);
 
-        presenter = new CreateAccountPresenter(this, new CreateAccountUseCases());
+        presenter = new CreateAccountPresenter(this,
+                new CreateAccountUseCases(accountManager));
 
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (mPreferences.getInt("Colour", 0) == 1) {

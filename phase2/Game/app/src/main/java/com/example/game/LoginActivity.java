@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.game.Domain.LoginActions;
+import com.example.game.domain.LoginActions;
 
 /**
  * Login activity for login the user in. Lets the user enter a username and if it exists they may
@@ -55,7 +55,7 @@ public class LoginActivity extends BaseActivity implements LoginActions {
 
         inputName = findViewById(R.id.accountNameText_LoginActivity);
         textView = findViewById(R.id.textView_LoginActivity);
-        loginPresenter = new LoginPresenter(this, new LoginUseCases());
+        loginPresenter = new LoginPresenter(this, new LoginUseCases(accountManager));
 
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (mPreferences.getInt("Colour", 0) == 1) {

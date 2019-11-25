@@ -2,6 +2,8 @@ package com.example.game;
 
 import android.content.Context;
 
+import com.example.game.domain.AccountManagerInterface;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -13,7 +15,7 @@ import java.util.ArrayList;
 /**
  * Account manager that manages the creation and opening of accounts.
  */
-class AccountManager {
+class AccountManager implements AccountManagerInterface {
 
     /**
      * Creates new account with given login. Activates from Create Account button. Takes login from
@@ -22,7 +24,8 @@ class AccountManager {
      *
      * @param login of the Account.
      */
-    void createNewAccount(String login, Context context) {
+    @Override
+    public void createNewAccount(String login, Context context) {
         try {
             File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
             if (!saveFile.exists()) {
@@ -57,7 +60,8 @@ class AccountManager {
      * @return Array[boolean][Account]: account found => loaded Account, save file or account
      * missing => null.
      */
-    Account openExistingAccount(String login, Context context) {
+    @Override
+    public Account openExistingAccount(String login, Context context) {
         try {
             File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
             if (!saveFile.exists()) {

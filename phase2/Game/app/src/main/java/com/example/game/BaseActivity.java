@@ -1,6 +1,7 @@
 package com.example.game;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
@@ -45,5 +46,14 @@ public class BaseActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         localeManager.setLocale(this);
+    }
+
+    /**
+     * Moves to and starts desired activity
+     * @param baseActivity the activity we want to move to
+     */
+    protected void moveToNewActivity(BaseActivity baseActivity){
+        Intent intent = new Intent(this, baseActivity.getClass());
+        startActivity(intent);
     }
 }

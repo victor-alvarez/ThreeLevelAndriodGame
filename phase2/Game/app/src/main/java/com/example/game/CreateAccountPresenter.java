@@ -2,8 +2,8 @@ package com.example.game;
 
 import android.content.Context;
 
-import com.example.game.Domain.CreateAccountActions;
-import com.example.game.Domain.CreateAccountReactor;
+import com.example.game.domain.CreateAccountActions;
+import com.example.game.domain.CreateAccountReactor;
 
 /**
  * Presenter layer for account creations which communicates between the UI and Use Cases.

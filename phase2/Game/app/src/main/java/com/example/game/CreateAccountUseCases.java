@@ -2,7 +2,8 @@ package com.example.game;
 
 import android.content.Context;
 
-import com.example.game.Domain.CreateAccountReactor;
+import com.example.game.domain.AccountManagerInterface;
+import com.example.game.domain.CreateAccountReactor;
 
 /**
  * Performs the use cases of account creation
@@ -11,13 +12,13 @@ public class CreateAccountUseCases {
     /**
      * Determines the existence of a users account on the system and creates new accounts
      */
-    private AccountManager accountManager;
+    private AccountManagerInterface accountManager;
 
     /**
      * Creates a new CreateAccountUseCases and initializes the Account Manager
      */
-    CreateAccountUseCases(){
-        accountManager = new AccountManager();
+    CreateAccountUseCases(AccountManagerInterface accountManager){
+        this.accountManager = accountManager;
     }
 
     /**
