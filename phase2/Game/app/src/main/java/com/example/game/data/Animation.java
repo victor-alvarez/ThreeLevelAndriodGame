@@ -1,4 +1,4 @@
-package com.example.game.Game1;
+package com.example.game.data;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -34,14 +34,14 @@ public class Animation {
     /**
      * A getter method for isPlaying.
      */
-    boolean isPlaying() {
+    public boolean isPlaying() {
         return isPlaying;
     }
 
     /**
      * Sets isPlaying to true, frameIndex to 0, and lastFrame to the current time in milliseconds.
      */
-    void play() {
+    public void play() {
         isPlaying = true;
         frameIndex = 0;
         lastFrame = System.currentTimeMillis();
@@ -50,7 +50,7 @@ public class Animation {
     /**
      * Sets isPlaying to false.
      */
-    void stop() {
+    public void stop() {
         isPlaying = false;
     }
 

@@ -1,4 +1,4 @@
-package com.example.game.Game1;
+package com.example.game.domain;
 
 import android.graphics.Canvas;
 import android.view.MotionEvent;

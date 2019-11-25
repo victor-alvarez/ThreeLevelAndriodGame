@@ -1,7 +1,9 @@
-package com.example.game.Game1;
+package com.example.game.domain;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
+
+import com.example.game.data.Animation;
 
 public class AnimationManager {
     /**
@@ -18,7 +20,7 @@ public class AnimationManager {
      *
      * @param animations the array of animations that is stored.
      */
-    AnimationManager(Animation[] animations) {
+    public AnimationManager(Animation[] animations) {
         this.animations = animations;
     }
 
@@ -27,7 +29,7 @@ public class AnimationManager {
      *
      * @param index the index where we want to play the animation.
      */
-    void playAnim(int index) {
+    public void playAnim(int index) {
         for (int i = 0; i < animations.length; i++) {
             if (i == index) {
                 if (!animations[index].isPlaying()) {

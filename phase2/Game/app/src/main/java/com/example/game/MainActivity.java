@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.game.Game1.Game1Activity;
-import com.example.game.Game1.GameOverActivity;
+import com.example.game.presentation.views.Game1Activity;
+import com.example.game.presentation.views.GameOverActivity;
 import com.example.game.Game2.Game2Activity;
 import com.example.game.Game3.Game3Activity;
 import com.example.game.Game3.Game3ExitActivity;

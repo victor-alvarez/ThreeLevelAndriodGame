@@ -1,10 +1,11 @@
-package com.example.game.Game1;
+package com.example.game.data;
 
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+
 
 /**
  * OrientationData class.
@@ -22,7 +23,7 @@ public class OrientationData implements SensorEventListener {
     /**
      * Constructor
      */
-    OrientationData() {
+    public OrientationData() {
         SensorManager manager = (SensorManager) Constants.CURRENT_CONTEXT.getSystemService(Context.SENSOR_SERVICE);
         assert manager != null;
     }
@@ -30,21 +31,21 @@ public class OrientationData implements SensorEventListener {
     /**
      * @return - orientation
      */
-    float[] getOrientation() {
+    public float[] getOrientation() {
         return orientation;
     }
 
     /**
      * @return - startOrientation
      */
-    float[] getStartOrientation() {
+    public float[] getStartOrientation() {
         return startOrientation;
     }
 
     /**
      * starts newGame
      */
-    void newGame() {
+    public void newGame() {
         startOrientation = null;
     }
 

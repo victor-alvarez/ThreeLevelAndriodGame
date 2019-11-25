@@ -1,6 +1,10 @@
-package com.example.game.Game1;
+package com.example.game.domain;
 
 import android.graphics.Canvas;
+
+import com.example.game.data.Constants;
+import com.example.game.data.Obstacle;
+import com.example.game.data.RectPlayer;
 
 import java.util.ArrayList;
 

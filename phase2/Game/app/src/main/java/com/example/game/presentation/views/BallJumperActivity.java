@@ -1,4 +1,4 @@
-package com.example.game.Game1;
+package com.example.game.presentation.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.view.WindowManager;
 
 import com.example.game.Account;
 import com.example.game.BaseActivity;
+import com.example.game.data.Constants;
+import com.example.game.presentation.presenters.GamePanel;
 
 public class BallJumperActivity extends BaseActivity {
     /**

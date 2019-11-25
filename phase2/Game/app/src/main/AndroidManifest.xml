@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Game1.GameOverActivity" />
+        <activity android:name=".presentation.views.GameOverActivity" />
         <activity
             android:name=".Game3.Game3PlayActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -27,7 +27,7 @@
         <activity android:name=".Game1.ChooseBallActivity" />
         <activity android:name=".Game1.CustomizeActivity" />
         <activity
-            android:name=".Game1.BallJumperActivity"
+            android:name=".presentation.views.BallJumperActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".Game2.Game2Activity" />
         <activity android:name=".Game2.Riddle1" />
@@ -38,7 +38,7 @@
         <activity android:name=".Game2.Wrong3" />
         <activity android:name=".Game2.Win" />
         <activity android:name=".Game3.Game3Activity" />
-        <activity android:name=".Game1.Game1Activity" />
+        <activity android:name=".presentation.views.Game1Activity" />
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".OptionsActivity" />
         <activity android:name=".MainActivity" />

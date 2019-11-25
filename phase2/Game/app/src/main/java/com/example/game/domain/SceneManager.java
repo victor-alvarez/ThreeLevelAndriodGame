@@ -1,4 +1,4 @@
-package com.example.game.Game1;
+package com.example.game.domain;
 
 import android.graphics.Canvas;
 import android.view.MotionEvent;
@@ -19,7 +19,7 @@ public class SceneManager {
      * Constructor. Adds GameplayScene to list of scenes. In phase2, more scenes will be added which
      * means ore levels.
      */
-    SceneManager() {
+    public SceneManager() {
         ACTIVE_SCENE = 0;
         scenes.add(new GameplayScene());
     }
@@ -30,7 +30,7 @@ public class SceneManager {
      * @param event - event of the interaction with the screen (i.e., touch screen, let go of
      *              screen, etc.)
      */
-    void receiveTouch(MotionEvent event) {
+    public void receiveTouch(MotionEvent event) {
         scenes.get(ACTIVE_SCENE).receiveTouch(event);
     }
 

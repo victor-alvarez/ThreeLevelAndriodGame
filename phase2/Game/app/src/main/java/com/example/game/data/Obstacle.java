@@ -1,4 +1,4 @@
-package com.example.game.Game1;
+package com.example.game.data;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -24,7 +24,7 @@ public class Obstacle implements GameObject {
      * @param startX     - the starting x position of the obstacle
      * @param startY     - the starting y position of the obstacle
      */
-    Obstacle(int rectHeight, int color, int startX, int startY) {
+    public Obstacle(int rectHeight, int color, int startX, int startY) {
         this.color = color;
         //l,t,r,b
         rectangle = new Rect(startX, startY, startX + 100, startY + rectHeight);
@@ -33,14 +33,14 @@ public class Obstacle implements GameObject {
     /**
      * @return - rectangle
      */
-    Rect getRectangle() {
+    public Rect getRectangle() {
         return rectangle;
     }
 
     /**
      * @param y - Move obstacle vertical position by an increment of y
      */
-    void incrementY(float y) {
+    public void incrementY(float y) {
         rectangle.top += y;
         rectangle.bottom += y;
     }
@@ -49,7 +49,7 @@ public class Obstacle implements GameObject {
      * @param player - RectPlayer player to be checked collision with
      * @return - return true iff player's rectangle intersects with obstacles rectangle
      */
-    boolean playerCollide(RectPlayer player) {
+    public boolean playerCollide(RectPlayer player) {
         return Rect.intersects(rectangle, player.getRectangle());
     }
 
@@ -70,14 +70,14 @@ public class Obstacle implements GameObject {
     /**
      * Destroys Obstacle
      */
-    void destroy() {
+    public void destroy() {
         destroy = true;
     }
 
     /**
      * @return - whether Obstacle has been destroyed
      */
-    boolean checkDestoryed() {
+    public boolean checkDestoryed() {
         return destroy;
     }
 }

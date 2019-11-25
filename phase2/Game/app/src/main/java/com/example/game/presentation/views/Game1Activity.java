@@ -1,4 +1,4 @@
-package com.example.game.Game1;
+package com.example.game.presentation.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import com.example.game.Account;
 import com.example.game.BaseActivity;
 import com.example.game.MainActivity;
 import com.example.game.R;
+import com.example.game.presentation.views.BallJumperActivity;
 
 public class Game1Activity extends BaseActivity {
     /**

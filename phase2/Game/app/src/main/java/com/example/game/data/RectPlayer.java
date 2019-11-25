@@ -1,4 +1,4 @@
-package com.example.game.Game1;
+package com.example.game.data;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,6 +7,7 @@ import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.Rect;
 
+import com.example.game.domain.AnimationManager;
 import com.example.game.R;
 
 /**
@@ -25,7 +26,7 @@ public class RectPlayer implements GameObject {
      *
      * @param rectangle - the players rectangle
      */
-    RectPlayer(Rect rectangle) {
+    public RectPlayer(Rect rectangle) {
         this.rectangle = rectangle;
 
         Bitmap idleImg = BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.alienblue_badge1);
@@ -48,7 +49,7 @@ public class RectPlayer implements GameObject {
     /**
      * @return - this players rectangle
      */
-    Rect getRectangle() {
+    public Rect getRectangle() {
         return rectangle;
     }
 
