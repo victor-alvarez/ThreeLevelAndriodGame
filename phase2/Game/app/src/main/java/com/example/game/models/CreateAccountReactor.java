@@ -1,4 +1,4 @@
-package com.example.game.domain;
+package com.example.game.models;
 
 /**
  * Interface for reactions to the results of the Use Cases.

@@ -1,4 +1,4 @@
-package com.example.game.domain;
+package com.example.game.models;
 
 import com.example.game.Account;
 

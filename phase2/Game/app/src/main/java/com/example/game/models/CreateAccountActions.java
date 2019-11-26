@@ -1,4 +1,4 @@
-package com.example.game.domain;
+package com.example.game.models;
 
 /**
  * Interface which contains all the actions which the create account functionality should be able

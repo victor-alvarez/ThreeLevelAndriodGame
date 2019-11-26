@@ -2,8 +2,8 @@ package com.example.game;
 
 import android.content.Context;
 
-import com.example.game.domain.AccountManagerInterface;
-import com.example.game.domain.LoginReactor;
+import com.example.game.models.AccountManagerInterface;
+import com.example.game.models.LoginReactor;
 
 /**
  * Class which performs the use cases for logging in with accounts.

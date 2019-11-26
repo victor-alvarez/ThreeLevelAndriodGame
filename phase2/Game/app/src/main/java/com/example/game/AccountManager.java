@@ -2,7 +2,7 @@ package com.example.game;
 
 import android.content.Context;
 
-import com.example.game.domain.AccountManagerInterface;
+import com.example.game.models.AccountManagerInterface;
 
 import java.io.BufferedReader;
 import java.io.File;

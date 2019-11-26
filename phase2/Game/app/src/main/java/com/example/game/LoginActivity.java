@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.game.domain.LoginActions;
+import com.example.game.models.LoginActions;
 
 /**
  * Login activity for login the user in. Lets the user enter a username and if it exists they may

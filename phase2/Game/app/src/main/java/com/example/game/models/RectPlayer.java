@@ -1,4 +1,4 @@
-package com.example.game.data;
+package com.example.game.models;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,7 +7,6 @@ import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.Rect;
 
-import com.example.game.domain.AnimationManager;
 import com.example.game.R;
 
 /**

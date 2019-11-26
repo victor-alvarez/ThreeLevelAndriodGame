@@ -1,17 +1,17 @@
-package com.example.game.domain;
+package com.example.game.models;
 
 import android.graphics.Canvas;
 
-import com.example.game.data.Constants;
-import com.example.game.data.Obstacle;
-import com.example.game.data.RectPlayer;
+import com.example.game.models.Constants;
+import com.example.game.models.Obstacle;
+import com.example.game.models.RectPlayer;
 
 import java.util.ArrayList;
 
 /**
  * ObstacleManager class. Creates obstacles to be populated in game.
  */
-class ObstacleManager {
+public class ObstacleManager {
     // higher index = lower on screen = higher y value
 
     /**
@@ -30,7 +30,7 @@ class ObstacleManager {
      * @param obstacleHeight - height of obstacles
      * @param color          - color of obstacles
      */
-    ObstacleManager(int obstacleGap, int obstacleHeight, int color) {
+    public ObstacleManager(int obstacleGap, int obstacleHeight, int color) {
         this.obstacleGap = obstacleGap;
         this.obstacleHeight = obstacleHeight;
         this.color = color;
@@ -42,7 +42,7 @@ class ObstacleManager {
      * @param player - RectPlayer player to check collision with any of the obstacles
      * @return - true iff any obstacle in obstacles collides with player
      */
-    boolean playerCollide(RectPlayer player) {
+    public boolean playerCollide(RectPlayer player) {
         for (Obstacle ob : obstacles) {
             if (ob.playerCollide(player)) {
                 Constants.hitTile = ob;
@@ -55,7 +55,7 @@ class ObstacleManager {
     /**
      * Add obstacles below each other to bottom of the screen.
      */
-    void populateObstacles() {
+    public void populateObstacles() {
         int currY = Constants.SCREEN_HEIGHT * 2;
 
         while (currY > Constants.SCREEN_HEIGHT) {
@@ -87,7 +87,7 @@ class ObstacleManager {
     /**
      * Getter for list of obstacles
      **/
-    ArrayList<Obstacle> getObstacles() {
+    public ArrayList<Obstacle> getObstacles() {
         return obstacles;
     }
 

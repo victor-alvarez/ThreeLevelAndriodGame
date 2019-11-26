@@ -2,8 +2,8 @@ package com.example.game;
 
 import android.content.Context;
 
-import com.example.game.domain.LoginActions;
-import com.example.game.domain.LoginReactor;
+import com.example.game.models.LoginActions;
+import com.example.game.models.LoginReactor;
 
 /**
  * Presenter for LoginActivity. It communicates with LoginActivity to determine actions related

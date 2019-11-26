@@ -1,9 +1,9 @@
-package com.example.game.domain;
+package com.example.game.models;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
-import com.example.game.data.Animation;
+import com.example.game.models.Animation;
 
 public class AnimationManager {
     /**

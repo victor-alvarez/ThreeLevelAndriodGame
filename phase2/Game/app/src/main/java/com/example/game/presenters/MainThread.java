@@ -1,9 +1,9 @@
-package com.example.game.presentation.presenters;
+package com.example.game.presenters;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
-import com.example.game.presentation.presenters.GamePanel;
+import com.example.game.views.GamePanel;
 
 /**
  * MainThread class. Runs game loop under fps.
@@ -33,7 +33,7 @@ public class MainThread extends Thread {
     /**
      * @param running - sets running to be t/f
      */
-    void setRunning(boolean running) {
+    public void setRunning(boolean running) {
         this.running = running;
     }
 
