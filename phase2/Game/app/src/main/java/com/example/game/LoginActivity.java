@@ -69,6 +69,7 @@ public class LoginActivity extends BaseActivity implements LoginActions {
      * currently entered in textfield inputName.
      */
     public void login(View view) {
+        //TODO: pass in string, not context(since otherwise it breaks MVP)
         loginPresenter.login(inputName.getText().toString(), getApplicationContext());
     }
 

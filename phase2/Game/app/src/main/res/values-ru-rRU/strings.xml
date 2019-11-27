@@ -70,4 +70,5 @@
     <string name="Choose_icon">Выберите иконку</string>
     <string name="female_icon">Женщина</string>
     <string name="male_icon">Мужчина</string>
+    <string name="robot_icon">Robot</string>
 </resources>

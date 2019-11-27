@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.game.Game2.RiddleActivity;
 import com.example.game.views.Game1Activity;
 import com.example.game.views.GameOverActivity;
 import com.example.game.Game2.Game2Activity;

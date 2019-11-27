@@ -3,7 +3,7 @@ package com.example.game;
 import android.content.Context;
 
 import com.example.game.models.AccountManagerInterface;
-import com.example.game.models.LoginReactor;
+import com.example.game.models.LoginListener;
 
 /**
  * Class which performs the use cases for logging in with accounts.
@@ -23,7 +23,7 @@ class LoginUseCases {
      *                     accountManager
      */
     void login(final String username, Context context,
-                      LoginReactor loginReactor){
+                      LoginListener loginReactor){
         Account account = accountManager.openExistingAccount(username, context);
         if(account != null){
             loginReactor.correctUsername(account);

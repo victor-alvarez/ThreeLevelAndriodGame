@@ -3,13 +3,13 @@ package com.example.game;
 import android.content.Context;
 
 import com.example.game.models.LoginActions;
-import com.example.game.models.LoginReactor;
+import com.example.game.models.LoginListener;
 
 /**
  * Presenter for LoginActivity. It communicates with LoginActivity to determine actions related
  * to logging in.
  */
-public class LoginPresenter implements LoginReactor {
+public class LoginPresenter implements LoginListener {
 
     /**
      * UI which this presenter interacts with.
