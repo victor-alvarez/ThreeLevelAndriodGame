@@ -4,14 +4,6 @@ import android.content.Context;
 
 import com.example.game.models.AccountManagerInterface;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-
 /**
  * Account manager that manages the creation and opening of accounts.
  */
@@ -26,30 +18,7 @@ class AccountManager implements AccountManagerInterface {
      */
     @Override
     public void createNewAccount(String login, Context context) {
-        try {
-            File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
-            if (!saveFile.exists()) {
-                saveFile.createNewFile();
-                FileWriter saveAccount = new FileWriter(saveFile);
-                saveAccount.write("*Empty, 0, Empty 0, Empty, 0");
-                saveAccount.close();
-            }
-            FileReader loadAccountData = new FileReader(saveFile);
-            BufferedReader loadAccData = new BufferedReader(loadAccountData);
-            String line;
-            ArrayList<String> old = new ArrayList<>();
-            while ((line = loadAccData.readLine()) != null) {
-                old.add(line);
-            }
-            old.add(login + ", 0, 0, 0, 0, 200, 0, 0");
-            PrintWriter updateSave = new PrintWriter(saveFile);
-            for (String i : old) {
-                updateSave.println(i);
-            }
-            updateSave.close();
-        } catch (IOException error) {
-            error.printStackTrace();
-        }
+        AccountDataRepository.createNewAccount(login, context);
     }
 
     /**
@@ -62,39 +31,12 @@ class AccountManager implements AccountManagerInterface {
      */
     @Override
     public Account openExistingAccount(String login, Context context) {
-        try {
-            File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
-            if (!saveFile.exists()) {
-                return null;
-            }
-            FileReader loadAccountData = new FileReader(saveFile);
-            BufferedReader loadAccData = new BufferedReader(loadAccountData);
-            String line;
-            while ((line = loadAccData.readLine()) != null) {
-                int i = line.indexOf(", ");
-                String s = line.substring(0, i);
-                if (login.equals(s)) {
-                    String[] l = line.split(", ");
-                    String[] cust = {l[1], l[2], l[3]};
-                    String[] save = {l[4], l[5], l[6], l[7]};
-                    Account acc = new Account(login, cust, save);
-                    loadAccData.close();
-                    return acc;
-                }
-            }
-        } catch (IOException error) {
-            error.printStackTrace();
-            System.out.println("Can't find account");
-        }
-        return null;
+        return AccountDataRepository.openExistingAccount(login, context);
     }
 
     // Deletes all accounts
     void deleteAccountData(Context context) {
-        File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
-        if (saveFile.delete()) {
-            System.out.println("Successfully deleted");
-        }
+        AccountDataRepository.deleteAccountData(context);
     }
 
   /* For Phase 2. Left here as rough methods we were unable to implement in time
