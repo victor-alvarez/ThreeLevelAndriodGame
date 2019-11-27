@@ -40,9 +40,7 @@ public class Game3PlayActivity extends BaseActivity {
         account = (Account) getIntent().getSerializableExtra("ac");
 
         //Customizes the Activity based on User preference.
-        if (account.getCustomization()[0] == 1) {
-            getWindow().getDecorView().setBackgroundResource(R.color.background1);
-        }
+        getWindow().getDecorView().setBackgroundResource(account.getBackground());
     }
 
     /**
@@ -77,7 +75,7 @@ public class Game3PlayActivity extends BaseActivity {
         account.incrementScore(hitpoints, getApplicationContext());
         account.decrementHitPoints(100 - hitpoints, getApplicationContext());
         account.incrementGamesPlayed(getApplicationContext());
-        if (account.getSave()[1] <= 0){
+        if (account.getHitPoints() <= 0){
             //Ran out of lives
             intent = new Intent(this, GameOver.class);
         }

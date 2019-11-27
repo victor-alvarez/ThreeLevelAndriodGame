@@ -32,9 +32,7 @@ public class Game1Activity extends BaseActivity {
         account = (Account) getIntent().getSerializableExtra("ac");
 
         assert account != null;
-        if (account.getCustomization()[0] == 1) {
-            getWindow().getDecorView().setBackgroundResource(R.color.background1);
-        }
+        getWindow().getDecorView().setBackgroundResource(account.getBackground());
     }
 
     /**

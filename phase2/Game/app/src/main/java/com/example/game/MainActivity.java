@@ -44,33 +44,25 @@ public class MainActivity extends BaseActivity {
 
         ImageView icon = findViewById(R.id.User_Icon);
 
-        if (account.getCustomization()[0] == 1) {
-            getWindow().getDecorView().setBackgroundResource(R.color.background1);
-        }
+        getWindow().getDecorView().setBackgroundResource(account.getBackground());
 
-        if (account.getCustomization()[2] == 0) {
-            icon.setImageResource(R.drawable.user_male);
-        } else if (account.getCustomization()[2] == 0) {
-            icon.setImageResource(R.drawable.user_female);
-        } else {
-            icon.setImageResource(R.drawable.robot);
-        }
+        icon.setImageResource(account.getIcon());
 
         addCoun = findViewById(R.id.addCoun_MainActivity);
-        addCoun.setText(String.valueOf(account.getSave()[3]));
+        addCoun.setText(String.valueOf(account.getGamesPlayed()));
 
         lives = findViewById(R.id.livesText_MainActivity);
-        lives.setText(String.valueOf(account.getSave()[1]));
+        lives.setText(String.valueOf(account.getHitPoints()));
 
         scores = findViewById(R.id.scoreText_MainActivity);
-        scores.setText(String.valueOf(account.getSave()[2]));
+        scores.setText(String.valueOf(account.getCurrentScore()));
     }
 
     /**
      * Called when the user taps the "Resume Game" button
      */
     public void resumeGame(View view) {
-        int level = account.getSave()[0];
+        int level = account.getLastAttemptedLevel();
         Intent intent;
         if (level == 0) {
             // Resets most of the values for the player as they are starting a new game

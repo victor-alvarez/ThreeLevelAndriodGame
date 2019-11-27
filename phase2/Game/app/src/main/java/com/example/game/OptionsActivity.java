@@ -59,9 +59,7 @@ public class OptionsActivity extends BaseActivity {
             }
         });
 
-        if (account.getCustomization()[0] == 1) {
-            getWindow().getDecorView().setBackgroundResource(R.color.background1);
-        }
+        getWindow().getDecorView().setBackgroundResource(account.getBackground());
     }
 
     /**
@@ -79,12 +77,12 @@ public class OptionsActivity extends BaseActivity {
                 if (checked)
                     getWindow().getDecorView().setBackgroundResource(R.color.background2);
                 mEditor.putInt("Colour", 0);
-                account.setBackground(0, getApplicationContext());
+                account.setBackground("grey", getApplicationContext());
                 break;
             case R.id.red_button_OptionsActivity:
                 if (checked) mEditor.putInt("Colour", 1);
                 getWindow().getDecorView().setBackgroundResource(R.color.background1);
-                account.setBackground(1, getApplicationContext());
+                account.setBackground("red", getApplicationContext());
                 break;
         }
         mEditor.apply();
@@ -137,11 +135,11 @@ public class OptionsActivity extends BaseActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0) {
-                    account.setIcon(0, context);
+                    account.setIcon("male", context);
                 } else if (which == 1) {
-                    account.setIcon(1, context);
+                    account.setIcon("female", context);
                 } else if (which == 2) {
-                    account.setIcon(2, context);
+                    account.setIcon("robot", context);
                 }
                 dialog.dismiss();
             }

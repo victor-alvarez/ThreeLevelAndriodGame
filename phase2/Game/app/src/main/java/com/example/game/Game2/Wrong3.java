@@ -19,9 +19,8 @@ public class Wrong3 extends BaseActivity {
 
         account = (Account) getIntent().getSerializableExtra("ac");
 
-        if (account.getCustomization()[0] == 1) {
-            getWindow().getDecorView().setBackgroundResource(R.color.background1);
-        }
+        getWindow().getDecorView().setBackgroundResource(account.getBackground());
+
     }
 
     /** Called when the user taps the "Back to the Riddle" button */
@@ -29,7 +28,7 @@ public class Wrong3 extends BaseActivity {
         Intent intent = new Intent(this, Riddle3.class);
         account.decrementHitPoints(5, getApplicationContext());
         account.incrementScore(-3, getApplicationContext());
-        if (account.getSave()[1] <= 0){
+        if (account.getHitPoints() <= 0){
             //Ran out of lives
             intent = new Intent(this, GameOver.class);
         }
