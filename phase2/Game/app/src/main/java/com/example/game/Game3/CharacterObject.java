@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+import java.util.ArrayList;
+
 /**
  * Character Object class. Subclass of abstract class Game3Object.
  */
@@ -13,6 +15,16 @@ class CharacterObject extends Game3Object {
      * The physical appearance of the Character as a Bitmap.
      */
     private Bitmap sprite;
+
+    private Bitmap[] spriteAnimate = new Bitmap[4];
+
+    private int frameTime = 200;
+
+    void setSpriteAnimate(Bitmap[] spriteAnimate) {
+        this.spriteAnimate = spriteAnimate;
+    }
+
+    private int spriteFrame = 0;
 
     /**
      * Getter for the Character sprite.
@@ -40,7 +52,8 @@ class CharacterObject extends Game3Object {
      */
     @Override
     void draw(Canvas canvas, Paint paint) {
-        canvas.drawBitmap(sprite, getX(), getY(), paint);
+
+        canvas.drawBitmap(spriteAnimate[spriteFrame], getX(), getY(), paint);
     }
 
     /**
@@ -48,6 +61,10 @@ class CharacterObject extends Game3Object {
      */
     @Override
     void update() {
-
+        if (spriteFrame == 4){
+            spriteFrame = 0;
+        } else {
+            spriteFrame++;
+        }
     }
 }

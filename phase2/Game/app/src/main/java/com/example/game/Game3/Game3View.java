@@ -68,9 +68,6 @@ public class Game3View extends SurfaceView implements Runnable {
                 break;
             }
 
-            //Checks if the
-            wait = !gameObjectManager.getTurn();
-
             //Updates the game objects.
             update();
 
@@ -78,13 +75,13 @@ public class Game3View extends SurfaceView implements Runnable {
             draw();
 
             //Gives the user 1 second to see how much HP damage they did to the Enemy.
-            if (wait) {
+            if (!gameObjectManager.getTurn()) {
                 try {
-                    TimeUnit.SECONDS.sleep(1);
+                    TimeUnit.MILLISECONDS.sleep(gameObjectManager.getWaitTime());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                gameObjectManager.setTurn(true);
+
             }
 
             //Thread pauses to get a Frame Rate.
@@ -121,7 +118,7 @@ public class Game3View extends SurfaceView implements Runnable {
             // gameObjectManager.draw) and then unlocks the canvas.
             Canvas canvas = getHolder().lockCanvas();
             super.draw(canvas);
-            canvas.drawColor(Color.DKGRAY);
+            canvas.drawColor(Color.BLACK);
             gameObjectManager.draw(canvas, paint);
             getHolder().unlockCanvasAndPost(canvas);
         }

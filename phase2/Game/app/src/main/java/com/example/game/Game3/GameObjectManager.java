@@ -1,11 +1,14 @@
 package com.example.game.Game3;
 
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 
 import com.example.game.R;
@@ -44,14 +47,14 @@ public class GameObjectManager {
     private HealthBarObject enemyHealth;
 
     /**
-     * The Attack Button.
+     * The Attack ButtonObject.
      */
-    private Button attackButton;
+    private ButtonObject attackButtonObject;
 
     /**
-     * The Defend Button.
+     * The Defend ButtonObject.
      */
-    private Button defendButton;
+    private ButtonObject defendButtonObject;
 
     /**
      * Checks whether the Player decides to attack or not.
@@ -73,6 +76,22 @@ public class GameObjectManager {
      * Number of moves made by the player to win/lose the game.
      */
     private int numMoves = 0;
+
+    private boolean animate;
+    private int animateFrame = 0;
+    private int screenHeight;
+    private int screenWidth;
+
+
+    private int waitTime = 0;
+
+    int getWaitTime() {
+        return waitTime;
+    }
+
+    void setWaitTime(int waitTime) {
+        this.waitTime = waitTime;
+    }
 
     /**
      * Getter for number of moves.
@@ -138,6 +157,9 @@ public class GameObjectManager {
      */
     GameObjectManager(Resources res) {
         this.res = res;
+        DisplayMetrics display = res.getDisplayMetrics();
+        screenHeight = display.heightPixels;
+        screenWidth = display.widthPixels;
     }
 
     /**
@@ -158,9 +180,32 @@ public class GameObjectManager {
      */
     private void createPlayer() {
         player = new CharacterObject();
+        Bitmap[] sprites = new Bitmap[5];
+        Matrix m = new Matrix();
+        m.preScale(1, 1);
+        Bitmap characterSprite = BitmapFactory.decodeResource(res, R.drawable.charactersprite);
+        int w = characterSprite.getWidth() / 5;
+        Bitmap f11 = Bitmap.createBitmap(characterSprite, 0, 0, w, characterSprite.getHeight(), m, false);
+        Bitmap f22 = Bitmap.createBitmap(characterSprite, w, 0, w, characterSprite.getHeight(), m, false);
+        Bitmap f33 = Bitmap.createBitmap(characterSprite, 2 * w, 0, w, characterSprite.getHeight(), m, false);
+        Bitmap f44 = Bitmap.createBitmap(characterSprite, 3 * w, 0, w, characterSprite.getHeight(), m, false);
+        Bitmap f55 = Bitmap.createBitmap(characterSprite, 4 * w, 0, w, characterSprite.getHeight(), m, false);
+        Bitmap resizedBitmap1 = Bitmap.createScaledBitmap(f11, 300, 300, false);
+        Bitmap resizedBitmap2 = Bitmap.createScaledBitmap(f22, 300, 300, false);
+        Bitmap resizedBitmap3 = Bitmap.createScaledBitmap(f33, 300, 300, false);
+        Bitmap resizedBitmap4 = Bitmap.createScaledBitmap(f44, 300, 300, false);
+        Bitmap resizedBitmap5 = Bitmap.createScaledBitmap(f55, 300, 300, false);
+
+        sprites[0] = resizedBitmap1;
+        sprites[1] = resizedBitmap2;
+        sprites[2] = resizedBitmap3;
+        sprites[3] = resizedBitmap4;
+        sprites[4] = resizedBitmap5;
+
+        player.setSpriteAnimate(sprites);
         player.setSprite(BitmapFactory.decodeResource(res, R.drawable.player));
-        player.setX(-500);
-        player.setY(800);
+        player.setX(screenWidth / 6);
+        player.setY(screenHeight / 2);
     }
 
     /**
@@ -168,8 +213,8 @@ public class GameObjectManager {
      */
     private void createEnemyHealthBar() {
         enemyHealth = new HealthBarObject();
-        enemyHealth.setX(600);
-        enemyHealth.setY(200);
+        enemyHealth.setX(3*screenWidth/5);
+        enemyHealth.setY(screenHeight/10);
         enemyHealth.setColor(Color.RED);
         enemyHealth.setPlayerName(res.getString(R.string.enemy) + res.getString(R.string.hp));
         enemyHealth.setTextSize(50);
@@ -180,9 +225,30 @@ public class GameObjectManager {
      */
     private void createEnemy() {
         enemy = new CharacterObject();
+        Bitmap[] sprites = new Bitmap[5];
+        Matrix m = new Matrix();
+        m.preScale(1, 1);
+        Bitmap enemySprite = BitmapFactory.decodeResource(res, R.drawable.enemysprite);
+        int w = enemySprite.getWidth() / 5;
+        Bitmap f11 = Bitmap.createBitmap(enemySprite, 0, 0, w, enemySprite.getHeight(), m, false);
+        Bitmap f22 = Bitmap.createBitmap(enemySprite, w, 0, w, enemySprite.getHeight(), m, false);
+        Bitmap f33 = Bitmap.createBitmap(enemySprite, 2 * w, 0, w, enemySprite.getHeight(), m, false);
+        Bitmap f44 = Bitmap.createBitmap(enemySprite, 3 * w, 0, w, enemySprite.getHeight(), m, false);
+        Bitmap f55 = Bitmap.createBitmap(enemySprite, 4 * w, 0, w, enemySprite.getHeight(), m, false);
+        Bitmap resizedBitmap1 = Bitmap.createScaledBitmap(f11, 300, 300, false);
+        Bitmap resizedBitmap2 = Bitmap.createScaledBitmap(f22, 300, 300, false);
+        Bitmap resizedBitmap3 = Bitmap.createScaledBitmap(f33, 300, 300, false);
+        Bitmap resizedBitmap4 = Bitmap.createScaledBitmap(f44, 300, 300, false);
+        Bitmap resizedBitmap5 = Bitmap.createScaledBitmap(f55, 300, 300, false);
+        sprites[0] = resizedBitmap5;
+        sprites[1] = resizedBitmap4;
+        sprites[2] = resizedBitmap3;
+        sprites[3] = resizedBitmap2;
+        sprites[4] = resizedBitmap1;
+        enemy.setSpriteAnimate(sprites);
         enemy.setSprite(BitmapFactory.decodeResource(res, R.drawable.enemy));
-        enemy.setX(300);
-        enemy.setY(800);
+        enemy.setX(3 * screenWidth / 5);
+        enemy.setY(screenHeight / 2);
     }
 
     /**
@@ -190,37 +256,37 @@ public class GameObjectManager {
      */
     private void createPlayerHealthBar() {
         playerHealth = new HealthBarObject();
-        playerHealth.setX(100);
-        playerHealth.setY(200);
+        playerHealth.setX(screenWidth/10);
+        playerHealth.setY(screenHeight/10);
         playerHealth.setColor(Color.GREEN);
         playerHealth.setPlayerName(res.getString(R.string.player) + res.getString(R.string.hp));
         playerHealth.setTextSize(50);
     }
 
     /**
-     * Creates a Attack Button.
+     * Creates a Attack ButtonObject.
      */
     private void createAttackButton() {
-        attackButton = new Button();
-        attackButton.setButton(new Rect(155, 1700, 455, 1875));
-        attackButton.setBtnColor(Color.BLACK);
-        attackButton.setTextColor(Color.WHITE);
-        attackButton.setBtnName(res.getString(R.string.attack));
-        attackButton.setX(200);
-        attackButton.setY(1800);
+        attackButtonObject = new ButtonObject();
+        attackButtonObject.setButton(new Rect(155, 1700, 455, 1875));
+        attackButtonObject.setBtnColor(Color.GRAY);
+        attackButtonObject.setTextColor(Color.WHITE);
+        attackButtonObject.setBtnName(res.getString(R.string.attack));
+        attackButtonObject.setX(200);
+        attackButtonObject.setY(1800);
     }
 
     /**
-     * Creates a Defend Button.
+     * Creates a Defend ButtonObject.
      */
     private void createDefendButton() {
-        defendButton = new Button();
-        defendButton.setButton(new Rect(655, 1700, 955, 1875));
-        defendButton.setBtnColor(Color.BLACK);
-        defendButton.setTextColor(Color.WHITE);
-        defendButton.setBtnName(res.getString(R.string.defend));
-        defendButton.setX(700);
-        defendButton.setY(1800);
+        defendButtonObject = new ButtonObject();
+        defendButtonObject.setButton(new Rect(655, 1700, 955, 1875));
+        defendButtonObject.setBtnColor(Color.GRAY);
+        defendButtonObject.setTextColor(Color.WHITE);
+        defendButtonObject.setBtnName(res.getString(R.string.defend));
+        defendButtonObject.setX(700);
+        defendButtonObject.setY(1800);
     }
 
     /**
@@ -230,8 +296,8 @@ public class GameObjectManager {
         moveTextObject = new MoveTextObject();
         moveTextObject.setTextColor(Color.WHITE);
         moveTextObject.setMoveText("");
-        moveTextObject.setX(275);
-        moveTextObject.setY(600);
+        moveTextObject.setX(screenWidth/4);
+        moveTextObject.setY(2*screenHeight/10);
     }
 
     /**
@@ -241,12 +307,24 @@ public class GameObjectManager {
      * @param paint  The paint to use to draw on canvas.
      */
     void draw(Canvas canvas, Paint paint) {
-        player.draw(canvas, paint);
         enemy.draw(canvas, paint);
+        player.draw(canvas, paint);
+        attackButtonObject.draw(canvas, paint);
+        defendButtonObject.draw(canvas, paint);
+        if (animate) {
+            animateFrame++;
+            enemy.update();
+            player.update();
+            waitTime = 100;
+            if (animateFrame == 5) {
+                animate = false;
+                waitTime = 0;
+                animateFrame = 0;
+                isTurn = true;
+            }
+        }
         enemyHealth.draw(canvas, paint);
         playerHealth.draw(canvas, paint);
-        attackButton.draw(canvas, paint);
-        defendButton.draw(canvas, paint);
         moveTextObject.draw(canvas, paint);
     }
 
@@ -255,42 +333,44 @@ public class GameObjectManager {
      */
     void update() {
         if (isTurn) {
-
             //Prints the Damage the enemy did to the player.
             moveTextObject.update(res.getString(R.string.player_took) + hpDamage +
                     res.getString(R.string.damage), Color.RED);
-            attackButton.setActive(true);
-            defendButton.setActive(true);
+            attackButtonObject.setActive(true);
+            defendButtonObject.setActive(true);
         } else {
-            attackButton.setActive(false);
-            defendButton.setActive(false);
+            attackButtonObject.setActive(false);
+            defendButtonObject.setActive(false);
             int damage = decideEnemyDamage();
-            if (attack) {
+            if (!animate) {
+                if (attack) {
 
-                //Player does 12 HP damage if he/she tapped AttackButton
-                enemyHealth.update(12);
 
-                //Player gets full damage decided randomly by decideEnemyDamage method if Attack
-                // button was tapped.
-                moveTextObject.update(res.getString(R.string.enemy_took) + 10 +
-                        res.getString(R.string.damage), Color.GREEN);
-                hpDamage = damage;
-                attack = false;
+                    //Player does 12 HP damage if he/she tapped AttackButton
+                    enemyHealth.update(12);
+
+                    //Player gets full damage decided randomly by decideEnemyDamage method if Attack
+                    // button was tapped.
+                    moveTextObject.update(res.getString(R.string.enemy_took) + 10 +
+                            res.getString(R.string.damage), Color.GREEN);
+                    hpDamage = damage;
+                    attack = false;
+                }
+                if (defend) {
+
+                    //Player does 7 damage if he/she tapped DefendButton
+                    enemyHealth.update(7);
+
+                    //Player gets 2/3 the damage if decided to press Defend button.
+                    moveTextObject.update(res.getString(R.string.enemy_took) + 5 +
+                            res.getString(R.string.damage), Color.GREEN);
+                    hpDamage = 2 * (damage / 3);
+                    defend = false;
+                }
+                playerHealth.update(hpDamage);
             }
-            if (defend) {
-
-                //Player does 7 damage if he/she tapped DefendButton
-                enemyHealth.update(7);
-
-                //Player gets 2/3 the damage if decided to press Defend button.
-                moveTextObject.update(res.getString(R.string.enemy_took) + 5 +
-                        res.getString(R.string.damage), Color.GREEN);
-                hpDamage = 2 * (damage / 3);
-                defend = false;
-            }
-            playerHealth.update(hpDamage);
+            animate = true;
         }
-
     }
 
     /**
@@ -319,18 +399,18 @@ public class GameObjectManager {
                 float touchY = event.getY();
 
                 //Checks if the AttackButton was tapped. If so, player's turn is over.
-                if (attackButton.getButton().left <= touchX && touchX <=
-                        attackButton.getButton().right && attackButton.getButton().top <= touchY &&
-                        touchY <= attackButton.getButton().bottom) {
+                if (attackButtonObject.getButton().left <= touchX && touchX <=
+                        attackButtonObject.getButton().right && attackButtonObject.getButton().top <= touchY &&
+                        touchY <= attackButtonObject.getButton().bottom) {
                     attack = true;
                     isTurn = false;
                     numMoves += 1;
                 }
 
                 //Checks if the DefendButton was tapped. If so, player's turn is over.
-                if (defendButton.getButton().left <= touchX && touchX <=
-                        defendButton.getButton().right && defendButton.getButton().top <= touchY &&
-                        touchY <= defendButton.getButton().bottom) {
+                if (defendButtonObject.getButton().left <= touchX && touchX <=
+                        defendButtonObject.getButton().right && defendButtonObject.getButton().top <= touchY &&
+                        touchY <= defendButtonObject.getButton().bottom) {
                     defend = true;
                     isTurn = false;
                     numMoves += 1;

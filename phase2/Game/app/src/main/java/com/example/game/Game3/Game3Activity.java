@@ -66,7 +66,7 @@ public class Game3Activity extends BaseActivity {
     }
 
     /**
-     * Called when user taps the "Play" Button. Takes User to Game 3 play screen.
+     * Called when user taps the "Play" ButtonObject. Takes User to Game 3 play screen.
      *
      * @param view The View of this Activity.
      */
