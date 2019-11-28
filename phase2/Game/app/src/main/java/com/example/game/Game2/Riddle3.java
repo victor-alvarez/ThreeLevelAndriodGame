@@ -29,15 +29,14 @@ public class Riddle3 extends BaseActivity {
 
         account = (Account) getIntent().getSerializableExtra("ac");
 
-        if (account.getCustomization()[0] == 1) {
-            getWindow().getDecorView().setBackgroundResource(R.color.background1);
-        }
+        getWindow().getDecorView().setBackgroundResource(account.getBackground());
+
 
         lives = findViewById(R.id.livesText_Riddle3);
-        lives.setText(String.valueOf(account.getSave()[1]));
+        lives.setText(String.valueOf(account.getHitPoints()));
 
         scores = findViewById(R.id.scoreText_Riddle3);
-        scores.setText(String.valueOf(account.getSave()[2]));
+        scores.setText(String.valueOf(account.getCurrentScore()));
     }
 
     /** Called when the user taps upper "None of the above" button */

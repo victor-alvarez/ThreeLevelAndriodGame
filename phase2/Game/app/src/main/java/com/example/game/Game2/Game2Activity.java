@@ -21,9 +21,7 @@ public class Game2Activity extends BaseActivity {
 
     account = (Account) getIntent().getSerializableExtra("ac");
 
-    if (account.getCustomization()[0] == 1) {
-      getWindow().getDecorView().setBackgroundResource(R.color.background1);
-    }
+    getWindow().getDecorView().setBackgroundResource(account.getBackground());
   }
 
   /** Called when the user taps the "START Riddles Game" button */

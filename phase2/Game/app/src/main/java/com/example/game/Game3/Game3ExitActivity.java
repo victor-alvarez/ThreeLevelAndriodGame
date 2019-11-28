@@ -48,15 +48,13 @@ public class Game3ExitActivity extends BaseActivity {
         account = (Account) getIntent().getSerializableExtra("ac");
 
         //Customizes the Activity based on User preference.
-        if (account.getCustomization()[0] == 1) {
-            getWindow().getDecorView().setBackgroundResource(R.color.background1);
-        }
+        getWindow().getDecorView().setBackgroundResource(account.getBackground());
 
         lives = findViewById(R.id.livesText_Game3Activity2);
-        lives.setText(String.valueOf(account.getSave()[1]));
+        lives.setText(String.valueOf(account.getHitPoints()));
 
         scores = findViewById(R.id.scoreText_Game3Activity2);
-        scores.setText(String.valueOf(account.getSave()[2]));
+        scores.setText(String.valueOf(account.getCurrentScore()));
     }
 
     /**

@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.game.domain.LoginActions;
+import com.example.game.models.LoginActions;
 
 /**
  * Login activity for login the user in. Lets the user enter a username and if it exists they may
@@ -69,6 +69,7 @@ public class LoginActivity extends BaseActivity implements LoginActions {
      * currently entered in textfield inputName.
      */
     public void login(View view) {
+        //TODO: pass in string, not context(since otherwise it breaks MVP)
         loginPresenter.login(inputName.getText().toString(), getApplicationContext());
     }
 

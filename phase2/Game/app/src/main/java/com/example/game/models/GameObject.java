@@ -1,4 +1,4 @@
-package com.example.game.data;
+package com.example.game.models;
 
 import android.graphics.Canvas;
 

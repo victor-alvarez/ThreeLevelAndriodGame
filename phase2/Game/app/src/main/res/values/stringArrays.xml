@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="riddle0">
+        <item>@string/Q1</item>
+        <item>1</item>
+        <item>@string/Q1A1</item>
+        <item>@string/Q1A2</item>
+        <item>@string/Q1A3</item>
+        <item>@string/Q1A4</item>
+    </string-array>
+    <string-array name="riddle1">
+        <item>@string/Q2</item>
+        <item>0</item>
+        <item>@string/Q2A1</item>
+        <item>@string/Q2A2</item>
+        <item>@string/Q2A3</item>
+        <item>@string/Q2A4</item>
+    </string-array>
+    <string-array name="riddle2">
+        <item>@string/Q3</item>
+        <item>3</item>
+        <item>@string/Q3A1</item>
+        <item>@string/Q3A2</item>
+        <item>@string/Q3A3</item>
+        <item>@string/Q3A4</item>
+    </string-array>
+    <string-array name="riddle3">
+        <item>@string/Q4</item>
+        <item>3</item>
+        <item>@string/Q4A1</item>
+        <item>@string/Q4A2</item>
+        <item>@string/Q4A3</item>
+        <item>@string/Q4A4</item>
+    </string-array>
+    <string-array name="riddle4">
+        <item>@string/Q5</item>
+        <item>2</item>
+        <item>@string/Q5A1</item>
+        <item>@string/Q5A2</item>
+        <item>@string/Q5A3</item>
+        <item>@string/Q5A4</item>
+    </string-array>
+    <string-array name="riddle5">
+        <item>@string/Q6</item>
+        <item>2</item>
+        <item>@string/Q6A1</item>
+        <item>@string/Q6A2</item>
+        <item>@string/Q6A3</item>
+        <item>@string/Q6A4</item>
+    </string-array>
+    <integer name="numArrays">6</integer>
+</resources>

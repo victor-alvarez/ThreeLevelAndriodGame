@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.game.domain.CreateAccountActions;
+import com.example.game.models.CreateAccountActions;
 
 public class CreateAccountActivity extends BaseActivity implements CreateAccountActions {
 

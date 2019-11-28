@@ -1,4 +1,4 @@
-package com.example.game.presentation.views;
+package com.example.game.views;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,7 +13,7 @@ import com.example.game.BaseActivity;
 import com.example.game.Game2.Game2Activity;
 import com.example.game.MainActivity;
 import com.example.game.R;
-import com.example.game.presentation.views.BallJumperActivity;
+import com.example.game.views.BallJumperActivity;
 
 /**
  * GameOverActivity class. This is what the player will see when they lose.
@@ -67,15 +67,13 @@ public class GameOverActivity extends BaseActivity {
         account = (Account) getIntent().getSerializableExtra("ac");
 
         assert account != null;
-        if (account.getCustomization()[0] == 1) {
-            getWindow().getDecorView().setBackgroundResource(R.color.background1);
-        }
+        getWindow().getDecorView().setBackgroundResource(account.getBackground());
 
         lives = findViewById(R.id.livesText_GameOverActivity);
-        lives.setText(String.valueOf(account.getSave()[1]));
+        lives.setText(String.valueOf(account.getHitPoints()));
 
         scores = findViewById(R.id.scoreText_GameOverActivity);
-        scores.setText(String.valueOf(account.getSave()[2]));
+        scores.setText(String.valueOf(account.getCurrentScore()));
     }
 
     /**
