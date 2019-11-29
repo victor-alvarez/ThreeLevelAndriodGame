@@ -36,7 +36,7 @@ public class LoginActivity extends BaseActivity implements LoginActions {
      * Determines the existence of a users account on the system and creates an account object for
      * them to login with.
      */
-    private AccountManager accountManager = new AccountManager();
+    private AccountManager accountManager = new AccountManager(new AccountDataRepository());
 
     /**
      * Presenter which interacts with the login for this activity.
@@ -70,7 +70,8 @@ public class LoginActivity extends BaseActivity implements LoginActions {
      */
     public void login(View view) {
         //TODO: pass in string, not context(since otherwise it breaks MVP)
-        loginPresenter.login(inputName.getText().toString(), getApplicationContext().getFilesDir());
+        loginPresenter.login(inputName.getText().toString(), getApplicationContext().getFilesDir(),
+                new AccountDataRepository());
     }
 
     /**
@@ -88,12 +89,12 @@ public class LoginActivity extends BaseActivity implements LoginActions {
 
     /**
      * Moves to the main menu with account logged in.
-     * @param account account which is to be logged in
+     * @param accountHolder account layer which has the account to be logged in
      */
     @Override
-    public void moveToMainMenu(Account account) {
+    public void moveToMainMenu(AccountHolder accountHolder) {
         Intent intent = new Intent(this, MainActivity.class);
-        BaseActivity.account = account;
+        BaseActivity.account = accountHolder;
         startActivity(intent);
     }
 }

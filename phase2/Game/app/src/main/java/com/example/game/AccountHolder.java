@@ -1,12 +1,17 @@
 package com.example.game;
 
+import com.example.game.models.AccountDataRepositoryInterface;
+
 import java.io.File;
 
 public class AccountHolder{
     Account account;
 
-    AccountHolder(Account account){
+    private AccountDataRepositoryInterface accountDataRepositoryInterface;
+
+    AccountHolder(Account account, AccountDataRepositoryInterface accountDataRepositoryInterface){
         this.account = account;
+        this.accountDataRepositoryInterface = accountDataRepositoryInterface;
     }
 
     public String getLogin() {
@@ -19,7 +24,7 @@ public class AccountHolder{
      * @param contextFile an access to the current file state of the app
      */
     public void setBackground(String colour, File contextFile) {
-        account.setBackground(colour, contextFile);
+        account.setBackground(colour, contextFile, accountDataRepositoryInterface);
     }
 
     public int getBackground(){
@@ -32,7 +37,7 @@ public class AccountHolder{
      * @param contextFile an access to the current file state of the app
      */
     public void setLanguage(String language, File contextFile) {
-        account.setLanguage(language, contextFile);
+        account.setLanguage(language, contextFile, accountDataRepositoryInterface);
     }
 
     public String getLanguage(){
@@ -46,7 +51,7 @@ public class AccountHolder{
      * @param contextFile an access to the current file state of the app
      */
     public void setIcon(String icon, File contextFile) {
-        account.setIcon(icon, contextFile);
+        account.setIcon(icon, contextFile, accountDataRepositoryInterface);
     }
 
     public int getIcon(){
@@ -59,7 +64,7 @@ public class AccountHolder{
      * @param contextFile an access to the current file state of the app
      */
     public void incrementLevel(File contextFile) {
-        account.incrementLevel(contextFile);
+        account.incrementLevel(contextFile, accountDataRepositoryInterface);
     }
 
     /**
@@ -67,7 +72,7 @@ public class AccountHolder{
      * @param contextFile an access to the current file state of the app
      */
     public void decrementLevel(File contextFile) {
-        account.decrementLevel(contextFile);
+        account.decrementLevel(contextFile, accountDataRepositoryInterface);
     }
 
     /**
@@ -76,7 +81,7 @@ public class AccountHolder{
      * @param contextFile an access to the current file state of the app
      */
     public void decrementHitPoints(int reduce, File contextFile) {
-        account.decrementHitPoints(reduce, contextFile);
+        account.decrementHitPoints(reduce, contextFile, accountDataRepositoryInterface);
     }
 
     /**
@@ -85,7 +90,7 @@ public class AccountHolder{
      * @param contextFile an access to the current file state of the app
      */
     public void incrementScore(int add, File contextFile) {
-        account.incrementScore(add, contextFile);
+        account.incrementScore(add, contextFile, accountDataRepositoryInterface);
     }
 
     /**
@@ -93,7 +98,7 @@ public class AccountHolder{
      * @param contextFile an access to the current file state of the app
      */
     public void incrementGamesPlayed(File contextFile) {
-        account.incrementGamesPlayed(contextFile);
+        account.incrementGamesPlayed(contextFile, accountDataRepositoryInterface);
     }
 
     /**
@@ -101,7 +106,7 @@ public class AccountHolder{
      * @param contextFile an access to the current file state of the app
      */
     void resetValues(File contextFile){
-        account.resetValues(contextFile);
+        account.resetValues(contextFile, accountDataRepositoryInterface);
     }
 
     public int getLastAttemptedLevel() {

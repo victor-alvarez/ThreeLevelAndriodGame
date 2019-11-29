@@ -1,13 +1,11 @@
 package com.example.game;
 
-import android.content.Context;
+import com.example.game.models.AccountDataRepositoryInterface;
 
 import java.io.File;
-import java.io.Serializable;
 
 /** An account */
 public class Account{
-
   /** Account's login, customization settings and save data. */
   private String login;
 
@@ -54,10 +52,12 @@ public class Account{
    * Sets this account's background colour to selected colour and records it
    * @param colour the number that respresents a background colour for this account
    * @param contextFile an access to the current file state of the app
+   * @param accountDataRepository the interface which accesses the database
    */
-  public void setBackground(String colour, File contextFile) {
+  public void setBackground(String colour, File contextFile,
+                            AccountDataRepositoryInterface accountDataRepository) {
     customization.setCurrentColour(colour);
-    AccountDataRepository.save(contextFile, this);
+    accountDataRepository.save(contextFile, this);
   }
 
   public int getBackground(){
@@ -68,10 +68,12 @@ public class Account{
    * Sets this account's language and records the setting
    * @param language the number that respresents a language for this account
    * @param contextFile an access to the current file state of the app
+   * @param accountDataRepository the interface which accesses the database
    */
-  public void setLanguage(String language, File contextFile) {
+  public void setLanguage(String language, File contextFile,
+                          AccountDataRepositoryInterface accountDataRepository) {
     customization.setCurrentLanguage(language);
-    AccountDataRepository.save(contextFile, this);
+    accountDataRepository.save(contextFile, this);
   }
 
   public String getLanguage(){
@@ -83,10 +85,12 @@ public class Account{
    * Sets this accounts icon
    * @param icon the icon setting
    * @param contextFile an access to the current file state of the app
+   * @param accountDataRepository the interface which accesses the database
    */
-  public void setIcon(String icon, File contextFile) {
+  public void setIcon(String icon, File contextFile,
+                      AccountDataRepositoryInterface accountDataRepository) {
     customization.setCurrentIcon(icon);
-    AccountDataRepository.save(contextFile, this);
+    accountDataRepository.save(contextFile, this);
   }
 
   public int getIcon(){
@@ -97,57 +101,68 @@ public class Account{
   /**
    * Increments level or resets it where appropriate and records it
    * @param contextFile an access to the current file state of the app
+   * @param accountDataRepository the interface which accesses the database
    */
-  public void incrementLevel(File contextFile) {
+  public void incrementLevel(File contextFile,
+                             AccountDataRepositoryInterface accountDataRepository) {
     gameData.incrementLevel();
-    AccountDataRepository.save(contextFile, this);
+    accountDataRepository.save(contextFile, this);
   }
 
   /**
    * Decrements level for purposes of retrying where appropriate and records it
    * @param contextFile an access to the current file state of the app
+   * @param accountDataRepository the interface which accesses the database
    */
-  public void decrementLevel(File contextFile) {
+  public void decrementLevel(File contextFile,
+                             AccountDataRepositoryInterface accountDataRepository) {
     gameData.decrementLevel();
-    AccountDataRepository.save(contextFile, this);
+    accountDataRepository.save(contextFile, this);
   }
 
   /**
    * Reduces hitpoints by a set amount and records it
    * @param reduce the amount by which hit points are reduced
    * @param contextFile an access to the current file state of the app
+   * @param accountDataRepository the interface which accesses the database
    */
-  public void decrementHitPoints(int reduce, File contextFile) {
+  public void decrementHitPoints(int reduce, File contextFile,
+                                 AccountDataRepositoryInterface accountDataRepository) {
     gameData.decrementHitPoints(reduce);
-    AccountDataRepository.save(contextFile, this);
+    accountDataRepository.save(contextFile, this);
   }
 
   /**
    * Changes score by amount add
    * @param add the amount to be added to the score
    * @param contextFile an access to the current file state of the app
+   * @param accountDataRepository the interface which accesses the database
    */
-  public void incrementScore(int add, File contextFile) {
+  public void incrementScore(int add, File contextFile,
+                             AccountDataRepositoryInterface accountDataRepository) {
     gameData.incrementScore(add);
-    AccountDataRepository.save(contextFile, this);
+    accountDataRepository.save(contextFile, this);
   }
 
   /**
    * Increments the number of times the games are played on this account
    * @param contextFile an access to the current file state of the app
+   * @param accountDataRepository the interface which accesses the database
    */
-  public void incrementGamesPlayed(File contextFile) {
+  public void incrementGamesPlayed(File contextFile,
+                                   AccountDataRepositoryInterface accountDataRepository) {
     gameData.incrementGamesPlayed();
-    AccountDataRepository.save(contextFile, this);
+    accountDataRepository.save(contextFile, this);
   }
 
   /**
    * Sets this account's stats to starting ones
    * @param contextFile an access to the current file state of the app
+   * @param accountDataRepository the interface which accesses the database
    */
-  void resetValues(File contextFile){
+  void resetValues(File contextFile, AccountDataRepositoryInterface accountDataRepository){
     gameData.resetData();
-    AccountDataRepository.save(contextFile, this);
+    accountDataRepository.save(contextFile, this);
   }
 
   public int getLastAttemptedLevel() {

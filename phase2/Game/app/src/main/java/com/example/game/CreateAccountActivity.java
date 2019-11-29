@@ -30,7 +30,7 @@ public class CreateAccountActivity extends BaseActivity implements CreateAccount
     /**
      * Determines the existence of a users account on the system and creates new accounts
      */
-    private AccountManager accountManager = new AccountManager();
+    private AccountManager accountManager = new AccountManager(new AccountDataRepository());
 
     private CreateAccountPresenter presenter;
 

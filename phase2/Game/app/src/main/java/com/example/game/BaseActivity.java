@@ -17,7 +17,7 @@ public class BaseActivity extends AppCompatActivity {
     /**
      * Currently logged in user account. Null if no user is logged in.
      */
-    public static Account account;
+    public static AccountHolder account;
 
     /**
      * Ensures locale is attached to configuration of context

@@ -29,7 +29,6 @@ public class OptionsActivity extends BaseActivity {
 
     /**
      * Code to execute when the Activity is created.
-     *
      * @param savedInstanceState A Bundle containing possibly previous states of this Activity.
      */
     @Override

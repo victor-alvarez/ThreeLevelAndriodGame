@@ -2,6 +2,7 @@ package com.example.game;
 
 import android.content.Context;
 
+import com.example.game.models.AccountDataRepositoryInterface;
 import com.example.game.models.AccountManagerInterface;
 import com.example.game.models.LoginListener;
 
@@ -23,12 +24,14 @@ class LoginUseCases {
      * @param contextFile the location of the application
      * @param loginReactor will react to whatever result is concluded from the return of
      *                     accountManager
+     * @param accountDataRepository the interface which accesses the database
      */
     void login(final String username, File contextFile,
-                      LoginListener loginReactor){
+               LoginListener loginReactor, AccountDataRepositoryInterface accountDataRepository){
         Account account = accountManager.openExistingAccount(username, contextFile);
         if(account != null){
-            loginReactor.correctUsername(account);
+            AccountHolder accountHolder = new AccountHolder(account, accountDataRepository);
+            loginReactor.correctUsername(accountHolder);
         } else {
             loginReactor.incorrectUsername();
         }

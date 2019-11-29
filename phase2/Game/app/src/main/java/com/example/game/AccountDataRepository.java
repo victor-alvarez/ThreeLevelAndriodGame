@@ -1,8 +1,8 @@
 package com.example.game;
 
-import android.content.Context;
 import android.util.Log;
 
+import com.example.game.models.AccountDataRepositoryInterface;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -13,7 +13,7 @@ import java.io.IOException;
 
 import static android.content.ContentValues.TAG;
 
-class AccountDataRepository {
+class AccountDataRepository implements AccountDataRepositoryInterface {
     /**
      * Items:
      * Should items outside of the view in MVP be able to know about/need android specific objects?
@@ -25,7 +25,7 @@ class AccountDataRepository {
      */
     private static final String FILE_NAME = "save.txt";
 
-    static void save(File contextFile, Account account){
+    public void save(File contextFile, Account account){
         try {
             Gson gson = new Gson();
             String accountString = gson.toJson(account);
@@ -53,7 +53,7 @@ class AccountDataRepository {
         }
     }
 
-    static Account openExistingAccount(String login, File contextFile){
+    public Account openExistingAccount(String login, File contextFile){
         try {
             Gson gson = new Gson();
             File saveFile = new File(contextFile, FILE_NAME);
@@ -74,7 +74,7 @@ class AccountDataRepository {
         return null;
     }
 
-    static void createNewAccount(String login, File contextFile) {
+    public void createNewAccount(String login, File contextFile) {
         try {
             Gson gson = new Gson();
             Account account = new Account(login);
@@ -88,7 +88,7 @@ class AccountDataRepository {
         }
     }
 
-    static void deleteAccountData(File contextFile){
+    public void deleteAccountData(File contextFile){
         File saveFile = new File(contextFile, FILE_NAME);
         if (saveFile.delete()) {
             System.out.println("Successfully deleted");

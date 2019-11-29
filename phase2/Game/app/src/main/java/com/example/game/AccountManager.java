@@ -2,6 +2,7 @@ package com.example.game;
 
 import android.content.Context;
 
+import com.example.game.models.AccountDataRepositoryInterface;
 import com.example.game.models.AccountManagerInterface;
 
 import java.io.File;
@@ -10,6 +11,12 @@ import java.io.File;
  * Account manager that manages the creation and opening of accounts.
  */
 class AccountManager implements AccountManagerInterface {
+
+    AccountDataRepositoryInterface accountDataRepository;
+
+    AccountManager(AccountDataRepositoryInterface accountDataRepositoryInterface){
+        accountDataRepository = accountDataRepositoryInterface;
+    }
 
     /**
      * Creates new account with given login. Activates from Create Account button. Takes login from
@@ -20,7 +27,7 @@ class AccountManager implements AccountManagerInterface {
      */
     @Override
     public void createNewAccount(String login, File contextFile) {
-        AccountDataRepository.createNewAccount(login, contextFile);
+        accountDataRepository.createNewAccount(login, contextFile);
     }
 
     /**
@@ -33,11 +40,11 @@ class AccountManager implements AccountManagerInterface {
      */
     @Override
     public Account openExistingAccount(String login, File contextFile) {
-        return AccountDataRepository.openExistingAccount(login, contextFile);
+        return accountDataRepository.openExistingAccount(login, contextFile);
     }
 
     // Deletes all accounts
     void deleteAccountData(File contextFile) {
-        AccountDataRepository.deleteAccountData(contextFile);
+        accountDataRepository.deleteAccountData(contextFile);
     }
 }

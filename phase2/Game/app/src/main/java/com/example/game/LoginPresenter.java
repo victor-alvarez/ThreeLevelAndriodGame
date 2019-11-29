@@ -2,6 +2,7 @@ package com.example.game;
 
 import android.content.Context;
 
+import com.example.game.models.AccountDataRepositoryInterface;
 import com.example.game.models.LoginActions;
 import com.example.game.models.LoginListener;
 
@@ -35,16 +36,17 @@ public class LoginPresenter implements LoginListener {
     }
 
     @Override
-    public void correctUsername(Account account) {
-        loginActions.moveToMainMenu(account);
+    public void correctUsername(AccountHolder accountHolder) {
+        loginActions.moveToMainMenu(accountHolder);
     }
 
     /**
      * Tells the use cases to check over this login.
      * @param username the entered in username for this login
      * @param contextFile the location of the application
+     * @param accountDataRepository the interface which accesses the database
      */
-    void login(String username, File contextFile){
-        loginUseCases.login(username, contextFile, this);
+    void login(String username, File contextFile, AccountDataRepositoryInterface accountDataRepository){
+        loginUseCases.login(username, contextFile, this, accountDataRepository);
     }
 }
