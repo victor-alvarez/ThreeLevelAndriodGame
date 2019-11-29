@@ -70,7 +70,7 @@ public class LoginActivity extends BaseActivity implements LoginActions {
      */
     public void login(View view) {
         //TODO: pass in string, not context(since otherwise it breaks MVP)
-        loginPresenter.login(inputName.getText().toString(), getApplicationContext());
+        loginPresenter.login(inputName.getText().toString(), getApplicationContext().getFilesDir());
     }
 
     /**

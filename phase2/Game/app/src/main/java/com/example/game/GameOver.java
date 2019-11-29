@@ -18,7 +18,7 @@ public class GameOver extends AppCompatActivity {
 
     public void toMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        BaseActivity.account.resetValues(getApplicationContext());
+        BaseActivity.account.resetValues(getApplicationContext().getFilesDir());
         startActivity(intent);
     }
 }

@@ -13,6 +13,8 @@ import android.widget.RadioButton;
 
 import androidx.annotation.Nullable;
 
+import java.io.File;
+
 /**
  * Options activity where the player may set their required customizations
  */
@@ -35,14 +37,13 @@ public class OptionsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
-        account = (Account) getIntent().getSerializableExtra("ac");
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         Button changeIcon = findViewById(R.id.choose_icon);
         changeIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showChangeIconDialog(v.getContext());
+                showChangeIconDialog(v.getContext().getFilesDir());
             }
         });
 
@@ -72,12 +73,12 @@ public class OptionsActivity extends BaseActivity {
                 if (checked)
                     getWindow().getDecorView().setBackgroundResource(R.color.background2);
                 mEditor.putInt("Colour", 0);
-                account.setBackground("grey", getApplicationContext());
+                account.setBackground("grey", getApplicationContext().getFilesDir());
                 break;
             case R.id.red_button_OptionsActivity:
                 if (checked) mEditor.putInt("Colour", 1);
                 getWindow().getDecorView().setBackgroundResource(R.color.background1);
-                account.setBackground("red", getApplicationContext());
+                account.setBackground("red", getApplicationContext().getFilesDir());
                 break;
         }
         mEditor.apply();
@@ -120,7 +121,7 @@ public class OptionsActivity extends BaseActivity {
     /**
      * Creates list dialog to choose new icon
      */
-    private void showChangeIconDialog(final Context context) {
+    private void showChangeIconDialog(final File contextFile) {
         final String[] listItems = {getString(R.string.male_icon), getString(R.string.female_icon),
                 getString(R.string.robot_icon)};
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(OptionsActivity.this);
@@ -129,11 +130,11 @@ public class OptionsActivity extends BaseActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0) {
-                    account.setIcon("male", context);
+                    account.setIcon("male", contextFile);
                 } else if (which == 1) {
-                    account.setIcon("female", context);
+                    account.setIcon("female", contextFile);
                 } else if (which == 2) {
-                    account.setIcon("robot", context);
+                    account.setIcon("robot", contextFile);
                 }
                 dialog.dismiss();
             }

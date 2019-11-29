@@ -52,13 +52,4 @@ public class BaseActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
         localeManager.setLocale(this);
     }
-
-    /**
-     * Moves to and starts desired activity
-     * @param baseActivity the activity we want to move to
-     */
-    protected void moveToNewActivity(BaseActivity baseActivity){
-        Intent intent = new Intent(this, baseActivity.getClass());
-        startActivity(intent);
-    }
 }

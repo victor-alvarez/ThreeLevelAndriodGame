@@ -2,6 +2,7 @@ package com.example.game;
 
 import android.content.Context;
 
+import java.io.File;
 import java.io.Serializable;
 
 /** An account */
@@ -52,11 +53,11 @@ public class Account{
   /**
    * Sets this account's background colour to selected colour and records it
    * @param colour the number that respresents a background colour for this account
-   * @param context an access to the current file state of the app
+   * @param contextFile an access to the current file state of the app
    */
-  public void setBackground(String colour, Context context) {
+  public void setBackground(String colour, File contextFile) {
     customization.setCurrentColour(colour);
-    AccountDataRepository.save(context, this);
+    AccountDataRepository.save(contextFile, this);
   }
 
   public int getBackground(){
@@ -66,11 +67,11 @@ public class Account{
   /**
    * Sets this account's language and records the setting
    * @param language the number that respresents a language for this account
-   * @param context an access to the current file state of the app
+   * @param contextFile an access to the current file state of the app
    */
-  public void setLanguage(String language, Context context) {
+  public void setLanguage(String language, File contextFile) {
     customization.setCurrentLanguage(language);
-    AccountDataRepository.save(context, this);
+    AccountDataRepository.save(contextFile, this);
   }
 
   public String getLanguage(){
@@ -81,11 +82,11 @@ public class Account{
   /**
    * Sets this accounts icon
    * @param icon the icon setting
-   * @param context an access to the current file state of the app
+   * @param contextFile an access to the current file state of the app
    */
-  public void setIcon(String icon, Context context) {
+  public void setIcon(String icon, File contextFile) {
     customization.setCurrentIcon(icon);
-    AccountDataRepository.save(context, this);
+    AccountDataRepository.save(contextFile, this);
   }
 
   public int getIcon(){
@@ -95,58 +96,58 @@ public class Account{
 
   /**
    * Increments level or resets it where appropriate and records it
-   * @param context an access to the current file state of the app
+   * @param contextFile an access to the current file state of the app
    */
-  public void incrementLevel(Context context) {
+  public void incrementLevel(File contextFile) {
     gameData.incrementLevel();
-    AccountDataRepository.save(context, this);
+    AccountDataRepository.save(contextFile, this);
   }
 
   /**
    * Decrements level for purposes of retrying where appropriate and records it
-   * @param context an access to the current file state of the app
+   * @param contextFile an access to the current file state of the app
    */
-  public void decrementLevel(Context context) {
+  public void decrementLevel(File contextFile) {
     gameData.decrementLevel();
-    AccountDataRepository.save(context, this);
+    AccountDataRepository.save(contextFile, this);
   }
 
   /**
    * Reduces hitpoints by a set amount and records it
    * @param reduce the amount by which hit points are reduced
-   * @param context an access to the current file state of the app
+   * @param contextFile an access to the current file state of the app
    */
-  public void decrementHitPoints(int reduce, Context context) {
+  public void decrementHitPoints(int reduce, File contextFile) {
     gameData.decrementHitPoints(reduce);
-    AccountDataRepository.save(context, this);
+    AccountDataRepository.save(contextFile, this);
   }
 
   /**
    * Changes score by amount add
    * @param add the amount to be added to the score
-   * @param context an access to the current file state of the app
+   * @param contextFile an access to the current file state of the app
    */
-  public void incrementScore(int add, Context context) {
+  public void incrementScore(int add, File contextFile) {
     gameData.incrementScore(add);
-    AccountDataRepository.save(context, this);
+    AccountDataRepository.save(contextFile, this);
   }
 
   /**
    * Increments the number of times the games are played on this account
-   * @param context an access to the current file state of the app
+   * @param contextFile an access to the current file state of the app
    */
-  public void incrementGamesPlayed(Context context) {
+  public void incrementGamesPlayed(File contextFile) {
     gameData.incrementGamesPlayed();
-    AccountDataRepository.save(context, this);
+    AccountDataRepository.save(contextFile, this);
   }
 
   /**
    * Sets this account's stats to starting ones
-   * @param context an access to the current file state of the app
+   * @param contextFile an access to the current file state of the app
    */
-  void resetValues(Context context){
+  void resetValues(File contextFile){
     gameData.resetData();
-    AccountDataRepository.save(context, this);
+    AccountDataRepository.save(contextFile, this);
   }
 
   public int getLastAttemptedLevel() {

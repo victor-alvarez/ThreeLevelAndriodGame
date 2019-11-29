@@ -42,7 +42,7 @@ public class GameEnd extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
 
         //Passes the account into Intent so it can be used accessed in MainActivity.
-        BaseActivity.account.resetValues(getApplicationContext());
+        BaseActivity.account.resetValues(getApplicationContext().getFilesDir());
         startActivity(intent);
     }
 }

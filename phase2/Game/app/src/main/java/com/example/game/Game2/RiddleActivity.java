@@ -160,7 +160,7 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
      */
     @Override
     public void rightAnswer(){
-        BaseActivity.account.incrementScore(5, getApplicationContext());
+        BaseActivity.account.incrementScore(5, getApplicationContext().getFilesDir());
         result.setText(getResources().getString(R.string.correct));
         changeVisibility();
     }
@@ -170,7 +170,7 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
      */
     @Override
     public void wrongAnswer(){
-        BaseActivity.account.decrementHitPoints(5, getApplicationContext());
+        BaseActivity.account.decrementHitPoints(5, getApplicationContext().getFilesDir());
         result.setText(getResources().getString(R.string.Nope));
         changeVisibility();
     }
