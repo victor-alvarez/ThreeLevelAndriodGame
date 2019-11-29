@@ -17,11 +17,6 @@ import com.example.game.R;
 public class Game3ExitActivity extends BaseActivity {
 
     /**
-     * Account of the User currently playing this game.
-     */
-    Account account;
-
-    /**
      * Text displaying player stats
      */
     TextView lives, scores;
@@ -44,9 +39,6 @@ public class Game3ExitActivity extends BaseActivity {
         gameResult.setTextColor(Color.BLUE);
         gameResult.setTextSize(50);
 
-        //Account information is passed in.
-        account = (Account) getIntent().getSerializableExtra("ac");
-
         //Customizes the Activity based on User preference.
         getWindow().getDecorView().setBackgroundResource(account.getBackground());
 
@@ -64,10 +56,7 @@ public class Game3ExitActivity extends BaseActivity {
      */
     public void retry(View view) {
         Intent intent = new Intent(this, Game3PlayActivity.class);
-
         account.decrementLevel(getApplicationContext());
-        //Passes the account into Intent so it can be used accessed in Game3PlayActivity.
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 
@@ -78,7 +67,6 @@ public class Game3ExitActivity extends BaseActivity {
      */
     public void toEndGame(View view) {
         Intent intent = new Intent(this, GameEnd.class);
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 }

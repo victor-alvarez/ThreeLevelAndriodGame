@@ -11,7 +11,6 @@ import com.example.game.Game3.Game3Activity;
 import com.example.game.R;
 
 public class Win extends BaseActivity {
-    Account account;
 
     /**
      * Text displaying player stats
@@ -28,8 +27,6 @@ public class Win extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game2_win);
 
-        account = (Account) getIntent().getSerializableExtra("ac");
-
         getWindow().getDecorView().setBackgroundResource(account.getBackground());
 
 
@@ -43,7 +40,6 @@ public class Win extends BaseActivity {
     /** Called when the user taps the "To Game Three" button */
     public void nextGame(View view) {
         Intent intent = new Intent(this, Game3Activity.class);
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 }

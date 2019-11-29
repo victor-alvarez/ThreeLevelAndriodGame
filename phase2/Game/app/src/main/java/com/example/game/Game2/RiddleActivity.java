@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.game.Account;
+import com.example.game.BaseActivity;
 import com.example.game.R;
 import com.example.game.models.RiddleActions;
 
@@ -17,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class RiddleActivity extends AppCompatActivity implements RiddleActions {
-    private Account account;
 
     /**
      * Text displaying player stats
@@ -62,21 +62,20 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
     /**
      * Presenter for this view.
      */
-     RiddlePresenter presenter;
+    private RiddlePresenter presenter;
 
     /**
      * Array of question and answers of the most recent riddle.
      */
-    String[] riddleArray;
+    private String[] riddleArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_riddle);
-        account = (Account) getIntent().getSerializableExtra("ac");
         presenter = new RiddlePresenter(this, new RiddleUseCases());
 
-        getWindow().getDecorView().setBackgroundResource(account.getBackground());
+        getWindow().getDecorView().setBackgroundResource(BaseActivity.account.getBackground());
 
         lives = findViewById(R.id.livesText_RiddleActivity);
 
@@ -129,8 +128,8 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
 
     @Override
     public void setNewRiddleText(){
-        lives.setText(String.valueOf(account.getHitPoints()));
-        scores.setText(String.valueOf(account.getCurrentScore()));
+        lives.setText(String.valueOf(BaseActivity.account.getHitPoints()));
+        scores.setText(String.valueOf(BaseActivity.account.getCurrentScore()));
 
         try {
             String riddleResourceName = getRiddleResourceName();
@@ -161,7 +160,7 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
      */
     @Override
     public void rightAnswer(){
-        account.incrementScore(5, getApplicationContext());
+        BaseActivity.account.incrementScore(5, getApplicationContext());
         result.setText(getResources().getString(R.string.correct));
         changeVisibility();
     }
@@ -171,7 +170,7 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
      */
     @Override
     public void wrongAnswer(){
-        account.decrementHitPoints(5, getApplicationContext());
+        BaseActivity.account.decrementHitPoints(5, getApplicationContext());
         result.setText(getResources().getString(R.string.Nope));
         changeVisibility();
     }
@@ -182,7 +181,6 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
     @Override
     public void finishRiddles() {
         Intent intent = new Intent(this, Win.class);
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 

@@ -26,11 +26,6 @@ public class OptionsActivity extends BaseActivity {
     private SharedPreferences.Editor mEditor;
 
     /**
-     * The player's account. It holds information about the player and can record its information
-     */
-    private Account account;
-
-    /**
      * Code to execute when the Activity is created.
      *
      * @param savedInstanceState A Bundle containing possibly previous states of this Activity.
@@ -92,7 +87,6 @@ public class OptionsActivity extends BaseActivity {
         localeManager.setNewLocale(this, language);
 
         Intent i = new Intent(this, OptionsActivity.class);
-        i.putExtra("ac", account);
         startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 
@@ -156,7 +150,6 @@ public class OptionsActivity extends BaseActivity {
      */
     public void toMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 }

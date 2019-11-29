@@ -18,18 +18,11 @@ import com.example.game.Game3.Game3ExitActivity;
  * the previous point they left off at or start a new game.
  */
 public class MainActivity extends BaseActivity {
-
-    /**
-     * The player's account. It holds information about the player and can record its information
-     */
-    private Account account;
-
     /**
      * Text displaying player stats. addCoun is for addition counter, a counter for number of games
      * played including retries.
      */
     private TextView addCoun, lives, scores;
-    ;
 
     /**
      * Code to execute when the Activity is created.
@@ -40,8 +33,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        account = (Account) getIntent().getSerializableExtra("ac");
 
         ImageView icon = findViewById(R.id.User_Icon);
 
@@ -78,7 +69,6 @@ public class MainActivity extends BaseActivity {
         } else {
             intent = new Intent(this, Game3ExitActivity.class);
         }
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 
@@ -87,7 +77,6 @@ public class MainActivity extends BaseActivity {
      */
     public void openOptions(View view) {
         Intent intent = new Intent(this, OptionsActivity.class);
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 
@@ -98,7 +87,6 @@ public class MainActivity extends BaseActivity {
         Intent intent = new Intent(this, Game1Activity.class);
         // Resets most of the values for the player as they are starting a new game
         account.resetValues(getApplicationContext());
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 }

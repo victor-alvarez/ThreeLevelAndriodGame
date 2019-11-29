@@ -12,14 +12,11 @@ import com.example.game.BaseActivity;
 import com.example.game.R;
 
 public class Game2Activity extends BaseActivity {
-  Account account;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game2_title);
-
-    account = (Account) getIntent().getSerializableExtra("ac");
 
     getWindow().getDecorView().setBackgroundResource(account.getBackground());
   }
@@ -27,7 +24,6 @@ public class Game2Activity extends BaseActivity {
   /** Called when the user taps the "START Riddles Game" button */
   public void nextRiddle1(View view) {
     Intent intent = new Intent(this, RiddleActivity.class);
-    intent.putExtra("ac", account);
     startActivity(intent);
   }
 }

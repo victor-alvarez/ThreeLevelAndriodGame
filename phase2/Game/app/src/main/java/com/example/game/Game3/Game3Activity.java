@@ -16,11 +16,6 @@ import com.example.game.R;
 public class Game3Activity extends BaseActivity {
 
     /**
-     * Account of the User currently playing this game.
-     */
-    Account account;
-
-    /**
      * Text displaying player stats
      */
     TextView lives, scores;
@@ -36,9 +31,6 @@ public class Game3Activity extends BaseActivity {
         //Sets the view for this Activity.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game3);
-
-        //Account information is passed in.
-        account = (Account) getIntent().getSerializableExtra("ac");
 
         //Customizes the Activity based on User preference.
         getWindow().getDecorView().setBackgroundResource(account.getBackground());
@@ -57,9 +49,6 @@ public class Game3Activity extends BaseActivity {
      */
     public void toMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-
-        //Passes the account into Intent so it can be used accessed in MainActivity.
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 
@@ -70,9 +59,6 @@ public class Game3Activity extends BaseActivity {
      */
     public void toPlay(View view) {
         Intent intent = new Intent(this, Game3PlayActivity.class);
-
-        //Passes the account into Intent so it can be used accessed in GamePlay3Activity.
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 }

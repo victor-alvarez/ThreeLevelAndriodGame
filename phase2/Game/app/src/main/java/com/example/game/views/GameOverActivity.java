@@ -21,11 +21,6 @@ import com.example.game.views.BallJumperActivity;
 public class GameOverActivity extends BaseActivity {
 
     /**
-     * Instance variables
-     */
-    Account account;
-
-    /**
      * Text displaying the addiction counter (so the number of games played including retries)
      */
     TextView lives, scores;
@@ -35,8 +30,6 @@ public class GameOverActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
-
-        account = (Account) getIntent().getSerializableExtra("ac");
 
         // Score Labels
         TextView scoreLabel = findViewById(R.id.scoreLabel);
@@ -64,8 +57,6 @@ public class GameOverActivity extends BaseActivity {
             highScoreLabel.setText("High Score : " + highScore);
         }
 
-        account = (Account) getIntent().getSerializableExtra("ac");
-
         assert account != null;
         getWindow().getDecorView().setBackgroundResource(account.getBackground());
 
@@ -82,7 +73,6 @@ public class GameOverActivity extends BaseActivity {
     public void retry(View view) {
         Intent intent = new Intent(this, BallJumperActivity.class);
         account.decrementLevel(getApplicationContext());
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 
@@ -91,7 +81,6 @@ public class GameOverActivity extends BaseActivity {
      */
     public void nextGame(View view) {
         Intent intent = new Intent(this, Game2Activity.class);
-        intent.putExtra("ac", account);
         account.incrementLevel(getApplicationContext());
         startActivity(intent);
     }
@@ -101,7 +90,6 @@ public class GameOverActivity extends BaseActivity {
      */
     public void toMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 }
