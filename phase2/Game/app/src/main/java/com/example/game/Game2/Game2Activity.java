@@ -26,7 +26,7 @@ public class Game2Activity extends BaseActivity {
 
   /** Called when the user taps the "START Riddles Game" button */
   public void nextRiddle1(View view) {
-    Intent intent = new Intent(this, Riddle1.class);
+    Intent intent = new Intent(this, RiddleActivity.class);
     intent.putExtra("ac", account);
     startActivity(intent);
   }

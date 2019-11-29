@@ -2,7 +2,6 @@ package com.example.game.Game2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,12 +10,13 @@ import android.widget.TextView;
 
 import com.example.game.Account;
 import com.example.game.R;
+import com.example.game.models.RiddleActions;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class RiddleActivity extends AppCompatActivity {
+public class RiddleActivity extends AppCompatActivity implements RiddleActions {
     private Account account;
 
     /**
@@ -42,20 +42,10 @@ public class RiddleActivity extends AppCompatActivity {
     /**
      * OnClickListener for the correct answer button
      */
-    private View.OnClickListener correct = new View.OnClickListener() {
+    private View.OnClickListener answer = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            rightAnswer();
-        }
-    };
-
-    /**
-     * OnClickListeners for the incorrect answer buttons
-     */
-    private View.OnClickListener incorrect = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            wrongAnswer();
+            determineAnswer(view);
         }
     };
 
@@ -69,16 +59,28 @@ public class RiddleActivity extends AppCompatActivity {
      */
     private Random random = new Random();
 
+    /**
+     * Presenter for this view.
+     */
+     RiddlePresenter presenter;
+
+    /**
+     * Array of question and answers of the most recent riddle.
+     */
+    String[] riddleArray;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_riddle);
         account = (Account) getIntent().getSerializableExtra("ac");
+        presenter = new RiddlePresenter(this, new RiddleUseCases());
 
         getWindow().getDecorView().setBackgroundResource(account.getBackground());
 
         lives = findViewById(R.id.livesText_RiddleActivity);
-        lives.setText(String.valueOf(account.getHitPoints()));
+
+        scores = findViewById(R.id.scoreText_RiddleActivity);
 
         answers = new Button[4];
         int size = getResources().getInteger(R.integer.numArrays);
@@ -87,9 +89,6 @@ public class RiddleActivity extends AppCompatActivity {
             remainingRiddles.add(i);
         }
 
-        scores = findViewById(R.id.scoreText_RiddleActivity);
-        scores.setText(String.valueOf(account.getCurrentScore()));
-
         result = findViewById(R.id.result_RiddleActivity);
         question = findViewById(R.id.question_RiddleActivity);
 
@@ -97,44 +96,57 @@ public class RiddleActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                populateRiddle();
+                populateRiddleIfAble();
             }
         });
         answers[0] = findViewById(R.id.a1_RiddleActivity);
         answers[1] = findViewById(R.id.a2_RiddleActivity);
         answers[2] = findViewById(R.id.a3_RiddleActivity);
         answers[3] = findViewById(R.id.a4_RiddleActivity);
-        populateRiddle();
+        for (int i = 0; i < answers.length; i++){
+            answers[i].setOnClickListener(answer);
+        }
+
+        populateRiddleIfAble();
     }
 
     /**
      * Populates the riddle with a random riddle. Will not repeat the same riddle in the same
-     * playthrough.
+     * playthrough. If there are no more riddles will go to the end screen for game 2.
      */
-    private void populateRiddle() {
-        if(remainingRiddles.size() == 0){
-            finishRiddles();
-            return;
-        }
+    private void populateRiddleIfAble() {
+        presenter.nextRiddle(remainingRiddles);
+    }
+
+    /**
+     * Determines whether the answer is right or wrong and reacts accordingly.
+     * @param view actually a button, as this is activated as an onClickListener. It is the button
+     *             for one of the answers to the Riddle.
+     */
+    private void determineAnswer(View view){
+        presenter.determineRightOrWrong(riddleArray, ((Button) view).getText().toString());
+    }
+
+    @Override
+    public void setNewRiddleText(){
+        lives.setText(String.valueOf(account.getHitPoints()));
+        scores.setText(String.valueOf(account.getCurrentScore()));
+
         try {
             String riddleResourceName = getRiddleResourceName();
             Class<R.array> res = R.array.class;
             Field field = res.getField(riddleResourceName);
-            String[] array = getApplicationContext().getResources().
+            riddleArray = getApplicationContext().getResources().
                     getStringArray(field.getInt(null));
 
-            question.setText(array[0]);
+            question.setText(riddleArray[0]);
             question.setVisibility(View.VISIBLE);
 
-
-
-            for (int i = 2; i < array.length; i++) {
-                answers[i - 2].setText(array[i]);
+            for (int i = 2; i < riddleArray.length; i++) {
+                answers[i - 2].setText(riddleArray[i]);
                 answers[i - 2].setVisibility(View.VISIBLE);
                 answers[i - 2].setClickable(true);
-                answers[i - 2].setOnClickListener(incorrect);
             }
-            answers[Integer.parseInt(array[1])].setOnClickListener(correct);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -144,24 +156,41 @@ public class RiddleActivity extends AppCompatActivity {
         back.setClickable(false);
     }
 
-    private String getRiddleResourceName(){
-        Integer num = remainingRiddles.get(random.nextInt(remainingRiddles.size()));
-        String str = "riddle";
-        str += num;
-        remainingRiddles.remove(num);
-        return str;
-    }
-
-    private void rightAnswer(){
+    /**
+     * Changes the view if the answer is correct.
+     */
+    @Override
+    public void rightAnswer(){
+        account.incrementScore(5, getApplicationContext());
         result.setText(getResources().getString(R.string.correct));
         changeVisibility();
     }
 
-    private void wrongAnswer(){
+    /**
+     * Changes the view if the answer is incorrect.
+     */
+    @Override
+    public void wrongAnswer(){
+        account.decrementHitPoints(5, getApplicationContext());
         result.setText(getResources().getString(R.string.Nope));
         changeVisibility();
     }
 
+    /**
+     * Finishes all the riddles; moves the the end screen activity for game 2.
+     */
+    @Override
+    public void finishRiddles() {
+        Intent intent = new Intent(this, Win.class);
+        intent.putExtra("ac", account);
+        startActivity(intent);
+    }
+
+    /**
+     * Changes visibility of the buttons and text fields so the question and answers buttons are
+     * non-visible and non-clickable, while making it so then the result and next riddle buttons
+     * are.
+     */
     private void changeVisibility(){
         question.setVisibility(View.INVISIBLE);
         for (int i = 0; i < answers.length; i++) {
@@ -174,10 +203,15 @@ public class RiddleActivity extends AppCompatActivity {
         back.setClickable(true);
     }
 
-    public void finishRiddles() {
-        Intent intent = new Intent(this, Win.class);
-        // Resets most of the values for the player as they are starting a new game
-        intent.putExtra("ac", account);
-        startActivity(intent);
+    /**
+     * Uses pseudo-randomness to
+     * @return the name of a random not already used riddle resource
+     */
+    private String getRiddleResourceName(){
+        Integer num = remainingRiddles.get(random.nextInt(remainingRiddles.size()));
+        String str = "riddle";
+        str += num;
+        remainingRiddles.remove(num);
+        return str;
     }
 }
