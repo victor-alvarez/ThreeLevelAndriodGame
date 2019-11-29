@@ -14,7 +14,7 @@ class CharacterObject extends Game3Object {
     /**
      * The physical appearance of the Character as a Bitmap.
      */
-    private Bitmap sprite;
+    private Bitmap sprite ;
 
     private Bitmap[] spriteAnimate = new Bitmap[4];
 
@@ -66,5 +66,6 @@ class CharacterObject extends Game3Object {
         } else {
             spriteFrame++;
         }
+        sprite = spriteAnimate[spriteFrame];
     }
 }
