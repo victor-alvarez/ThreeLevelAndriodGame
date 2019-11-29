@@ -15,6 +15,11 @@ public class BaseActivity extends AppCompatActivity {
     public static LocaleManager localeManager;
 
     /**
+     * Currently logged in user account. Null if no user is logged in.
+     */
+    public static Account account;
+
+    /**
      * Ensures locale is attached to configuration of context
      */
     @Override

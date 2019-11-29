@@ -17,8 +17,6 @@ public class BallJumperActivity extends BaseActivity {
 
     // === Instance Variables ===
 
-    Account account;
-
     /**
      * Creates the GamePanel that is displayed on screen.
      *
@@ -38,7 +36,6 @@ public class BallJumperActivity extends BaseActivity {
         Constants.SCREEN_HEIGHT = dm.heightPixels;
 
         setContentView(new GamePanel(this));
-        account = (Account) getIntent().getSerializableExtra("ac");
     }
 
     /**
@@ -54,7 +51,6 @@ public class BallJumperActivity extends BaseActivity {
         account.incrementScore(score, getApplicationContext());
         account.decrementHitPoints(hitPoints, getApplicationContext());
         account.incrementGamesPlayed(getApplicationContext());
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 

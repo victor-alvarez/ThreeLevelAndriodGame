@@ -86,10 +86,14 @@ public class LoginActivity extends BaseActivity implements LoginActions {
         textView.setText(R.string.invalid_username);
     }
 
+    /**
+     * Moves to the main menu with account logged in.
+     * @param account account which is to be logged in
+     */
     @Override
     public void moveToMainMenu(Account account) {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("ac", account);
+        BaseActivity.account = account;
         startActivity(intent);
     }
 }

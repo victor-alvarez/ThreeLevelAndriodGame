@@ -19,11 +19,6 @@ public class Game3PlayActivity extends BaseActivity {
     private Game3View game3View;
 
     /**
-     * Account of the User currently playing this game.
-     */
-    Account account;
-
-    /**
      * Code to execute when the Activity is created.
      *
      * @param savedInstanceState A Bundle containing possibly previous states of this Activity.
@@ -35,9 +30,6 @@ public class Game3PlayActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         game3View = new Game3View(this);
         setContentView(game3View);
-
-        //Account information is passed in.
-        account = (Account) getIntent().getSerializableExtra("ac");
 
         //Customizes the Activity based on User preference.
         getWindow().getDecorView().setBackgroundResource(account.getBackground());
@@ -79,7 +71,6 @@ public class Game3PlayActivity extends BaseActivity {
             //Ran out of lives
             intent = new Intent(this, GameOver.class);
         }
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 

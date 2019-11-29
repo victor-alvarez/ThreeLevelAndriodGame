@@ -8,9 +8,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class GameEnd extends AppCompatActivity {
-
-    private Account account;
-
     /**
      * Text displaying player stats
      */
@@ -26,17 +23,14 @@ public class GameEnd extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_end);
 
-        //Account information is passed in.
-        account = (Account) getIntent().getSerializableExtra("ac");
-
         //Customizes the Activity based on User preference.
-        getWindow().getDecorView().setBackgroundResource(account.getBackground());
+        getWindow().getDecorView().setBackgroundResource(BaseActivity.account.getBackground());
 
         lives = findViewById(R.id.livesText_GameEnd);
-        lives.setText(String.valueOf(account.getHitPoints()));
+        lives.setText(String.valueOf(BaseActivity.account.getHitPoints()));
 
         scores = findViewById(R.id.scoreText_GameEnd);
-        scores.setText(String.valueOf(account.getCurrentScore()));
+        scores.setText(String.valueOf(BaseActivity.account.getCurrentScore()));
     }
 
     /**
@@ -48,8 +42,7 @@ public class GameEnd extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
 
         //Passes the account into Intent so it can be used accessed in MainActivity.
-        account.resetValues(getApplicationContext());
-        intent.putExtra("ac", account);
+        BaseActivity.account.resetValues(getApplicationContext());
         startActivity(intent);
     }
 }

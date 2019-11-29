@@ -5,7 +5,7 @@ import android.content.Context;
 import java.io.Serializable;
 
 /** An account */
-public class Account implements Serializable{
+public class Account{
 
   /** Account's login, customization settings and save data. */
   private String login;

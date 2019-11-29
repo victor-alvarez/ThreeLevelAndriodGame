@@ -17,8 +17,6 @@ public class Game1Activity extends BaseActivity {
 
     // === Instance Variables ===
 
-    Account account;
-
     /**
      * Creates layout that is displayed on screen.
      *
@@ -29,10 +27,8 @@ public class Game1Activity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game1);
 
-        account = (Account) getIntent().getSerializableExtra("ac");
-
-        assert account != null;
-        getWindow().getDecorView().setBackgroundResource(account.getBackground());
+        assert BaseActivity.account!= null;
+        getWindow().getDecorView().setBackgroundResource(BaseActivity.account.getBackground());
     }
 
     /**
@@ -42,7 +38,6 @@ public class Game1Activity extends BaseActivity {
      */
     public void playGame(View view) {
         Intent intent = new Intent(this, BallJumperActivity.class);
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 
@@ -68,7 +63,6 @@ public class Game1Activity extends BaseActivity {
      */
     public void toMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("ac", account);
         startActivity(intent);
     }
 }
