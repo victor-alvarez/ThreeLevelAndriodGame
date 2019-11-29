@@ -4,7 +4,7 @@ import android.content.Context;
 
 import java.io.Serializable;
 
-public class GameData implements Serializable {
+public class GameData {
     /** Account's save data:
      * at index 0 - last level attempted (0-4):
      * 0 - have not started level 1 yet,

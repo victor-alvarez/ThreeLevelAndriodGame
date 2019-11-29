@@ -25,12 +25,12 @@ class AccountDataRepository {
      */
     private static final String FILE_NAME = "save.txt";
 
-    static void save(Context context, Account account){
+    static void save(File contextFile, Account account){
         try {
             Gson gson = new Gson();
             String accountString = gson.toJson(account);
 
-            File saveFile = new File(context.getFilesDir(), FILE_NAME);
+            File saveFile = new File(contextFile, FILE_NAME);
             FileReader fileReader = new FileReader(saveFile);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             StringBuilder stringBuilder = new StringBuilder();
@@ -53,10 +53,10 @@ class AccountDataRepository {
         }
     }
 
-    static Account openExistingAccount(String login, Context context){
+    static Account openExistingAccount(String login, File contextFile){
         try {
             Gson gson = new Gson();
-            File saveFile = new File(context.getFilesDir(), FILE_NAME);
+            File saveFile = new File(contextFile, FILE_NAME);
             FileReader loadAccountData = new FileReader(saveFile);
             BufferedReader loadAccData = new BufferedReader(loadAccountData);
             String line;
@@ -74,11 +74,11 @@ class AccountDataRepository {
         return null;
     }
 
-    static void createNewAccount(String login, Context context) {
+    static void createNewAccount(String login, File contextFile) {
         try {
             Gson gson = new Gson();
             Account account = new Account(login);
-            File saveFile = new File(context.getFilesDir(), FILE_NAME);
+            File saveFile = new File(contextFile, FILE_NAME);
             FileWriter fileWriter = new FileWriter(saveFile, true);
             fileWriter.write(gson.toJson(account));
             fileWriter.write("\n");
@@ -88,8 +88,8 @@ class AccountDataRepository {
         }
     }
 
-    static void deleteAccountData(Context context){
-        File saveFile = new File(context.getFilesDir(), FILE_NAME);
+    static void deleteAccountData(File contextFile){
+        File saveFile = new File(contextFile, FILE_NAME);
         if (saveFile.delete()) {
             System.out.println("Successfully deleted");
         }

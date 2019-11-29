@@ -72,7 +72,7 @@ public class GameOverActivity extends BaseActivity {
      */
     public void retry(View view) {
         Intent intent = new Intent(this, BallJumperActivity.class);
-        account.decrementLevel(getApplicationContext());
+        account.decrementLevel(getApplicationContext().getFilesDir());
         startActivity(intent);
     }
 
@@ -81,7 +81,7 @@ public class GameOverActivity extends BaseActivity {
      */
     public void nextGame(View view) {
         Intent intent = new Intent(this, Game2Activity.class);
-        account.incrementLevel(getApplicationContext());
+        account.incrementLevel(getApplicationContext().getFilesDir());
         startActivity(intent);
     }
 

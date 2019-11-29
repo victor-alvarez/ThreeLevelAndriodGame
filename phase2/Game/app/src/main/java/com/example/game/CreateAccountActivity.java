@@ -62,7 +62,7 @@ public class CreateAccountActivity extends BaseActivity implements CreateAccount
      * @param view the create account button's view
      */
     public void createAccount(View view) {
-        presenter.createAccount(inputName.getText().toString(), getApplicationContext());
+        presenter.createAccount(inputName.getText().toString(), getApplicationContext().getFilesDir());
     }
 
     /**
@@ -77,7 +77,8 @@ public class CreateAccountActivity extends BaseActivity implements CreateAccount
      * Called when the user taps the "Back" button
      */
     public void deleteData(View view) {
-        accountManager.deleteAccountData(getApplicationContext());
+        //Todo: move lower in structure to follow MVP.
+        accountManager.deleteAccountData(getApplicationContext().getFilesDir());
     }
 
     /**

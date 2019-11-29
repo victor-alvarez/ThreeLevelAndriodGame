@@ -58,7 +58,7 @@ public class MainActivity extends BaseActivity {
         Intent intent;
         if (level == 0) {
             // Resets most of the values for the player as they are starting a new game
-            account.resetValues(getApplicationContext());
+            account.resetValues(getApplicationContext().getFilesDir());
             intent = new Intent(this, Game1Activity.class);
         } else if (level == 1) {
             intent = new Intent(this, GameOverActivity.class);
@@ -86,7 +86,7 @@ public class MainActivity extends BaseActivity {
     public void startGame(View view) {
         Intent intent = new Intent(this, Game1Activity.class);
         // Resets most of the values for the player as they are starting a new game
-        account.resetValues(getApplicationContext());
+        account.resetValues(getApplicationContext().getFilesDir());
         startActivity(intent);
     }
 }

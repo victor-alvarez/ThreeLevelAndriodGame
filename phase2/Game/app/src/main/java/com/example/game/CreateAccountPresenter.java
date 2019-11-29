@@ -5,6 +5,8 @@ import android.content.Context;
 import com.example.game.models.CreateAccountActions;
 import com.example.game.models.CreateAccountReactor;
 
+import java.io.File;
+
 /**
  * Presenter layer for account creations which communicates between the UI and Use Cases.
  */
@@ -33,10 +35,10 @@ public class CreateAccountPresenter implements CreateAccountReactor {
     /**
      * Tells the use cases to check over this login.
      * @param username the entered in username for this login
-     * @param context the location of the application
+     * @param contextFile the location of the application
      */
-    void createAccount(String username, Context context){
-        createAccountUseCases.createAccount(username, context, this);
+    void createAccount(String username, File contextFile){
+        createAccountUseCases.createAccount(username, contextFile, this);
     }
 
     /**

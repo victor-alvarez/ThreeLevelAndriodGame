@@ -1,11 +1,14 @@
 package com.example.game.Game3;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
+
+import com.example.game.R;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,6 +32,7 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     private Paint paint;
 
+    private Canvas canvas = getHolder().lockCanvas();
 
     /**
      * Instance that manages all the objects in the Game.
@@ -40,6 +44,8 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     private final Context activityContext;
 
+    private final DrawManager drawManager;
+
     /**
      * Game3View constructor.
      *
@@ -49,7 +55,8 @@ public class Game3View extends SurfaceView implements Runnable {
         super(context);
         activityContext = context;
         paint = new Paint();
-        gameObjectManager = new GameObjectManager(getResources());
+        this.drawManager = new DrawManager(this.canvas, this.paint);
+        gameObjectManager = new GameObjectManager(getResources(), drawManager);
 
         //Creates all the game objects that are needed for this Game.
         gameObjectManager.createObjects();
@@ -116,10 +123,14 @@ public class Game3View extends SurfaceView implements Runnable {
 
             //Locks the canvas, sets Grey Background, then draw objects (handled by
             // gameObjectManager.draw) and then unlocks the canvas.
-            Canvas canvas = getHolder().lockCanvas();
+            this.canvas = getHolder().lockCanvas();
+            drawManager.setCanvas(this.canvas);
             super.draw(canvas);
-            canvas.drawColor(Color.BLACK);
-            gameObjectManager.draw(canvas, paint);
+            //canvas.drawColor(Color.BLACK);
+            Bitmap b1 = BitmapFactory.decodeResource(getResources(), R.drawable.gamebackground2);
+            Bitmap b2 = Bitmap.createScaledBitmap(b1, getWidth(), getHeight(), false);
+            canvas.drawBitmap(b2,0,0,null);
+            gameObjectManager.draw();
             getHolder().unlockCanvasAndPost(canvas);
         }
     }
@@ -164,7 +175,11 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        gameObjectManager.onTouchEventHelper(event);
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            float touchX = event.getX();
+            float touchY = event.getY();
+            gameObjectManager.onTouchEventHelper(touchX, touchY);
+        }
         return super.onTouchEvent(event);
     }
 }

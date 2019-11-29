@@ -4,8 +4,10 @@ import android.content.Context;
 
 import com.example.game.Account;
 
-public interface AccountManagerInterface {
-    abstract void createNewAccount(String login, Context context);
+import java.io.File;
 
-    abstract Account openExistingAccount(String login, Context context);
+public interface AccountManagerInterface {
+    abstract void createNewAccount(String login, File contextFile);
+
+    abstract Account openExistingAccount(String login, File contextFile);
 }

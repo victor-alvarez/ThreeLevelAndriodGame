@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.example.game.models.AccountManagerInterface;
 
+import java.io.File;
+
 /**
  * Account manager that manages the creation and opening of accounts.
  */
@@ -17,8 +19,8 @@ class AccountManager implements AccountManagerInterface {
      * @param login of the Account.
      */
     @Override
-    public void createNewAccount(String login, Context context) {
-        AccountDataRepository.createNewAccount(login, context);
+    public void createNewAccount(String login, File contextFile) {
+        AccountDataRepository.createNewAccount(login, contextFile);
     }
 
     /**
@@ -30,68 +32,12 @@ class AccountManager implements AccountManagerInterface {
      * missing => null.
      */
     @Override
-    public Account openExistingAccount(String login, Context context) {
-        return AccountDataRepository.openExistingAccount(login, context);
+    public Account openExistingAccount(String login, File contextFile) {
+        return AccountDataRepository.openExistingAccount(login, contextFile);
     }
 
     // Deletes all accounts
-    void deleteAccountData(Context context) {
-        AccountDataRepository.deleteAccountData(context);
+    void deleteAccountData(File contextFile) {
+        AccountDataRepository.deleteAccountData(contextFile);
     }
-
-  /* For Phase 2. Left here as rough methods we were unable to implement in time
-
-  public void updateHighScores(Account acc, Context context) {
-    try {
-      File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
-      FileReader loadAccountData = new FileReader(saveFile);
-      BufferedReader loadAccData = new BufferedReader(loadAccountData);
-      String line = loadAccData.readLine();
-      loadAccData.close();
-      String[] l = line.split(", ");
-      int highscore1 = Integer.parseInt(l[1]);
-      int highscore2 = Integer.parseInt(l[3]);
-      int highscore3 = Integer.parseInt(l[5]);
-      String Winner1 = l[0];
-      String Winner2 = l[2];
-      String Winner3 = l[4];
-      int hs = acc.save[2];
-      String w = acc.login;
-      if (hs > highscore1) {
-        String s = w+", "+hs+", "+Winner1+", "+highscore1+", "+Winner2+", "+highscore2;
-        writeHighScore(s, context);
-      } else if (hs > highscore2){
-        String s = Winner1+", "+highscore1+", "+w+", "+hs+", "+Winner2+", "+highscore2;
-        writeHighScore(s, context);
-      } else if (hs > highscore3){
-        String s = Winner1+", "+highscore1+", "+Winner2+", "+highscore2+", "+w+", "+hs;
-        writeHighScore(s, context);
-      }
-    } catch (IOException error) {
-      error.printStackTrace();
-      System.out.println("Error");
-    }
-  }
-
-  public void writeHighScore(String hs, Context context) {
-    try {
-      File saveFile = new File(context.getFilesDir() + "/gameSaveFile.txt");
-      FileReader loadAccountData = new FileReader(saveFile);
-      BufferedReader loadAccData = new BufferedReader(loadAccountData);
-      String line = loadAccData.readLine();
-      ArrayList<String> old = new ArrayList<String>();
-      while ((line = loadAccData.readLine()) != null) {
-        old.add(line);
-      }
-      loadAccData.close();
-      PrintWriter updateSave = new PrintWriter(saveFile);
-      updateSave.println(hs);
-      for (String i : old) {
-        updateSave.println(i);
-      }
-      updateSave.close();
-    } catch (IOException error) {
-      System.out.println("Can't find account");
-    }
-  }*/
 }

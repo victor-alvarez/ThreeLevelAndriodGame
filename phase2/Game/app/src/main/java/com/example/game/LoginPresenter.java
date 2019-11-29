@@ -5,6 +5,8 @@ import android.content.Context;
 import com.example.game.models.LoginActions;
 import com.example.game.models.LoginListener;
 
+import java.io.File;
+
 /**
  * Presenter for LoginActivity. It communicates with LoginActivity to determine actions related
  * to logging in.
@@ -40,9 +42,9 @@ public class LoginPresenter implements LoginListener {
     /**
      * Tells the use cases to check over this login.
      * @param username the entered in username for this login
-     * @param context the location of the application
+     * @param contextFile the location of the application
      */
-    void login(String username, Context context){
-        loginUseCases.login(username, context, this);
+    void login(String username, File contextFile){
+        loginUseCases.login(username, contextFile, this);
     }
 }

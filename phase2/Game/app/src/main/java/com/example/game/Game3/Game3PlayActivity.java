@@ -63,10 +63,10 @@ public class Game3PlayActivity extends BaseActivity {
         Intent intent = new Intent(this, Game3ExitActivity.class);
         intent.putExtra("EXTRA_WINNER", winner);
         intent.putExtra("EXTRA_MOVES", numMoves);
-        account.incrementLevel(getApplicationContext());
-        account.incrementScore(hitpoints, getApplicationContext());
-        account.decrementHitPoints(100 - hitpoints, getApplicationContext());
-        account.incrementGamesPlayed(getApplicationContext());
+        account.incrementLevel(getApplicationContext().getFilesDir());
+        account.incrementScore(hitpoints, getApplicationContext().getFilesDir());
+        account.decrementHitPoints(100 - hitpoints, getApplicationContext().getFilesDir());
+        account.incrementGamesPlayed(getApplicationContext().getFilesDir());
         if (account.getHitPoints() <= 0){
             //Ran out of lives
             intent = new Intent(this, GameOver.class);
