@@ -167,8 +167,9 @@ public class GameplayScene implements Scene {
     public void receiveTouch(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if (!gameOver && player.getRectangle().contains((int) event.getX(), (int) event.getY())) {
+                if (!gameOver) {
                     movingPlayer = true;
+                    playerPoint.set((int) event.getX(), playerPoint.y);
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
