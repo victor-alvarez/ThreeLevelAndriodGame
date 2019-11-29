@@ -1,4 +1,4 @@
-package com.example.game.views;
+package com.example.game.views.game1;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,9 +6,8 @@ import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.example.game.Account;
 import com.example.game.BaseActivity;
-import com.example.game.models.Constants;
+import com.example.game.models.game1.Constants;
 
 public class BallJumperActivity extends BaseActivity {
     /**

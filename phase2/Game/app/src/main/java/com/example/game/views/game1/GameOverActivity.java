@@ -1,4 +1,4 @@
-package com.example.game.views;
+package com.example.game.views.game1;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,12 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.game.Account;
 import com.example.game.BaseActivity;
 import com.example.game.Game2.Game2Activity;
 import com.example.game.MainActivity;
 import com.example.game.R;
-import com.example.game.views.BallJumperActivity;
+import com.example.game.views.game1.BallJumperActivity;
 
 /**
  * GameOverActivity class. This is what the player will see when they lose.

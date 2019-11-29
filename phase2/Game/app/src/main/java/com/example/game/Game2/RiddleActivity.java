@@ -8,10 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.game.Account;
 import com.example.game.BaseActivity;
 import com.example.game.R;
-import com.example.game.models.RiddleActions;
+import com.example.game.models.game2.RiddleActions;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

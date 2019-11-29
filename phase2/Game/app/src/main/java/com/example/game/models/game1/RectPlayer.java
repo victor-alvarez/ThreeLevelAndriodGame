@@ -1,4 +1,4 @@
-package com.example.game.models;
+package com.example.game.models.game1;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,6 +8,10 @@ import android.graphics.Point;
 import android.graphics.Rect;
 
 import com.example.game.R;
+import com.example.game.models.game1.Animation;
+import com.example.game.models.game1.AnimationManager;
+import com.example.game.models.game1.Constants;
+import com.example.game.models.game1.GameObject;
 
 /**
  * RectPlayer class. The actual player the user will control.

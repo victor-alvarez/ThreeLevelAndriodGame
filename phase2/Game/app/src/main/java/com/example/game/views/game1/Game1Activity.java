@@ -1,14 +1,13 @@
-package com.example.game.views;
+package com.example.game.views.game1;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.game.Account;
 import com.example.game.BaseActivity;
 import com.example.game.MainActivity;
 import com.example.game.R;
-import com.example.game.views.BallJumperActivity;
+import com.example.game.views.game1.BallJumperActivity;
 
 public class Game1Activity extends BaseActivity {
     /**

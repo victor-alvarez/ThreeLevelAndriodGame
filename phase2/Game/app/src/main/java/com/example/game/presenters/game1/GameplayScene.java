@@ -1,4 +1,4 @@
-package com.example.game.presenters;
+package com.example.game.presenters.game1;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -7,12 +7,12 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 
-import com.example.game.models.OrientationData;
-import com.example.game.models.Constants;
-import com.example.game.models.Obstacle;
-import com.example.game.models.RectPlayer;
-import com.example.game.models.ObstacleManager;
-import com.example.game.views.BallJumperActivity;
+import com.example.game.models.game1.OrientationData;
+import com.example.game.models.game1.Constants;
+import com.example.game.models.game1.Obstacle;
+import com.example.game.models.game1.RectPlayer;
+import com.example.game.models.game1.ObstacleManager;
+import com.example.game.views.game1.BallJumperActivity;
 
 import java.util.ArrayList;
 

@@ -1,9 +1,9 @@
-package com.example.game.presenters;
+package com.example.game.presenters.game1;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
-import com.example.game.views.GamePanel;
+import com.example.game.views.game1.GamePanel;
 
 /**
  * MainThread class. Runs game loop under fps.

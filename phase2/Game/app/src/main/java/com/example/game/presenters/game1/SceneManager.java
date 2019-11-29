@@ -1,7 +1,10 @@
-package com.example.game.presenters;
+package com.example.game.presenters.game1;
 
 import android.graphics.Canvas;
 import android.view.MotionEvent;
+
+import com.example.game.presenters.game1.GameplayScene;
+import com.example.game.presenters.game1.Scene;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.game.models;
+package com.example.game.models.game1;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

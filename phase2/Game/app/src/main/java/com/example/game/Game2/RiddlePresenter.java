@@ -1,7 +1,7 @@
 package com.example.game.Game2;
 
-import com.example.game.models.RiddleActions;
-import com.example.game.models.RiddleListener;
+import com.example.game.models.game2.RiddleActions;
+import com.example.game.models.game2.RiddleListener;
 
 import java.util.ArrayList;
 

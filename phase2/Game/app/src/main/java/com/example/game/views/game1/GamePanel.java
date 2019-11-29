@@ -1,4 +1,4 @@
-package com.example.game.views;
+package com.example.game.views.game1;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,9 +7,9 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.example.game.models.Constants;
-import com.example.game.presenters.SceneManager;
-import com.example.game.presenters.MainThread;
+import com.example.game.models.game1.Constants;
+import com.example.game.presenters.game1.SceneManager;
+import com.example.game.presenters.game1.MainThread;
 
 /**
  * GamePanel class.
