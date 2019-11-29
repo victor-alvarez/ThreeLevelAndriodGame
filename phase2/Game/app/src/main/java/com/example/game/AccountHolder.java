@@ -4,6 +4,9 @@ import com.example.game.models.AccountDataRepositoryInterface;
 
 import java.io.File;
 
+/**
+ * Javadocs
+ */
 public class AccountHolder{
     Account account;
 

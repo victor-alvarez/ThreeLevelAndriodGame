@@ -22,7 +22,7 @@ public class OptionsActivity extends BaseActivity {
 
     /**
      * Share preferences allows for access to these variables anywhere, even outside of where the
-     * account in logged in
+     * account in logged in.
      */
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;

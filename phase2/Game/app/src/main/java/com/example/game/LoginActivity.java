@@ -66,7 +66,7 @@ public class LoginActivity extends BaseActivity implements LoginActions {
 
     /**
      * Called when the user taps the "Select Account" button. Will attempt a login based off the
-     * currently entered in textfield inputName.
+     * currently entered in textfield inputName
      */
     public void login(View view) {
         //TODO: pass in string, not context(since otherwise it breaks MVP)

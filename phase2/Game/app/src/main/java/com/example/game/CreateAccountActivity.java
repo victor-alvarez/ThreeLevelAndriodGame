@@ -74,7 +74,7 @@ public class CreateAccountActivity extends BaseActivity implements CreateAccount
     }
 
     /**
-     * Called when the user taps the "Back" button
+     * Called when the user taps the "Back" button.
      */
     public void deleteData(View view) {
         //Todo: move lower in structure to follow MVP.

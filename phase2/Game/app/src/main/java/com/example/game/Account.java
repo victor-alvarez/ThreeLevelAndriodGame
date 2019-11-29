@@ -132,7 +132,7 @@ public class Account{
     accountDataRepository.save(contextFile, this);
   }
 
-  /**
+  /** 
    * Changes score by amount add
    * @param add the amount to be added to the score
    * @param contextFile an access to the current file state of the app

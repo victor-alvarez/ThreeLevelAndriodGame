@@ -41,7 +41,7 @@ public class LoginPresenter implements LoginListener {
     }
 
     /**
-     * Tells the use cases to check over this login.
+     * Tells the use cases to check over this login
      * @param username the entered in username for this login
      * @param contextFile the location of the application
      * @param accountDataRepository the interface which accesses the database

@@ -4,6 +4,9 @@ import com.example.game.Account;
 
 import java.io.File;
 
+/**
+ *
+ */
 public interface AccountDataRepositoryInterface {
     void save(File contextFile, Account account);
 

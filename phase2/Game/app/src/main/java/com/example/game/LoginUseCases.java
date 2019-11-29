@@ -9,7 +9,7 @@ import com.example.game.models.LoginListener;
 import java.io.File;
 
 /**
- * Class which performs the use cases for logging in with accounts.
+ * Class which performs the use cases for logging in with accounts
  */
 class LoginUseCases {
     private AccountManagerInterface accountManager;

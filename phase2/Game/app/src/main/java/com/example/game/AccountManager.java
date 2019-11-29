@@ -8,7 +8,7 @@ import com.example.game.models.AccountManagerInterface;
 import java.io.File;
 
 /**
- * Account manager that manages the creation and opening of accounts.
+ * Account manager that manages the creation and opening of accounts
  */
 class AccountManager implements AccountManagerInterface {
 

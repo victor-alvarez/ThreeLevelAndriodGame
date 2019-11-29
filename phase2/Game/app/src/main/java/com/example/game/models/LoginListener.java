@@ -4,7 +4,7 @@ import com.example.game.Account;
 import com.example.game.AccountHolder;
 
 /**
- * Actions required for a presenter to react effectively to what occurs in the use cases.
+ * Actions required for a presenter to react effectively to what occurs in the use cases
  */
 public interface LoginListener {
     void incorrectUsername();

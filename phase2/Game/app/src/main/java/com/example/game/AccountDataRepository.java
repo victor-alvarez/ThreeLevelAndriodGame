@@ -15,7 +15,6 @@ import static android.content.ContentValues.TAG;
 
 class AccountDataRepository implements AccountDataRepositoryInterface {
     /**
-     * Items:
      * Should items outside of the view in MVP be able to know about/need android specific objects?
      * Question about what feedback means. If also does not know then ask what can be done.
      * How should accessing data be done to follow clean architecture and MVP?
