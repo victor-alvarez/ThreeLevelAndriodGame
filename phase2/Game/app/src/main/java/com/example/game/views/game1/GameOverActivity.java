@@ -71,6 +71,7 @@ public class GameOverActivity extends BaseActivity {
      */
     public void retry(View view) {
         Intent intent = new Intent(this, BallJumperActivity.class);
+        intent.putExtra("difficulty", getIntent().getStringExtra("difficulty"));
         account.decrementLevel(getApplicationContext().getFilesDir());
         startActivity(intent);
     }

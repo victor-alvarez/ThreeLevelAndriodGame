@@ -103,4 +103,7 @@
     <string name="Q6A2">"Chloe"</string>
     <string name="Q6A3">"Adrianna"</string>
     <string name="Q6A4">"Cleopatra"</string>
+    <string name="game1_easy">Easy</string>
+    <string name="game1_normal">Normal</string>
+    <string name="game1_hard">Hard</string>
 </resources>

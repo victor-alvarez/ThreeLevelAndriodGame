@@ -71,4 +71,7 @@
     <string name="female_icon">Женщина</string>
     <string name="male_icon">Мужчина</string>
     <string name="robot_icon">Robot</string>
+    <string name="game1_hard">" Жесткий"</string>
+    <string name="game1_easy">" Легко"</string>
+    <string name="game1_normal">Обычный</string>
 </resources>

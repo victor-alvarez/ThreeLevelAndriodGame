@@ -18,6 +18,7 @@ public class ObstacleManager {
     private int obstacleHeight;
     private int color;
     private long startTime;
+    private String difficulty;
 
     /**
      * Constructor for ObstacleManager
@@ -32,6 +33,10 @@ public class ObstacleManager {
         this.color = color;
         obstacles = new ArrayList<>();
         populateObstacles();
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
     }
 
     /**
@@ -71,9 +76,23 @@ public class ObstacleManager {
         }
         int elapseTime = (int) (System.currentTimeMillis() - startTime);
         startTime = System.currentTimeMillis();
-        for (Obstacle ob : obstacles) {
-            ob.incrementY(-1 * elapseTime);
+
+        if (difficulty.equals("easy")) {
+            for (Obstacle ob : obstacles) {
+                ob.incrementY(-1 * elapseTime);
+            }
         }
+        else if (difficulty.equals("normal")) {
+            for (Obstacle ob : obstacles) {
+                ob.incrementY(-2 * elapseTime);
+            }
+        }
+        else {
+            for (Obstacle ob : obstacles) {
+                ob.incrementY(-3 * elapseTime);
+            }
+        }
+
         if (obstacles.get(obstacles.size() - 1).getRectangle().bottom <= 0) {
             int xStart = (int) (Math.random() * (Constants.SCREEN_WIDTH - 100));
             obstacles.add(0, new Obstacle(obstacleHeight, color, xStart, obstacles.get(0).getRectangle().top + obstacleHeight + obstacleGap));

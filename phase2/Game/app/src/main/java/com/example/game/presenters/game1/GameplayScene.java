@@ -36,6 +36,7 @@ public class GameplayScene implements Scene {
     private double grav; // gravity for game
     private Obstacle startingPlat;
     private int hitPoints;
+    private String difficulty;
 
     /**
      * Constructor for GameplayScene. Instansiates player, playerPoint, obstacles, and lives.
@@ -49,6 +50,12 @@ public class GameplayScene implements Scene {
         lives = 3;
         orientationData = new OrientationData();
         frameTime = System.currentTimeMillis();
+    }
+
+    @Override
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+        obstacleManager.setDifficulty(difficulty);
     }
 
     @Override
@@ -96,13 +103,14 @@ public class GameplayScene implements Scene {
             } else if (playerPoint.x > Constants.SCREEN_WIDTH) {
                 playerPoint.x = Constants.SCREEN_WIDTH;
             }
+
             if (playerPoint.y < 0) {
                 grav = 0.5;
                 gameOver = true;
                 lives--;
                 // If player has no lives go to GameOverActivity
                 if (lives == 0) {
-                    ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score, hitPoints);
+                    ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score, hitPoints, difficulty);
                 } else {
                     reset();
                     orientationData.newGame();
@@ -115,7 +123,7 @@ public class GameplayScene implements Scene {
                 lives--;
                 // If player has no lives go to GameOverActivity
                 if (lives == 0) {
-                    ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score, hitPoints);
+                    ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score, hitPoints, difficulty);
                 } else {
                     reset();
                     orientationData.newGame();
@@ -182,6 +190,7 @@ public class GameplayScene implements Scene {
         playerPoint = new Point(Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 4);
         player.update(playerPoint);
         obstacleManager = new ObstacleManager(1000, 75, Color.BLACK);
+        obstacleManager.setDifficulty(difficulty);
         movingPlayer = false;
         gameOver = false;
     }

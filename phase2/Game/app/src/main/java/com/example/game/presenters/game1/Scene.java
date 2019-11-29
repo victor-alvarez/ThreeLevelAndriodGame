@@ -12,4 +12,6 @@ public interface Scene {
     void draw(Canvas canvas); // Draw onto Canvas canvas
 
     void receiveTouch(MotionEvent event); // Handle player interactions with screen
+
+    void setDifficulty(String difficulty); // Sets the difficulty of the scene.
 }

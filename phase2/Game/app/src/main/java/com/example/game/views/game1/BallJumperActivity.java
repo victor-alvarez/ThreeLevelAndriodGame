@@ -33,8 +33,9 @@ public class BallJumperActivity extends BaseActivity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         Constants.SCREEN_WIDTH = dm.widthPixels;
         Constants.SCREEN_HEIGHT = dm.heightPixels;
-
-        setContentView(new GamePanel(this));
+        GamePanel gamePanel = new GamePanel(this);
+        gamePanel.setDifficulty(getIntent().getStringExtra("difficulty"));
+        setContentView(gamePanel);
     }
 
     /**
@@ -43,9 +44,10 @@ public class BallJumperActivity extends BaseActivity {
      * @param score     the score from Game1.
      * @param hitPoints the hit-points from Game1.
      */
-    public void gameOver(int score, int hitPoints) {
+    public void gameOver(int score, int hitPoints, String difficulty) {
         Intent intent = new Intent(this, GameOverActivity.class);
         intent.putExtra("SCORE", score);
+        intent.putExtra("difficulty", difficulty);
         account.incrementLevel(getApplicationContext().getFilesDir());
         account.incrementScore(score, getApplicationContext().getFilesDir());
         account.decrementHitPoints(hitPoints, getApplicationContext().getFilesDir());

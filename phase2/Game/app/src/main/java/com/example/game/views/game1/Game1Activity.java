@@ -35,25 +35,23 @@ public class Game1Activity extends BaseActivity {
      *
      * @param view the view that is connected to this method.
      */
-    public void playGame(View view) {
+    public void playGameEasy(View view) {
         Intent intent = new Intent(this, BallJumperActivity.class);
+        intent.putExtra("difficulty", "easy");
         startActivity(intent);
     }
 
-    /* Called when the user taps the "Customize" button
-     public void toCustomization(View view) {
-     Intent intent = new Intent(this, CustomizeActivity.class);
-     intent.putExtra("ac", account);
-     startActivity(intent);
-     }
-     */
+    public void playGameNormal(View view) {
+        Intent intent = new Intent(this, BallJumperActivity.class);
+        intent.putExtra("difficulty", "normal");
+        startActivity(intent);
+    }
 
-    /* Called when the user taps the "Shop" button
-     public void toShop(View view) {
-     Intent intent = new Intent(this, ShopActivity.class);
-     intent.putExtra("ac", account);
-     startActivity(intent);
-     }*/
+    public void playGameHard(View view) {
+        Intent intent = new Intent(this, BallJumperActivity.class);
+        intent.putExtra("difficulty", "hard");
+        startActivity(intent);
+    }
 
     /**
      * Called when the user taps the "To Main Menu" button

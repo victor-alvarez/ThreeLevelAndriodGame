@@ -27,6 +27,12 @@ public class SceneManager {
         scenes.add(new GameplayScene());
     }
 
+    public void setDifficulty(String difficulty) {
+        for (Scene s : scenes) {
+            s.setDifficulty(difficulty);
+        }
+    }
+
     /**
      * Handles the events for player interaction with phone screen
      *
