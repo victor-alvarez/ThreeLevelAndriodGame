@@ -69,6 +69,11 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
      */
     private String[] riddleArray;
 
+    /**
+     * The type/category of question to be asked.
+     */
+    String type;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +81,11 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
         presenter = new RiddlePresenter(this, new RiddleUseCases());
 
         getWindow().getDecorView().setBackgroundResource(BaseActivity.account.getBackground());
+
+        type = getIntent().getStringExtra("type");
+        if (type == null){
+            type = "riddle";
+        }
 
         lives = findViewById(R.id.livesText_RiddleActivity);
 
@@ -102,6 +112,7 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
         answers[1] = findViewById(R.id.a2_RiddleActivity);
         answers[2] = findViewById(R.id.a3_RiddleActivity);
         answers[3] = findViewById(R.id.a4_RiddleActivity);
+
         for (int i = 0; i < answers.length; i++){
             answers[i].setOnClickListener(answer);
         }
@@ -160,7 +171,7 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
      */
     @Override
     public void rightAnswer(){
-        BaseActivity.account.incrementScore(5, getApplicationContext().getFilesDir());
+        BaseActivity.account.incrementScore(10, getApplicationContext().getFilesDir());
         result.setText(getResources().getString(R.string.correct));
         changeVisibility();
     }
@@ -170,7 +181,7 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
      */
     @Override
     public void wrongAnswer(){
-        BaseActivity.account.decrementHitPoints(5, getApplicationContext().getFilesDir());
+        BaseActivity.account.decrementHitPoints(8, getApplicationContext().getFilesDir());
         result.setText(getResources().getString(R.string.Nope));
         changeVisibility();
     }
@@ -207,7 +218,7 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
      */
     private String getRiddleResourceName(){
         Integer num = remainingRiddles.get(random.nextInt(remainingRiddles.size()));
-        String str = "riddle";
+        String str = type;
         str += num;
         remainingRiddles.remove(num);
         return str;

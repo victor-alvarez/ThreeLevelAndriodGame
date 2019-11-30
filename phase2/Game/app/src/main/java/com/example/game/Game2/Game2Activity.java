@@ -22,10 +22,39 @@ public class Game2Activity extends BaseActivity {
     getWindow().getDecorView().setBackgroundResource(account.getBackground());
   }
 
-  /** Called when the user taps the "START Riddles Game" button */
-  public void nextRiddle1(View view) {
+  /**
+   *
+   * @param view the view of button clicked
+   * @param type the type of questions to be asked
+   */
+  public void toRiddles(View view, String type) {
     Intent intent = new Intent(this, RiddleActivity.class);
+    intent.putExtra("type", type);
     startActivity(intent);
+  }
+
+  /**
+   * Have easy trivia questions as the questions.
+   * @param view the button clicked
+   */
+  public void easyTrivia(View view){
+    toRiddles(view, "easyTrivia");
+  }
+
+  /**
+   * Have hard trivia questions as the questions.
+   * @param view the button clicked
+   */
+  public void hardTrivia(View view){
+    toRiddles(view, "hardTrivia");
+  }
+
+  /**
+   * Have riddle based questions as the questions.
+   * @param view the button clicked
+   */
+  public void riddle(View view){
+    toRiddles(view, "riddle");
   }
 
   /**

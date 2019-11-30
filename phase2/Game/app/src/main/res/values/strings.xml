@@ -53,7 +53,7 @@
 
     <string name="Game2">"Game 2"</string>
     <string name="START_Riddles_Game">"START Riddles Game"</string>
-    <string name="Nope">"Nope...wanna try again?"</string>
+    <string name="Nope">"Incorrect!!! - 8 lives"</string>
     <string name="Back_to_Riddle">"Back to the Riddle"</string>
     <string name="Congratulations">"Congratulations!!!"</string>
     <string name="Riddle1">"Which of these is the largest number?"</string>
@@ -73,7 +73,7 @@
     <string name="A12">"One of the above"</string>
     <string name="A13">"None of the above"</string>
     <string name="A14">"None of the above"</string>
-    <string name="correct">"Correct!!!"</string>
+    <string name="correct">"Correct!!! + 5 score"</string>
 
     <string name="Game3">"Game 3"</string>
     <string name="Q1">"Which of these is the largest number?"</string>
@@ -97,15 +97,80 @@
     <string name="Q4A3">"Water"</string>
     <string name="Q4A4">"Footsteps"</string>
     <string name="Q5">"If you choose an answer to this question at random, what is the chance that you will be correct?"</string>
-    <string name="Q5A1">"25%"</string>
-    <string name="Q5A2">"50%"</string>
-    <string name="Q5A3">"0%"</string>
-    <string name="Q5A4">"25%"</string>
+    <string name="Q5A1" translatable="false">"25%"</string>
+    <string name="Q5A2" translatable="false">"50%"</string>
+    <string name="Q5A3" translatable="false">"0%"</string>
+    <string name="Q5A4" translatable="false">"25%"</string>
     <string name="Q6">"Adriana's mom had four kids: Marta, Anna, Justina and?"</string>
     <string name="Q6A1">"Justina"</string>
     <string name="Q6A2">"Chloe"</string>
     <string name="Q6A3">"Adrianna"</string>
     <string name="Q6A4">"Cleopatra"</string>
+    <string name="Q7">"I'm tall when I am young and short when I am old. What am I?"</string>
+    <string name="Q7A1">"Babies"</string>
+    <string name="Q7A2">"Candle"</string>
+    <string name="Q7A3">"Lion"</string>
+    <string name="Q7A4">"Earth"</string>
+    <string name="Q8">A man is standing in front of a painting of a man, and he tells us the following: Brothers and sisters have I none, but this man\'s father is my father\'s son. Who is on the painting?</string>
+    <string name="Q8A1">"His son"</string>
+    <string name="Q8A2">"His father"</string>
+    <string name="Q8A3">"His brother"</string>
+    <string name="Q8A4">"Himself"</string>
+    <string name="Q9">"Which racer holds the record for the most Grand Prix wins?"</string>
+    <string name="Q9A1">"Michael Schumacher"</string>
+    <string name="Q9A2">"George Hengerbloefen"</string>
+    <string name="Q9A3">"Mike Brotswyk"</string>
+    <string name="Q9A4">"Usain Bolt"</string>
+    <string name="Q10">"Which boxer was known as “The Greatest” and “The People’s Champion”?     "</string>
+    <string name="Q10A1">"John Cena"</string>
+    <string name="Q10A2">Muhammad Ali</string>
+    <string name="Q10A3">"Rob Ford"</string>
+    <string name="Q10A4">"John Smitter"</string>
+    <string name="Q11">How many soccer players should each team have on the field at the start of each match?</string>
+    <string name="Q11A1" translatable="false">"10"</string>
+    <string name="Q11A2" translatable="false">"12"</string>
+    <string name="Q11A3" translatable="false">"9"</string>
+    <string name="Q11A4" translatable="false">"11"</string>
+    <string name="Q12">"Which email service is owned by Microsoft?"</string>
+    <string name="Q12A1" translatable="false">"Hotmail"</string>
+    <string name="Q12A2" translatable="false">"Bluebird"</string>
+    <string name="Q12A3" translatable="false">"Gmail"</string>
+    <string name="Q12A4" translatable="false">"AppleMail"</string>
+    <string name="Q13">"What does “HTTP” stand for?"</string>
+    <string name="Q13A1">"HyperText Transfer Protocol"</string>
+    <string name="Q13A2">"HyperText Transport Protocol"</string>
+    <string name="Q13A3">"HyperText Transport Policy"</string>
+    <string name="Q13A4">"HyperText Transfer Policy"</string>
+    <string name="Q14">"What is meteorology the study of?"</string>
+    <string name="Q14A1">"Meteors"</string>
+    <string name="Q14A2">"Sky"</string>
+    <string name="Q14A3">"Weather"</string>
+    <string name="Q14A4">"Natural Minerals"</string>
+    <string name="Q15">"Which natural disaster is measured with a Richter scale?"</string>
+    <string name="Q15A1">"Hurricanes"</string>
+    <string name="Q15A2">"Tsunamis"</string>
+    <string name="Q15A3">"Earthquakes"</string>
+    <string name="Q15A4">"Volcanic Eruptions"</string>
+    <string name="Q16">"Which planet has the most gravity?"</string>
+    <string name="Q16A1">"The Sun"</string>
+    <string name="Q16A2">Jupiter</string>
+    <string name="Q16A3">"Venus"</string>
+    <string name="Q16A4">"Saturn"</string>
+    <string name="Q17">"What or who is the Ford Mustang named after?"</string>
+    <string name="Q17A1">"The WW2 Mustang Assault Vehicle"</string>
+    <string name="Q17A2">"The WW2 Mustang Fighter Plane"</string>
+    <string name="Q17A3">Sir Isaac Mustang, one of the primary proponents of the Allied war effort</string>
+    <string name="Q17A4">"A type of anti-submarine technology"</string>
+    <string name="Q18">"What other name does “corn” go by?"</string>
+    <string name="Q18A1">"Ryse"</string>
+    <string name="Q18A2">"Kohn"</string>
+    <string name="Q18A3">"Maize"</string>
+    <string name="Q18A4">"Chrop"</string>
+
+
+    <string name="game2_easy">Easy Trivia</string>
+    <string name="game2_hard">Hard Trivia</string>
+    <string name="game2_riddles">Riddles</string>
     <string name="game1_easy">Easy</string>
     <string name="game1_normal">Normal</string>
     <string name="game1_hard">Hard</string>

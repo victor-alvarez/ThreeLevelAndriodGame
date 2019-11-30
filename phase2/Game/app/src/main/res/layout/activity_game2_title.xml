@@ -6,11 +6,47 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/game1Button12"
+        android:id="@+id/startGame3"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
+        android:onClick="riddle"
+        android:text="@string/game2_riddles"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/mainMenuButton_Game2Activity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startGame"
+        tools:textSize="30sp" />
+
+    <Button
+        android:id="@+id/startGame"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
+        android:onClick="hardTrivia"
+        android:text="@string/game2_hard"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/startGame3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StartGame2"
+        tools:textSize="30sp" />
+
+    <Button
+        android:id="@+id/mainMenuButton_Game2Activity"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
         android:onClick="toMainMenu"
         android:text="@string/next3"
@@ -19,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/StartGame2" />
+        app:layout_constraintTop_toBottomOf="@+id/startGame3" />
 
     <Button
         android:id="@+id/StartGame2"
@@ -28,9 +64,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:onClick="nextRiddle1"
-        android:text="@string/START_Riddles_Game"
+        android:layout_marginBottom="10dp"
+        android:onClick="easyTrivia"
+        android:text="@string/game2_easy"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/startGame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionMark"
@@ -38,11 +76,13 @@
 
     <ImageView
         android:id="@+id/questionMark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="282dp"
+        android:layout_height="294dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:maxWidth="42dp"
+        android:maxHeight="42dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
