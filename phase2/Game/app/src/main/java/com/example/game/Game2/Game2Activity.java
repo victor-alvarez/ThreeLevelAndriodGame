@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.example.game.Account;
 import com.example.game.BaseActivity;
+import com.example.game.MainActivity;
 import com.example.game.R;
 
 public class Game2Activity extends BaseActivity {
@@ -24,6 +25,16 @@ public class Game2Activity extends BaseActivity {
   /** Called when the user taps the "START Riddles Game" button */
   public void nextRiddle1(View view) {
     Intent intent = new Intent(this, RiddleActivity.class);
+    startActivity(intent);
+  }
+
+  /**
+   * Called when the user taps the "To Main Menu" button. Takes User to main menu of the App.
+   *
+   * @param view The View of this Activity.
+   */
+  public void toMainMenu(View view) {
+    Intent intent = new Intent(this, MainActivity.class);
     startActivity(intent);
   }
 }

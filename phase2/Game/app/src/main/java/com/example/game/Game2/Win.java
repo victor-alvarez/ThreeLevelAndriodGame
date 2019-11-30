@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.example.game.Account;
 import com.example.game.BaseActivity;
 import com.example.game.Game3.Game3Activity;
+import com.example.game.MainActivity;
 import com.example.game.R;
 
 public class Win extends BaseActivity {
@@ -40,6 +41,16 @@ public class Win extends BaseActivity {
     /** Called when the user taps the "To Game Three" button */
     public void nextGame(View view) {
         Intent intent = new Intent(this, Game3Activity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Called when the user taps the "To Main Menu" button. Takes User to main menu of the App.
+     *
+     * @param view The View of this Activity.
+     */
+    public void toMainMenu(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

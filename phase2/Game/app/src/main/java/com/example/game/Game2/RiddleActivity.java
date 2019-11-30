@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.game.BaseActivity;
+import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.models.game2.RiddleActions;
 
@@ -210,5 +211,15 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
         str += num;
         remainingRiddles.remove(num);
         return str;
+    }
+
+    /**
+     * Called when the user taps the "To Main Menu" button. Takes User to main menu of the App.
+     *
+     * @param view The View of this Activity.
+     */
+    public void toMainMenu(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
