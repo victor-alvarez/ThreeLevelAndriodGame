@@ -1,8 +1,12 @@
 package com.example.game.Game2;
 
+import android.content.Intent;
+
+import com.example.game.GameOver;
 import com.example.game.models.game2.RiddleActions;
 import com.example.game.models.game2.RiddleListener;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class RiddlePresenter implements RiddleListener {
@@ -16,12 +20,12 @@ public class RiddlePresenter implements RiddleListener {
         this.riddleUseCases = riddleUseCases;
     }
 
-    public void determineRightOrWrong(String[] riddleStrings, String clickedString){
-        riddleUseCases.actOnCorrectness(riddleStrings, clickedString, this);
+    public void determineRightOrWrong(String[] riddleStrings, String clickedString, File contextFile){
+        riddleUseCases.actOnCorrectness(riddleStrings, clickedString, this, contextFile);
     }
 
-    public void nextRiddle(ArrayList<Integer> remainingRiddles){
-        riddleUseCases.activateNextRiddle(remainingRiddles, this);
+    public void nextRiddle(ArrayList<Integer> remainingRiddles, File contextFile){
+        riddleUseCases.activateNextRiddle(remainingRiddles, this, contextFile);
     }
 
     @Override
@@ -42,5 +46,10 @@ public class RiddlePresenter implements RiddleListener {
     @Override
     public void moreRiddles(){
         riddleActions.setNewRiddleText();
+    }
+
+    @Override
+    public void noLivesLeft() {
+        riddleActions.noLivesLeft();
     }
 }

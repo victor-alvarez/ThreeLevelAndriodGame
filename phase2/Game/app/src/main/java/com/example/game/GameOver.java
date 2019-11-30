@@ -6,7 +6,11 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class GameOver extends AppCompatActivity {
+import com.example.game.models.ActivityDataResponseActions;
+
+public class GameOver extends AppCompatActivity implements ActivityDataResponseActions {
+
+    private ActivityDataPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,11 +18,17 @@ public class GameOver extends AppCompatActivity {
         setContentView(R.layout.activity_game_over2);
 
         getWindow().getDecorView().setBackgroundResource(BaseActivity.account.getBackground());
+
+        presenter = new ActivityDataPresenter(this, new ActivityDataUseCases());
     }
 
-    public void toMainMenu(View view) {
+    public void resetAndMove(View view) {
+        presenter.resetDataValues(getApplicationContext().getFilesDir());
+    }
+
+    @Override
+    public void reactToReset() {
         Intent intent = new Intent(this, MainActivity.class);
-        BaseActivity.account.resetValues(getApplicationContext().getFilesDir());
         startActivity(intent);
     }
 }

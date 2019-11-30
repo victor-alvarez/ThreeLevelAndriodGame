@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.game.BaseActivity;
+import com.example.game.GameOver;
 import com.example.game.MainActivity;
 import com.example.game.R;
 import com.example.game.models.game2.RiddleActions;
@@ -128,7 +129,7 @@ public class RiddleActivity extends BaseActivity implements RiddleActions {
      * playthrough. If there are no more riddles will go to the end screen for game 2.
      */
     private void populateRiddleIfAble() {
-        presenter.nextRiddle(remainingRiddles);
+        presenter.nextRiddle(remainingRiddles, getApplicationContext().getFilesDir());
     }
 
     /**
@@ -137,7 +138,8 @@ public class RiddleActivity extends BaseActivity implements RiddleActions {
      *             for one of the answers to the Riddle.
      */
     private void determineAnswer(View view){
-        presenter.determineRightOrWrong(riddleArray, ((Button) view).getText().toString());
+        presenter.determineRightOrWrong(riddleArray, ((Button) view).getText().toString(),
+                getApplicationContext().getFilesDir());
     }
 
     @Override
@@ -177,7 +179,6 @@ public class RiddleActivity extends BaseActivity implements RiddleActions {
      */
     @Override
     public void rightAnswer(){
-        BaseActivity.account.incrementScore(10, getApplicationContext().getFilesDir());
         result.setText(getResources().getString(R.string.correct));
         changeVisibility();
     }
@@ -187,7 +188,6 @@ public class RiddleActivity extends BaseActivity implements RiddleActions {
      */
     @Override
     public void wrongAnswer(){
-        BaseActivity.account.decrementHitPoints(8, getApplicationContext().getFilesDir());
         result.setText(getResources().getString(R.string.Nope));
         changeVisibility();
     }
@@ -198,6 +198,15 @@ public class RiddleActivity extends BaseActivity implements RiddleActions {
     @Override
     public void finishRiddles() {
         Intent intent = new Intent(this, Win.class);
+        startActivity(intent);
+    }
+
+    /**
+     * When the player runs out of lives they go to the game over screen.
+     */
+    @Override
+    public void noLivesLeft() {
+        Intent intent = new Intent(this, GameOver.class);
         startActivity(intent);
     }
 
