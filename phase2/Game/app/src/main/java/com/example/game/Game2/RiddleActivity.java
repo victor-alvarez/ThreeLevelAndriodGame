@@ -2,7 +2,10 @@ package com.example.game.Game2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +20,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class RiddleActivity extends AppCompatActivity implements RiddleActions {
+public class RiddleActivity extends BaseActivity implements RiddleActions {
 
     /**
      * Text displaying player stats
@@ -72,7 +75,7 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
     /**
      * The type/category of question to be asked.
      */
-    String type;
+    private String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,7 +149,10 @@ public class RiddleActivity extends AppCompatActivity implements RiddleActions {
             String riddleResourceName = getRiddleResourceName();
             Class<R.array> res = R.array.class;
             Field field = res.getField(riddleResourceName);
-            riddleArray = getApplicationContext().getResources().
+
+            //Translations occur at app start, so this allows for it to still work with string array
+            Context context = createConfigurationContext(getResources().getConfiguration());
+            riddleArray = context.getResources().
                     getStringArray(field.getInt(null));
 
             question.setText(riddleArray[0]);
