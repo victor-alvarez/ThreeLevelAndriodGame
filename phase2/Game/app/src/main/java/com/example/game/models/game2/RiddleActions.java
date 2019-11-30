@@ -8,4 +8,6 @@ public interface RiddleActions {
     void finishRiddles();
 
     void setNewRiddleText();
+
+    void noLivesLeft();
 }

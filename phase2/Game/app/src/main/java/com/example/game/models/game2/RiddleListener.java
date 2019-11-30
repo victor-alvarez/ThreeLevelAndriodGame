@@ -8,4 +8,6 @@ public interface RiddleListener {
     void endOfRiddles();
 
     void moreRiddles();
+
+    void noLivesLeft();
 }

@@ -7,11 +7,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class GameEnd extends AppCompatActivity {
+import com.example.game.models.ActivityDataResponseActions;
+
+public class GameEnd extends AppCompatActivity implements ActivityDataResponseActions {
     /**
      * Text displaying player stats
      */
     private TextView lives, scores;
+
+    private ActivityDataPresenter presenter;
 
     /**
      * Code to execute when the Activity is created.
@@ -31,18 +35,17 @@ public class GameEnd extends AppCompatActivity {
 
         scores = findViewById(R.id.scoreText_GameEnd);
         scores.setText(String.valueOf(BaseActivity.account.getCurrentScore()));
+
+        presenter = new ActivityDataPresenter(this, new ActivityDataUseCases());
     }
 
-    /**
-     * Called when the user taps the "To Main Menu" button. Takes User to the main menu of the App.
-     *
-     * @param view The View of the Activity.
-     */
-    public void toMainMenu(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+    public void resetAndMoveTo(View view) {
+        presenter.resetDataValues(getApplicationContext().getFilesDir());
+    }
 
-        //Passes the account into Intent so it can be used accessed in MainActivity.
-        BaseActivity.account.resetValues(getApplicationContext().getFilesDir());
+    @Override
+    public void reactToReset() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
