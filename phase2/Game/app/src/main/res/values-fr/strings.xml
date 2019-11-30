@@ -74,4 +74,8 @@
     <string name="game1_easy">" Facile"</string>
     <string name="game1_normal">Ordinaire</string>
     <string name="game1_hard">Dure</string>
+    <string name="Game1">"Jeu 1"</string>
+    <string name="Game2">"Jeu 2"</string>
+    <string name="Game3">"Jeu 3"</string>
+    <string name="endgame">Fin du jeu</string>
 </resources>

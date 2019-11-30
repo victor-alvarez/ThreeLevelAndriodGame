@@ -12,9 +12,10 @@
     <string name="login_failed">"Login failed"</string>
     <string name="select_account">"Select Account"</string>
     <string name="create_account">"Create Account"</string>
+    <string name="Game1">"Game 1"</string>
     <string name="back">"Back"</string>
-    <string name="next1">"To Game Two"</string>
-    <string name="next2">"To Game Three"</string>
+    <string name="next1">"To Game 2"</string>
+    <string name="next2">"To Game 3"</string>
     <string name="next3">"To Main Menu"</string>
     <string name="game1_shop">Shop</string>
     <string name="game1_customize">Customize</string>
@@ -50,6 +51,7 @@
     <string name="female_icon">Female</string>
     <string name="robot_icon">Robot</string>
 
+    <string name="Game2">"Game 2"</string>
     <string name="START_Riddles_Game">"START Riddles Game"</string>
     <string name="Nope">"Nope...wanna try again?"</string>
     <string name="Back_to_Riddle">"Back to the Riddle"</string>
@@ -73,6 +75,7 @@
     <string name="A14">"None of the above"</string>
     <string name="correct">"Correct!!!"</string>
 
+    <string name="Game3">"Game 3"</string>
     <string name="Q1">"Which of these is the largest number?"</string>
     <string name="Q1A1">"Sextillion"</string>
     <string name="Q1A2">"Centillion"</string>
@@ -106,4 +109,5 @@
     <string name="game1_easy">Easy</string>
     <string name="game1_normal">Normal</string>
     <string name="game1_hard">Hard</string>
+    <string name="endgame">End game</string>
 </resources>
