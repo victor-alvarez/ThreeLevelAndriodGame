@@ -88,4 +88,15 @@ public class MainActivity extends BaseActivity {
         account.resetValues(getApplicationContext().getFilesDir());
         startActivity(intent);
     }
+
+    public void Game2(View view) {
+        Intent intent = new Intent(this, Game2Activity.class);
+        account.incrementLevel(getApplicationContext().getFilesDir());
+        startActivity(intent);
+    }
+
+    public void Game3(View view) {
+        Intent intent = new Intent(this, Game3Activity.class);
+        startActivity(intent);
+    }
 }
