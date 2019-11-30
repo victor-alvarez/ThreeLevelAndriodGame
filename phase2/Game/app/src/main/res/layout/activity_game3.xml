@@ -48,27 +48,31 @@
 
     <Button
         android:id="@+id/game3PlayBtn"
-        android:layout_width="169dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="152dp"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="16dp"
         android:onClick="toPlay"
         android:text="@string/game3_play"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/game3Button"
-        android:layout_width="169dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="300dp"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
         android:onClick="toMainMenu"
         android:text="@string/next3"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/game3PlayBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

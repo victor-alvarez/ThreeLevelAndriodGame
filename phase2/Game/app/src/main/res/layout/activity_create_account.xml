@@ -10,35 +10,41 @@
         android:id="@+id/textView_CreateAccountActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="102dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="240dp"
+        android:layout_marginEnd="16dp"
         android:textColor="@color/background1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/backButton_CreateAccountActivity"
-        android:layout_width="169dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="120dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="140dp"
+        android:layout_marginEnd="16dp"
         android:onClick="toLoginMenu"
         android:text="@string/back"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createButton_CreateAccountActivity" />
 
     <Button
         android:id="@+id/createButton_CreateAccountActivity"
-        android:layout_width="169dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="121dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
         android:onClick="createAccount"
         android:text="@string/create_account"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createName_CreateAccountActivity" />
 
@@ -46,11 +52,13 @@
         android:id="@+id/createName_CreateAccountActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="102dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="183dp"
+        android:layout_marginEnd="16dp"
         android:autofillHints="@string/username"
         android:ems="10"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
