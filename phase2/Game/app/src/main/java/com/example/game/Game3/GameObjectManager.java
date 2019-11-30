@@ -74,11 +74,11 @@ public class GameObjectManager {
 
     private boolean animate;
     private int animateFrame = 0;
-    //    private int screenHeight;
-//    private int screenWidth;
     private BottleObject healthPotion;
 
     private int waitTime = 0;
+
+    private Game3Strategy gameStrategy;
 
     int getWaitTime() {
         return waitTime;
@@ -152,10 +152,18 @@ public class GameObjectManager {
     /**
      * A constructor for GameObjectManager.
      */
-    GameObjectManager(Resources res, DrawManager drawManager) {
+    GameObjectManager(Resources res, DrawManager drawManager, String gameDifficulty) {
         this.res = res;
         this.objectBuilder = new ObjectBuilder(res);
         this.drawManager = drawManager;
+
+        if (gameDifficulty.equals("easy")) {
+            this.gameStrategy = new Game3EasyStrategy();
+        } else if (gameDifficulty.equals("normal")) {
+            this.gameStrategy = new Game3NormalStrategy();
+        } else {
+            this.gameStrategy = new Game3HardStrategy();
+        }
     }
 
     /**
@@ -220,55 +228,47 @@ public class GameObjectManager {
         } else {
             attackButtonObject.setActive(false);
             defendButtonObject.setActive(false);
-            int damage = decideEnemyDamage();
+            int damage = 0;
             if (!animate) {
                 if (attack) {
-                    //Player does 12 HP damage if he/she tapped AttackButton
-                    enemyHealth.update(10);
-
-                    //Player gets full damage decided randomly by decideEnemyDamage method if Attack
-                    // button was tapped.
-                    moveTextObject.update(res.getString(R.string.enemy_took) + 10 +
-                            res.getString(R.string.damage), Color.GREEN);
-                    hpDamage = damage;
+                    damage = gameStrategy.playerAttack();
+                    hpDamage = gameStrategy.enemyAttack();
                     attack = false;
                 }
                 if (defend) {
-
-                    //Player does 7 damage if he/she tapped DefendButton
-                    enemyHealth.update(5);
-
-                    //Player gets 2/3 the damage if decided to press Defend button.
-                    moveTextObject.update(res.getString(R.string.enemy_took) + 5 +
-                            res.getString(R.string.damage), Color.GREEN);
-                    hpDamage = 2 * (damage / 3);
+                    damage = gameStrategy.playerDefend();
+                    hpDamage = gameStrategy.enemyDefend();
                     defend = false;
                 }
+                //Player does 12 HP damage if he/she tapped AttackButton
+                enemyHealth.update(damage);
+
+                //Player gets full damage decided randomly by decideEnemyDamage method if Attack
+                // button was tapped.
+                moveTextObject.update(res.getString(R.string.enemy_took) + damage +
+                        res.getString(R.string.damage), Color.GREEN);
                 playerHealth.update(hpDamage);
             }
             animate = true;
         }
         if (animate) {
-            animateFrame++;
-            enemy.update();
-            player.update();
-            waitTime = 100;
-            if (animateFrame == 5) {
-                animate = false;
-                waitTime = 0;
-                animateFrame = 0;
-                isTurn = true;
-            }
+            CharacterObject[] players = new CharacterObject[]{enemy, player};
+            animatePlayer(players, 100);
         }
     }
 
-    /**
-     * Randomly decides how much attack the Enemy should deal. Based on picking a number randomly
-     * from an array of possible hp damage choices.
-     */
-    private int decideEnemyDamage() {
-        int damageIndex = new Random().nextInt(enemyDamage.length);
-        return enemyDamage[damageIndex];
+    private void animatePlayer(CharacterObject[] characters, int frameRate) {
+        animateFrame++;
+        for (CharacterObject character : characters) {
+            character.update();
+        }
+        waitTime = frameRate;
+        if (animateFrame == 5) {
+            animate = false;
+            waitTime = 0;
+            animateFrame = 0;
+            isTurn = true;
+        }
     }
 
     /**
@@ -285,18 +285,14 @@ public class GameObjectManager {
         if (isTurn) {
 
             //Checks if the AttackButton was tapped. If so, player's turn is over.
-            if (attackButtonObject.getButton().left <= touchX && touchX <=
-                    attackButtonObject.getButton().right && attackButtonObject.getButton().top <= touchY &&
-                    touchY <= attackButtonObject.getButton().bottom) {
+            if (buttonPressed(attackButtonObject, touchX, touchY)) {
                 attack = true;
                 isTurn = false;
                 numMoves += 1;
             }
 
             //Checks if the DefendButton was tapped. If so, player's turn is over.
-            if (defendButtonObject.getButton().left <= touchX && touchX <=
-                    defendButtonObject.getButton().right && defendButtonObject.getButton().top <= touchY &&
-                    touchY <= defendButtonObject.getButton().bottom) {
+            if (buttonPressed(defendButtonObject, touchX, touchY)) {
                 defend = true;
                 isTurn = false;
                 numMoves += 1;
@@ -304,6 +300,11 @@ public class GameObjectManager {
         }
     }
 
+    Boolean buttonPressed(ButtonObject buttonObject, float touchX, float touchY) {
+        return buttonObject.getButton().left <= touchX && touchX <=
+                buttonObject.getButton().right && buttonObject.getButton().top <= touchY &&
+                touchY <= buttonObject.getButton().bottom;
+    }
 
     /**
      * Check's which one of the CharacterObjects is the winner (The enemy or the Player) and return

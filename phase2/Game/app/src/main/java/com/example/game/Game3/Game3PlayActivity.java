@@ -28,7 +28,8 @@ public class Game3PlayActivity extends BaseActivity {
 
         //Creates view for Game 3.
         super.onCreate(savedInstanceState);
-        game3View = new Game3View(this);
+        String difficulty = getIntent().getStringExtra("DIFFICULTY");
+        game3View = new Game3View(this, difficulty);
         setContentView(game3View);
 
         //Customizes the Activity based on User preference.

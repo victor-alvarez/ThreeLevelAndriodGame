@@ -58,7 +58,7 @@ public class Game3Activity extends BaseActivity {
      * @param view The View of this Activity.
      */
     public void toPlay(View view) {
-        Intent intent = new Intent(this, Game3PlayActivity.class);
+        Intent intent = new Intent(this, Game3DifficultyActivity.class);
         startActivity(intent);
     }
 }

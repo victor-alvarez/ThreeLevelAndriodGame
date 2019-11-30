@@ -51,12 +51,12 @@ public class Game3View extends SurfaceView implements Runnable {
      *
      * @param context the instance of the class that called created an instance of this class.
      */
-    Game3View(Context context) {
+    Game3View(Context context, String difficulty) {
         super(context);
         activityContext = context;
         paint = new Paint();
         this.drawManager = new DrawManager(this.canvas, this.paint);
-        gameObjectManager = new GameObjectManager(getResources(), drawManager);
+        gameObjectManager = new GameObjectManager(getResources(), drawManager, difficulty);
 
         //Creates all the game objects that are needed for this Game.
         gameObjectManager.createObjects();
