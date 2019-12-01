@@ -1,5 +1,9 @@
 package com.example.game.viewLevel;
 
+//images used (free license: Image by OpenClipart-Vectors from Pixabay):
+//https://pixabay.com/vectors/back-button-computer-left-blue-24838/
+//https://pixabay.com/vectors/home-website-start-house-computer-150499/
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;

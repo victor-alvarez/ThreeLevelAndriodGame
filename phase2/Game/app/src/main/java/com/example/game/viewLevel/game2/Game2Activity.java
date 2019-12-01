@@ -1,6 +1,6 @@
 package com.example.game.viewLevel.game2;
 
-//image used (free license):
+//image used (free license: Image by OpenClipart-Vectors from Pixabay):
 //https://pixabay.com/illustrations/road-sign-attention-right-of-way-808733/
 
 import android.content.Intent;
