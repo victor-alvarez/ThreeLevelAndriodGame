@@ -3,15 +3,15 @@ package com.example.game.presenters.game1;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
-import com.example.game.presenters.game1.GameplayScene;
-import com.example.game.presenters.game1.Scene;
+import com.example.game.models.game1.scenes.GameplayScene;
+import com.example.game.models.game1.scenes.Scene;
 
 import java.util.ArrayList;
 
 /**
- * SceneManager class. Manages the Scene
+ * ScenePresenterImp class. Manages the Scene
  */
-public class SceneManager {
+public class ScenePresenterImp {
     /**
      * Instance variables
      */
@@ -22,7 +22,7 @@ public class SceneManager {
      * Constructor. Adds GameplayScene to list of scenes. In phase2, more scenes will be added which
      * means ore levels.
      */
-    public SceneManager() {
+    public ScenePresenterImp() {
         ACTIVE_SCENE = 0;
         scenes.add(new GameplayScene());
     }

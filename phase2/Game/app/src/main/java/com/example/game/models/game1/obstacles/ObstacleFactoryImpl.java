@@ -1,4 +1,8 @@
-package com.example.game.models.game1;
+package com.example.game.models.game1.obstacles;
+
+import com.example.game.models.game1.obstacles.BallJumpObstacle;
+import com.example.game.models.game1.obstacles.Obstacle;
+import com.example.game.models.game1.obstacles.ObstacleFactory;
 
 public class ObstacleFactoryImpl implements ObstacleFactory {
 

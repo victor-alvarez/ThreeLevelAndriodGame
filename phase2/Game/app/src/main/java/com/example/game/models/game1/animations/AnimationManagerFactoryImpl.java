@@ -1,4 +1,4 @@
-package com.example.game.models.game1;
+package com.example.game.models.game1.animations;
 
 public class AnimationManagerFactoryImpl implements AnimationManagerFactory {
     public AnimationManager makeAnimationManagerImpl(){

@@ -1,18 +1,17 @@
-package com.example.game.models.game1;
+package com.example.game.models.game1.rectplayer;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.Rect;
 
-import com.example.game.R;
+import com.example.game.models.game1.Factories;
+import com.example.game.models.game1.animations.AnimationManager;
+import com.example.game.models.game1.animations.AnimationManagerFactory;
 
 /**
  * RectPlayer class. The actual player the user will control.
  */
-public class BallJumpRectPlayer implements RectPlayer{
+public class BallJumpRectPlayer implements RectPlayer {
 
     /**
      * Instance variables

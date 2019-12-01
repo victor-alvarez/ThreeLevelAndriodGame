@@ -1,4 +1,4 @@
-package com.example.game.models.game1;
+package com.example.game.models.game1.animations;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,7 +7,11 @@ import android.graphics.Matrix;
 import android.graphics.Rect;
 
 import com.example.game.R;
-import com.example.game.models.game1.Animation;
+import com.example.game.models.game1.Constants;
+import com.example.game.models.game1.Factories;
+import com.example.game.models.game1.animations.Animation;
+import com.example.game.models.game1.animations.AnimationFactory;
+import com.example.game.models.game1.animations.AnimationManager;
 
 public class AnimationManagerImpl implements AnimationManager {
     /**

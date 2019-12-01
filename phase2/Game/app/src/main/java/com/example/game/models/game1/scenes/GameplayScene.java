@@ -1,4 +1,4 @@
-package com.example.game.presenters.game1;
+package com.example.game.models.game1.scenes;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -7,14 +7,14 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 
-import com.example.game.models.game1.Factories;
-import com.example.game.models.game1.ObstacleManagerFactory;
-import com.example.game.presenters.game1.OrientationData;
 import com.example.game.models.game1.Constants;
-import com.example.game.models.game1.Obstacle;
-import com.example.game.models.game1.RectPlayer;
-import com.example.game.models.game1.ObstacleManager;
-import com.example.game.models.game1.RectPlayerFactory;
+import com.example.game.models.game1.Factories;
+import com.example.game.models.game1.OrientationData;
+import com.example.game.models.game1.obstacles.Obstacle;
+import com.example.game.models.game1.obstacles.ObstacleManager;
+import com.example.game.models.game1.obstacles.ObstacleManagerFactory;
+import com.example.game.models.game1.rectplayer.RectPlayer;
+import com.example.game.models.game1.rectplayer.RectPlayerFactory;
 import com.example.game.viewLevel.game1.BallJumperActivity;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class GameplayScene implements Scene {
     /**
      * Constructor for GameplayScene. Instansiates player, playerPoint, obstacles, and lives.
      */
-    GameplayScene() {
+    public GameplayScene() {
         RectPlayerFactory rectPlayerFactory = Factories.RECT_PLAYER_FACTORY;
         player = rectPlayerFactory.makeBallJumpRectPlayer(new Rect(100, 100, 200, 200));
         playerPoint = new Point(Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 4);

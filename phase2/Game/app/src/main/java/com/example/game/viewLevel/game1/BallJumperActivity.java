@@ -7,13 +7,13 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.game.BaseActivity;
-import com.example.game.models.game1.AnimationFactoryImpl;
-import com.example.game.models.game1.AnimationManagerFactoryImpl;
-import com.example.game.models.game1.ObstacleFactoryImpl;
+import com.example.game.models.game1.animations.AnimationFactoryImpl;
+import com.example.game.models.game1.animations.AnimationManagerFactoryImpl;
+import com.example.game.models.game1.obstacles.ObstacleFactoryImpl;
 import com.example.game.models.game1.Constants;
 import com.example.game.models.game1.Factories;
-import com.example.game.models.game1.ObstacleManagerFactoryImpl;
-import com.example.game.models.game1.RectPlayerFactoryImpl;
+import com.example.game.models.game1.obstacles.ObstacleManagerFactoryImpl;
+import com.example.game.models.game1.rectplayer.RectPlayerFactoryImpl;
 
 public class BallJumperActivity extends BaseActivity {
     /**
@@ -44,7 +44,7 @@ public class BallJumperActivity extends BaseActivity {
         Factories.OBSTACLE_MANAGER_FACTORY = new ObstacleManagerFactoryImpl();
         Factories.ANIMATION_FACTORY = new AnimationFactoryImpl();
         Factories.ANIMATION_MANAGER_FACTORY = new AnimationManagerFactoryImpl();
-        GamePanel gamePanel = new GamePanel(this);
+        Game1View gamePanel = new Game1View(this);
         gamePanel.setDifficulty(getIntent().getStringExtra("difficulty"));
         setContentView(gamePanel);
     }

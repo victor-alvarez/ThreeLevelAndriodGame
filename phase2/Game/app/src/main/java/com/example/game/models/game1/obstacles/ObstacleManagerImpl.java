@@ -1,13 +1,17 @@
-package com.example.game.models.game1;
+package com.example.game.models.game1.obstacles;
 
 import android.graphics.Canvas;
+
+import com.example.game.models.game1.Constants;
+import com.example.game.models.game1.Factories;
+import com.example.game.models.game1.rectplayer.RectPlayer;
 
 import java.util.ArrayList;
 
 /**
  * ObstacleManager class. Creates obstacles to be populated in game.
  */
-public class ObstacleManagerImpl implements ObstacleManager{
+public class ObstacleManagerImpl implements ObstacleManager {
     // higher index = lower on screen = higher y value
 
     /**

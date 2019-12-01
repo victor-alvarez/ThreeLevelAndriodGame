@@ -1,4 +1,4 @@
-package com.example.game.models.game1;
+package com.example.game.models.game1.obstacles;
 
 public class ObstacleManagerFactoryImpl implements ObstacleManagerFactory {
     public ObstacleManager makeObstacleManagerImpl(int obstacleGap, int obstacleHeight, int color) {

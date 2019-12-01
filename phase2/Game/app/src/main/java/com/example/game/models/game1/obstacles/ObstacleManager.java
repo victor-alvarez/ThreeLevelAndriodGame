@@ -1,6 +1,8 @@
-package com.example.game.models.game1;
+package com.example.game.models.game1.obstacles;
 
 import android.graphics.Canvas;
+
+import com.example.game.models.game1.rectplayer.RectPlayer;
 
 import java.util.ArrayList;
 

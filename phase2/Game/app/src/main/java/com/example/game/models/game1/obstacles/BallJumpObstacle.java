@@ -1,8 +1,10 @@
-package com.example.game.models.game1;
+package com.example.game.models.game1.obstacles;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+
+import com.example.game.models.game1.rectplayer.RectPlayer;
 
 /**
  * Obstacle class. These are the individual obstacles to be spawned by ObstacleManager

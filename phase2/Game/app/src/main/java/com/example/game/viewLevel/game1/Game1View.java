@@ -8,31 +8,31 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import com.example.game.models.game1.Constants;
-import com.example.game.presenters.game1.SceneManager;
-import com.example.game.presenters.game1.MainThread;
+import com.example.game.presenters.game1.ScenePresenterImp;
+import com.example.game.models.game1.MainThread;
 
 /**
  * GamePanel class.
  */
-public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
+public class Game1View extends SurfaceView implements SurfaceHolder.Callback {
 
     /**
      * Instance variables
      */
     private MainThread thread;
-    private SceneManager manager;
+    private ScenePresenterImp manager;
 
     /**
      * Constructor
      *
      * @param context - the context
      */
-    public GamePanel(Context context) {
+    public Game1View(Context context) {
         super(context);
         getHolder().addCallback(this);
         Constants.CURRENT_CONTEXT = context;
         thread = new MainThread(getHolder(), this);
-        manager = new SceneManager();
+        manager = new ScenePresenterImp();
         setFocusable(true);
     }
 
