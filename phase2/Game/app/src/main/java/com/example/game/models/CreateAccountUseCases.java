@@ -1,5 +1,8 @@
 package com.example.game.models;
 
+import com.example.game.models.Interfaces.AccountManagerInterface;
+import com.example.game.models.Interfaces.CreateAccountListener;
+
 import java.io.File;
 
 /**

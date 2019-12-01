@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.game.BaseActivity;
+import com.example.game.models.DataIncrementerUseCases;
+import com.example.game.models.Interfaces.DataIncrementerActions;
+import com.example.game.presenters.DataIncrementerPresenter;
 import com.example.game.viewLevel.game2.Game2Activity;
 import com.example.game.viewLevel.MainActivity;
 import com.example.game.R;
@@ -16,12 +19,17 @@ import com.example.game.R;
 /**
  * GameOverActivity class. This is what the player will see when they lose.
  */
-public class GameOverActivity extends BaseActivity {
+public class GameOverActivity extends BaseActivity implements DataIncrementerActions {
 
     /**
      * Text displaying the addiction counter (so the number of games played including retries)
      */
-    TextView lives, scores;
+    private TextView lives, scores;
+
+    /**
+     * Presenter which manages interactions with this view.
+     */
+    private DataIncrementerPresenter presenter;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -63,29 +71,23 @@ public class GameOverActivity extends BaseActivity {
 
         scores = findViewById(R.id.scoreText_GameOverActivity);
         scores.setText(String.valueOf(account.getCurrentScore()));
+
+        presenter = new DataIncrementerPresenter(this,
+                new DataIncrementerUseCases());
     }
 
     /**
      * Called when the user taps the "Retry" button
      */
     public void retry(View view) {
-        Intent intent = new Intent(this, BallJumperActivity.class);
-        String difficultyLevel = getIntent().getStringExtra("difficulty");
-        if (difficultyLevel == null){
-            difficultyLevel = "normal";
-        }
-        intent.putExtra("difficulty", difficultyLevel);
-        account.decrementLevel(getApplicationContext().getFilesDir());
-        startActivity(intent);
+        presenter.decrementLevel(getApplicationContext().getFilesDir());
     }
 
     /**
      * Called when the user taps the "To Game Two" button
      */
     public void nextGame(View view) {
-        Intent intent = new Intent(this, Game2Activity.class);
-        account.incrementLevel(getApplicationContext().getFilesDir());
-        startActivity(intent);
+        presenter.incrementLevel(getApplicationContext().getFilesDir());
     }
 
     /**
@@ -93,6 +95,23 @@ public class GameOverActivity extends BaseActivity {
      */
     public void toMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void toRetry() {
+        Intent intent = new Intent(this, BallJumperActivity.class);
+        String difficultyLevel = getIntent().getStringExtra("difficulty");
+        if (difficultyLevel == null){
+            difficultyLevel = "normal";
+        }
+        intent.putExtra("difficulty", difficultyLevel);
+        startActivity(intent);
+    }
+
+    @Override
+    public void toNext() {
+        Intent intent = new Intent(this, Game2Activity.class);
         startActivity(intent);
     }
 }

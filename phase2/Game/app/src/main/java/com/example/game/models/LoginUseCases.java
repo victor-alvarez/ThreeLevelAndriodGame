@@ -1,5 +1,9 @@
 package com.example.game.models;
 
+import com.example.game.models.Interfaces.AccountDataRepositoryInterface;
+import com.example.game.models.Interfaces.AccountManagerInterface;
+import com.example.game.models.Interfaces.LoginListener;
+
 import java.io.File;
 
 /**
@@ -24,7 +28,7 @@ public class LoginUseCases {
      * @param accountDataRepository the interface which accesses the database
      */
     public void login(final String username, File contextFile,
-               LoginListener loginReactor, AccountDataRepositoryInterface accountDataRepository){
+                      LoginListener loginReactor, AccountDataRepositoryInterface accountDataRepository){
         Account account = accountManager.openExistingAccount(username, contextFile);
         if(account != null){
             AccountHolder accountHolder = new AccountHolder(account, accountDataRepository);
