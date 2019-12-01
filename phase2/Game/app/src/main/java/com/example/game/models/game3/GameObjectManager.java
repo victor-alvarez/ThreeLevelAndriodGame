@@ -319,13 +319,13 @@ public class GameObjectManager {
         }
     }
 
-    Boolean buttonPressed(ButtonObject buttonObject, float touchX, float touchY) {
+    private Boolean buttonPressed(ButtonObject buttonObject, float touchX, float touchY) {
         return buttonObject.getButton().left <= touchX && touchX <=
                 buttonObject.getButton().right && buttonObject.getButton().top <= touchY &&
                 touchY <= buttonObject.getButton().bottom;
     }
 
-    Boolean bottlePressed(BottleObject bottleObject, float touchX, float touchY) {
+    private Boolean bottlePressed(BottleObject bottleObject, float touchX, float touchY) {
         if (bottleObject.getActive()) {
             return bottleObject.getLeft() <= touchX && touchX <=
                     bottleObject.getRight() && bottleObject.getTop() <= touchY &&
