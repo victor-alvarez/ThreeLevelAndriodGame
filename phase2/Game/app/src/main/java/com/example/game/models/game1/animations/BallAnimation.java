@@ -1,11 +1,13 @@
-package com.example.game.models.game1;
+package com.example.game.models.game1.animations;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-public class BallAnimation implements Animation{
+import com.example.game.models.game1.animations.Animation;
+
+public class BallAnimation implements Animation {
     /**
      * Handles the animation of the player-controlled ball in the game.
      */

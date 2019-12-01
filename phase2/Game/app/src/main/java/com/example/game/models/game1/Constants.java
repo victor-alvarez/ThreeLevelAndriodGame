@@ -3,6 +3,8 @@ package com.example.game.models.game1;
 import android.annotation.SuppressLint;
 import android.content.Context;
 
+import com.example.game.models.game1.obstacles.Obstacle;
+
 /**
  * Constants class. Place to hold all constant variables like screen width.
  */

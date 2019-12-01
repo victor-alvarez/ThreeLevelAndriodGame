@@ -1,4 +1,4 @@
-package com.example.game.models.game1;
+package com.example.game.models.game1.animations;
 
 import android.graphics.Bitmap;
 
