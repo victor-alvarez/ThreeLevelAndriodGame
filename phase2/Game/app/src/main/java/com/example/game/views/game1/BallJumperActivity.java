@@ -10,6 +10,7 @@ import com.example.game.BaseActivity;
 import com.example.game.models.game1.ObstacleFactoryImpl;
 import com.example.game.models.game1.Constants;
 import com.example.game.models.game1.Factories;
+import com.example.game.models.game1.RectPlayerFactoryImpl;
 
 public class BallJumperActivity extends BaseActivity {
     /**
@@ -36,6 +37,7 @@ public class BallJumperActivity extends BaseActivity {
         Constants.SCREEN_WIDTH = dm.widthPixels;
         Constants.SCREEN_HEIGHT = dm.heightPixels;
         Factories.OBSTACLE_FACTORY = new ObstacleFactoryImpl();
+        Factories.RECT_PLAYER_FACTORY = new RectPlayerFactoryImpl();
         GamePanel gamePanel = new GamePanel(this);
         gamePanel.setDifficulty(getIntent().getStringExtra("difficulty"));
         setContentView(gamePanel);

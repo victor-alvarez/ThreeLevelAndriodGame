@@ -43,7 +43,7 @@ public class GameplayScene implements Scene {
      * Constructor for GameplayScene. Instansiates player, playerPoint, obstacles, and lives.
      */
     GameplayScene() {
-        player = new RectPlayer(new Rect(100, 100, 200, 200));
+        player = Factories.RECT_PLAYER_FACTORY.makeBallJumpRectPlayer(new Rect(100, 100, 200, 200));
         playerPoint = new Point(Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 4);
         player.update(playerPoint);
         obstacleManager = new ObstacleManager(1000, 75, Color.BLACK);
