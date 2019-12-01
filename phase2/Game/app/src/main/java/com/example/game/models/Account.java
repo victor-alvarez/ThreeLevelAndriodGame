@@ -42,6 +42,9 @@ public class Account{
     this.gameData = new GameData();
   }
 
+  /**
+   * @return the Account's login (which is a string).
+   */
   public String getLogin() {
     return login;
   }
@@ -52,13 +55,16 @@ public class Account{
    * @param contextFile an access to the current file state of the app
    * @param accountDataRepository the interface which accesses the database
    */
-  public void setBackground(String colour, File contextFile,
+  void setBackground(String colour, File contextFile,
                             AccountDataRepositoryInterface accountDataRepository) {
     customization.setCurrentColour(colour);
     accountDataRepository.save(contextFile, this);
   }
 
-  public int getBackground(){
+  /**
+   * @return the Account's background colour setting.
+   */
+  int getBackground(){
     return customization.getCurrentColour();
   }
 
@@ -68,13 +74,16 @@ public class Account{
    * @param contextFile an access to the current file state of the app
    * @param accountDataRepository the interface which accesses the database
    */
-  public void setLanguage(String language, File contextFile,
+  void setLanguage(String language, File contextFile,
                           AccountDataRepositoryInterface accountDataRepository) {
     customization.setCurrentLanguage(language);
     accountDataRepository.save(contextFile, this);
   }
 
-  public String getLanguage(){
+  /**
+   * @return the Account's language setting.
+   */
+  String getLanguage(){
     return customization.getCurrentLanguage();
   }
 
@@ -85,13 +94,13 @@ public class Account{
    * @param contextFile an access to the current file state of the app
    * @param accountDataRepository the interface which accesses the database
    */
-  public void setIcon(String icon, File contextFile,
+  void setIcon(String icon, File contextFile,
                       AccountDataRepositoryInterface accountDataRepository) {
     customization.setCurrentIcon(icon);
     accountDataRepository.save(contextFile, this);
   }
 
-  public int getIcon(){
+  int getIcon(){
     return customization.getCurrentIcon();
   }
 
@@ -101,7 +110,7 @@ public class Account{
    * @param contextFile an access to the current file state of the app
    * @param accountDataRepository the interface which accesses the database
    */
-  public void incrementLevel(File contextFile,
+  void incrementLevel(File contextFile,
                              AccountDataRepositoryInterface accountDataRepository) {
     gameData.incrementLevel();
     accountDataRepository.save(contextFile, this);
@@ -112,7 +121,7 @@ public class Account{
    * @param contextFile an access to the current file state of the app
    * @param accountDataRepository the interface which accesses the database
    */
-  public void decrementLevel(File contextFile,
+  void decrementLevel(File contextFile,
                              AccountDataRepositoryInterface accountDataRepository) {
     gameData.decrementLevel();
     accountDataRepository.save(contextFile, this);
@@ -124,7 +133,7 @@ public class Account{
    * @param contextFile an access to the current file state of the app
    * @param accountDataRepository the interface which accesses the database
    */
-  public void decrementHitPoints(int reduce, File contextFile,
+  void decrementHitPoints(int reduce, File contextFile,
                                  AccountDataRepositoryInterface accountDataRepository) {
     gameData.decrementHitPoints(reduce);
     accountDataRepository.save(contextFile, this);
@@ -136,7 +145,7 @@ public class Account{
    * @param contextFile an access to the current file state of the app
    * @param accountDataRepository the interface which accesses the database
    */
-  public void incrementScore(int add, File contextFile,
+  void incrementScore(int add, File contextFile,
                              AccountDataRepositoryInterface accountDataRepository) {
     gameData.incrementScore(add);
     accountDataRepository.save(contextFile, this);
@@ -147,7 +156,7 @@ public class Account{
    * @param contextFile an access to the current file state of the app
    * @param accountDataRepository the interface which accesses the database
    */
-  public void incrementGamesPlayed(File contextFile,
+  void incrementGamesPlayed(File contextFile,
                                    AccountDataRepositoryInterface accountDataRepository) {
     gameData.incrementGamesPlayed();
     accountDataRepository.save(contextFile, this);
@@ -158,28 +167,36 @@ public class Account{
    * @param contextFile an access to the current file state of the app
    * @param accountDataRepository the interface which accesses the database
    */
-  public void resetValues(File contextFile, AccountDataRepositoryInterface accountDataRepository){
+  void resetValues(File contextFile, AccountDataRepositoryInterface accountDataRepository){
     gameData.resetData();
     accountDataRepository.save(contextFile, this);
   }
 
-  public int getLastAttemptedLevel() {
+  /**
+   * @return the account's last attempted level.
+   */
+  int getLastAttemptedLevel() {
     return gameData.getLastAttemptedLevel();
   }
 
-  public int getHitPoints() {
+  /**
+   * @return the account's current hit points.
+   */
+  int getHitPoints() {
     return gameData.getHitPoints();
   }
 
-  public int getCurrentScore() {
+  /**
+   * @return the account's current score.
+   */
+  int getCurrentScore() {
     return gameData.getCurrentScore();
   }
 
-  public int getGamesPlayed() {
+  /**
+   * @return the account's current number of games played.
+   */
+  int getGamesPlayed() {
     return gameData.getGamesPlayed();
-  }
-
-  public int getCoins() {
-    return gameData.getCoins();
   }
 }

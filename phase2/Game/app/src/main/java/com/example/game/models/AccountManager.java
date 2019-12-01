@@ -11,8 +11,16 @@ import java.io.File;
  */
 public class AccountManager implements AccountManagerInterface {
 
+    /**
+     * Object which accesses and edits the database.
+     */
     private AccountDataRepositoryInterface accountDataRepository;
 
+    /**
+     * Instantiates and returns a new AccountManager
+     * @param accountDataRepositoryInterface the object used to edit and recieve information from
+     *                                       the database.
+     */
     public AccountManager(AccountDataRepositoryInterface accountDataRepositoryInterface){
         accountDataRepository = accountDataRepositoryInterface;
     }
@@ -23,6 +31,7 @@ public class AccountManager implements AccountManagerInterface {
      * file if missing.
      *
      * @param login of the Account.
+     * @param contextFile the file in which the database is located
      */
     @Override
     public void createNewAccount(String login, File contextFile) {
@@ -34,6 +43,7 @@ public class AccountManager implements AccountManagerInterface {
      * login from Enter Login field. Uses saved values for customization settings and save data.
      *
      * @param login of the Account.
+     * @param contextFile the file in which the database is located
      * @return Array[boolean][Account]: account found => loaded Account, save file or account
      * missing => null.
      */
@@ -42,7 +52,9 @@ public class AccountManager implements AccountManagerInterface {
         return accountDataRepository.openExistingAccount(login, contextFile);
     }
 
-    // Deletes all accounts
+    /** Deletes all accounts
+     * @param contextFile the file in which the database is located
+     */
     public void deleteAccountData(File contextFile) {
         accountDataRepository.deleteAccountData(contextFile);
     }

@@ -52,14 +52,23 @@ public class LocaleManager {
         return context;
     }
 
+    /**
+     * @return the string key for the English language setting,
+     */
     public static String getEnglish(){
         return ENGLISH;
     }
 
+    /**
+     * @return the string key for the French language setting,
+     */
     public static String getFrench(){
         return FRENCH;
     }
 
+    /**
+     * @return the string key for the Russian language setting,
+     */
     public static String getRussian(){
         return RUSSIAN;
     }

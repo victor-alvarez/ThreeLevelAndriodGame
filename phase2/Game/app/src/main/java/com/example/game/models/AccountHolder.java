@@ -1,29 +1,45 @@
 package com.example.game.models;
 
-import com.example.game.models.Account;
-import com.example.game.models.AccountDataRepositoryInterface;
-
 import java.io.File;
 
 /**
- * Javadocs
+ * Account holder layer which holds an Account and an AccountDataRepositoryInterface. It's purpose
+ * is to pass the AccountDataRepositoryInterface to the Account for use in it's methods.
+ *
+ * Note: This class is necessary due to the way that the data is saved/loaded for the Account, as
+ * the AccountDataRepositoryInterface is an interface and can't be directly instantiated.
  */
 public class AccountHolder{
+    /**
+     * The account held by the account holder. It is the currently logged in account.
+     */
     private Account account;
 
+    /**
+     * The Object with methods that directly access and edit the database.
+     */
     private AccountDataRepositoryInterface accountDataRepositoryInterface;
 
-    public AccountHolder(Account account, AccountDataRepositoryInterface accountDataRepositoryInterface){
+    /**
+     * Instantiates and returns a new AccountHolder.
+     * @param account the logged in account.
+     * @param accountDataRepositoryInterface the interface which allows for accessing data from
+     *                                       the database.
+     */
+    AccountHolder(Account account, AccountDataRepositoryInterface accountDataRepositoryInterface){
         this.account = account;
         this.accountDataRepositoryInterface = accountDataRepositoryInterface;
     }
 
+    /**
+     * @return the held Account's login (which is a string).
+     */
     public String getLogin() {
         return account.getLogin();
     }
 
     /**
-     * Sets this account's background colour to selected colour and records it
+     * Sets this held account's background colour to selected colour and records it
      * @param colour the number that respresents a background colour for this account
      * @param contextFile an access to the current file state of the app
      */
@@ -31,12 +47,15 @@ public class AccountHolder{
         account.setBackground(colour, contextFile, accountDataRepositoryInterface);
     }
 
+    /**
+     * @return the held Accounts background colour setting.
+     */
     public int getBackground(){
         return account.getBackground();
     }
 
     /**
-     * Sets this account's language and records the setting
+     * Sets this held account's language and records the setting
      * @param language the number that respresents a language for this account
      * @param contextFile an access to the current file state of the app
      */
@@ -44,13 +63,16 @@ public class AccountHolder{
         account.setLanguage(language, contextFile, accountDataRepositoryInterface);
     }
 
+    /**
+     * @return the held Account's language setting.
+     */
     public String getLanguage(){
         return account.getLanguage();
     }
 
 
     /**
-     * Sets this accounts icon
+     * Sets this held account's icon
      * @param icon the icon setting
      * @param contextFile an access to the current file state of the app
      */
@@ -58,13 +80,16 @@ public class AccountHolder{
         account.setIcon(icon, contextFile, accountDataRepositoryInterface);
     }
 
+    /**
+     * @return the held Account's icon
+     */
     public int getIcon(){
         return account.getIcon();
     }
 
 
     /**
-     * Increments level or resets it where appropriate and records it
+     * Increments level or resets it where appropriate and records it on the held account
      * @param contextFile an access to the current file state of the app
      */
     public void incrementLevel(File contextFile) {
@@ -72,7 +97,8 @@ public class AccountHolder{
     }
 
     /**
-     * Decrements level for purposes of retrying where appropriate and records it
+     * Decrements level for purposes of retrying where appropriate and records it on the held
+     * account
      * @param contextFile an access to the current file state of the app
      */
     public void decrementLevel(File contextFile) {
@@ -80,7 +106,7 @@ public class AccountHolder{
     }
 
     /**
-     * Reduces hitpoints by a set amount and records it
+     * Reduces hitpoints by a set amount and records it on the held account
      * @param reduce the amount by which hit points are reduced
      * @param contextFile an access to the current file state of the app
      */
@@ -89,7 +115,7 @@ public class AccountHolder{
     }
 
     /**
-     * Changes score by amount add
+     * Changes score by amount add on the held account
      * @param add the amount to be added to the score
      * @param contextFile an access to the current file state of the app
      */
@@ -98,7 +124,7 @@ public class AccountHolder{
     }
 
     /**
-     * Increments the number of times the games are played on this account
+     * Increments the number of times the games are played on this held account
      * @param contextFile an access to the current file state of the app
      */
     public void incrementGamesPlayed(File contextFile) {
@@ -106,33 +132,44 @@ public class AccountHolder{
     }
 
     /**
-     * Sets this account's stats to starting ones
+     * Sets this held account's stats to starting ones
      * @param contextFile an access to the current file state of the app
      */
     public void resetValues(File contextFile){
         account.resetValues(contextFile, accountDataRepositoryInterface);
     }
 
+    /**
+     * @return the held account's last level attempted.
+     */
     public int getLastAttemptedLevel() {
         return account.getLastAttemptedLevel();
     }
 
+    /**
+     * @return the held account's current hit points.
+     */
     public int getHitPoints() {
         return account.getHitPoints();
     }
 
+    /**
+     * @return the held account's current score.
+     */
     public int getCurrentScore() {
         return account.getCurrentScore();
     }
 
+    /**
+     * @return the held account's current total number of games played.
+     */
     public int getGamesPlayed() {
         return account.getGamesPlayed();
     }
 
-    public int getCoins() {
-        return account.getCoins();
-    }
-
+    /**
+     * @return the held account.
+     */
     public Account getAccount() {
         return account;
     }

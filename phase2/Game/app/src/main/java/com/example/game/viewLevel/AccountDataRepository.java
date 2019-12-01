@@ -15,14 +15,6 @@ import java.io.IOException;
 import static android.content.ContentValues.TAG;
 
 class AccountDataRepository implements AccountDataRepositoryInterface {
-    /**
-     * Should items outside of the view in MVP be able to know about/need android specific objects?
-     * Question about what feedback means. If also does not know then ask what can be done.
-     * How should accessing data be done to follow clean architecture and MVP?
-     * Is it more correct to have AccountDataRepository implement and interface and pass it to account instead of static?
-     * Should retrieving resources data be done by a subclass? (Probably, still in view though)
-     * Ask about the two items that must be completed.
-     */
     private static final String FILE_NAME = "save.txt";
 
     public void save(File contextFile, Account account){
