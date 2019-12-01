@@ -1,12 +1,12 @@
-package com.example.game.Game3;
+package com.example.game.views.game3;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.game.Account;
 import com.example.game.BaseActivity;
 import com.example.game.GameOver;
-import com.example.game.R;
+import com.example.game.views.game3.Game3ExitActivity;
+import com.example.game.views.game3.Game3View;
 
 /**
  * Play Activity for Game 3.

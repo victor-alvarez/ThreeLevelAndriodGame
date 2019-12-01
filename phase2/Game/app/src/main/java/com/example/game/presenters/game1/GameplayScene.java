@@ -7,6 +7,8 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 
+import com.example.game.models.game1.Factories;
+import com.example.game.models.game1.ObstacleFactory;
 import com.example.game.models.game1.OrientationData;
 import com.example.game.models.game1.Constants;
 import com.example.game.models.game1.Obstacle;
@@ -34,7 +36,6 @@ public class GameplayScene implements Scene {
     private OrientationData orientationData; // orientation data
     private long frameTime; // time frame
     private double grav; // gravity for game
-    private Obstacle startingPlat;
     private int hitPoints;
     private String difficulty;
 
@@ -46,7 +47,6 @@ public class GameplayScene implements Scene {
         playerPoint = new Point(Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 4);
         player.update(playerPoint);
         obstacleManager = new ObstacleManager(1000, 75, Color.BLACK);
-        startingPlat = new Obstacle(50, Color.BLUE, Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 2);
         lives = 3;
         orientationData = new OrientationData();
         frameTime = System.currentTimeMillis();
@@ -61,7 +61,6 @@ public class GameplayScene implements Scene {
     @Override
     public void draw(Canvas canvas) {
         canvas.drawColor(Color.WHITE);
-        startingPlat.draw(canvas);
         player.draw(canvas); // draw player
         obstacleManager.draw(canvas); // draw obstacles
         Paint paint = new Paint();
@@ -138,18 +137,10 @@ public class GameplayScene implements Scene {
             }
 
             obstacleManager.update();
-            startingPlat.update();
 
-            if (startingPlat.playerCollide(player) && !startingPlat.checkDestoryed()) {
-                grav = 0;
-                playerPoint.y -= grav;
-                grav -= 25;
-                player.update(playerPoint);
-                startingPlat.destroy();
-            }
             if (obstacleManager.playerCollide(player)) {
                 obstacles.remove(Constants.hitTile);
-                obstacleManager.populateObstacles();
+                obstacleManager.addObstacle();
                 score++;
                 grav = 0;
                 playerPoint.y -= grav;
@@ -187,7 +178,6 @@ public class GameplayScene implements Scene {
      * Reset whenever player dies
      */
     private void reset() {
-        startingPlat = new Obstacle(50, Color.BLUE, Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 2);
         playerPoint = new Point(Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 4);
         player.update(playerPoint);
         obstacleManager = new ObstacleManager(1000, 75, Color.BLACK);

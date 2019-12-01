@@ -7,7 +7,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.game.BaseActivity;
+import com.example.game.models.game1.ObstacleFactoryImpl;
 import com.example.game.models.game1.Constants;
+import com.example.game.models.game1.Factories;
 
 public class BallJumperActivity extends BaseActivity {
     /**
@@ -33,6 +35,7 @@ public class BallJumperActivity extends BaseActivity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         Constants.SCREEN_WIDTH = dm.widthPixels;
         Constants.SCREEN_HEIGHT = dm.heightPixels;
+        Factories.OBSTACLE_FACTORY = new ObstacleFactoryImpl();
         GamePanel gamePanel = new GamePanel(this);
         gamePanel.setDifficulty(getIntent().getStringExtra("difficulty"));
         setContentView(gamePanel);

@@ -1,4 +1,4 @@
-package com.example.game.Game3;
+package com.example.game.models.game3;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -10,7 +10,7 @@ import android.util.DisplayMetrics;
 
 import com.example.game.R;
 
-public class ObjectBuilder {
+class ObjectBuilder {
 
     /**
      * The Resources needed to access some files in creating objects.

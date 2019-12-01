@@ -5,9 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.game.Account;
 import com.example.game.BaseActivity;
-import com.example.game.Game3.Game3Activity;
+import com.example.game.views.game3.Game3Activity;
 import com.example.game.MainActivity;
 import com.example.game.R;
 

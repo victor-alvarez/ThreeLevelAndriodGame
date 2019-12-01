@@ -1,0 +1,5 @@
+package com.example.game.models.game1;
+
+public class Factories {
+    public static ObstacleFactory OBSTACLE_FACTORY;
+}

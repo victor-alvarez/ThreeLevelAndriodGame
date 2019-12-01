@@ -1,8 +1,8 @@
-package com.example.game.Game3;
+package com.example.game.models.game3;
 
 import java.util.Random;
 
-public class Game3HardStrategy implements Game3Strategy {
+class Game3NormalStrategy implements Game3Strategy {
     private int[] enemyAttack = {9, 9, 10, 10, 10, 12, 12, 12, 13, 13, 13, 15};
 
     private int[] enemyDefend = {9, 9, 10, 10, 10, 12, 12, 12, 13, 13, 13, 15};

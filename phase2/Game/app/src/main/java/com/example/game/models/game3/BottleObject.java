@@ -1,8 +1,6 @@
-package com.example.game.Game3;
+package com.example.game.models.game3;
 
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 
 class BottleObject extends Game3Object {
 

@@ -1,83 +1,16 @@
 package com.example.game.models.game1;
 
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.Rect;
 
-/**
- * Obstacle class. These are the individual obstacles to be spawned by ObstacleManager
- */
-public class Obstacle implements GameObject {
+public interface Obstacle {
+    boolean playerCollide(RectPlayer player);
 
-    /**
-     * Instance variables
-     */
-    private Rect rectangle;
-    private int color;
-    private boolean destroy = false;
+    void incrementY(float y);
 
-    /**
-     * Constructor
-     *
-     * @param rectHeight - the height of the obstacle
-     * @param color      - the color of the obstacle
-     * @param startX     - the starting x position of the obstacle
-     * @param startY     - the starting y position of the obstacle
-     */
-    public Obstacle(int rectHeight, int color, int startX, int startY) {
-        this.color = color;
-        //l,t,r,b
-        rectangle = new Rect(startX, startY, startX + 100, startY + rectHeight);
-    }
+    Rect getRectangle();
 
-    /**
-     * @return - rectangle
-     */
-    public Rect getRectangle() {
-        return rectangle;
-    }
+    void draw(Canvas canvas); // Draw GameObject
 
-    /**
-     * @param y - Move obstacle vertical position by an increment of y
-     */
-    public void incrementY(float y) {
-        rectangle.top += y;
-        rectangle.bottom += y;
-    }
-
-    /**
-     * @param player - RectPlayer player to be checked collision with
-     * @return - return true iff player's rectangle intersects with obstacles rectangle
-     */
-    public boolean playerCollide(RectPlayer player) {
-        return Rect.intersects(rectangle, player.getRectangle());
-    }
-
-    @Override
-    public void draw(Canvas canvas) {
-        if (!destroy) {
-            Paint paint = new Paint();
-            paint.setColor(color);
-            canvas.drawRect(rectangle, paint);
-        }
-    }
-
-    @Override
-    public void update() {
-
-    }
-
-    /**
-     * Destroys Obstacle
-     */
-    public void destroy() {
-        destroy = true;
-    }
-
-    /**
-     * @return - whether Obstacle has been destroyed
-     */
-    public boolean checkDestoryed() {
-        return destroy;
-    }
+    void update(); // Update GameObject
 }

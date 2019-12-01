@@ -9,8 +9,8 @@ import android.widget.TextView;
 import com.example.game.views.game1.Game1Activity;
 import com.example.game.views.game1.GameOverActivity;
 import com.example.game.Game2.Game2Activity;
-import com.example.game.Game3.Game3Activity;
-import com.example.game.Game3.Game3ExitActivity;
+import com.example.game.views.game3.Game3Activity;
+import com.example.game.views.game3.Game3ExitActivity;
 
 /**
  * Main menu activity in which the player may navigate to the settings menu, load their game from

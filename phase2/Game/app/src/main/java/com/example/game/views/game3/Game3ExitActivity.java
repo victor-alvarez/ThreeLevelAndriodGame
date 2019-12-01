@@ -1,4 +1,4 @@
-package com.example.game.Game3;
+package com.example.game.views.game3;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.game.Account;
 import com.example.game.BaseActivity;
 import com.example.game.GameEnd;
 import com.example.game.R;
