@@ -8,6 +8,7 @@ import android.view.WindowManager;
 
 import com.example.game.BaseActivity;
 import com.example.game.models.game1.AnimationFactoryImpl;
+import com.example.game.models.game1.AnimationManagerFactoryImpl;
 import com.example.game.models.game1.ObstacleFactoryImpl;
 import com.example.game.models.game1.Constants;
 import com.example.game.models.game1.Factories;
@@ -42,6 +43,7 @@ public class BallJumperActivity extends BaseActivity {
         Factories.RECT_PLAYER_FACTORY = new RectPlayerFactoryImpl();
         Factories.OBSTACLE_MANAGER_FACTORY = new ObstacleManagerFactoryImpl();
         Factories.ANIMATION_FACTORY = new AnimationFactoryImpl();
+        Factories.ANIMATION_MANAGER_FACTORY = new AnimationManagerFactoryImpl();
         GamePanel gamePanel = new GamePanel(this);
         gamePanel.setDifficulty(getIntent().getStringExtra("difficulty"));
         setContentView(gamePanel);
