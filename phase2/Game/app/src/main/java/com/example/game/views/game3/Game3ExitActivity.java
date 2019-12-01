@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.example.game.BaseActivity;
 import com.example.game.GameEnd;
 import com.example.game.R;
+import com.example.game.ScoreboardActivity;
 
 /**
  * Exit Activity for Game 3.
@@ -65,7 +66,7 @@ public class Game3ExitActivity extends BaseActivity {
      * @param view The View of the Activity.
      */
     public void toEndGame(View view) {
-        Intent intent = new Intent(this, GameEnd.class);
+        Intent intent = new Intent(this, ScoreboardActivity.class);
         startActivity(intent);
     }
 }
