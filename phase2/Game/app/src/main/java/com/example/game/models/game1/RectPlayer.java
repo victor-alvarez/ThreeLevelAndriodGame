@@ -8,15 +8,11 @@ import android.graphics.Point;
 import android.graphics.Rect;
 
 import com.example.game.R;
-import com.example.game.models.game1.Animation;
-import com.example.game.models.game1.AnimationManager;
-import com.example.game.models.game1.Constants;
-import com.example.game.models.game1.GameObject;
 
 /**
  * RectPlayer class. The actual player the user will control.
  */
-public class RectPlayer implements GameObject {
+public class RectPlayer {
 
     /**
      * Instance variables
@@ -56,7 +52,6 @@ public class RectPlayer implements GameObject {
         return rectangle;
     }
 
-    @Override
     public void draw(Canvas canvas) {
         // Paint paint = new Paint();
         // paint.setColor(color);
@@ -64,7 +59,6 @@ public class RectPlayer implements GameObject {
         animManager.draw(canvas, rectangle);
     }
 
-    @Override
     public void update() {
         animManager.update();
     }

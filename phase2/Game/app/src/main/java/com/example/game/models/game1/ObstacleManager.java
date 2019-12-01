@@ -19,6 +19,7 @@ public class ObstacleManager {
     private int color;
     private long startTime;
     private String difficulty;
+    private ObstacleFactory obstacleFactory;
 
     /**
      * Constructor for ObstacleManager
@@ -32,6 +33,7 @@ public class ObstacleManager {
         this.obstacleHeight = obstacleHeight;
         this.color = color;
         obstacles = new ArrayList<>();
+        obstacleFactory = Factories.OBSTACLE_FACTORY;
         populateObstacles();
     }
 
@@ -61,9 +63,14 @@ public class ObstacleManager {
 
         while (currY > Constants.SCREEN_HEIGHT) {
             int xStart = (int) (Math.random() * (Constants.SCREEN_WIDTH - 100));
-            obstacles.add(new Obstacle(obstacleHeight, color, xStart, currY));
+            obstacles.add(obstacleFactory.makeBallJumpObstacle(obstacleHeight, color, xStart, currY));
             currY -= obstacleHeight + obstacleGap;
         }
+    }
+
+    public void addObstacle() {
+        int xStart = (int) (Math.random() * (Constants.SCREEN_WIDTH - 100));
+        obstacles.add(0, obstacleFactory.makeBallJumpObstacle(obstacleHeight, color, xStart, Constants.SCREEN_HEIGHT));
     }
 
     /**
@@ -94,8 +101,7 @@ public class ObstacleManager {
         }
 
         if (obstacles.get(obstacles.size() - 1).getRectangle().bottom <= 0) {
-            int xStart = (int) (Math.random() * (Constants.SCREEN_WIDTH - 100));
-            obstacles.add(0, new Obstacle(obstacleHeight, color, xStart, obstacles.get(0).getRectangle().top + obstacleHeight + obstacleGap));
+            addObstacle();
         }
     }
 
