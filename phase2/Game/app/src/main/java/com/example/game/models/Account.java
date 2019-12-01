@@ -100,7 +100,7 @@ public class Account{
     accountDataRepository.save(contextFile, this);
   }
 
-  int getIcon(){
+  public int getIcon(){
     return customization.getCurrentIcon();
   }
 
