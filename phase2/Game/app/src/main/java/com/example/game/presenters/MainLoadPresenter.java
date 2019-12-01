@@ -1,7 +1,7 @@
 package com.example.game.presenters;
 
-import com.example.game.models.LoadGameActions;
-import com.example.game.models.LoadGameListener;
+import com.example.game.models.Interfaces.LoadGameActions;
+import com.example.game.models.Interfaces.LoadGameListener;
 import com.example.game.models.MainLoadUseCases;
 
 import java.io.File;

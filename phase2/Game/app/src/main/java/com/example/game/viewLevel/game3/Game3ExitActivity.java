@@ -9,16 +9,24 @@ import android.widget.TextView;
 import com.example.game.BaseActivity;
 import com.example.game.R;
 import com.example.game.ScoreboardActivity;
+import com.example.game.models.DataIncrementerUseCases;
+import com.example.game.models.Interfaces.DataIncrementerActions;
+import com.example.game.presenters.DataIncrementerPresenter;
 
 /**
  * Exit Activity for Game 3.
  */
-public class Game3ExitActivity extends BaseActivity {
+public class Game3ExitActivity extends BaseActivity implements DataIncrementerActions {
 
     /**
      * Text displaying player stats
      */
-    TextView lives, scores;
+    private TextView lives, scores;
+
+    /**
+     * Presenter which manages interactions with this view.
+     */
+    private DataIncrementerPresenter presenter;
 
     /**
      * Code to execute when the Activity is created.
@@ -46,6 +54,9 @@ public class Game3ExitActivity extends BaseActivity {
 
         scores = findViewById(R.id.scoreText_Game3Activity2);
         scores.setText(String.valueOf(account.getCurrentScore()));
+
+        presenter = new DataIncrementerPresenter(this,
+                new DataIncrementerUseCases());
     }
 
     /**
@@ -54,9 +65,7 @@ public class Game3ExitActivity extends BaseActivity {
      * @param view The View of the Activity.
      */
     public void retry(View view) {
-        Intent intent = new Intent(this, Game3Activity.class);
-        account.decrementLevel(getApplicationContext().getFilesDir());
-        startActivity(intent);
+        presenter.decrementLevel(getApplicationContext().getFilesDir());
     }
 
     /**
@@ -65,6 +74,23 @@ public class Game3ExitActivity extends BaseActivity {
      * @param view The View of the Activity.
      */
     public void toEndGame(View view) {
+        presenter.incrementLevel(getApplicationContext().getFilesDir());
+    }
+
+    /**
+     * Sends user back to the game.
+     */
+    @Override
+    public void toRetry() {
+        Intent intent = new Intent(this, Game3Activity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Sends user to the scoreboard screen.
+     */
+    @Override
+    public void toNext() {
         Intent intent = new Intent(this, ScoreboardActivity.class);
         startActivity(intent);
     }
