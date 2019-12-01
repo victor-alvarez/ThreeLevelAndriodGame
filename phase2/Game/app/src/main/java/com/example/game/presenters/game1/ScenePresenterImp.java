@@ -3,8 +3,10 @@ package com.example.game.presenters.game1;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
+import com.example.game.models.game1.Factories;
 import com.example.game.models.game1.scenes.GameplayScene;
 import com.example.game.models.game1.scenes.Scene;
+import com.example.game.models.game1.scenes.SceneFactory;
 
 import java.util.ArrayList;
 
@@ -24,7 +26,8 @@ public class ScenePresenterImp {
      */
     public ScenePresenterImp() {
         ACTIVE_SCENE = 0;
-        scenes.add(new GameplayScene());
+        SceneFactory sceneFactory = Factories.SCENE_FACTORY;
+        scenes.add(sceneFactory.makeGameplayScene());
     }
 
     public void setDifficulty(String difficulty) {
