@@ -76,6 +76,9 @@ public class RiddleActivity extends BaseActivity implements RiddleActions {
      */
     private String type;
 
+    /**
+     * Tells Java/Anroid what to do when this activity is created.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,8 +118,8 @@ public class RiddleActivity extends BaseActivity implements RiddleActions {
         answers[2] = findViewById(R.id.a3_RiddleActivity);
         answers[3] = findViewById(R.id.a4_RiddleActivity);
 
-        for (int i = 0; i < answers.length; i++){
-            answers[i].setOnClickListener(answer);
+        for (Button answr: answers) {
+            answr.setOnClickListener(answer);
         }
 
         populateRiddleIfAble();
@@ -140,6 +143,9 @@ public class RiddleActivity extends BaseActivity implements RiddleActions {
                 getApplicationContext().getFilesDir());
     }
 
+    /**
+     * Sets riddle text for a new random riddle (or trivia).
+     */
     @Override
     public void setNewRiddleText(){
         lives.setText(String.valueOf(BaseActivity.account.getHitPoints()));
@@ -215,9 +221,9 @@ public class RiddleActivity extends BaseActivity implements RiddleActions {
      */
     private void changeVisibility(){
         question.setVisibility(View.INVISIBLE);
-        for (int i = 0; i < answers.length; i++) {
-            answers[i].setVisibility(View.INVISIBLE);
-            answers[i].setClickable(false);
+        for (Button answr: answers) {
+            answr.setVisibility(View.INVISIBLE);
+            answr.setClickable(false);
         }
 
         result.setVisibility(View.VISIBLE);

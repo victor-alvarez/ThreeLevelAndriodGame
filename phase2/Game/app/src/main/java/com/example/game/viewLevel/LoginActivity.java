@@ -28,12 +28,6 @@ public class LoginActivity extends BaseActivity implements LoginActions {
     private EditText inputName;
 
     /**
-     * Shared preference used to determine background colour
-     */
-    //TODO: Since all activities use this, move to superclass?
-    private SharedPreferences mPreferences;
-
-    /**
      * Text displayed to show if the input is not an existing account
      */
     private TextView textView;
@@ -63,7 +57,7 @@ public class LoginActivity extends BaseActivity implements LoginActions {
         textView = findViewById(R.id.textView_LoginActivity);
         loginPresenter = new LoginPresenter(this, new LoginUseCases(accountManager));
 
-        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (mPreferences.getInt("Colour", 0) == 1) {
             getWindow().getDecorView().setBackgroundResource(R.color.background1);
             textView.setTextColor(getResources().getColor(R.color.background2));
@@ -75,7 +69,6 @@ public class LoginActivity extends BaseActivity implements LoginActions {
      * currently entered in textfield inputName
      */
     public void login(View view) {
-        //TODO: pass in string, not context(since otherwise it breaks MVP)
         loginPresenter.login(inputName.getText().toString(), getApplicationContext().getFilesDir(),
                 new AccountDataRepository());
     }
@@ -88,6 +81,9 @@ public class LoginActivity extends BaseActivity implements LoginActions {
         startActivity(intent);
     }
 
+    /**
+     * React to if the username is incorrect.
+     */
     @Override
     public void incorrectUsername() {
         textView.setText(R.string.invalid_username);

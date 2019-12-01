@@ -1,17 +1,14 @@
 package com.example.game.models;
 
-import com.example.game.models.Account;
-import com.example.game.models.AccountDataRepositoryInterface;
-import com.example.game.models.AccountHolder;
-import com.example.game.models.AccountManagerInterface;
-import com.example.game.models.LoginListener;
-
 import java.io.File;
 
 /**
  * Class which performs the use cases for logging in with accounts
  */
 public class LoginUseCases {
+    /**
+     * Interface for an account manager like object.
+     */
     private AccountManagerInterface accountManager;
 
     public LoginUseCases(AccountManagerInterface accountManager){
