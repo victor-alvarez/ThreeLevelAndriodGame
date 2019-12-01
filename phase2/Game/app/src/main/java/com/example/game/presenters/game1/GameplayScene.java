@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 
 import com.example.game.models.game1.Factories;
 import com.example.game.models.game1.ObstacleManagerFactory;
-import com.example.game.models.game1.OrientationData;
+import com.example.game.presenters.game1.OrientationData;
 import com.example.game.models.game1.Constants;
 import com.example.game.models.game1.Obstacle;
 import com.example.game.models.game1.RectPlayer;
@@ -34,12 +34,13 @@ public class GameplayScene implements Scene {
     private boolean gameOver = false; // check whether the game is over
     private int score; // Score for the game
     private int lives; // Lives for the game
-    private OrientationData orientationData; // orientation data
-    private long frameTime; // time frame
     private double grav; // gravity for game
     private int hitPoints;
     private String difficulty;
     private ObstacleManagerFactory obstacleManagerFactory;
+    // Allow for tilt controls
+    private OrientationData orientationData;
+    private long frameTime;
 
     /**
      * Constructor for GameplayScene. Instansiates player, playerPoint, obstacles, and lives.
@@ -52,7 +53,9 @@ public class GameplayScene implements Scene {
         obstacleManagerFactory = Factories.OBSTACLE_MANAGER_FACTORY;
         obstacleManager = obstacleManagerFactory.makeObstacleManagerImpl(1000, 75, Color.BLACK);
         lives = 3;
+        // Initialize for tilt controls
         orientationData = new OrientationData();
+        orientationData.register();
         frameTime = System.currentTimeMillis();
     }
 
@@ -83,23 +86,22 @@ public class GameplayScene implements Scene {
     @Override
     public void update() {
         if (!gameOver) {
-            if (frameTime < Constants.INIT_TIME) {
+
+
+            if(frameTime < Constants.INIT_TIME)
                 frameTime = Constants.INIT_TIME;
-            }
-            int elapsedTime = (int) (System.currentTimeMillis() - frameTime);
+            int elapsedTime = (int)(System.currentTimeMillis() - frameTime);
             frameTime = System.currentTimeMillis();
-            if (orientationData.getOrientation() != null && orientationData.getStartOrientation() != null) {
+            if(orientationData.getOrientation() != null && orientationData.getStartOrientation() != null) {
                 float pitch = orientationData.getOrientation()[1] - orientationData.getStartOrientation()[1];
                 float roll = orientationData.getOrientation()[2] - orientationData.getStartOrientation()[2];
-                float xSpeed = 2 * roll * Constants.SCREEN_WIDTH / 1000f;
-                float ySpeed = pitch * Constants.SCREEN_HEIGHT / 1000f;
-                if (Math.abs(xSpeed * elapsedTime) > 5) {
-                    playerPoint.x += xSpeed * elapsedTime;
-                }
-                if (Math.abs(ySpeed * elapsedTime) > 5) {
-                    playerPoint.y -= ySpeed * elapsedTime;
-                }
+
+                float xSpeed = 2 * roll * Constants.SCREEN_WIDTH/1000f;
+                float ySpeed = pitch * Constants.SCREEN_HEIGHT/1000f;
+
+                playerPoint.x += Math.abs(xSpeed*elapsedTime) > 5 ? xSpeed*elapsedTime : 0;
             }
+
             // Keep player within boundaries
             if (playerPoint.x < 0) {
                 playerPoint.x = 0;
@@ -116,7 +118,6 @@ public class GameplayScene implements Scene {
                     ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score, hitPoints, difficulty);
                 } else {
                     reset();
-                    orientationData.newGame();
                 }
             }
             // If player falls off screen lose a life
@@ -129,7 +130,6 @@ public class GameplayScene implements Scene {
                     ((BallJumperActivity) Constants.CURRENT_CONTEXT).gameOver(score, hitPoints, difficulty);
                 } else {
                     reset();
-                    orientationData.newGame();
                 }
             }
 
@@ -177,6 +177,10 @@ public class GameplayScene implements Scene {
                 break;
         }
     }
+
+
+
+
 
     /**
      * Reset whenever player dies
