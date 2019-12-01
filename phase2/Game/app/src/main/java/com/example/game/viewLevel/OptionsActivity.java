@@ -25,10 +25,9 @@ public class OptionsActivity extends BaseActivity {
 
     /**
      * Share preferences allows for access to these variables anywhere, even outside of where the
-     * account in logged in.
+     * account in logged in. Used essentially only where there is no account.
      */
     private SharedPreferences mPreferences;
-    private SharedPreferences.Editor mEditor;
 
     /**
      * Code to execute when the Activity is created.
@@ -67,7 +66,7 @@ public class OptionsActivity extends BaseActivity {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
 
-        mEditor = mPreferences.edit();
+        SharedPreferences.Editor mEditor = mPreferences.edit();
 
         // Determine which radio button was clicked
         switch (view.getId()) {

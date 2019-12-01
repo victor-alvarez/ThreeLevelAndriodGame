@@ -1,10 +1,9 @@
 package com.example.game.models;
 
-import android.content.Context;
-
-import java.io.Serializable;
-
-public class GameData {
+/**
+ * The game statistic data for an account.
+ */
+class GameData {
     /** Account's save data:
      * at index 0 - last level attempted (0-4):
      * 0 - have not started level 1 yet,
@@ -17,40 +16,47 @@ public class GameData {
     private int hitPoints;
     private int currentScore;
     private int gamesPlayed;
-    private int coins;
 
     GameData(){
         lastAttemptedLevel = 0;
         hitPoints = 100;
         currentScore = 0;
         gamesPlayed = 0;
-        coins = 0;
     }
 
-    public int getLastAttemptedLevel() {
+    /**
+     * @return the last attempted level.
+     */
+    int getLastAttemptedLevel() {
         return lastAttemptedLevel;
     }
 
-    public int getHitPoints() {
+    /**
+     * @return the hit points.
+     */
+    int getHitPoints() {
         return hitPoints;
     }
 
-    public int getCurrentScore() {
+    /**
+     * @return the current score.
+     */
+    int getCurrentScore() {
         return currentScore;
     }
 
-    public int getGamesPlayed() {
+    /**
+     * @return the number of games played.
+     */
+    int getGamesPlayed() {
         return gamesPlayed;
     }
 
-    public int getCoins() {
-        return coins;
-    }
 
     /**
      * Increments level or resets it where appropriate and records it
      */
-    public void incrementLevel() {
+    void incrementLevel() {
         if (lastAttemptedLevel < 4){
             lastAttemptedLevel += 1;
         } else {
@@ -61,7 +67,7 @@ public class GameData {
     /**
      * Decrements level for purposes of retrying where appropriate and records it
      */
-    public void decrementLevel() {
+    void decrementLevel() {
         if (lastAttemptedLevel > 0){
             lastAttemptedLevel -= 1;
         }
@@ -71,7 +77,7 @@ public class GameData {
      * Reduces hitpoints by a set amount and records it
      * @param reduce the amount by which hit points are reduced
      */
-    public void decrementHitPoints(int reduce) {
+    void decrementHitPoints(int reduce) {
         hitPoints -= reduce;
     }
 
@@ -79,31 +85,23 @@ public class GameData {
      * Changes score by amount add
      * @param add the amount to be added to the score
      */
-    public void incrementScore(int add) {
+    void incrementScore(int add) {
         currentScore += add;
     }
 
     /**
      * Increments the number of times the games are played on this account
      */
-    public void incrementGamesPlayed() {
+    void incrementGamesPlayed() {
         gamesPlayed += 1;
-    }
-
-    /**
-     * Increments the number of times the games are played on this account
-     */
-    public void incrementCoins(int loot) {
-        coins += loot;
     }
 
     /**
      * Sets this account's stats to starting ones
      */
-    public void resetData(){
+    void resetData(){
         lastAttemptedLevel = 0;
         hitPoints = 100;
         currentScore = 0;
-        gamesPlayed = 0;
     }
 }
