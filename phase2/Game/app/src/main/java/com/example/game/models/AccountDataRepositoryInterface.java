@@ -3,7 +3,7 @@ package com.example.game.models;
 import java.io.File;
 
 /**
- *
+ * Interface for whatever service/class accesses the database directly
  */
 public interface AccountDataRepositoryInterface {
     void save(File contextFile, Account account);

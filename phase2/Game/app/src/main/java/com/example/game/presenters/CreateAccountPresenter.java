@@ -1,7 +1,7 @@
 package com.example.game.presenters;
 
 import com.example.game.models.CreateAccountActions;
-import com.example.game.models.CreateAccountReactor;
+import com.example.game.models.CreateAccountListener;
 import com.example.game.models.CreateAccountUseCases;
 
 import java.io.File;
@@ -9,7 +9,7 @@ import java.io.File;
 /**
  * Presenter layer for account creations which communicates between the UI and Use Cases.
  */
-public class CreateAccountPresenter implements CreateAccountReactor {
+public class CreateAccountPresenter implements CreateAccountListener {
     /**
      * UI which this presenter interacts with.
      */

@@ -14,9 +14,20 @@ import java.io.IOException;
 
 import static android.content.ContentValues.TAG;
 
+/**
+ * This is the class which reads from and writes to the database.
+ */
 class AccountDataRepository implements AccountDataRepositoryInterface {
+    /**
+     * The name of the save file.
+     */
     private static final String FILE_NAME = "save.txt";
 
+    /**
+     * Saves account data for account.
+     * @param contextFile the file where the database is
+     * @param account the Account whose data is to be saved
+     */
     public void save(File contextFile, Account account){
         try {
             Gson gson = new Gson();
@@ -45,6 +56,12 @@ class AccountDataRepository implements AccountDataRepositoryInterface {
         }
     }
 
+    /**
+     * Opens and returns an existing account if it exists.
+     * @param login the login/username for the account
+     * @param contextFile the file in which the database is located
+     * @return the account with login as their username if found in the file, or null if not found
+     */
     public Account openExistingAccount(String login, File contextFile){
         try {
             Gson gson = new Gson();
@@ -66,6 +83,11 @@ class AccountDataRepository implements AccountDataRepositoryInterface {
         return null;
     }
 
+    /**
+     * Creates a new account in the database.
+     * @param login the username/login of the new account to be stored
+     * @param contextFile the file in which the database is located
+     */
     public void createNewAccount(String login, File contextFile) {
         try {
             Gson gson = new Gson();
@@ -80,6 +102,10 @@ class AccountDataRepository implements AccountDataRepositoryInterface {
         }
     }
 
+    /**
+     * Deletes the file in which the account data is located. It deleted all accounts.
+     * @param contextFile the file in which the database is located
+     */
     public void deleteAccountData(File contextFile){
         File saveFile = new File(contextFile, FILE_NAME);
         if (saveFile.delete()) {

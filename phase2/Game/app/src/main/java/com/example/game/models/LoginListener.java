@@ -1,7 +1,7 @@
 package com.example.game.models;
 
 /**
- * Actions required for a presenter to react effectively to what occurs in the use cases
+ * Actions required for a login presenter to react effectively to what occurs in the use cases
  */
 public interface LoginListener {
     void incorrectUsername();
