@@ -42,11 +42,11 @@ public class ObjectBuilder {
         Bitmap f33 = Bitmap.createBitmap(characterSprite, 2 * w, 0, w, characterSprite.getHeight(), m, false);
         Bitmap f44 = Bitmap.createBitmap(characterSprite, 3 * w, 0, w, characterSprite.getHeight(), m, false);
         Bitmap f55 = Bitmap.createBitmap(characterSprite, 4 * w, 0, w, characterSprite.getHeight(), m, false);
-        Bitmap resizedBitmap1 = Bitmap.createScaledBitmap(f11, 300, 300, false);
-        Bitmap resizedBitmap2 = Bitmap.createScaledBitmap(f22, 300, 300, false);
-        Bitmap resizedBitmap3 = Bitmap.createScaledBitmap(f33, 300, 300, false);
-        Bitmap resizedBitmap4 = Bitmap.createScaledBitmap(f44, 300, 300, false);
-        Bitmap resizedBitmap5 = Bitmap.createScaledBitmap(f55, 300, 300, false);
+        Bitmap resizedBitmap1 = Bitmap.createScaledBitmap(f11, 400, 400, false);
+        Bitmap resizedBitmap2 = Bitmap.createScaledBitmap(f22, 400, 400, false);
+        Bitmap resizedBitmap3 = Bitmap.createScaledBitmap(f33, 400, 400, false);
+        Bitmap resizedBitmap4 = Bitmap.createScaledBitmap(f44, 400, 400, false);
+        Bitmap resizedBitmap5 = Bitmap.createScaledBitmap(f55, 400, 400, false);
 
         sprites[0] = resizedBitmap1;
         sprites[1] = resizedBitmap2;
@@ -56,8 +56,8 @@ public class ObjectBuilder {
 
         player.setSpriteAnimate(sprites);
         player.setSprite(sprites[0]);
-        player.setX(screenWidth / 6);
-        player.setY(2 * screenHeight / 3);
+        player.setX(screenWidth / 10);
+        player.setY(3* screenHeight / 5);
         return player;
     }
 
@@ -89,11 +89,11 @@ public class ObjectBuilder {
         Bitmap f33 = Bitmap.createBitmap(enemySprite, 2 * w, 0, w, enemySprite.getHeight(), m, false);
         Bitmap f44 = Bitmap.createBitmap(enemySprite, 3 * w, 0, w, enemySprite.getHeight(), m, false);
         Bitmap f55 = Bitmap.createBitmap(enemySprite, 4 * w, 0, w, enemySprite.getHeight(), m, false);
-        Bitmap resizedBitmap1 = Bitmap.createScaledBitmap(f11, 300, 300, false);
-        Bitmap resizedBitmap2 = Bitmap.createScaledBitmap(f22, 300, 300, false);
-        Bitmap resizedBitmap3 = Bitmap.createScaledBitmap(f33, 300, 300, false);
-        Bitmap resizedBitmap4 = Bitmap.createScaledBitmap(f44, 300, 300, false);
-        Bitmap resizedBitmap5 = Bitmap.createScaledBitmap(f55, 300, 300, false);
+        Bitmap resizedBitmap1 = Bitmap.createScaledBitmap(f11, 400, 400, false);
+        Bitmap resizedBitmap2 = Bitmap.createScaledBitmap(f22, 400, 400, false);
+        Bitmap resizedBitmap3 = Bitmap.createScaledBitmap(f33, 400, 400, false);
+        Bitmap resizedBitmap4 = Bitmap.createScaledBitmap(f44, 400, 400, false);
+        Bitmap resizedBitmap5 = Bitmap.createScaledBitmap(f55, 400, 400, false);
         sprites[0] = resizedBitmap5;
         sprites[1] = resizedBitmap4;
         sprites[2] = resizedBitmap3;
@@ -102,7 +102,7 @@ public class ObjectBuilder {
         enemy.setSpriteAnimate(sprites);
         enemy.setSprite(sprites[0]);
         enemy.setX(3 * screenWidth / 5);
-        enemy.setY(2 * screenHeight / 3);
+        enemy.setY(3* screenHeight / 5);
         return enemy;
     }
 
@@ -124,8 +124,7 @@ public class ObjectBuilder {
      */
     ButtonObject createAttackButton() {
         ButtonObject attackButtonObject = new ButtonObject();
-        //attackButtonObject.setButton(new Rect(155, 1700, 455, 1875));
-        attackButtonObject.setButton(new Rect(0, 6 * screenHeight / 7, screenWidth / 2, screenHeight));
+        attackButtonObject.setButton(new Rect(0, 4 * screenHeight / 5, screenWidth / 2, screenHeight));
         attackButtonObject.setBtnColor(Color.GRAY);
         attackButtonObject.setTextColor(Color.WHITE);
         attackButtonObject.setBtnName(res.getString(R.string.attack));
@@ -139,12 +138,11 @@ public class ObjectBuilder {
      */
     ButtonObject createDefendButton() {
         ButtonObject defendButtonObject = new ButtonObject();
-        //defendButtonObject.setButton(new Rect(655, 1700, 955, 1875));
-        defendButtonObject.setButton(new Rect(screenWidth / 2, 6 * screenHeight / 7, screenWidth, screenHeight));
+        defendButtonObject.setButton(new Rect(screenWidth / 2, 4 * screenHeight / 5, screenWidth, screenHeight));
         defendButtonObject.setBtnColor(Color.GRAY);
         defendButtonObject.setTextColor(Color.WHITE);
         defendButtonObject.setBtnName(res.getString(R.string.defend));
-        defendButtonObject.setX(3 * screenWidth / 5);
+        defendButtonObject.setX(7 * screenWidth / 10);
         defendButtonObject.setY(9 * screenHeight / 10);
         return defendButtonObject;
     }
@@ -159,5 +157,16 @@ public class ObjectBuilder {
         moveTextObject.setX(screenWidth / 4);
         moveTextObject.setY(2 * screenHeight / 10);
         return moveTextObject;
+    }
+
+    BottleObject createHealthPotion() {
+        BottleObject healthPotion = new BottleObject();
+        Bitmap hpBottle = BitmapFactory.decodeResource(res, R.drawable.healthpotion);
+        Bitmap sizedHpBottle = Bitmap.createScaledBitmap(hpBottle, 200, 200, false);
+        healthPotion.setX(10);
+        healthPotion.setY(screenHeight/3);
+        healthPotion.setSprite(sizedHpBottle);
+        healthPotion.setActive(false);
+        return healthPotion;
     }
 }

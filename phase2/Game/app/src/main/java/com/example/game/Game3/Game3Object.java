@@ -54,14 +54,6 @@ abstract class Game3Object {
     }
 
     /**
-     * Abstract method that draws the Object on given canvas.
-     *
-     * @param canvas The canvas to draw on.
-     * @param paint  The paint to use to draw on canvas.
-     */
-    abstract void draw(Canvas canvas, Paint paint);
-
-    /**
      * Abstract method that updates the Object.
      */
     abstract void update();

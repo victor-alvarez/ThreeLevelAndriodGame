@@ -45,18 +45,6 @@ class CharacterObject extends Game3Object {
     }
 
     /**
-     * Draws the Character on a canvas.
-     *
-     * @param canvas The canvas to draw on.
-     * @param paint  The paint to use to draw on canvas.
-     */
-    @Override
-    void draw(Canvas canvas, Paint paint) {
-
-        canvas.drawBitmap(spriteAnimate[spriteFrame], getX(), getY(), paint);
-    }
-
-    /**
      * Overrides update for the CharacterObject from GabeObject class.
      */
     @Override

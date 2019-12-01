@@ -20,7 +20,7 @@ public class DrawManager {
 
     private Paint paint;
 
-    DrawManager(Canvas canvas, Paint paint){
+    DrawManager(Canvas canvas, Paint paint) {
         this.canvas = canvas;
         this.paint = paint;
     }
@@ -43,9 +43,12 @@ public class DrawManager {
         canvas.drawText(btnName, x, y, paint);
     }
 
-    public void drawMoveTextObject(int textColor, String moveText, int x, int y){
+    public void drawMoveTextObject(int textColor, String moveText, int x, int y) {
         paint.setColor(textColor);
         canvas.drawText(moveText, x, y, paint);
     }
 
+    public void drawBottleObject(Bitmap sprite, int x, int y) {
+        canvas.drawBitmap(sprite, x, y, paint);
+    }
 }

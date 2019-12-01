@@ -103,19 +103,6 @@ class HealthBarObject extends Game3Object {
     }
 
     /**
-     * Overridden method that draws the Health Bar on given canvas.
-     *
-     * @param canvas The canvas to draw on.
-     * @param paint  The paint to use to draw on canvas.
-     */
-    @Override
-    void draw(Canvas canvas, Paint paint) {
-        paint.setColor(color);
-        paint.setTextSize(textSize);
-        canvas.drawText(playerName.toUpperCase() + getHealthLevel(), getX(), getY(), paint);
-    }
-
-    /**
      * Overridden method that updates the Health Bar object.
      */
     @Override

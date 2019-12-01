@@ -6,7 +6,7 @@ public interface Game3Strategy {
 
     int enemyDefend();
 
-    int playerAttack();
+    int playerAttack(BottleObject healthPotion);
 
     int playerDefend();
 }

@@ -21,8 +21,13 @@ public class Game3EasyStrategy implements Game3Strategy {
     }
 
     @Override
-    public int playerAttack() {
+    public int playerAttack(BottleObject healthPotion) {
+        int randomVar = new Random().nextInt(1);
+        if (randomVar == 0){
+            healthPotion.setActive(true);
+        }
         return 12;
+
     }
 
     @Override

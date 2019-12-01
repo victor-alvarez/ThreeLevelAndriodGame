@@ -55,18 +55,6 @@ class MoveTextObject extends Game3Object {
     }
 
     /**
-     * Overridden method that draws the Text on given canvas.
-     *
-     * @param canvas The canvas to draw on.
-     * @param paint  The paint to use to draw on canvas.
-     */
-    @Override
-    void draw(Canvas canvas, Paint paint) {
-        paint.setColor(getTextColor());
-        canvas.drawText(moveText, getX(), getY(), paint);
-    }
-
-    /**
      * Overridden method that updates the Move Text object.
      */
     @Override

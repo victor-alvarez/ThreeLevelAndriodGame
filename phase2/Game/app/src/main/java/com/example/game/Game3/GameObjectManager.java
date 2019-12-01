@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 
 import com.example.game.R;
@@ -51,6 +52,8 @@ public class GameObjectManager {
      */
     private ButtonObject defendButtonObject;
 
+    private BottleObject healthPotion;
+
     /**
      * Checks whether the Player decides to attack or not.
      */
@@ -74,7 +77,6 @@ public class GameObjectManager {
 
     private boolean animate;
     private int animateFrame = 0;
-    private BottleObject healthPotion;
 
     private int waitTime = 0;
 
@@ -144,10 +146,12 @@ public class GameObjectManager {
 
     private Boolean isTurn = true;
     private MoveTextObject moveTextObject;
-    private int[] enemyDamage = {5, 9, 12, 11, 11, 10, 15, 15};
     private int hpDamage = 0;
     private ObjectBuilder objectBuilder;
     private final DrawManager drawManager;
+    private Boolean addHealth = false;
+    private int screenHeight;
+    private int screenWidth;
 
     /**
      * A constructor for GameObjectManager.
@@ -156,7 +160,9 @@ public class GameObjectManager {
         this.res = res;
         this.objectBuilder = new ObjectBuilder(res);
         this.drawManager = drawManager;
-
+        DisplayMetrics display = res.getDisplayMetrics();
+        screenHeight = display.heightPixels;
+        screenWidth = display.widthPixels;
         if (gameDifficulty.equals("easy")) {
             this.gameStrategy = new Game3EasyStrategy();
         } else if (gameDifficulty.equals("normal")) {
@@ -177,6 +183,7 @@ public class GameObjectManager {
         attackButtonObject = objectBuilder.createAttackButton();
         defendButtonObject = objectBuilder.createDefendButton();
         moveTextObject = objectBuilder.createMoveText();
+        healthPotion = objectBuilder.createHealthPotion();
     }
 
 
@@ -191,6 +198,7 @@ public class GameObjectManager {
         drawHealth(enemyHealth);
         drawHealth(playerHealth);
         drawMoveText(moveTextObject);
+        drawBottleObject(healthPotion);
     }
 
     void drawCharacter(CharacterObject character) {
@@ -215,10 +223,17 @@ public class GameObjectManager {
                 moveText.getX(), moveText.getY());
     }
 
+    void drawBottleObject(BottleObject bottle) {
+        if (bottle.getActive()) {
+            drawManager.drawBottleObject(bottle.getSprite(), bottle.getX(), bottle.getY());
+        }
+    }
+
     /**
      * Updates the GameObjects that require updates.
      */
     void update() {
+        healthPotion.update(screenWidth);
         if (isTurn) {
             //Prints the Damage the enemy did to the player.
             moveTextObject.update(res.getString(R.string.player_took) + hpDamage +
@@ -231,7 +246,7 @@ public class GameObjectManager {
             int damage = 0;
             if (!animate) {
                 if (attack) {
-                    damage = gameStrategy.playerAttack();
+                    damage = gameStrategy.playerAttack(healthPotion);
                     hpDamage = gameStrategy.enemyAttack();
                     attack = false;
                 }
@@ -248,12 +263,14 @@ public class GameObjectManager {
                 moveTextObject.update(res.getString(R.string.enemy_took) + damage +
                         res.getString(R.string.damage), Color.GREEN);
                 playerHealth.update(hpDamage);
+
             }
             animate = true;
         }
         if (animate) {
             CharacterObject[] players = new CharacterObject[]{enemy, player};
             animatePlayer(players, 100);
+
         }
     }
 
@@ -297,6 +314,15 @@ public class GameObjectManager {
                 isTurn = false;
                 numMoves += 1;
             }
+
+        }
+        if (bottlePressed(healthPotion, touchX, touchY)) {
+            if (playerHealth.getHealthLevel() > 95) {
+                playerHealth.setHealthLevel(100);
+            } else {
+                playerHealth.update(-5);
+            }
+            healthPotion.setActive(false);
         }
     }
 
@@ -304,6 +330,16 @@ public class GameObjectManager {
         return buttonObject.getButton().left <= touchX && touchX <=
                 buttonObject.getButton().right && buttonObject.getButton().top <= touchY &&
                 touchY <= buttonObject.getButton().bottom;
+    }
+
+    Boolean bottlePressed(BottleObject bottleObject, float touchX, float touchY) {
+        if (bottleObject.getActive()) {
+            return bottleObject.getLeft() <= touchX && touchX <=
+                    bottleObject.getRight() && bottleObject.getTop() <= touchY &&
+                    touchY <= bottleObject.getBottom();
+        } else {
+            return false;
+        }
     }
 
     /**

@@ -126,22 +126,6 @@ public class ButtonObject extends Game3Object {
     }
 
     /**
-     * Draws the ButtonObject on a canvas.
-     *
-     * @param canvas The canvas to draw on.
-     * @param paint  The paint to use to draw on canvas.
-     */
-    @Override
-    void draw(Canvas canvas, Paint paint) {
-        if (active) {
-            paint.setColor(btnColor);
-            canvas.drawRect(button, paint);
-            paint.setColor(textColor);
-            canvas.drawText(btnName, getX(), getY(), paint);
-        }
-    }
-
-    /**
      * Overrides update for the ButtonObject from GabeObject class.
      */
     @Override

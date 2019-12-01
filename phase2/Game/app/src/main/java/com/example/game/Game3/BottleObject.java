@@ -11,6 +11,40 @@ class BottleObject extends Game3Object {
      */
     private Bitmap sprite;
 
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    private Boolean active;
+
+    private int updateCount = 50;
+
+    public int getTop() {
+        return top;
+    }
+
+    public int getBottom() {
+        return bottom;
+    }
+
+    public int getLeft() {
+        return left;
+    }
+
+    public int getRight() {
+        return right;
+    }
+
+    private int top;
+    private int bottom;
+    private int left;
+    private int right;
+    private int moveX = 30;
+
     /**
      * Getter for the Bottle sprite.
      *
@@ -29,10 +63,6 @@ class BottleObject extends Game3Object {
         this.sprite = sprite;
     }
 
-    @Override
-    void draw(Canvas canvas, Paint paint) {
-        canvas.drawBitmap(sprite, getX(), getY(), paint);
-    }
 
     @Override
     void update() {
@@ -40,10 +70,21 @@ class BottleObject extends Game3Object {
     }
 
     void update(int screenWidth) {
-        if (getX() >= screenWidth -10){
-            setX(getX() - screenWidth/20);
-        } else if (getX() <= 10) {
-            setX(getX() + screenWidth/20);
+        if (updateCount == 0){
+            active = false;
+            updateCount = 50;
+        }
+        if (active) {
+
+            if (getX() >= screenWidth || getX() <= 0) {
+                moveX = moveX*-1;
+            }
+            updateCount -=1;
+            setX(getX() + moveX);
+            top = getY() ;
+            bottom = getY() + getSprite().getHeight() ;
+            left = getX() ;
+            right = getX() + getSprite().getWidth() ;
         }
     }
 }

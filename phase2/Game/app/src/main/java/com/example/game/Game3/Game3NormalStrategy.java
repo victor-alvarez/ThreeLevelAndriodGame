@@ -20,7 +20,7 @@ public class Game3NormalStrategy implements Game3Strategy {
     }
 
     @Override
-    public int playerAttack() {
+    public int playerAttack(BottleObject healthPotion) {
         return 12;
     }
 
