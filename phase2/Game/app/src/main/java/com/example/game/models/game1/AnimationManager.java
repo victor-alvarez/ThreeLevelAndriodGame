@@ -1,8 +1,12 @@
 package com.example.game.models.game1;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Rect;
 
+import com.example.game.R;
 import com.example.game.models.game1.Animation;
 
 public class AnimationManager {
@@ -18,10 +22,24 @@ public class AnimationManager {
     /**
      * Creates a new Animation.
      *
-     * @param animations the array of animations that is stored.
      */
-    public AnimationManager(Animation[] animations) {
-        this.animations = animations;
+    public AnimationManager() {
+        AnimationFactory animationFactory = Factories.ANIMATION_FACTORY;
+
+        Bitmap idleImg = BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.alienblue_badge1);
+        Bitmap walk1 = BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.alienblue_badge1);
+        Bitmap walk2 = BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.alienblue_badge1);
+
+        Animation idle = animationFactory.makeBallAnimation(new Bitmap[]{idleImg}, 2);
+        Animation walkRight = animationFactory.makeBallAnimation(new Bitmap[]{walk1, walk2}, 0.5f);
+
+        Matrix m = new Matrix();
+        m.preScale(-1, 1);
+        walk1 = Bitmap.createBitmap(walk1, 0, 0, walk1.getWidth(), walk1.getHeight(), m, false);
+        walk2 = Bitmap.createBitmap(walk1, 0, 0, walk2.getWidth(), walk2.getHeight(), m, false);
+
+        Animation walkLeft = animationFactory.makeBallAnimation(new Bitmap[]{walk1, walk2}, 0.5f);
+        animations = new Animation[]{idle, walkRight, walkLeft};
     }
 
     /**
