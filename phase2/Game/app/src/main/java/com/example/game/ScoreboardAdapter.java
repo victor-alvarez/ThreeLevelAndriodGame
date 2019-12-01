@@ -8,8 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.game.models.Account;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class ScoreboardAdapter extends BaseAdapter {
 
