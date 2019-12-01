@@ -26,26 +26,27 @@ public class OrientationData implements SensorEventListener {
     private float[] startOrientation = null;
 
     // Returns orientation of the device
-    public float[] getOrientation() {
+    float[] getOrientation() {
         return orientation;
     }
 
     // Returns start orientation of the device
-    public float[] getStartOrientation() {
+    float[] getStartOrientation() {
         return startOrientation;
     }
 
     /**
      * Constructor - intializes instance variables
      */
-    public OrientationData() {
+    OrientationData() {
         manager = (SensorManager) Constants.CURRENT_CONTEXT.getSystemService(Context.SENSOR_SERVICE);
+        assert manager != null;
         accelerometer = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         magnometer = manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
     }
 
     // Registers device for listener
-    public void register() {
+    void register() {
         manager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
         manager.registerListener(this, magnometer, SensorManager.SENSOR_DELAY_GAME);
     }

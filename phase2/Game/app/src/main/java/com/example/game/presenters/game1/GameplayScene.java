@@ -9,7 +9,6 @@ import android.view.MotionEvent;
 
 import com.example.game.models.game1.Factories;
 import com.example.game.models.game1.ObstacleManagerFactory;
-import com.example.game.presenters.game1.OrientationData;
 import com.example.game.models.game1.Constants;
 import com.example.game.models.game1.Obstacle;
 import com.example.game.models.game1.RectPlayer;
