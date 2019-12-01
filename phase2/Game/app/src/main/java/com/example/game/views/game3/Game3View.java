@@ -9,8 +9,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceView;
 
 import com.example.game.R;
-import com.example.game.models.game3.GameObjectManager;
-import com.example.game.presenters.game3.Game3Presenter;
+import com.example.game.presenters.game3.DrawManager;
 import com.example.game.presenters.game3.Game3PresenterImp;
 
 import java.util.concurrent.TimeUnit;
@@ -47,7 +46,6 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     private final Context activityContext;
 
-    private final DrawManager drawManager;
 
     /**
      * Game3View constructor.
@@ -58,9 +56,8 @@ public class Game3View extends SurfaceView implements Runnable {
         super(context);
         activityContext = context;
         paint = new Paint();
-        this.drawManager = new DrawManager(this.canvas, this.paint);
 
-        game3Presenter = new Game3PresenterImp(getResources(), drawManager, difficulty) {
+        game3Presenter = new Game3PresenterImp(getResources(), difficulty, canvas, paint) {
         };
 
         //Creates all the game objects that are needed for this Game.
@@ -128,7 +125,7 @@ public class Game3View extends SurfaceView implements Runnable {
             //Locks the canvas, sets Grey Background, then draw objects (handled by
             // gameObjectManager.draw) and then unlocks the canvas.
             this.canvas = getHolder().lockCanvas();
-            drawManager.setCanvas(this.canvas);
+            game3Presenter.setCanvas(this.canvas);
             super.draw(canvas);
             //canvas.drawColor(Color.BLACK);
             Bitmap b1 = BitmapFactory.decodeResource(getResources(), R.drawable.gamebackground2);

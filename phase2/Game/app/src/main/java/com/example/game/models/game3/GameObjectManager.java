@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.util.DisplayMetrics;
 
-import com.example.game.views.game3.DrawManager;
+import com.example.game.presenters.game3.DrawManager;
 import com.example.game.R;
 
 
@@ -194,29 +194,29 @@ public class GameObjectManager {
         drawBottleObject(healthPotion);
     }
 
-    void drawCharacter(CharacterObject character) {
+    private void drawCharacter(CharacterObject character) {
         drawManager.drawCharacterObject(character.getSprite(), character.getX(), character.getY());
     }
 
-    void drawHealth(HealthBarObject playerHealth) {
+    private void drawHealth(HealthBarObject playerHealth) {
         drawManager.drawHealthBarObject(playerHealth.getHealthLevel(), playerHealth.getColor(),
                 playerHealth.getTextSize(), playerHealth.getPlayerName(), playerHealth.getX(),
                 playerHealth.getY());
     }
 
-    void drawButton(ButtonObject button) {
+    private void drawButton(ButtonObject button) {
         if (button.isActive()) {
             drawManager.drawButtonObject(button.getBtnColor(), button.getTextColor(),
                     button.getButton(), button.getBtnName(), button.getX(), button.getY());
         }
     }
 
-    void drawMoveText(MoveTextObject moveText) {
+    private void drawMoveText(MoveTextObject moveText) {
         drawManager.drawMoveTextObject(moveText.getTextColor(), moveText.getMoveText(),
                 moveText.getX(), moveText.getY());
     }
 
-    void drawBottleObject(BottleObject bottle) {
+    private void drawBottleObject(BottleObject bottle) {
         if (bottle.getActive()) {
             drawManager.drawBottleObject(bottle.getSprite(), bottle.getX(), bottle.getY());
         }

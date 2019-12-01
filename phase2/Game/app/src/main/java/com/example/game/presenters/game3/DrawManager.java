@@ -1,4 +1,4 @@
-package com.example.game.views.game3;
+package com.example.game.presenters.game3;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

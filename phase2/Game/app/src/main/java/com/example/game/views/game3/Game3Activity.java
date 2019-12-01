@@ -32,14 +32,14 @@ public class Game3Activity extends BaseActivity {
         setContentView(R.layout.activity_game3);
 
         //Customizes the Activity based on User preference.
-//        assert BaseActivity.account!= null;
-//        getWindow().getDecorView().setBackgroundResource(BaseActivity.account.getBackground());
-//
-//        lives = findViewById(R.id.livesText_Game3Activity);
-//        lives.setText(String.valueOf(BaseActivity.account.getHitPoints()));
-//
-//        scores = findViewById(R.id.scoreText_Game3Activity);
-//        scores.setText(String.valueOf(BaseActivity.account.getCurrentScore()));
+        assert BaseActivity.account!= null;
+        getWindow().getDecorView().setBackgroundResource(BaseActivity.account.getBackground());
+
+        lives = findViewById(R.id.livesText_Game3Activity);
+        lives.setText(String.valueOf(BaseActivity.account.getHitPoints()));
+
+        scores = findViewById(R.id.scoreText_Game3Activity);
+        scores.setText(String.valueOf(BaseActivity.account.getCurrentScore()));
     }
 
     public void toMainMenu(View view) {

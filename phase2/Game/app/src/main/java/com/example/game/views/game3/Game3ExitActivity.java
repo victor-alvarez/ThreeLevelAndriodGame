@@ -55,7 +55,7 @@ public class Game3ExitActivity extends BaseActivity {
      * @param view The View of the Activity.
      */
     public void retry(View view) {
-        Intent intent = new Intent(this, Game3PlayActivity.class);
+        Intent intent = new Intent(this, Game3Activity.class);
         account.decrementLevel(getApplicationContext().getFilesDir());
         startActivity(intent);
     }

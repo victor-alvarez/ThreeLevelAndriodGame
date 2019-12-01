@@ -1,17 +1,23 @@
 package com.example.game.presenters.game3;
 
 import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 
 import com.example.game.models.game3.GameObjectManager;
-import com.example.game.views.game3.DrawManager;
-import com.example.game.views.game3.Game3View;
 
 public class Game3PresenterImp implements Game3Presenter {
 
 
     private final GameObjectManager gameObjectManager;
 
-    protected Game3PresenterImp(Resources res, DrawManager drawManager, String difficulty){
+    private DrawManager drawManager;
+
+    private Canvas canvas;
+
+    protected Game3PresenterImp(Resources res, String difficulty, Canvas canvas, Paint paint){
+        this.canvas = canvas;
+        drawManager = new DrawManager(this.canvas, paint);
         gameObjectManager = new GameObjectManager(res, drawManager, difficulty);
     }
 
@@ -68,5 +74,10 @@ public class Game3PresenterImp implements Game3Presenter {
     @Override
     public boolean gameEnded() {
         return gameObjectManager.gameEnded();
+    }
+
+    public void setCanvas(Canvas canvas){
+        this.canvas = canvas;
+        drawManager.setCanvas(this.canvas);
     }
 }
