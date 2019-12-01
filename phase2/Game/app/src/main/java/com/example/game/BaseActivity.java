@@ -1,12 +1,14 @@
 package com.example.game;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.game.models.AccountHolder;
+import com.example.game.models.LocaleManager;
 
 public class BaseActivity extends AppCompatActivity {
     /**

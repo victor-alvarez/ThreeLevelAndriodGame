@@ -28,19 +28,17 @@ public class SaveScoreboardData {
         }
     }
 
-    static Scoreboard openScoreboard(String login, Context context){
+    static Scoreboard openScoreboard(Context context){
         try {
             Gson gson = new Gson();
             File saveFile = new File(context.getFilesDir(), FILE_NAME);
             FileReader loadAccountData = new FileReader(saveFile);
             BufferedReader loadAccData = new BufferedReader(loadAccountData);
             String line;
-            while ((line = loadAccData.readLine()) != null) {
-                if (line.contains(login)) {
-                    Scoreboard scoreboard = gson.fromJson(line, Scoreboard.class);
-                    loadAccData.close();
-                    return scoreboard;
-                }
+            if ((line = loadAccData.readLine()) != null) {
+                Scoreboard scoreboard = gson.fromJson(line, Scoreboard.class);
+                loadAccData.close();
+                return scoreboard;
             }
         } catch (IOException error) {
             error.printStackTrace();
@@ -49,7 +47,7 @@ public class SaveScoreboardData {
         return null;
     }
 
-    static void createScoreboard(String login, Context context) {
+    static void createScoreboard(Context context) {
         try {
             Gson gson = new Gson();
             Scoreboard scoreboard = new Scoreboard();

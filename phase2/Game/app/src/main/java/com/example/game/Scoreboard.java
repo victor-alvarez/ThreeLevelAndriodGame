@@ -2,6 +2,8 @@ package com.example.game;
 
 import android.content.Context;
 
+import com.example.game.models.Account;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -15,12 +17,12 @@ public class Scoreboard {
     ArrayList<Pair<Account, Integer>> getScoreboard(){
         Stack<Pair<Account, Integer>> tempStack = new Stack<>();
         ArrayList<Pair<Account, Integer>> scoreboard = new ArrayList<>();
-        for(int i = 0; i < rank.size(); i++){
+        while(!rank.isEmpty()){
             Pair<Account, Integer> currentAccount = rank.pop();
             tempStack.push(currentAccount);
             scoreboard.add(currentAccount);
         }
-        for(int i = 0; i < tempStack.size(); i++) {
+        while(!tempStack.isEmpty()){
             Pair<Account, Integer> currentAccount = tempStack.pop();
             rank.push(currentAccount);
         }
@@ -39,17 +41,22 @@ public class Scoreboard {
         }
     }
 
+
     private void placeAccount(Pair<Account, Integer> accountIntegerPair, int accountRank) {
         Stack<Pair<Account, Integer>> tempStack = new Stack<>();
-        while (tempStack.size() != 5){
+        while(!rank.isEmpty()){
             Pair<Account, Integer> currentAccount = rank.pop();
-            if(accountRank == tempStack.size() - 1){
+            if(accountRank == tempStack.size() + 1){
                 tempStack.push(accountIntegerPair);
-            }else{
+            }
+            if (tempStack.size() < 5){
                 tempStack.push(currentAccount);
             }
         }
-        for(int i = 0; i < tempStack.size(); i++){
+        if(accountRank == tempStack.size() + 1){
+            tempStack.push(accountIntegerPair);
+        }
+        while(!tempStack.isEmpty()){
             Pair<Account, Integer> currentAccount= tempStack.pop();
             rank.push(currentAccount);
         }
@@ -61,18 +68,18 @@ public class Scoreboard {
         } else if(isScoreHighEnough(score)){
             int count = 0;
             Stack<Pair<Account, Integer>> tempStack = new Stack<>();
-            for(int i = 0; i < rank.size(); i++){
+            while(!rank.isEmpty()){
                 Pair<Account, Integer> currentAccount = rank.pop();
                 if(currentAccount.getSecond() < score){
                     count++;
                 }
                 tempStack.push(currentAccount);
             }
-            for(int i = 0; i < tempStack.size(); i++){
+            while(!tempStack.isEmpty()){
                 Pair<Account, Integer> currentAccount= tempStack.pop();
                 rank.push(currentAccount);
             }
-            return 6 - count; //size of scoreboard + 1
+            return rank.size() + 1 - count; //
         }else{
             //score is not high enough to be in the scoreBoard
             return 0;
@@ -82,16 +89,19 @@ public class Scoreboard {
     private boolean isScoreHighEnough(int score) {
         boolean isScoreHighEnough = false;
         Stack<Pair<Account, Integer>> tempStack = new Stack<>();
-        for(int i = 0; i < rank.size(); i++){
+        while(!rank.isEmpty()){
             Pair<Account, Integer> currentAccount= rank.pop();
             if(currentAccount.getSecond() < score){
                 isScoreHighEnough = true;
             }
             tempStack.push(currentAccount);
         }
-        for(int i = 0; i < tempStack.size(); i++){
+        while(!tempStack.isEmpty()){
             Pair<Account, Integer> currentAccount= tempStack.pop();
             rank.push(currentAccount);
+        }
+        if(rank.size() < 5){
+            isScoreHighEnough = true;
         }
         return isScoreHighEnough;
     }

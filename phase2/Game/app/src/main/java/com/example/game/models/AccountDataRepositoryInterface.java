@@ -1,7 +1,5 @@
 package com.example.game.models;
 
-import com.example.game.Account;
-
 import java.io.File;
 
 /**

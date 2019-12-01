@@ -7,14 +7,12 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 
-import com.example.game.models.game1.Factories;
-import com.example.game.models.game1.ObstacleFactory;
 import com.example.game.models.game1.OrientationData;
 import com.example.game.models.game1.Constants;
 import com.example.game.models.game1.Obstacle;
 import com.example.game.models.game1.RectPlayer;
 import com.example.game.models.game1.ObstacleManager;
-import com.example.game.views.game1.BallJumperActivity;
+import com.example.game.viewLevel.game1.BallJumperActivity;
 
 import java.util.ArrayList;
 

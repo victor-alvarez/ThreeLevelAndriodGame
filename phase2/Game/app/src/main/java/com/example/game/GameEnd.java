@@ -8,6 +8,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.models.ActivityDataResponseActions;
+import com.example.game.models.ActivityDataUseCases;
+import com.example.game.presenters.ActivityDataPresenter;
+import com.example.game.viewLevel.MainActivity;
 
 public class GameEnd extends AppCompatActivity implements ActivityDataResponseActions {
     /**
