@@ -1,6 +1,6 @@
-package com.example.game.Game3;
+package com.example.game.models.game3;
 
-public interface Game3Strategy {
+interface Game3Strategy {
 
     int enemyAttack();
 

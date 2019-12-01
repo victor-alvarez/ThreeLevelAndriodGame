@@ -1,7 +1,4 @@
-package com.example.game.Game3;
-
-import android.graphics.Canvas;
-import android.graphics.Paint;
+package com.example.game.models.game3;
 
 /**
  * A Move Text Game 3 Object class that displays the Move a Character makes

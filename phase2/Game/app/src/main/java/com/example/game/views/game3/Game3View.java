@@ -1,4 +1,4 @@
-package com.example.game.Game3;
+package com.example.game.views.game3;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,6 +9,9 @@ import android.view.MotionEvent;
 import android.view.SurfaceView;
 
 import com.example.game.R;
+import com.example.game.models.game3.GameObjectManager;
+import com.example.game.presenters.game3.Game3Presenter;
+import com.example.game.presenters.game3.Game3PresenterImp;
 
 import java.util.concurrent.TimeUnit;
 
@@ -37,7 +40,7 @@ public class Game3View extends SurfaceView implements Runnable {
     /**
      * Instance that manages all the objects in the Game.
      */
-    private GameObjectManager gameObjectManager;
+    private Game3PresenterImp game3Presenter;
 
     /**
      * The instance of the class that called created an instance of this class.
@@ -51,15 +54,17 @@ public class Game3View extends SurfaceView implements Runnable {
      *
      * @param context the instance of the class that called created an instance of this class.
      */
-    Game3View(Context context, String difficulty) {
+    public Game3View(Context context, String difficulty) {
         super(context);
         activityContext = context;
         paint = new Paint();
         this.drawManager = new DrawManager(this.canvas, this.paint);
-        gameObjectManager = new GameObjectManager(getResources(), drawManager, difficulty);
+
+        game3Presenter = new Game3PresenterImp(getResources(), drawManager, difficulty) {
+        };
 
         //Creates all the game objects that are needed for this Game.
-        gameObjectManager.createObjects();
+        game3Presenter.initializeGameObjects();
     }
 
     /**
@@ -67,7 +72,6 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     @Override
     public void run() {
-        boolean wait;
         while (isPlaying) {
 
             //Checks if Game has ended. If it has, it breaks from the Game Loop.
@@ -82,9 +86,9 @@ public class Game3View extends SurfaceView implements Runnable {
             draw();
 
             //Gives the user 1 second to see how much HP damage they did to the Enemy.
-            if (!gameObjectManager.getTurn()) {
+            if (!game3Presenter.getTurn()) {
                 try {
-                    TimeUnit.MILLISECONDS.sleep(gameObjectManager.getWaitTime());
+                    TimeUnit.MILLISECONDS.sleep(game3Presenter.getWaitTime());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -96,22 +100,22 @@ public class Game3View extends SurfaceView implements Runnable {
         }
 
         //Ends the game and given method takes User to Game 3 Exit Activity.
-        ((Game3PlayActivity) activityContext).gameOver(gameObjectManager.checkWinner(),
-                gameObjectManager.updateHitpoints(), gameObjectManager.getNumMoves());
+        ((Game3PlayActivity) activityContext).gameOver(game3Presenter.checkWinner(),
+                game3Presenter.updateHitpoints(), game3Presenter.getNumMoves());
     }
 
     /**
      * Checks if game is done.
      */
     private boolean checkGameEnded() {
-        return gameObjectManager.gameEnded();
+        return game3Presenter.gameEnded();
     }
 
     /**
      * Updates the game based on the game situation.
      */
     private void update() {
-        gameObjectManager.update();
+        game3Presenter.update();
     }
 
     /**
@@ -130,7 +134,7 @@ public class Game3View extends SurfaceView implements Runnable {
             Bitmap b1 = BitmapFactory.decodeResource(getResources(), R.drawable.gamebackground2);
             Bitmap b2 = Bitmap.createScaledBitmap(b1, getWidth(), getHeight(), false);
             canvas.drawBitmap(b2,0,0,null);
-            gameObjectManager.draw();
+            game3Presenter.draw();
             getHolder().unlockCanvasAndPost(canvas);
         }
     }
@@ -178,7 +182,7 @@ public class Game3View extends SurfaceView implements Runnable {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             float touchX = event.getX();
             float touchY = event.getY();
-            gameObjectManager.onTouchEventHelper(touchX, touchY);
+            game3Presenter.readTouch(touchX, touchY);
         }
         return super.onTouchEvent(event);
     }

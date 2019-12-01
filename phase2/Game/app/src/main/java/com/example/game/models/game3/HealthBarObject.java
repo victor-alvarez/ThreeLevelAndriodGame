@@ -1,7 +1,4 @@
-package com.example.game.Game3;
-
-import android.graphics.Canvas;
-import android.graphics.Paint;
+package com.example.game.models.game3;
 
 import static java.lang.StrictMath.max;
 

@@ -1,10 +1,6 @@
-package com.example.game.Game3;
+package com.example.game.models.game3;
 
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-
-import java.util.ArrayList;
 
 /**
  * Character Object class. Subclass of abstract class Game3Object.

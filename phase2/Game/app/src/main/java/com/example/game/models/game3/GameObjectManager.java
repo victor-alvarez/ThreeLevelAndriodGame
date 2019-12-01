@@ -1,15 +1,11 @@
-package com.example.game.Game3;
+package com.example.game.models.game3;
 
 import android.content.res.Resources;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.util.DisplayMetrics;
-import android.view.MotionEvent;
 
+import com.example.game.views.game3.DrawManager;
 import com.example.game.R;
-
-import java.util.Random;
 
 
 /**
@@ -82,7 +78,7 @@ public class GameObjectManager {
 
     private Game3Strategy gameStrategy;
 
-    int getWaitTime() {
+    public int getWaitTime() {
         return waitTime;
     }
 
@@ -95,7 +91,7 @@ public class GameObjectManager {
      *
      * @return numMoves : The number of moves for the Player.
      */
-    int getNumMoves() {
+    public int getNumMoves() {
         return numMoves;
     }
 
@@ -113,7 +109,7 @@ public class GameObjectManager {
      *
      * @return hitpoints : The hitpoints for the Player.
      */
-    int getHitpoints() {
+    public int getHitpoints() {
         return hitpoints;
     }
 
@@ -131,12 +127,12 @@ public class GameObjectManager {
      *
      * @return isTurn : Checks if it' the user's turn.
      */
-    Boolean getTurn() {
+    public boolean getTurn() {
         return isTurn;
     }
 
     /**
-     * Getter for isTurn.
+     * Setter for isTurn.
      *
      * @param turn : Checks if it' the user's turn.
      */
@@ -149,19 +145,16 @@ public class GameObjectManager {
     private int hpDamage = 0;
     private ObjectBuilder objectBuilder;
     private final DrawManager drawManager;
-    private Boolean addHealth = false;
-    private int screenHeight;
     private int screenWidth;
 
     /**
      * A constructor for GameObjectManager.
      */
-    GameObjectManager(Resources res, DrawManager drawManager, String gameDifficulty) {
+    public GameObjectManager(Resources res, DrawManager drawManager, String gameDifficulty) {
         this.res = res;
         this.objectBuilder = new ObjectBuilder(res);
         this.drawManager = drawManager;
         DisplayMetrics display = res.getDisplayMetrics();
-        screenHeight = display.heightPixels;
         screenWidth = display.widthPixels;
         if (gameDifficulty.equals("easy")) {
             this.gameStrategy = new Game3EasyStrategy();
@@ -175,7 +168,7 @@ public class GameObjectManager {
     /**
      * Creates all the Objects required for this game by calling corresponding methods.
      */
-    void createObjects() {
+    public void createObjects() {
         player = objectBuilder.createPlayer();
         enemy = objectBuilder.createEnemy();
         enemyHealth = objectBuilder.createEnemyHealthBar();
@@ -190,7 +183,7 @@ public class GameObjectManager {
     /**
      * Draws all the Game 3 Objects on given canvas.
      */
-    void draw() {
+    public void draw() {
         drawCharacter(enemy);
         drawCharacter(player);
         drawButton(attackButtonObject);
@@ -232,7 +225,7 @@ public class GameObjectManager {
     /**
      * Updates the GameObjects that require updates.
      */
-    void update() {
+    public void update() {
         healthPotion.update(screenWidth);
         if (isTurn) {
             //Prints the Damage the enemy did to the player.
@@ -291,14 +284,14 @@ public class GameObjectManager {
     /**
      * Checks if the game has ended (when either of the Player's health has reached 0.
      */
-    Boolean gameEnded() {
+    public boolean gameEnded() {
         return (enemyHealth.getHealthLevel() == 0 || playerHealth.getHealthLevel() == 0);
     }
 
     /**
      * Checks if the game has ended (when either of the Player's health has reached 0).
      */
-    void onTouchEventHelper(float touchX, float touchY) {
+    public void onTouchEventHelper(float touchX, float touchY) {
         if (isTurn) {
 
             //Checks if the AttackButton was tapped. If so, player's turn is over.
@@ -348,7 +341,7 @@ public class GameObjectManager {
      *
      * @return result : The result of the game.
      */
-    String checkWinner() {
+    public String checkWinner() {
         if (playerHealth.getHealthLevel() == 0) {
             return res.getString(R.string.lost);
         } else {
@@ -359,7 +352,7 @@ public class GameObjectManager {
     /**
      * Updates the hitpoints after the game is done.
      */
-    int updateHitpoints() {
+    public int updateHitpoints() {
         if (playerHealth.getHealthLevel() == 0) {
             setHitpoints(0);
         } else {

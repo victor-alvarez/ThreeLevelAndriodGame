@@ -12,7 +12,7 @@
         <activity android:name=".Game2.RiddleActivity" />
         <activity android:name=".GameEnd" />
         <activity android:name=".GameOver" />
-        <activity android:name=".Game3.Game3ExitActivity" />
+        <activity android:name=".views.game3.Game3ExitActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".views.game1.GameOverActivity" />
         <activity
-            android:name=".Game3.Game3PlayActivity"
+            android:name=".views.game3.Game3PlayActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".Game1.ChangeSongActivity" />
         <activity android:name=".Game1.ChooseBallActivity" />
@@ -32,7 +32,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".Game2.Game2Activity" />
         <activity android:name=".Game2.Win" />
-        <activity android:name=".Game3.Game3Activity" />
+        <activity android:name=".views.game3.Game3Activity" />
         <activity android:name=".views.game1.Game1Activity" />
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".OptionsActivity" />
