@@ -131,4 +131,8 @@ public class AccountHolder{
     public int getCoins() {
         return account.getCoins();
     }
+
+    public Account getAccount() {
+        return account;
+    }
 }
