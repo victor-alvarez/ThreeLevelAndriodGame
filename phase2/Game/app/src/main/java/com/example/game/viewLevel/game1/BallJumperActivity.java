@@ -13,6 +13,7 @@ import com.example.game.models.game1.obstacles.ObstacleFactoryImpl;
 import com.example.game.models.game1.Constants;
 import com.example.game.models.game1.Factories;
 import com.example.game.models.game1.obstacles.ObstacleManagerFactoryImpl;
+import com.example.game.models.game1.orientation.OrientationDataFactoryImp;
 import com.example.game.models.game1.rectplayer.RectPlayerFactoryImpl;
 
 public class BallJumperActivity extends BaseActivity {
@@ -44,6 +45,7 @@ public class BallJumperActivity extends BaseActivity {
         Factories.OBSTACLE_MANAGER_FACTORY = new ObstacleManagerFactoryImpl();
         Factories.ANIMATION_FACTORY = new AnimationFactoryImpl();
         Factories.ANIMATION_MANAGER_FACTORY = new AnimationManagerFactoryImpl();
+        Factories.ORIENTATION_DATA_FACTORY = new OrientationDataFactoryImp();
         Game1View gamePanel = new Game1View(this);
         gamePanel.setDifficulty(getIntent().getStringExtra("difficulty"));
         setContentView(gamePanel);

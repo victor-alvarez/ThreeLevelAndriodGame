@@ -1,4 +1,4 @@
-package com.example.game.models.game1;
+package com.example.game.models.game1.orientation;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -11,7 +11,7 @@ import com.example.game.models.game1.Constants;
 /**
  * OrientationData class. Enables tilt controls for Game1
  */
-public class OrientationData implements SensorEventListener {
+public class OrientationDataImp implements SensorEventListener, OrientationData {
     /**
      * Instance Variables
      */
@@ -26,11 +26,13 @@ public class OrientationData implements SensorEventListener {
     private float[] startOrientation = null;
 
     // Returns orientation of the device
+    @Override
     public float[] getOrientation() {
         return orientation;
     }
 
     // Returns start orientation of the device
+    @Override
     public float[] getStartOrientation() {
         return startOrientation;
     }
@@ -38,13 +40,14 @@ public class OrientationData implements SensorEventListener {
     /**
      * Constructor - intializes instance variables
      */
-    public OrientationData() {
+    public OrientationDataImp() {
         manager = (SensorManager) Constants.CURRENT_CONTEXT.getSystemService(Context.SENSOR_SERVICE);
         accelerometer = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         magnometer = manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
     }
 
     // Registers device for listener
+    @Override
     public void register() {
         manager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
         manager.registerListener(this, magnometer, SensorManager.SENSOR_DELAY_GAME);

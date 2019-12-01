@@ -9,10 +9,11 @@ import android.view.MotionEvent;
 
 import com.example.game.models.game1.Constants;
 import com.example.game.models.game1.Factories;
-import com.example.game.models.game1.OrientationData;
+import com.example.game.models.game1.orientation.OrientationData;
 import com.example.game.models.game1.obstacles.Obstacle;
 import com.example.game.models.game1.obstacles.ObstacleManager;
 import com.example.game.models.game1.obstacles.ObstacleManagerFactory;
+import com.example.game.models.game1.orientation.OrientationDataFactory;
 import com.example.game.models.game1.rectplayer.RectPlayer;
 import com.example.game.models.game1.rectplayer.RectPlayerFactory;
 import com.example.game.viewLevel.game1.BallJumperActivity;
@@ -54,7 +55,8 @@ public class GameplayScene implements Scene {
         obstacleManager = obstacleManagerFactory.makeObstacleManagerImpl(1000, 75, Color.BLACK);
         lives = 3;
         // Initialize for tilt controls
-        orientationData = new OrientationData();
+        OrientationDataFactory orientationDataFactory = Factories.ORIENTATION_DATA_FACTORY;
+        orientationData = orientationDataFactory.makeOrientationDataImp();
         orientationData.register();
         frameTime = System.currentTimeMillis();
     }

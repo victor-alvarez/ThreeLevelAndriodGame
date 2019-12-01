@@ -9,7 +9,7 @@ import android.view.SurfaceView;
 
 import com.example.game.models.game1.Constants;
 import com.example.game.presenters.game1.ScenePresenterImp;
-import com.example.game.models.game1.MainThread;
+import com.example.game.presenters.game1.MainThread;
 
 /**
  * GamePanel class.
