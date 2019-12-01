@@ -1,7 +1,7 @@
 package com.example.game.presenters;
 
-import com.example.game.models.ActivityDataResponseActions;
-import com.example.game.models.ActivityDataResponseListener;
+import com.example.game.models.Interfaces.ActivityDataResponseActions;
+import com.example.game.models.Interfaces.ActivityDataResponseListener;
 import com.example.game.models.ActivityDataUseCases;
 
 import java.io.File;

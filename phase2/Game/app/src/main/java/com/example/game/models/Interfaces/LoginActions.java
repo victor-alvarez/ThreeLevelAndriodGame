@@ -1,4 +1,6 @@
-package com.example.game.models;
+package com.example.game.models.Interfaces;
+
+import com.example.game.models.AccountHolder;
 
 /**
  * List of methods/capabilities of a login class
