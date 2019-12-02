@@ -68,7 +68,7 @@ public interface Game3PresenterFacade {
     /**
      * Updates the score of the game.
      *
-     * @return the score of the game.
+     * @return The score of the game.
      */
     int updateHitpoints();
 
@@ -79,10 +79,4 @@ public interface Game3PresenterFacade {
      */
     boolean gameEnded(Context context);
 
-    /**
-     * Determines whether the whole game is over or not.
-     *
-     * @return Whether the whole game is over or not.
-     */
-    boolean gameDone();
 }

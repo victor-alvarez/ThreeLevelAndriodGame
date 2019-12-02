@@ -117,7 +117,7 @@ class BottleObject extends Game3Object {
     /**
      * How many times update is called before the sprite becomes inactive.
      */
-    private int updateCount = 50;
+    private int updateCount = 25;
 
     /**
      * Overrides update for the ButtonObject from GameObject class.

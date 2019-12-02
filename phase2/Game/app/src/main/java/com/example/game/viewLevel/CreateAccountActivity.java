@@ -11,8 +11,8 @@ import android.widget.TextView;
 import com.example.game.BaseActivity;
 import com.example.game.R;
 import com.example.game.models.AccountManager;
-import com.example.game.models.interfaces.CreateAccountActions;
 import com.example.game.models.CreateAccountUseCases;
+import com.example.game.models.interfaces.CreateAccountActions;
 import com.example.game.presenters.CreateAccountPresenter;
 
 public class CreateAccountActivity extends BaseActivity implements CreateAccountActions {

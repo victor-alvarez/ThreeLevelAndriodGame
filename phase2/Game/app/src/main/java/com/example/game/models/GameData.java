@@ -14,7 +14,7 @@ class GameData {
 
     GameData(){
         lastAttemptedLevel = 0;
-        hitPoints = 100;
+        hitPoints = 200;
         currentScore = 0;
         gamesPlayed = 0;
     }
@@ -96,7 +96,7 @@ class GameData {
      */
     void resetData(){
         lastAttemptedLevel = 0;
-        hitPoints = 100;
+        hitPoints = 200;
         currentScore = 0;
     }
 }

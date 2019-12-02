@@ -56,15 +56,6 @@ public class UpdateManager {
     }
 
     /**
-     * Setter for the wait time.
-     *
-     * @param waitTime The time to pause the game for.
-     */
-    public void setWaitTime(int waitTime) {
-        this.waitTime = waitTime;
-    }
-
-    /**
      * The damage the player's health takes.
      */
     private int hpDamage = 0;
@@ -134,6 +125,7 @@ public class UpdateManager {
             gameObjectManager.getAttackButtonObject().setActive(true);
             gameObjectManager.getDefendButtonObject().setActive(true);
         } else {
+            //deactivates the Attack and Defend button briefly.
             gameObjectManager.getAttackButtonObject().setActive(false);
             gameObjectManager.getDefendButtonObject().setActive(false);
             int damage = 0;
@@ -148,13 +140,13 @@ public class UpdateManager {
                     hpDamage = gameStrategy.enemyDefend();
                     defend = false;
                 }
-                //Player does 12 HP damage if he/she tapped AttackButton
+                //Updates the damage done to the enemy based on the employed game logic.
                 gameObjectManager.getEnemyHealth().update(damage);
 
-                //Player gets full damage decided randomly by decideEnemyDamage method if Attack
-                // button was tapped.
+                //Prints the damage done to the enemy.
                 gameObjectManager.getMoveTextObject().update(res.getString(R.string.enemy_took) + damage +
                         res.getString(R.string.damage), Color.GREEN);
+                //Updates the damage done to the player based on the employed game logic.
                 gameObjectManager.getPlayerHealth().update(hpDamage);
 
             }
@@ -177,10 +169,12 @@ public class UpdateManager {
      */
     private void animatePlayer(CharacterObject[] characters, int frameRate) {
         animateFrame++;
+        //updates the frame of each character.
         for (CharacterObject character : characters) {
             character.update();
         }
         waitTime = frameRate;
+        //resets the values when animation is over.
         if (animateFrame == 5) {
             animate = false;
             waitTime = 0;
@@ -213,7 +207,7 @@ public class UpdateManager {
             }
 
         }
-        //Checks if the health Potion is pressed
+        //Checks if the health Potion is pressed. If so, adds 5 HP to player.
         if (bottlePressed(gameObjectManager.getHealthPotion(), touchX, touchY)) {
             if (gameObjectManager.getPlayerHealth().getHealthLevel() > 95) {
                 gameObjectManager.getPlayerHealth().setHealthLevel(100);
@@ -230,7 +224,7 @@ public class UpdateManager {
      * @param buttonObject The button to check if it was pressed.
      * @param touchX       The x position the user touched on the screen.
      * @param touchY       The y position the user touched on the screen.
-     * @return boolean : Determines if the button was pressed or not.
+     * @return Determines if the button was pressed or not.
      */
     private Boolean buttonPressed(ButtonObject buttonObject, float touchX, float touchY) {
         return buttonObject.getButton().left <= touchX && touchX <=
@@ -244,7 +238,7 @@ public class UpdateManager {
      * @param bottleObject The bottle to check if it was pressed.
      * @param touchX       The x position the user touched on the screen.
      * @param touchY       The y position the user touched on the screen.
-     * @return boolean : Determines if the bottle was pressed or not.
+     * @return Determines if the bottle was pressed or not.
      */
     private Boolean bottlePressed(BottleObject bottleObject, float touchX, float touchY) {
         if (bottleObject.getActive()) {
@@ -259,12 +253,15 @@ public class UpdateManager {
     /**
      * Updates the hitpoints after the game is done.
      *
-     * @return statsManager.getHitPoints() : The score of the game.
+     * @return The score of the game.
      */
     public int updateHitpoints() {
-        if (gameObjectManager.getPlayerHealth().getHealthLevel() == 0) {
+        if (gameObjectManager.getPlayerHealth().getHealthLevel() == 0 &&
+                gameObjectManager.getEnemyHealth().getHealthLevel() != 0) {
+            // no change in score if the player lost.
             statsManager.setHitPoints(0);
         } else {
+            //Score is the remaining health left
             statsManager.setHitPoints(gameObjectManager.getPlayerHealth().getHealthLevel());
         }
         return statsManager.getHitPoints();

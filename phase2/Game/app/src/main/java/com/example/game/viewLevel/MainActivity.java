@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import com.example.game.BaseActivity;
 import com.example.game.R;
-import com.example.game.models.interfaces.LoadGameActions;
 import com.example.game.models.MainLoadUseCases;
+import com.example.game.models.interfaces.LoadGameActions;
 import com.example.game.presenters.MainLoadPresenter;
 import com.example.game.viewLevel.game1.Game1Activity;
 import com.example.game.viewLevel.game1.GameOverActivity;

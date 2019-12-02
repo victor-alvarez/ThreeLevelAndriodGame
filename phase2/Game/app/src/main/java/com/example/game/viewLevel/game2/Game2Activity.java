@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.game.BaseActivity;
-import com.example.game.viewLevel.MainActivity;
 import com.example.game.R;
+import com.example.game.viewLevel.MainActivity;
 
 public class Game2Activity extends BaseActivity {
 

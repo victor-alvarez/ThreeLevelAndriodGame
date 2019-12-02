@@ -8,12 +8,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.game.BaseActivity;
-import com.example.game.presenters.game2.RiddlePresenter;
-import com.example.game.models.game2.RiddleUseCases;
 import com.example.game.GameOver;
-import com.example.game.viewLevel.MainActivity;
 import com.example.game.R;
 import com.example.game.models.game2.Interfaces.RiddleActions;
+import com.example.game.models.game2.RiddleUseCases;
+import com.example.game.presenters.game2.RiddlePresenter;
+import com.example.game.viewLevel.MainActivity;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

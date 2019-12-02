@@ -124,7 +124,6 @@ public class GameObjectManager {
      */
     private ObjectBuilder objectBuilder;
 
-
     /**
      * A constructor for GameObjectManager.
      *

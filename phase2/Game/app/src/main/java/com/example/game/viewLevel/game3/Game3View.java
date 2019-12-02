@@ -34,6 +34,9 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     private Paint paint;
 
+    /**
+     * The canvas to draw on.
+     */
     private Canvas canvas = getHolder().lockCanvas();
 
     /**
@@ -45,7 +48,6 @@ public class Game3View extends SurfaceView implements Runnable {
      * The instance of the class that called created an instance of this class.
      */
     private final Context activityContext;
-
 
     /**
      * Game3View constructor.
@@ -72,14 +74,14 @@ public class Game3View extends SurfaceView implements Runnable {
     public void run() {
         while (isPlaying) {
 
-            //Checks if Game has ended. If it has, it breaks from the Game Loop.
-            if (checkGameEnded()) {
-                break;
-            }
 
             //Updates the game objects.
             update();
 
+            //Checks if Game has ended. If it has, it breaks from the Game Loop.
+            if (checkGameEnded()) {
+                break;
+            }
             //Draws the game objects
             draw();
 
@@ -93,13 +95,14 @@ public class Game3View extends SurfaceView implements Runnable {
 
             }
 
+
             //Thread pauses to get a Frame Rate.
             sleep();
         }
 
         //Ends the game and given method takes User to Game 3 Exit Activity.
         ((Game3PlayActivity) activityContext).gameOver(game3Presenter.checkWinner(),
-                game3Presenter.getNumMoves(), game3Presenter.gameDone());
+                game3Presenter.getNumMoves());
     }
 
     /**

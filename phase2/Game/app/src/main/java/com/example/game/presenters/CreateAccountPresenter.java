@@ -1,8 +1,8 @@
 package com.example.game.presenters;
 
+import com.example.game.models.CreateAccountUseCases;
 import com.example.game.models.interfaces.CreateAccountActions;
 import com.example.game.models.interfaces.CreateAccountListener;
-import com.example.game.models.CreateAccountUseCases;
 
 import java.io.File;
 
