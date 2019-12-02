@@ -25,7 +25,7 @@ public class BallJumpObstacle implements Obstacle {
      * @param startX     - the starting x position of the obstacle
      * @param startY     - the starting y position of the obstacle
      */
-    public BallJumpObstacle(int rectHeight, int color, int startX, int startY) {
+    BallJumpObstacle(int rectHeight, int color, int startX, int startY) {
         this.color = color;
         //l,t,r,b
         rectangle = new Rect(startX, startY, startX + 100, startY + rectHeight);

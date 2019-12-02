@@ -1,5 +1,8 @@
 package com.example.game.models.game1.obstacles;
 
+/**
+ * ObstacleManagerFactoryImpl class.
+ */
 public class ObstacleManagerFactoryImpl implements ObstacleManagerFactory {
 
     @Override

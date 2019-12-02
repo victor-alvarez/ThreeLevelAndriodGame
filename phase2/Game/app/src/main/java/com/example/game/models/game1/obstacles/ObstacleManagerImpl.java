@@ -32,7 +32,7 @@ public class ObstacleManagerImpl implements ObstacleManager {
      * @param obstacleHeight - height of obstacles
      * @param color          - color of obstacles
      */
-    public ObstacleManagerImpl(int obstacleGap, int obstacleHeight, int color) {
+    ObstacleManagerImpl(int obstacleGap, int obstacleHeight, int color) {
         this.obstacleGap = obstacleGap;
         this.obstacleHeight = obstacleHeight;
         this.color = color;
@@ -64,7 +64,7 @@ public class ObstacleManagerImpl implements ObstacleManager {
     /**
      * Add obstacles below each other to bottom of the screen.
      */
-    public void populateObstacles() {
+    private void populateObstacles() {
         int currY = Constants.SCREEN_HEIGHT * 2;
 
         while (currY > Constants.SCREEN_HEIGHT) {

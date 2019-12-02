@@ -24,7 +24,7 @@ public class BallJumpRectPlayer implements RectPlayer {
      *
      * @param rectangle - the players rectangle
      */
-    public BallJumpRectPlayer(Rect rectangle) {
+    BallJumpRectPlayer(Rect rectangle) {
         this.rectangle = rectangle;
         AnimationManagerFactory animationManagerFactory = ModelFactories.ANIMATION_MANAGER_FACTORY;
         animManager = animationManagerFactory.makeAnimationManagerImpl();

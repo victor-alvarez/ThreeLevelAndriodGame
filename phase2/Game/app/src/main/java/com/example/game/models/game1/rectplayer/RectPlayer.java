@@ -4,10 +4,13 @@ import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Rect;
 
+/**
+ * RectPlayer interface.
+ */
 public interface RectPlayer {
-    void draw(Canvas canvas);
+    void draw(Canvas canvas); // draws on canvas
 
-    void update(Point point);
+    void update(Point point); // updates through game loop
 
-    Rect getRectangle();
+    Rect getRectangle(); // returns rectangle
 }

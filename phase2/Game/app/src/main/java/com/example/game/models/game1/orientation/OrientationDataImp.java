@@ -40,8 +40,9 @@ public class OrientationDataImp implements SensorEventListener, OrientationData 
     /**
      * Constructor - intializes instance variables
      */
-    public OrientationDataImp() {
+    OrientationDataImp() {
         manager = (SensorManager) Constants.CURRENT_CONTEXT.getSystemService(Context.SENSOR_SERVICE);
+        assert manager != null;
         accelerometer = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         magnometer = manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
     }
