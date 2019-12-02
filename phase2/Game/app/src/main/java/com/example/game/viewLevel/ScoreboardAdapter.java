@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.viewLevel;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.game.R;
 import com.example.game.models.Account;
+import com.example.game.models.Pair;
 
 import java.util.ArrayList;
 

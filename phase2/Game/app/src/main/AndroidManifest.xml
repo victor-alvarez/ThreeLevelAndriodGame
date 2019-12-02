@@ -38,7 +38,7 @@
         <activity android:name=".viewLevel.OptionsActivity" />
         <activity android:name=".viewLevel.MainActivity" />
         <activity android:name=".BaseActivity" />
-        <activity android:name=".ScoreboardActivity" />
+        <activity android:name=".viewLevel.ScoreboardActivity" />
     </application>
 
 </manifest>

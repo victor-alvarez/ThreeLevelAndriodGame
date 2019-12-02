@@ -1,7 +1,7 @@
-package com.example.game;
+package com.example.game.viewLevel;
 
-import android.content.Context;
-
+import com.example.game.models.Interfaces.ScoreboardDataRepositoryInterface;
+import com.example.game.models.Scoreboard;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -10,16 +10,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class SaveScoreboardData {
-    //TODO: Use a JSON file system to save scoreboard information across uses.
+public class ScoreboardDataRepository implements ScoreboardDataRepositoryInterface {
     private static final String FILE_NAME = "scoreboardData.txt";
 
-    static void save(Context context, Scoreboard scoreboard){
+    public void save(File file, Scoreboard scoreboard){
         try {
             Gson gson = new Gson();
             String scoreboardString = gson.toJson(scoreboard);
-
-            File saveFile = new File(context.getFilesDir(), FILE_NAME);
+            File saveFile = new File(file, FILE_NAME);
             FileWriter fileOut = new FileWriter(saveFile);
             fileOut.write(scoreboardString);
             fileOut.close();
@@ -28,10 +26,10 @@ public class SaveScoreboardData {
         }
     }
 
-    static Scoreboard openScoreboard(Context context){
+    public Scoreboard openScoreboard(File file){
         try {
             Gson gson = new Gson();
-            File saveFile = new File(context.getFilesDir(), FILE_NAME);
+            File saveFile = new File(file, FILE_NAME);
             FileReader loadAccountData = new FileReader(saveFile);
             BufferedReader loadAccData = new BufferedReader(loadAccountData);
             String line;
@@ -47,23 +45,15 @@ public class SaveScoreboardData {
         return null;
     }
 
-    static void createScoreboard(Context context) {
+    public void createScoreboard(File file, Scoreboard scoreboard) {
         try {
             Gson gson = new Gson();
-            Scoreboard scoreboard = new Scoreboard();
-            File saveFile = new File(context.getFilesDir(), FILE_NAME);
+            File saveFile = new File(file, FILE_NAME);
             FileWriter fileWriter = new FileWriter(saveFile, true);
             fileWriter.write(gson.toJson(scoreboard));
             fileWriter.close();
         } catch (IOException error) {
             error.printStackTrace();
-        }
-    }
-
-    static void deleteScoreboardData(Context context){
-        File saveFile = new File(context.getFilesDir(), FILE_NAME);
-        if (saveFile.delete()) {
-            System.out.println("Successfully deleted");
         }
     }
 }
