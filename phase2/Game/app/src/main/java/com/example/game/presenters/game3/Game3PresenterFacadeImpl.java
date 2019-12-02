@@ -64,12 +64,14 @@ public class Game3PresenterFacadeImpl implements Game3PresenterFacade {
      * @param canvas     The canvas for the game.
      * @param paint      The paint for the game.
      */
-    protected Game3PresenterFacadeImpl(Resources res, String difficulty, Canvas canvas, Paint paint) {
+    protected Game3PresenterFacadeImpl(Resources res, String difficulty, Canvas canvas,
+                                       Paint paint) {
         this.canvas = canvas;
         drawManager = new DrawManager(this.canvas, paint);
         gameObjectManager = new GameObjectManager(res);
         this.statsManager = new StatsManager();
-        this.updateManager = new UpdateManager(this.gameObjectManager, res, difficulty, this.statsManager);
+        this.updateManager = new UpdateManager(this.gameObjectManager, res, difficulty,
+                this.statsManager);
         this.drawObjects = new DrawObjects(this.gameObjectManager, this.drawManager);
         this.gameStatusManager = new GameStatusManager(res, this.gameObjectManager);
     }

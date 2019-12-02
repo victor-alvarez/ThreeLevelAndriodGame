@@ -34,6 +34,9 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     private Paint paint;
 
+    /**
+     * The canvas to draw on.
+     */
     private Canvas canvas = getHolder().lockCanvas();
 
     /**
@@ -72,14 +75,14 @@ public class Game3View extends SurfaceView implements Runnable {
     public void run() {
         while (isPlaying) {
 
-            //Checks if Game has ended. If it has, it breaks from the Game Loop.
-            if (checkGameEnded()) {
-                break;
-            }
 
             //Updates the game objects.
             update();
 
+            //Checks if Game has ended. If it has, it breaks from the Game Loop.
+            if (checkGameEnded()) {
+                break;
+            }
             //Draws the game objects
             draw();
 
@@ -92,6 +95,7 @@ public class Game3View extends SurfaceView implements Runnable {
                 }
 
             }
+
 
             //Thread pauses to get a Frame Rate.
             sleep();

@@ -45,15 +45,15 @@ public class GameStatusManager {
         boolean status = (gameObjectManager.getEnemyHealth().getHealthLevel() == 0 ||
                 gameObjectManager.getPlayerHealth().getHealthLevel() == 0);
 
+        //checks if game has ended. If it has it updates stats.
         if (status) {
             account.incrementLevel(context.getApplicationContext().getFilesDir());
+            //Increases the score by the number of hitPoints
             account.incrementScore(hitPoints, context.getApplicationContext().getFilesDir());
-            if (won) {
-                account.decrementHitPoints(0,
-                        context.getApplicationContext().getFilesDir());
-            } else {
-                account.decrementHitPoints(10, context.getApplicationContext().getFilesDir());
-            }
+            //Decreases the number of lives by 10 if game lost, by 0 if game won.
+            account.decrementHitPoints((100 - hitPoints) / 10,
+                    context.getApplicationContext().getFilesDir());
+            //Adds 1 to number of games played
             account.incrementGamesPlayed(context.getApplicationContext().getFilesDir());
         }
 
@@ -67,7 +67,8 @@ public class GameStatusManager {
      * @return result : The result of the game.
      */
     public String checkWinner() {
-        if (gameObjectManager.getPlayerHealth().getHealthLevel() == 0) {
+        if (gameObjectManager.getPlayerHealth().getHealthLevel() == 0 &&
+                gameObjectManager.getEnemyHealth().getHealthLevel() != 0) {
             won = false;
             return res.getString(R.string.lost);
         } else {

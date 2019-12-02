@@ -22,7 +22,7 @@ public class StatsManager {
     /**
      * Setter for the score of the game.
      *
-     * @param  hitPoints : The score of the game.
+     * @param hitPoints : The score of the game.
      */
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
@@ -45,7 +45,7 @@ public class StatsManager {
     /**
      * Setter for the number of moves.
      *
-     * @param  numMoves : The number of moves the player took to win/lose.
+     * @param numMoves : The number of moves the player took to win/lose.
      */
     public void setNumMoves(int numMoves) {
         this.numMoves = numMoves;
