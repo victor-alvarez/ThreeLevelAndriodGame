@@ -2,6 +2,8 @@ For file saving Json (GSON) was used
 Opening the project directly will work, no extra is needed. Specifically open the Game folder inside
 for running the game.
 
+Diagrams in 123.pdf and UML.pfd in folder.
+
 Instructions:
 Do not hit the back button. While this will not crash the game, it may cause some minor bugs. Also
 do not rapidly double click anything.
