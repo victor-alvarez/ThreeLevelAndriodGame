@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.game.BaseActivity;
+import com.example.game.models.game1.ModelFactories;
 import com.example.game.viewLevel.MainActivity;
 import com.example.game.R;
 
@@ -24,7 +25,7 @@ public class Game1Activity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game1);
-
+        ViewFactories.game1ViewFactory = new Game1ViewFactoryImpl();
         assert BaseActivity.account!= null;
         getWindow().getDecorView().setBackgroundResource(BaseActivity.account.getBackground());
     }
