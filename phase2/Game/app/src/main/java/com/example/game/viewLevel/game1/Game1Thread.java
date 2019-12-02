@@ -1,4 +1,4 @@
-package com.example.game.presenters.game1;
+package com.example.game.viewLevel.game1;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
@@ -8,13 +8,13 @@ import com.example.game.viewLevel.game1.Game1View;
 /**
  * MainThread class. Runs game loop under fps.
  */
-public class MainThread extends Thread {
+public class Game1Thread extends Thread implements MainThread{
     /**
      * Instance Variables
      */
     private static final int MAX_FPS = 30;
     private final SurfaceHolder surfaceHolder;
-    private Game1View gamePanel;
+    private Game1View game1View;
     private boolean running;
     public static Canvas canvas;
 
@@ -22,17 +22,18 @@ public class MainThread extends Thread {
      * Constructor
      *
      * @param surfaceHolder - sets the surface holder
-     * @param gamePanel     - sets the game panel
+     * @param game1View     - sets the game panel
      */
-    public MainThread(SurfaceHolder surfaceHolder, Game1View gamePanel) {
+    public Game1Thread(SurfaceHolder surfaceHolder, Game1View game1View) {
         super();
         this.surfaceHolder = surfaceHolder;
-        this.gamePanel = gamePanel;
+        this.game1View = game1View;
     }
 
     /**
      * @param running - sets running to be t/f
      */
+    @Override
     public void setRunning(boolean running) {
         this.running = running;
     }
@@ -53,8 +54,8 @@ public class MainThread extends Thread {
             try {
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {
-                    this.gamePanel.update();
-                    this.gamePanel.draw(canvas);
+                    this.game1View.update();
+                    this.game1View.draw(canvas);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

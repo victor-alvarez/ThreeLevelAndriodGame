@@ -1,9 +1,8 @@
-package com.example.game;
+package com.example.game.models;
 
-import android.content.Context;
+import com.example.game.models.Interfaces.ScoreboardDataRepositoryInterface;
 
-import com.example.game.models.Account;
-
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -14,7 +13,11 @@ public class Scoreboard {
         rank = new Stack<>();
     }
 
-    ArrayList<Pair<Account, Integer>> getScoreboard(){
+    Scoreboard getScoreboard(){
+        return this;
+    }
+
+    ArrayList<Pair<Account, Integer>> getScoreboardList(){
         Stack<Pair<Account, Integer>> tempStack = new Stack<>();
         ArrayList<Pair<Account, Integer>> scoreboard = new ArrayList<>();
         while(!rank.isEmpty()){
@@ -29,12 +32,13 @@ public class Scoreboard {
         return scoreboard;
     }
 
-    boolean addScore(Account account, int score, Context context){
+    boolean addScore(Account account, int score, File file, ScoreboardDataRepositoryInterface
+            scoreboardDataRepositoryInterface){
         Pair<Account, Integer> accountIntegerPair = new Pair<>(account, score);
         int accountRank = findAccountRank(score);
         if(accountRank != 0) {
             placeAccount(accountIntegerPair, accountRank);
-            SaveScoreboardData.save( context, this);
+            scoreboardDataRepositoryInterface.save(file, this);
             return true;
         } else {
             return false;
@@ -57,7 +61,7 @@ public class Scoreboard {
             tempStack.push(accountIntegerPair);
         }
         while(!tempStack.isEmpty()){
-            Pair<Account, Integer> currentAccount= tempStack.pop();
+            Pair<Account, Integer> currentAccount = tempStack.pop();
             rank.push(currentAccount);
         }
     }

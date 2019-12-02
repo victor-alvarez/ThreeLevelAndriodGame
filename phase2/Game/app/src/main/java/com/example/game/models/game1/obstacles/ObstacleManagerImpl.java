@@ -3,7 +3,7 @@ package com.example.game.models.game1.obstacles;
 import android.graphics.Canvas;
 
 import com.example.game.models.game1.Constants;
-import com.example.game.models.game1.Factories;
+import com.example.game.models.game1.ModelFactories;
 import com.example.game.models.game1.rectplayer.RectPlayer;
 
 import java.util.ArrayList;
@@ -32,12 +32,12 @@ public class ObstacleManagerImpl implements ObstacleManager {
      * @param obstacleHeight - height of obstacles
      * @param color          - color of obstacles
      */
-    public ObstacleManagerImpl(int obstacleGap, int obstacleHeight, int color) {
+    ObstacleManagerImpl(int obstacleGap, int obstacleHeight, int color) {
         this.obstacleGap = obstacleGap;
         this.obstacleHeight = obstacleHeight;
         this.color = color;
         obstacles = new ArrayList<>();
-        obstacleFactory = Factories.OBSTACLE_FACTORY;
+        obstacleFactory = ModelFactories.OBSTACLE_FACTORY;
         populateObstacles();
     }
 
@@ -64,7 +64,7 @@ public class ObstacleManagerImpl implements ObstacleManager {
     /**
      * Add obstacles below each other to bottom of the screen.
      */
-    public void populateObstacles() {
+    private void populateObstacles() {
         int currY = Constants.SCREEN_HEIGHT * 2;
 
         while (currY > Constants.SCREEN_HEIGHT) {

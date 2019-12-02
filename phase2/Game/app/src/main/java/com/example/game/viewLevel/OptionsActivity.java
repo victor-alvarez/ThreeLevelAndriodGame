@@ -1,5 +1,10 @@
 package com.example.game.viewLevel;
 
+//images used (free license: Image by OpenClipart-Vectors from Pixabay):
+//https://pixabay.com/vectors/union-jack-flag-union-flag-26119/
+//https://pixabay.com/vectors/france-flag-national-symbols-28463/
+//https://pixabay.com/vectors/russia-flag-national-russian-26896/
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;

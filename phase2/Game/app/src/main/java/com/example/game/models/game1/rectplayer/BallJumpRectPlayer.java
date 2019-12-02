@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Rect;
 
-import com.example.game.models.game1.Factories;
+import com.example.game.models.game1.ModelFactories;
 import com.example.game.models.game1.animations.AnimationManager;
 import com.example.game.models.game1.animations.AnimationManagerFactory;
 
@@ -24,9 +24,9 @@ public class BallJumpRectPlayer implements RectPlayer {
      *
      * @param rectangle - the players rectangle
      */
-    public BallJumpRectPlayer(Rect rectangle) {
+    BallJumpRectPlayer(Rect rectangle) {
         this.rectangle = rectangle;
-        AnimationManagerFactory animationManagerFactory = Factories.ANIMATION_MANAGER_FACTORY;
+        AnimationManagerFactory animationManagerFactory = ModelFactories.ANIMATION_MANAGER_FACTORY;
         animManager = animationManagerFactory.makeAnimationManagerImpl();
     }
 

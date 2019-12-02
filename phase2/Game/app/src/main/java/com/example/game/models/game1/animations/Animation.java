@@ -3,14 +3,17 @@ package com.example.game.models.game1.animations;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
+/**
+ * Animation interface
+ */
 public interface Animation {
     boolean isPlaying();
 
-    void play();
+    void play(); // plays animation
 
-    void stop();
+    void stop(); // stops animation
 
-    void draw(Canvas canvas, Rect rect);
+    void draw(Canvas canvas, Rect rect); // draws on canvas
 
-    void update();
+    void update(); // runs constantly through gameloop
 }

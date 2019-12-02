@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.models;
 
 public class Pair<F, S> {
     private final F first;
@@ -15,11 +15,19 @@ public class Pair<F, S> {
         this.second = second;
     }
 
-    F getFirst(){
+    /**
+     *
+     * @return the first object in Pair
+     */
+    public F getFirst(){
         return this.first;
     }
 
-    S getSecond(){
+    /**
+     *
+     * @return the second object in Pair
+     */
+    public S getSecond(){
         return this.second;
     }
 }

@@ -2,10 +2,10 @@ package com.example.game.models.game1.rectplayer;
 
 import android.graphics.Rect;
 
-import com.example.game.models.game1.rectplayer.BallJumpRectPlayer;
-import com.example.game.models.game1.rectplayer.RectPlayer;
-import com.example.game.models.game1.rectplayer.RectPlayerFactory;
 
+/**
+ * RectPlayerFactoryImpl class.
+ */
 public class RectPlayerFactoryImpl implements RectPlayerFactory {
 
     @Override
