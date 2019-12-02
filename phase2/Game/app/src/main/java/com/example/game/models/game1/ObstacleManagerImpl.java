@@ -92,13 +92,11 @@ class ObstacleManagerImpl implements ObstacleManager {
             for (Obstacle ob : obstacles) {
                 ob.incrementY(-1 * elapseTime);
             }
-        }
-        else if (difficulty.equals("normal")) {
+        } else if (difficulty.equals("normal")) {
             for (Obstacle ob : obstacles) {
                 ob.incrementY(-2 * elapseTime);
             }
-        }
-        else {
+        } else {
             for (Obstacle ob : obstacles) {
                 ob.incrementY(-3 * elapseTime);
             }

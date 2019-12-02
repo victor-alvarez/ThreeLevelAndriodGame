@@ -9,8 +9,8 @@ import android.widget.ListView;
 
 import com.example.game.BaseActivity;
 import com.example.game.R;
-import com.example.game.models.interfaces.ScoreboardDataRepositoryInterface;
 import com.example.game.models.ScoreboardHolder;
+import com.example.game.models.interfaces.ScoreboardDataRepositoryInterface;
 
 public class ScoreboardActivity extends BaseActivity {
 
@@ -50,13 +50,10 @@ public class ScoreboardActivity extends BaseActivity {
             builder.setMessage(R.string.negativeAlertMessage);
         }
 
-        /**
-         * View to create scoreboard
-         */
+        //View to create scoreboard
         ListView listView = findViewById(R.id.list);
-        /**
-         * Used to process scoreboard data
-         */
+
+         //Used to process scoreboard data
         ScoreboardAdapter adapter = new ScoreboardAdapter(this, scoreboardHolder.getScoreboardList());
         listView.setAdapter(adapter);
 

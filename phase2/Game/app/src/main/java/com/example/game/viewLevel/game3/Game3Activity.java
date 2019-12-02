@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.game.BaseActivity;
-import com.example.game.viewLevel.MainActivity;
 import com.example.game.R;
+import com.example.game.viewLevel.MainActivity;
 
 /**
  * Activity Class for Game 3

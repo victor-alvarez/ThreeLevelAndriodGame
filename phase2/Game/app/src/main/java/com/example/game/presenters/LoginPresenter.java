@@ -1,8 +1,8 @@
 package com.example.game.presenters;
 
+import com.example.game.models.AccountHolder;
 import com.example.game.models.LoginUseCases;
 import com.example.game.models.interfaces.AccountDataRepositoryInterface;
-import com.example.game.models.AccountHolder;
 import com.example.game.models.interfaces.LoginActions;
 import com.example.game.models.interfaces.LoginListener;
 

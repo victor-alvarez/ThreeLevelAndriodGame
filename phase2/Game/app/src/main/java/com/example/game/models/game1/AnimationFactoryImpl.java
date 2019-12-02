@@ -8,7 +8,7 @@ import android.graphics.Bitmap;
 public class AnimationFactoryImpl implements AnimationFactory {
 
     @Override
-    public Animation makeBallAnimation(Bitmap[] frames, float animTime){
+    public Animation makeBallAnimation(Bitmap[] frames, float animTime) {
         return new BallAnimation(frames, animTime);
     }
 }

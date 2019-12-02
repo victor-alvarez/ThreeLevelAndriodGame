@@ -8,9 +8,9 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import com.example.game.models.game1.Constants;
-import com.example.game.presenters.game1.PresenterFactories;
 import com.example.game.presenters.game1.Game1Presenter;
 import com.example.game.presenters.game1.Game1PresenterFactory;
+import com.example.game.presenters.game1.PresenterFactories;
 
 /**
  * GamePanel class.

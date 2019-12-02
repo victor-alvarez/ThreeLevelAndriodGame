@@ -12,6 +12,9 @@ Click/tap and drag to move player, or you can tilt if you are on mobile. Gain po
 rising platforms and bouncing off them. Avoid spikes from top and bottom of screen or else you lose
 lives. Harder difficulty means faster rising platforms.
 
+Lives counter in top right of Game1 do not represent total lives, but rather the number of lives
+until that particular instance of the game ends.
+
 Game2:
 Select type of Riddle/Trivia then answer the 6 questions provided. Wrong answers lose lives and
 right answers gain points.
