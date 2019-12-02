@@ -15,4 +15,10 @@ lives. Harder difficulty means faster rising platforms.
 Game2:
 Select type of Riddle/Trivia then answer the 6 questions provided. Wrong answers lose lives and
 right answers gain points.
+
 Game3:
+Player can either attack or defend. Attacking reduces the Enemy's HP greatly but the Enemy also does
+more damage. Defending is a safer option, the Enemy is less likely to deal more damage. Every so
+often there will be a health potion floating around, tapping that increases the Player's HP. The
+goal is to get the enemy's HP to 0 by strategically either defending or attacking. The score is
+given by the remaining HP left. Player loses 10 lives for losing a game and none for winning.
