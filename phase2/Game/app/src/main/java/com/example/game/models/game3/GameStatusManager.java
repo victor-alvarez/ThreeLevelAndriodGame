@@ -7,19 +7,39 @@ import com.example.game.R;
 
 import static com.example.game.BaseActivity.account;
 
+/**
+ * Class that manages the status of the game.
+ */
 public class GameStatusManager {
 
-
+    /**
+     * Additional resources needed for the game.
+     */
     private final Resources res;
+
+    private boolean won;
+
+    /**
+     * Class that manages the game objects.
+     */
     private final GameObjectManager gameObjectManager;
 
+    /**
+     * Constructor.
+     *
+     * @param res               Additional resources needed for the game.
+     * @param gameObjectManager Class that manages the game objects.
+     */
     public GameStatusManager(Resources res, GameObjectManager gameObjectManager) {
         this.res = res;
         this.gameObjectManager = gameObjectManager;
     }
 
     /**
-     * Checks if the game has ended (when either of the Player's health has reached 0.
+     * Checks if the game has ended.
+     *
+     * @param hitPoints The score of the game.
+     * @param context   The context of the game, needed for accessing additional files.
      */
     public boolean gameEnded(int hitPoints, Context context) {
         boolean status = (gameObjectManager.getEnemyHealth().getHealthLevel() == 0 ||
@@ -28,15 +48,16 @@ public class GameStatusManager {
         if (status) {
             account.incrementLevel(context.getApplicationContext().getFilesDir());
             account.incrementScore(hitPoints, context.getApplicationContext().getFilesDir());
-            account.decrementHitPoints(100 - hitPoints, context.getApplicationContext().getFilesDir());
+            if (won) {
+                account.decrementHitPoints(0,
+                        context.getApplicationContext().getFilesDir());
+            } else {
+                account.decrementHitPoints(10, context.getApplicationContext().getFilesDir());
+            }
             account.incrementGamesPlayed(context.getApplicationContext().getFilesDir());
         }
 
         return status;
-    }
-
-    public boolean gameDone() {
-        return account.getHitPoints() <= 0;
     }
 
     /**
@@ -47,8 +68,10 @@ public class GameStatusManager {
      */
     public String checkWinner() {
         if (gameObjectManager.getPlayerHealth().getHealthLevel() == 0) {
+            won = false;
             return res.getString(R.string.lost);
         } else {
+            won = true;
             return res.getString(R.string.win);
         }
     }

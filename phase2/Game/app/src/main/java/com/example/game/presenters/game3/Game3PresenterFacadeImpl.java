@@ -179,13 +179,4 @@ public class Game3PresenterFacadeImpl implements Game3PresenterFacade {
         return gameStatusManager.gameEnded(updateHitpoints(), context);
     }
 
-    /**
-     * Determines whether the whole game is over or not.
-     *
-     * @return Whether the whole game is over or not.
-     */
-    @Override
-    public boolean gameDone() {
-        return gameStatusManager.gameDone();
-    }
 }

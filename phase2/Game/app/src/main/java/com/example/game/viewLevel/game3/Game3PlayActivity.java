@@ -55,16 +55,15 @@ public class Game3PlayActivity extends BaseActivity {
     /**
      * Handles the case when the game is done.
      *
-     * @param winner    The winner of the game.
-     * @param numMoves  The number of moves the Player played.
-     * @param gameEnded Whether the game has ended or not.
+     * @param winner   The winner of the game.
+     * @param numMoves The number of moves the Player played.
      */
-    protected void gameOver(String winner, int numMoves, boolean gameEnded) {
+    protected void gameOver(String winner, int numMoves) {
         Intent intent = new Intent(this, Game3ExitActivity.class);
         intent.putExtra("EXTRA_WINNER", winner);
         intent.putExtra("EXTRA_MOVES", numMoves);
 
-        if (gameEnded) {
+        if (account.getHitPoints() <= 0) {
             //Ran out of lives
             intent = new Intent(this, GameOver.class);
         }

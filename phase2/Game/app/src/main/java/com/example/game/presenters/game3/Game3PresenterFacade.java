@@ -79,10 +79,4 @@ public interface Game3PresenterFacade {
      */
     boolean gameEnded(Context context);
 
-    /**
-     * Determines whether the whole game is over or not.
-     *
-     * @return Whether the whole game is over or not.
-     */
-    boolean gameDone();
 }
