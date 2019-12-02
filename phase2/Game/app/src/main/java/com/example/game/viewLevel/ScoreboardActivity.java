@@ -33,7 +33,7 @@ public class ScoreboardActivity extends BaseActivity {
 
         //Creates an alert to tell the account user if they made it to the scoreboard or not
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setNeutralButton("OK",
+        builder.setNeutralButton(R.string.alertButtonNeutral,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -42,12 +42,12 @@ public class ScoreboardActivity extends BaseActivity {
 
         if(scoreboardHolder.addScore(account.getAccount(), account.getCurrentScore(), this.getFilesDir())){
             //create alertdialog saying score was added to the scoreboard
-            builder.setTitle("Congratulations!");
-            builder.setMessage("Your score was high enough to make it on the scoreboard!");
+            builder.setTitle(R.string.positiveAlert);
+            builder.setMessage(R.string.positiveAlertMessage);
         }else{
             //create alertdialog to try again, as the score was not high enough to enter the scoreboard
-            builder.setTitle("D'oh!");
-            builder.setMessage("Your score wasn't high enough to make it on the scoreboard... Try again!");
+            builder.setTitle(R.string.negativeAlert);
+            builder.setMessage(R.string.negativeAlertMessage);
         }
 
         /**
