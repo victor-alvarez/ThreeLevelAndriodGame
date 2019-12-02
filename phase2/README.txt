@@ -1,5 +1,6 @@
 For file saving Json (GSON) was used
-Opening the project directly will work, no extra is needed
+Opening the project directly will work, no extra is needed. Specifically open the Game folder inside
+for running the game.
 
 Instructions:
 Do not hit the back button. While this will not crash the game, it may cause some minor bugs. Also
