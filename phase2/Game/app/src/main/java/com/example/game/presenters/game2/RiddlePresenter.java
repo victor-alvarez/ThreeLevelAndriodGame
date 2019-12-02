@@ -1,8 +1,8 @@
 package com.example.game.presenters.game2;
 
-import com.example.game.models.game2.RiddleUseCases;
 import com.example.game.models.game2.Interfaces.RiddleActions;
 import com.example.game.models.game2.Interfaces.RiddleListener;
+import com.example.game.models.game2.RiddleUseCases;
 
 import java.io.File;
 import java.util.ArrayList;

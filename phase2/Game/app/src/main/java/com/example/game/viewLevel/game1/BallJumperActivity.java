@@ -8,17 +8,18 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.game.BaseActivity;
+import com.example.game.GameOver;
 import com.example.game.models.game1.AnimationFactoryImpl;
 import com.example.game.models.game1.AnimationManagerFactoryImpl;
-import com.example.game.models.game1.ObstacleFactoryImpl;
 import com.example.game.models.game1.Constants;
 import com.example.game.models.game1.ModelFactories;
+import com.example.game.models.game1.ObstacleFactoryImpl;
 import com.example.game.models.game1.ObstacleManagerFactoryImpl;
 import com.example.game.models.game1.OrientationDataFactoryImp;
 import com.example.game.models.game1.RectPlayerFactoryImpl;
-import com.example.game.presenters.game1.SceneFactoryImp;
-import com.example.game.presenters.game1.PresenterFactories;
 import com.example.game.presenters.game1.Game1PresenterFactoryImp;
+import com.example.game.presenters.game1.PresenterFactories;
+import com.example.game.presenters.game1.SceneFactoryImp;
 
 public class BallJumperActivity extends BaseActivity {
 
@@ -73,6 +74,9 @@ public class BallJumperActivity extends BaseActivity {
         account.incrementScore(score, getApplicationContext().getFilesDir());
         account.decrementHitPoints(hitPoints, getApplicationContext().getFilesDir());
         account.incrementGamesPlayed(getApplicationContext().getFilesDir());
+        if (account.getHitPoints() <= 0){
+            intent = new Intent(this, GameOver.class);
+        }
         startActivity(intent);
     }
 

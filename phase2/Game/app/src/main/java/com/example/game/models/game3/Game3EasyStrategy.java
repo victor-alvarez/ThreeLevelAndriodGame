@@ -22,8 +22,8 @@ class Game3EasyStrategy implements Game3Strategy {
     @Override
     public int enemyAttack() {
         int attack = new Random().nextInt(10);
-        // 70% chance that higher attack will be picked.
-        if (attack <= 6) {
+        // 60% chance that higher attack will be picked.
+        if (attack <= 5) {
             int damageIndex = new Random().nextInt(enemyHigherAttack.length);
             return enemyHigherAttack[damageIndex];
         } else {
@@ -37,9 +37,9 @@ class Game3EasyStrategy implements Game3Strategy {
      */
     @Override
     public int enemyDefend() {
-
-        int attack = new Random().nextInt(5);
-        if (attack == 0) {
+        // 80% chance that enemy will pick a lower attack.
+        int attack = new Random().nextInt(10);
+        if (attack <= 1) {
             int damageIndex = new Random().nextInt(enemyHigherAttack.length);
             return enemyHigherAttack[damageIndex];
         } else {
@@ -49,22 +49,23 @@ class Game3EasyStrategy implements Game3Strategy {
     }
 
     /**
-     * The player choosing attack. Also decides whether a health potion should be activated here.
+     * The player choosing to attack. Also decides whether a health potion should be activated here.
+     * Does 12 damage.
      *
      * @param healthPotion A health potion that increases player HP.
      */
     @Override
     public int playerAttack(BottleObject healthPotion) {
-        int randomVar = new Random().nextInt(3);
+        // 1/4 chance that a health potion is activated.
+        int randomVar = new Random().nextInt(5);
         if (randomVar == 0) {
             healthPotion.setActive(true);
         }
         return 12;
-
     }
 
     /**
-     * The player choosing to defend.
+     * The player choosing to defend. Does 10 damage.
      */
     @Override
     public int playerDefend() {

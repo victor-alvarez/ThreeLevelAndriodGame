@@ -60,17 +60,17 @@ class OrientationDataImp implements SensorEventListener, OrientationData {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
             accelOutput = event.values;
-        else if(event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
+        else if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
             magOutput = event.values;
-        if(accelOutput != null && magOutput != null) {
+        if (accelOutput != null && magOutput != null) {
             float[] R = new float[9];
             float[] I = new float[9];
             boolean success = SensorManager.getRotationMatrix(R, I, accelOutput, magOutput);
-            if(success) {
+            if (success) {
                 SensorManager.getOrientation(R, orientation);
-                if(startOrientation == null) {
+                if (startOrientation == null) {
                     startOrientation = new float[orientation.length];
                     System.arraycopy(orientation, 0, startOrientation, 0, orientation.length);
                 }

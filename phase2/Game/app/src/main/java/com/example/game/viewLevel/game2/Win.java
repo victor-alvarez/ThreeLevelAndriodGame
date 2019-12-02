@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.game.BaseActivity;
-import com.example.game.viewLevel.game3.Game3Activity;
-import com.example.game.viewLevel.MainActivity;
 import com.example.game.R;
+import com.example.game.viewLevel.MainActivity;
+import com.example.game.viewLevel.game3.Game3Activity;
 
 public class Win extends BaseActivity {
 

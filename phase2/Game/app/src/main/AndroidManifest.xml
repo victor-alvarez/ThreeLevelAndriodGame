@@ -24,9 +24,6 @@
         <activity
             android:name=".viewLevel.game3.Game3PlayActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".Game1.ChangeSongActivity" />
-        <activity android:name=".Game1.ChooseBallActivity" />
-        <activity android:name=".Game1.CustomizeActivity" />
         <activity
             android:name=".viewLevel.game1.BallJumperActivity"
             android:screenOrientation="portrait" />

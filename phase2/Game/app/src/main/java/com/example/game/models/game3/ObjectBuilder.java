@@ -42,7 +42,7 @@ class ObjectBuilder {
     }
 
     /**
-     * Creates a Character for the Player.
+     * Creates a Character for the Player. 1 Bitmap split into 5 frames and resized.
      *
      * @return player : The character represented by the user.
      */
@@ -88,7 +88,7 @@ class ObjectBuilder {
     }
 
     /**
-     * Creates a Character for the Enemy.
+     * Creates a Character for the Enemy. 1 Bitmap split into 5 frames and resized.
      *
      * @return player : The character represented by the computer.
      */
@@ -132,7 +132,7 @@ class ObjectBuilder {
     }
 
     /**
-     * Creates a Health Bar for the Enemy.
+     * Creates a Health Bar for the Enemy. Red text. Placed top right of screen.
      *
      * @return enemyHealth : The health bar for the enemy.
      */
@@ -147,7 +147,7 @@ class ObjectBuilder {
     }
 
     /**
-     * Creates a Health Bar for the Player.
+     * Creates a Health Bar for the Player. Green text. Placed top left of screen.
      *
      * @return playerHealth : The health bar for the player.
      */
@@ -162,7 +162,7 @@ class ObjectBuilder {
     }
 
     /**
-     * Creates a Attack ButtonObject.
+     * Creates a Attack ButtonObject. Gray background. White Text. Placed at bottom left.
      *
      * @return attackButtonObject : The attack button.
      */
@@ -179,7 +179,7 @@ class ObjectBuilder {
     }
 
     /**
-     * Creates a Defend ButtonObject.
+     * Creates a Defend ButtonObject. Gray background. White Text. Placed at bottom right.
      *
      * @return defendButton : The defend button.
      */
@@ -196,7 +196,7 @@ class ObjectBuilder {
     }
 
     /**
-     * Creates a Text to show Player and Enemy moves.
+     * Creates a Text to show Player and Enemy moves. Initially white text. Placed in the middle.
      *
      * @return moveTextObject : The text showing the moves of the characters.
      */
@@ -210,7 +210,8 @@ class ObjectBuilder {
     }
 
     /**
-     * Creates a health potion BottleObject.
+     * Creates a health potion BottleObject. Appears initially near lower middle of screen at the
+     * left.
      *
      * @return healthPotion : Bottle that gives the user additional HP when activated.
      */

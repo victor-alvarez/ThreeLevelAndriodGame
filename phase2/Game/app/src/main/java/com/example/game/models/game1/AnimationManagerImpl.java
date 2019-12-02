@@ -19,7 +19,6 @@ class AnimationManagerImpl implements AnimationManager {
 
     /**
      * Creates a new Animation.
-     *
      */
     AnimationManagerImpl() {
         AnimationFactory animationFactory = ModelFactories.ANIMATION_FACTORY;

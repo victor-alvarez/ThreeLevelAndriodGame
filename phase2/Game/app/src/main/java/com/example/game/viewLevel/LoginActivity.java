@@ -9,12 +9,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.game.BaseActivity;
-import com.example.game.presenters.LoginPresenter;
-import com.example.game.models.LoginUseCases;
 import com.example.game.R;
 import com.example.game.models.AccountHolder;
 import com.example.game.models.AccountManager;
+import com.example.game.models.LoginUseCases;
 import com.example.game.models.interfaces.LoginActions;
+import com.example.game.presenters.LoginPresenter;
 
 /**
  * Login activity for login the user in. Lets the user enter a username and if it exists they may

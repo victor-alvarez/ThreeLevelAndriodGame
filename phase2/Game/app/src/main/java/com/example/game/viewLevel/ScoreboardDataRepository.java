@@ -1,7 +1,7 @@
 package com.example.game.viewLevel;
 
-import com.example.game.models.interfaces.ScoreboardDataRepositoryInterface;
 import com.example.game.models.Scoreboard;
+import com.example.game.models.interfaces.ScoreboardDataRepositoryInterface;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;

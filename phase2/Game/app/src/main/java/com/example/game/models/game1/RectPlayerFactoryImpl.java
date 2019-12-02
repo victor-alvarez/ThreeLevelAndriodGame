@@ -8,7 +8,7 @@ import android.graphics.Rect;
 public class RectPlayerFactoryImpl implements RectPlayerFactory {
 
     @Override
-    public RectPlayer makeBallJumpRectPlayer(Rect rectangle){
+    public RectPlayer makeBallJumpRectPlayer(Rect rectangle) {
         return new BallJumpRectPlayer(rectangle);
     }
 }

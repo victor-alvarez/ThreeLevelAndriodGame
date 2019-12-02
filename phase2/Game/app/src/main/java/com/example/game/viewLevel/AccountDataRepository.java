@@ -70,7 +70,7 @@ class AccountDataRepository implements AccountDataRepositoryInterface {
             BufferedReader loadAccData = new BufferedReader(loadAccountData);
             String line;
             while ((line = loadAccData.readLine()) != null) {
-                if (line.contains(login)) {
+                if (line.contains("\"" + login + "\"")) {
                     Account acc = gson.fromJson(line, Account.class);
                     loadAccData.close();
                     return acc;

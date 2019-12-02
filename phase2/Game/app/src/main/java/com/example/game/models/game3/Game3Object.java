@@ -1,8 +1,5 @@
 package com.example.game.models.game3;
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
-
 /**
  * A Object in Game 3.
  */

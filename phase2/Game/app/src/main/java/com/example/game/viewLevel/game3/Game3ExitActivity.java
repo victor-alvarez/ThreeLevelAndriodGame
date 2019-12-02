@@ -8,10 +8,10 @@ import android.widget.TextView;
 
 import com.example.game.BaseActivity;
 import com.example.game.R;
-import com.example.game.viewLevel.ScoreboardActivity;
 import com.example.game.models.DataIncrementerUseCases;
 import com.example.game.models.interfaces.DataIncrementerActions;
 import com.example.game.presenters.DataIncrementerPresenter;
+import com.example.game.viewLevel.ScoreboardActivity;
 
 /**
  * Exit Activity for Game 3.
@@ -41,7 +41,7 @@ public class Game3ExitActivity extends BaseActivity implements DataIncrementerAc
         setContentView(R.layout.activity_game3_exit);
 
         //Draws the TextView showing the Result of the game that just ended.
-        TextView gameResult = (TextView) findViewById(R.id.gameResult);
+        TextView gameResult = findViewById(R.id.gameResult);
         gameResult.setText(getIntent().getStringExtra("EXTRA_WINNER"));
         gameResult.setTextColor(Color.BLUE);
         gameResult.setTextSize(50);

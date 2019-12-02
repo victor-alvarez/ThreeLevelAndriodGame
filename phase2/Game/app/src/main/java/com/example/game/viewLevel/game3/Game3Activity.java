@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.game.BaseActivity;
-import com.example.game.viewLevel.MainActivity;
 import com.example.game.R;
+import com.example.game.viewLevel.MainActivity;
 
 /**
  * Activity Class for Game 3
@@ -32,7 +32,7 @@ public class Game3Activity extends BaseActivity {
         setContentView(R.layout.activity_game3);
 
         //Customizes the Activity based on User preference.
-        assert BaseActivity.account!= null;
+        assert BaseActivity.account != null;
         getWindow().getDecorView().setBackgroundResource(BaseActivity.account.getBackground());
 
         lives = findViewById(R.id.livesText_Game3Activity);
