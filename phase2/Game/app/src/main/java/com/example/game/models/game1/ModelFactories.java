@@ -8,6 +8,9 @@ import com.example.game.models.game1.orientation.OrientationDataFactory;
 import com.example.game.models.game1.rectplayer.RectPlayerFactory;
 import com.example.game.models.game1.scenes.SceneFactory;
 
+/**
+ * ModelFactories class
+ */
 public class ModelFactories {
     public static ObstacleFactory OBSTACLE_FACTORY;
     public static RectPlayerFactory RECT_PLAYER_FACTORY;
