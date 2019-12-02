@@ -46,7 +46,7 @@ public class GameplayScene implements Scene {
     /**
      * Constructor for GameplayScene. Instansiates player, playerPoint, obstacles, and lives.
      */
-    public GameplayScene() {
+    GameplayScene() {
         RectPlayerFactory rectPlayerFactory = ModelFactories.RECT_PLAYER_FACTORY;
         player = rectPlayerFactory.makeBallJumpRectPlayer(new Rect(100, 100, 200, 200));
         playerPoint = new Point(Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 4);

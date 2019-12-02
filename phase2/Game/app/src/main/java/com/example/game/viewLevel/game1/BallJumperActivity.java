@@ -53,7 +53,7 @@ public class BallJumperActivity extends BaseActivity {
         ModelFactories.ORIENTATION_DATA_FACTORY = new OrientationDataFactoryImp();
         ModelFactories.SCENE_FACTORY = new SceneFactoryImp();
         PresenterFactories.SCENE_PRESENTER_FACTORY = new ScenePresenterFactoryImp();
-        Game1ViewFactory game1ViewFactory = ViewFactories.game1ViewFactory;
+        Game1ViewFactory game1ViewFactory = ViewFactories.GAME1_VIEW_FACTORY;
         Game1View game1View = game1ViewFactory.makeGame1ViewImpl(this);
         game1View.setDifficulty(getIntent().getStringExtra("difficulty"));
         setContentView((SurfaceView) game1View);

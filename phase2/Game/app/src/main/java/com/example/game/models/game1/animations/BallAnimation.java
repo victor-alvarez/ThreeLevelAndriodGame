@@ -5,12 +5,10 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-import com.example.game.models.game1.animations.Animation;
-
+/**
+ * BallAnimation class. Handles the animation of the player-controlled ball in the game.
+ */
 public class BallAnimation implements Animation {
-    /**
-     * Handles the animation of the player-controlled ball in the game.
-     */
 
     // === Instance Variables ===
 
@@ -18,7 +16,7 @@ public class BallAnimation implements Animation {
     private int frameIndex; // The index associated with frames.
     private boolean isPlaying = false; // Whether or not the game is playing.
     private float frameTime; // The time in between frames.
-    private long lastFrame; //
+    private long lastFrame; // Last frame of the animation
 
     /**
      * Creates a new Animation.

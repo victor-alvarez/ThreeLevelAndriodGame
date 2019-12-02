@@ -1,9 +1,9 @@
 package com.example.game.models.game1.obstacles;
 
-import com.example.game.models.game1.obstacles.BallJumpObstacle;
-import com.example.game.models.game1.obstacles.Obstacle;
-import com.example.game.models.game1.obstacles.ObstacleFactory;
 
+/**
+ * ObstacleFactoryImpl class.
+ */
 public class ObstacleFactoryImpl implements ObstacleFactory {
 
     @Override

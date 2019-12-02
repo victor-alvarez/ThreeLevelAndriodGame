@@ -1,9 +1,12 @@
 package com.example.game.models.game1.orientation;
 
+/**
+ * OrientationData interface
+ */
 public interface OrientationData {
-    float[] getOrientation();
+    float[] getOrientation(); // returns device orientation
 
-    float[] getStartOrientation();
+    float[] getStartOrientation(); // returns device starting orientation
 
-    void register();
+    void register(); // registers device
 }

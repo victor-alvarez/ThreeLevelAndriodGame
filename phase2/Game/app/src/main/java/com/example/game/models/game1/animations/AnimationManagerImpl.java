@@ -10,11 +10,10 @@ import com.example.game.R;
 import com.example.game.models.game1.Constants;
 import com.example.game.models.game1.ModelFactories;
 
+/**
+ * AnimationManagerImpl class. Manages the animations.
+ */
 public class AnimationManagerImpl implements AnimationManager {
-    /**
-     * Manages the animations.
-     */
-
     // === Instance Variables ===
 
     private Animation[] animations; // The animations this class will manage.
@@ -24,7 +23,7 @@ public class AnimationManagerImpl implements AnimationManager {
      * Creates a new Animation.
      *
      */
-    public AnimationManagerImpl() {
+    AnimationManagerImpl() {
         AnimationFactory animationFactory = ModelFactories.ANIMATION_FACTORY;
 
         Bitmap idleImg = BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.alienblue_badge1);
