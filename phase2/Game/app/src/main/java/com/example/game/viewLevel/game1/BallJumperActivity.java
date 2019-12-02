@@ -3,6 +3,7 @@ package com.example.game.viewLevel.game1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.SurfaceView;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -52,9 +53,10 @@ public class BallJumperActivity extends BaseActivity {
         ModelFactories.ORIENTATION_DATA_FACTORY = new OrientationDataFactoryImp();
         ModelFactories.SCENE_FACTORY = new SceneFactoryImp();
         PresenterFactories.SCENE_PRESENTER_FACTORY = new ScenePresenterFactoryImp();
-        Game1View gamePanel = new Game1View(this);
-        gamePanel.setDifficulty(getIntent().getStringExtra("difficulty"));
-        setContentView(gamePanel);
+        Game1ViewFactory game1ViewFactory = ViewFactories.game1ViewFactory;
+        Game1View game1View = game1ViewFactory.makeGame1ViewImpl(this);
+        game1View.setDifficulty(getIntent().getStringExtra("difficulty"));
+        setContentView((SurfaceView) game1View);
     }
 
     /**

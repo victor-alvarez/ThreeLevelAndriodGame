@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.viewLevel;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
-import com.example.game.viewLevel.MainActivity;
+import com.example.game.BaseActivity;
+import com.example.game.R;
+import com.example.game.models.Interfaces.ScoreboardDataRepositoryInterface;
+import com.example.game.models.ScoreboardHolder;
 
 public class ScoreboardActivity extends BaseActivity {
 
@@ -30,14 +33,10 @@ public class ScoreboardActivity extends BaseActivity {
         /**
          * Text displaying player stats
          */
-        Scoreboard scoreboard = SaveScoreboardData.openScoreboard(this);
-        if(scoreboard == null){
-            SaveScoreboardData.createScoreboard(this);
-            scoreboard = SaveScoreboardData.openScoreboard(this);
-        }
+        ScoreboardDataRepositoryInterface scoreboardDataRepositoryInterface = new ScoreboardDataRepository();
+        ScoreboardHolder scoreboardHolder = new ScoreboardHolder(this.getFilesDir(), scoreboardDataRepositoryInterface);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Alert");
         builder.setNeutralButton("OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -45,16 +44,18 @@ public class ScoreboardActivity extends BaseActivity {
                     }
                 });
 
-        if(scoreboard.addScore(account.getAccount(), account.getCurrentScore(), this)){
+        if(scoreboardHolder.addScore(account.getAccount(), account.getCurrentScore(), this.getFilesDir())){
             //create alertdialog saying score was added to the scoreboard
-            builder.setMessage("Awesome! Your score was high enough to make it on the scoreboard!");
+            builder.setTitle("Congratulations!");
+            builder.setMessage("Your score was high enough to make it on the scoreboard!");
         }else{
             //create alertdialog to try again, as the score was not high enough to enter the scoreboard
-            builder.setMessage("Oh no! Your score wasn't high enough to make it on the scoreboard... Try again!");
+            builder.setTitle("D'oh!");
+            builder.setMessage("Your score wasn't high enough to make it on the scoreboard... Try again!");
         }
 
         listView = findViewById(R.id.list);
-        adapter = new ScoreboardAdapter(this, scoreboard.getScoreboard());
+        adapter = new ScoreboardAdapter(this, scoreboardHolder.getScoreboardList());
         listView.setAdapter(adapter);
         //All done, so notify the adapter to populate the list using the Items Array
 
