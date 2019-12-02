@@ -146,4 +146,9 @@
     <string name="game2_easy">"Jeu-questionnaire facile "</string>
     <string name="game2_riddles">énigmes</string>
     <string name="correct">Correct!!!</string>
+    <string name="alertButtonNeutral">OK</string>
+    <string name="negativeAlert">Oh non!</string>
+    <string name="negativeAlertMessage">Votre score n\'était pas assez élevé pour figurer sur le tableau de bord ... Essayez encore!</string>
+    <string name="positiveAlert">Toutes nos félicitations!</string>
+    <string name="positiveAlertMessage">Votre score était assez élevé pour figurer sur le tableau de bord!</string>
 </resources>

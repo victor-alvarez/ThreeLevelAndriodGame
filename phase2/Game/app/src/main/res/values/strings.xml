@@ -160,4 +160,9 @@
     <string name="game1_normal">Normal</string>
     <string name="game1_hard">Hard</string>
     <string name="endgame">End game</string>
+    <string name="positiveAlert">Congratulations!</string>
+    <string name="negativeAlert">Oh no!</string>
+    <string name="alertButtonNeutral">OK</string>
+    <string name="positiveAlertMessage">Your score was high enough to make it on the scoreboard!</string>
+    <string name="negativeAlertMessage">Your score wasn\'t high enough to make it on the scoreboard... Try again!</string>
 </resources>
