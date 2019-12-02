@@ -146,4 +146,9 @@
     <string name="game2_riddles">"Загадки"</string>
     <string name="game2_hard">"Сложный тест"</string>
     <string name="correct">"Правильно!!! +5 очков"</string>
+    <string name="alertButtonNeutral">OK</string>
+    <string name="negativeAlert">о нет!</string>
+    <string name="negativeAlertMessage">Ваш счет был недостаточно высок, чтобы попасть на табло ... Попробуйте еще раз!</string>
+    <string name="positiveAlert">Поздравляем!</string>
+    <string name="positiveAlertMessage">Ваш счет был достаточно высок, чтобы попасть на табло!</string>
 </resources>

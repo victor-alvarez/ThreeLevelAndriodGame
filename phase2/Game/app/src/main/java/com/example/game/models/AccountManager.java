@@ -1,7 +1,7 @@
 package com.example.game.models;
 
-import com.example.game.models.Interfaces.AccountDataRepositoryInterface;
-import com.example.game.models.Interfaces.AccountManagerInterface;
+import com.example.game.models.interfaces.AccountDataRepositoryInterface;
+import com.example.game.models.interfaces.AccountManagerInterface;
 
 import java.io.File;
 

@@ -1,22 +1,29 @@
 package com.example.game.models;
 
-import com.example.game.models.Interfaces.ScoreboardDataRepositoryInterface;
+import com.example.game.models.interfaces.ScoreboardDataRepositoryInterface;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Stack;
 
+/**
+ * A scoreboard
+ */
 public class Scoreboard {
-    private Stack<Pair<Account, Integer>> rank;
+    final private Stack<Pair<Account, Integer>> rank;
 
+    /**
+     * Scoreboard constructor
+     */
     Scoreboard(){
         rank = new Stack<>();
     }
 
-    Scoreboard getScoreboard(){
-        return this;
-    }
-
+    /**
+     * @return A scoreboard in a list format, where the index + 1 represents the rank of Account,
+     * contained in Pair format, where the first item in the pair is the account
+     * and the second is the account score
+     */
     ArrayList<Pair<Account, Integer>> getScoreboardList(){
         Stack<Pair<Account, Integer>> tempStack = new Stack<>();
         ArrayList<Pair<Account, Integer>> scoreboard = new ArrayList<>();
@@ -32,6 +39,14 @@ public class Scoreboard {
         return scoreboard;
     }
 
+    /**
+     * Inserts the account and score into the scoreboard
+     * @param account The account
+     * @param score The account's score
+     * @param file The file to save data to
+     * @param scoreboardDataRepositoryInterface The interface that accesses file
+     * @return True iff the account was added to the scoreboard. false otherwise.
+     */
     boolean addScore(Account account, int score, File file, ScoreboardDataRepositoryInterface
             scoreboardDataRepositoryInterface){
         Pair<Account, Integer> accountIntegerPair = new Pair<>(account, score);
@@ -46,6 +61,11 @@ public class Scoreboard {
     }
 
 
+    /**
+     * Places an account into the scoreboard
+     * @param accountIntegerPair The Pair of account and score
+     * @param accountRank The rank of the account, once added in the scoreboard
+     */
     private void placeAccount(Pair<Account, Integer> accountIntegerPair, int accountRank) {
         Stack<Pair<Account, Integer>> tempStack = new Stack<>();
         while(!rank.isEmpty()){
@@ -66,6 +86,11 @@ public class Scoreboard {
         }
     }
 
+    /**
+     * Finds the rank of the account based on a score
+     * @param score Account's score
+     * @return the rank of the account in the scoreboard
+     */
     private int findAccountRank(int score) {
         if(rank.isEmpty()){
             return 1;
@@ -90,6 +115,11 @@ public class Scoreboard {
         }
     }
 
+    /**
+     * Finds whether or not the score is high enough to be entered in the scoreboard
+     * @param score Account's score
+     * @return True iff score can be added to scoreboard, false otherwise.
+     */
     private boolean isScoreHighEnough(int score) {
         boolean isScoreHighEnough = false;
         Stack<Pair<Account, Integer>> tempStack = new Stack<>();

@@ -14,35 +14,60 @@ import com.example.game.models.Pair;
 
 import java.util.ArrayList;
 
+/**
+ * Scoreboard adapter to create scoreboard view
+ */
 public class ScoreboardAdapter extends BaseAdapter {
 
-    private Context mContext;
+    final private Context mContext;
     private LayoutInflater inflater;
-    private ArrayList<Pair<Account, Integer>> itemsItems;
+    final private ArrayList<Pair<Account, Integer>> accountIntegerPair;
 
 
-
-    public ScoreboardAdapter(Context context, ArrayList<Pair<Account, Integer>> itemsItems) {
+    /**
+     * Constructor for ScoreboardAdapter
+     * @param context Context in which to create the scoreboard
+     * @param accountIntegerPair Account and score in Pair format
+     */
+    ScoreboardAdapter(Context context, ArrayList<Pair<Account, Integer>> accountIntegerPair) {
         this.mContext = context;
-        this.itemsItems = itemsItems;
+        this.accountIntegerPair = accountIntegerPair;
 
     }
 
+    /**
+     * @return amount of accounts in the scoreboard
+     */
     @Override
     public int getCount() {
-        return itemsItems.size();
+        return accountIntegerPair.size();
     }
 
+    /**
+     * @param location index of desired Object
+     * @return Object at index location
+     */
     @Override
     public Object getItem(int location) {
-        return itemsItems.get(location);
+        return accountIntegerPair.get(location);
     }
 
+    /**
+     * @param position index
+     * @return the position
+     */
     @Override
     public long getItemId(int position) {
         return position;
     }
 
+    /**
+     * Creates the scoreboard, line by line
+     * @param position index
+     * @param scoreView view of the scoreboard
+     * @param parent view in which to create scoreboard
+     * @return view of scoreboard
+     */
     @Override
     public View getView(int position, View scoreView, ViewGroup parent) {
         ViewHolder holder;
@@ -53,9 +78,9 @@ public class ScoreboardAdapter extends BaseAdapter {
 
             scoreView = inflater.inflate(R.layout.list_view, parent, false);
             holder = new ViewHolder();
-            holder.name = (TextView) scoreView.findViewById(R.id.name);
-            holder.score = (TextView) scoreView.findViewById(R.id.score);
-            holder.icon = (ImageView) scoreView.findViewById(R.id.icon);
+            holder.name = scoreView.findViewById(R.id.name);
+            holder.score = scoreView.findViewById(R.id.score);
+            holder.icon = scoreView.findViewById(R.id.icon);
             holder.rank = scoreView.findViewById(R.id.rank);
 
             scoreView.setTag(holder);
@@ -64,7 +89,7 @@ public class ScoreboardAdapter extends BaseAdapter {
             holder = (ViewHolder) scoreView.getTag();
         }
 
-        final Pair<Account, Integer> m = itemsItems.get(position);
+        final Pair<Account, Integer> m = accountIntegerPair.get(position);
         holder.name.setText(m.getFirst().getLogin());
         holder.score.setText(Integer.toString(m.getSecond()));
         holder.rank.setText(Integer.toString(position + 1));
@@ -74,6 +99,9 @@ public class ScoreboardAdapter extends BaseAdapter {
         return scoreView;
     }
 
+    /**
+     * Objects held within the view
+     */
     static class ViewHolder {
 
         TextView rank;

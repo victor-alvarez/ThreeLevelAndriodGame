@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.models.Interfaces.ActivityDataResponseActions;
+import com.example.game.models.interfaces.ActivityDataResponseActions;
 import com.example.game.models.ActivityDataUseCases;
 import com.example.game.presenters.ActivityDataPresenter;
 import com.example.game.viewLevel.MainActivity;

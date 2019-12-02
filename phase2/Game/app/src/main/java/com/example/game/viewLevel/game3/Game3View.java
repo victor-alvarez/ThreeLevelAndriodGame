@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceView;
 
 import com.example.game.R;
-import com.example.game.presenters.game3.Game3PresenterImp;
+import com.example.game.presenters.game3.Game3PresenterFacadeImpl;
 
 import java.util.concurrent.TimeUnit;
 
@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Game3View extends SurfaceView implements Runnable {
 
+    private final Context context;
     /**
      * Checks if the game is still in play.
      */
@@ -38,7 +39,7 @@ public class Game3View extends SurfaceView implements Runnable {
     /**
      * Instance that manages all the objects in the Game.
      */
-    private Game3PresenterImp game3Presenter;
+    private Game3PresenterFacadeImpl game3Presenter;
 
     /**
      * The instance of the class that called created an instance of this class.
@@ -53,10 +54,11 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     public Game3View(Context context, String difficulty) {
         super(context);
+        this.context = context;
         activityContext = context;
         paint = new Paint();
 
-        game3Presenter = new Game3PresenterImp(getResources(), difficulty, canvas, paint) {
+        game3Presenter = new Game3PresenterFacadeImpl(getResources(), difficulty, canvas, paint) {
         };
 
         //Creates all the game objects that are needed for this Game.
@@ -97,14 +99,14 @@ public class Game3View extends SurfaceView implements Runnable {
 
         //Ends the game and given method takes User to Game 3 Exit Activity.
         ((Game3PlayActivity) activityContext).gameOver(game3Presenter.checkWinner(),
-                game3Presenter.updateHitpoints(), game3Presenter.getNumMoves());
+                game3Presenter.getNumMoves());
     }
 
     /**
      * Checks if game is done.
      */
     private boolean checkGameEnded() {
-        return game3Presenter.gameEnded();
+        return game3Presenter.gameEnded(context);
     }
 
     /**
@@ -129,7 +131,7 @@ public class Game3View extends SurfaceView implements Runnable {
             //canvas.drawColor(Color.BLACK);
             Bitmap b1 = BitmapFactory.decodeResource(getResources(), R.drawable.gamebackground2);
             Bitmap b2 = Bitmap.createScaledBitmap(b1, getWidth(), getHeight(), false);
-            canvas.drawBitmap(b2,0,0,null);
+            canvas.drawBitmap(b2, 0, 0, null);
             game3Presenter.draw();
             getHolder().unlockCanvasAndPost(canvas);
         }

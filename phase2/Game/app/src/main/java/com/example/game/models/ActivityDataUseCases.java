@@ -1,7 +1,7 @@
 package com.example.game.models;
 
 import com.example.game.BaseActivity;
-import com.example.game.models.Interfaces.ActivityDataResponseListener;
+import com.example.game.models.interfaces.ActivityDataResponseListener;
 
 import java.io.File;
 

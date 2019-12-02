@@ -1,8 +1,8 @@
 package com.example.game.presenters;
 
 import com.example.game.models.DataIncrementerUseCases;
-import com.example.game.models.Interfaces.DataIncrementerActions;
-import com.example.game.models.Interfaces.DataIncrementerListener;
+import com.example.game.models.interfaces.DataIncrementerActions;
+import com.example.game.models.interfaces.DataIncrementerListener;
 
 import java.io.File;
 

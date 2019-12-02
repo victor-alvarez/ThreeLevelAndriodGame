@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.example.game.BaseActivity;
 import com.example.game.models.DataIncrementerUseCases;
-import com.example.game.models.Interfaces.DataIncrementerActions;
+import com.example.game.models.interfaces.DataIncrementerActions;
 import com.example.game.presenters.DataIncrementerPresenter;
 import com.example.game.viewLevel.game2.Game2Activity;
 import com.example.game.viewLevel.MainActivity;
