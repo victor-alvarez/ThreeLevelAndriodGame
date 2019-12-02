@@ -57,12 +57,11 @@ class Game3EasyStrategy implements Game3Strategy {
     @Override
     public int playerAttack(BottleObject healthPotion) {
         // 1/4 chance that a health potion is activated.
-        int randomVar = new Random().nextInt(4);
+        int randomVar = new Random().nextInt(5);
         if (randomVar == 0) {
             healthPotion.setActive(true);
         }
         return 12;
-
     }
 
     /**

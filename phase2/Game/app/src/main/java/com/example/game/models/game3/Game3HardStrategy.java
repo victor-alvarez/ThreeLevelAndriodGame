@@ -56,8 +56,8 @@ class Game3HardStrategy implements Game3Strategy {
      */
     @Override
     public int playerAttack(BottleObject healthPotion) {
-        // 1/5 chance of a health potion appearing.
-        int randomVar = new Random().nextInt(5);
+        // 1/6 chance of a health potion appearing.
+        int randomVar = new Random().nextInt(6);
         if (randomVar == 0) {
             healthPotion.setActive(true);
         }

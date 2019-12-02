@@ -17,8 +17,6 @@ public class GameStatusManager {
      */
     private final Resources res;
 
-    private boolean won;
-
     /**
      * Class that manages the game objects.
      */
@@ -50,7 +48,7 @@ public class GameStatusManager {
             account.incrementLevel(context.getApplicationContext().getFilesDir());
             //Increases the score by the number of hitPoints
             account.incrementScore(hitPoints, context.getApplicationContext().getFilesDir());
-            //Decreases the number of lives by 10 if game lost, by 0 if game won.
+            //Decreases the number of lives
             account.decrementHitPoints((100 - hitPoints) / 10,
                     context.getApplicationContext().getFilesDir());
             //Adds 1 to number of games played
@@ -62,17 +60,15 @@ public class GameStatusManager {
 
     /**
      * Check's which one of the CharacterObjects is the winner (The enemy or the Player) and return
-     * string that displays the result of the game. Also updates the hitpoints for the player.
+     * string that displays the result of the game.
      *
      * @return result : The result of the game.
      */
     public String checkWinner() {
         if (gameObjectManager.getPlayerHealth().getHealthLevel() == 0 &&
                 gameObjectManager.getEnemyHealth().getHealthLevel() != 0) {
-            won = false;
             return res.getString(R.string.lost);
         } else {
-            won = true;
             return res.getString(R.string.win);
         }
     }

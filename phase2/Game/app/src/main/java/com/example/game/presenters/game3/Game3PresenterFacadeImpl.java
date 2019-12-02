@@ -164,7 +164,7 @@ public class Game3PresenterFacadeImpl implements Game3PresenterFacade {
     /**
      * Updates the score of the game.
      *
-     * @return the score of the game.
+     * @return The score of the game.
      */
     @Override
     public int updateHitpoints() {

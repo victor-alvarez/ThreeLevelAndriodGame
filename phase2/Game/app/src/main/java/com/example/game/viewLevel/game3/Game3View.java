@@ -49,7 +49,6 @@ public class Game3View extends SurfaceView implements Runnable {
      */
     private final Context activityContext;
 
-
     /**
      * Game3View constructor.
      *
