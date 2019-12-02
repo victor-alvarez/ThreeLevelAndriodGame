@@ -1,6 +1,6 @@
 package com.example.game.viewLevel;
 
-import com.example.game.models.Interfaces.ScoreboardDataRepositoryInterface;
+import com.example.game.models.interfaces.ScoreboardDataRepositoryInterface;
 import com.example.game.models.Scoreboard;
 import com.google.gson.Gson;
 
@@ -10,9 +10,20 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Accesses and stores information in a database
+ */
 public class ScoreboardDataRepository implements ScoreboardDataRepositoryInterface {
+    /**
+     * Name of file
+     */
     private static final String FILE_NAME = "scoreboardData.txt";
 
+    /**
+     * Saves a scoreboard to file
+     * @param file file path to write in
+     * @param scoreboard The scoreboard to save
+     */
     public void save(File file, Scoreboard scoreboard){
         try {
             Gson gson = new Gson();
@@ -26,6 +37,11 @@ public class ScoreboardDataRepository implements ScoreboardDataRepositoryInterfa
         }
     }
 
+    /**
+     * Returns the current scoreboard
+     * @param file file path to write in
+     * @return Returns the scoreboard found in the database
+     */
     public Scoreboard openScoreboard(File file){
         try {
             Gson gson = new Gson();
@@ -43,17 +59,5 @@ public class ScoreboardDataRepository implements ScoreboardDataRepositoryInterfa
             System.out.println("Can't find scoreboard");
         }
         return null;
-    }
-
-    public void createScoreboard(File file, Scoreboard scoreboard) {
-        try {
-            Gson gson = new Gson();
-            File saveFile = new File(file, FILE_NAME);
-            FileWriter fileWriter = new FileWriter(saveFile, true);
-            fileWriter.write(gson.toJson(scoreboard));
-            fileWriter.close();
-        } catch (IOException error) {
-            error.printStackTrace();
-        }
     }
 }

@@ -1,11 +1,11 @@
-package com.example.game.models.Interfaces;
+package com.example.game.models.interfaces;
 
 import com.example.game.models.Account;
 
 import java.io.File;
 
 /**
- * Interface for whatever service/class accesses the database directly
+ * Interface for whatever service/class accesses the database directly for account information
  */
 public interface AccountDataRepositoryInterface {
     void save(File contextFile, Account account);

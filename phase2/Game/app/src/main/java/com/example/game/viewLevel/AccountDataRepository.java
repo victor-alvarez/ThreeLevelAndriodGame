@@ -3,7 +3,7 @@ package com.example.game.viewLevel;
 import android.util.Log;
 
 import com.example.game.models.Account;
-import com.example.game.models.Interfaces.AccountDataRepositoryInterface;
+import com.example.game.models.interfaces.AccountDataRepositoryInterface;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;

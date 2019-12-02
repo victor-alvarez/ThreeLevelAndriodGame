@@ -1,6 +1,6 @@
 package com.example.game.models;
 
-import com.example.game.models.Interfaces.DataIncrementerListener;
+import com.example.game.models.interfaces.DataIncrementerListener;
 
 import java.io.File;
 

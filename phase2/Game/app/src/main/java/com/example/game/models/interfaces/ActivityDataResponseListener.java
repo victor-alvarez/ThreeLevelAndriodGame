@@ -1,4 +1,4 @@
-package com.example.game.models.Interfaces;
+package com.example.game.models.interfaces;
 
 /**
  * What should be able to be told to the view about the reset.

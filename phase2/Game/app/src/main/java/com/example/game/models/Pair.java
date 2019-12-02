@@ -1,5 +1,10 @@
 package com.example.game.models;
 
+/**
+ * Used to imitate the basic functionality of a Python tuple. Just setting and getting two items.
+ * @param <F> Type of first item
+ * @param <S> Type of second item
+ */
 public class Pair<F, S> {
     private final F first;
     private final S second;

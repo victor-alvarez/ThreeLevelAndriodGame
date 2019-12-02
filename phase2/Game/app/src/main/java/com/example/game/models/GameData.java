@@ -4,14 +4,9 @@ package com.example.game.models;
  * The game statistic data for an account.
  */
 class GameData {
-    /** Account's save data:
-     * at index 0 - last level attempted (0-4):
-     * 0 - have not started level 1 yet,
-     * 1, 2, 3 - started level 1, 2, 3,
-     * 4 - won the last game;
-     * at index 1 - hit points (0-100);
-     * at index 2 - current score (0+);
-     * at index 3 - games played (addiction counter) (0+). Includes retries of games.*/
+    /**
+     * Account's save data:
+     * */
     private int lastAttemptedLevel;
     private int hitPoints;
     private int currentScore;

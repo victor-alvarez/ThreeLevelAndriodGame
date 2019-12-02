@@ -1,4 +1,4 @@
-package com.example.game.models.Interfaces;
+package com.example.game.models.interfaces;
 
 import com.example.game.models.Account;
 

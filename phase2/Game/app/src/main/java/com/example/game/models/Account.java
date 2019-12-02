@@ -1,36 +1,23 @@
 package com.example.game.models;
 
-import com.example.game.models.Interfaces.AccountDataRepositoryInterface;
+import com.example.game.models.interfaces.AccountDataRepositoryInterface;
 
 import java.io.File;
 
 /** An account */
 public class Account{
   /** Account's login, customization settings and save data. */
-  private String login;
+  final private String login;
 
-  /** Account's customization:
-   * at index 0 - background colour:
-   * 0 - grey,
-   * 1 - red;
-   * at index 1 - account icon:
-   * 0 - none;
-   * at index 2 - language:
-   * 0 - English,
-   * 1 - French,
-   * 2 - Russian,
-   * 3 - Spanish;*/
-  private Customization customization;
+  /**
+   *  Account's customization
+   * */
+  final private Customization customization;
 
-  /** Account's save data:
-   * at index 0 - last level attempted (0-4):
-   * 0 - have not started level 1 yet,
-   * 1, 2, 3 - started level 1, 2, 3,
-   * 4 - won the last game;
-   * at index 1 - hit points (0-100);
-   * at index 2 - current score (0+);
-   * at index 3 - games played (addiction counter) (0+). Includes retries of games.*/
-  private GameData gameData;
+  /**
+   * Account's save data:
+   */
+  final private GameData gameData;
 
   /**
    * Constructor for brand new Account. Activates from Create Account button. Takes login from Enter
@@ -53,7 +40,7 @@ public class Account{
 
   /**
    * Sets this account's background colour to selected colour and records it
-   * @param colour the number that respresents a background colour for this account
+   * @param colour the number that represents a background colour for this account
    * @param contextFile an access to the current file state of the app
    * @param accountDataRepository the interface which accesses the database
    */
@@ -72,7 +59,7 @@ public class Account{
 
   /**
    * Sets this account's language and records the setting
-   * @param language the number that respresents a language for this account
+   * @param language the number that represents a language for this account
    * @param contextFile an access to the current file state of the app
    * @param accountDataRepository the interface which accesses the database
    */
