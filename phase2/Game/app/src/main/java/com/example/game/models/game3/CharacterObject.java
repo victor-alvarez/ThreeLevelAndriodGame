@@ -10,16 +10,25 @@ class CharacterObject extends Game3Object {
     /**
      * The physical appearance of the Character as a Bitmap.
      */
-    private Bitmap sprite ;
+    private Bitmap sprite;
 
+    /**
+     * The Bitmaps representing each frame of the Character when Animated.
+     */
     private Bitmap[] spriteAnimate = new Bitmap[4];
 
-    private int frameTime = 200;
-
+    /**
+     * Setter for spriteAnimate.
+     *
+     * @param spriteAnimate The Bitmaps representing each frame of the Character when Animated.
+     */
     void setSpriteAnimate(Bitmap[] spriteAnimate) {
         this.spriteAnimate = spriteAnimate;
     }
 
+    /**
+     * The current frame the animation is on.
+     */
     private int spriteFrame = 0;
 
     /**
@@ -41,11 +50,12 @@ class CharacterObject extends Game3Object {
     }
 
     /**
-     * Overrides update for the CharacterObject from GabeObject class.
+     * Overrides update for the CharacterObject from GameObject class. Changes the frame of the
+     * animation.
      */
     @Override
     void update() {
-        if (spriteFrame == 4){
+        if (spriteFrame == 4) {
             spriteFrame = 0;
         } else {
             spriteFrame++;

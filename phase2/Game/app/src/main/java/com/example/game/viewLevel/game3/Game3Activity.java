@@ -42,23 +42,43 @@ public class Game3Activity extends BaseActivity {
         scores.setText(String.valueOf(BaseActivity.account.getCurrentScore()));
     }
 
+    /**
+     * Called when the user taps the "Main Menu" button. Takes user to Main Menu.
+     *
+     * @param view The View of the Activity.
+     */
     public void toMainMenu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Called when the user taps the "Easy" button. Takes user to Game 3 in easy mode.
+     *
+     * @param view The View of the Activity.
+     */
     public void playGameEasy(View view) {
         Intent intent = new Intent(this, Game3PlayActivity.class);
         intent.putExtra("DIFFICULTY", "easy");
         startActivity(intent);
     }
 
+    /**
+     * Called when the user taps the "Normal" button. Takes user to Game 3 in normal mode.
+     *
+     * @param view The View of the Activity.
+     */
     public void playGameNormal(View view) {
         Intent intent = new Intent(this, Game3PlayActivity.class);
         intent.putExtra("DIFFICULTY", "normal");
         startActivity(intent);
     }
 
+    /**
+     * Called when the user taps the "Hard" button. Takes user to Game 3 in hard mode.
+     *
+     * @param view The View of the Activity.
+     */
     public void playGameHard(View view) {
         Intent intent = new Intent(this, Game3PlayActivity.class);
         intent.putExtra("DIFFICULTY", "hard");

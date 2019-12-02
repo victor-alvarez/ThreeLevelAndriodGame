@@ -30,7 +30,7 @@ public class Game3PlayActivity extends BaseActivity {
         game3View = new Game3View(this, difficulty);
         setContentView(game3View);
 
-//        Customizes the Activity based on User preference.
+        //Customizes the Activity based on User preference.
         getWindow().getDecorView().setBackgroundResource(account.getBackground());
     }
 
@@ -56,17 +56,15 @@ public class Game3PlayActivity extends BaseActivity {
      * Handles the case when the game is done.
      *
      * @param winner    The winner of the game.
-     * @param hitpoints The hitpoints the Player earned.
+     * @param numMoves  The number of moves the Player played.
+     * @param gameEnded Whether the game has ended or not.
      */
-    protected void gameOver(String winner, int hitpoints, int numMoves) {
+    protected void gameOver(String winner, int numMoves, boolean gameEnded) {
         Intent intent = new Intent(this, Game3ExitActivity.class);
         intent.putExtra("EXTRA_WINNER", winner);
         intent.putExtra("EXTRA_MOVES", numMoves);
-        account.incrementLevel(getApplicationContext().getFilesDir());
-        account.incrementScore(hitpoints, getApplicationContext().getFilesDir());
-        account.decrementHitPoints(100 - hitpoints, getApplicationContext().getFilesDir());
-        account.incrementGamesPlayed(getApplicationContext().getFilesDir());
-        if (account.getHitPoints() <= 0) {
+
+        if (gameEnded) {
             //Ran out of lives
             intent = new Intent(this, GameOver.class);
         }

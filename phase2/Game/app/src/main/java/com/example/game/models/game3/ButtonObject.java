@@ -3,7 +3,7 @@ package com.example.game.models.game3;
 import android.graphics.Rect;
 
 /**
- * A class for ButtonObject Object in GameView.
+ * A class for Button.
  */
 class ButtonObject extends Game3Object {
 
@@ -91,7 +91,7 @@ class ButtonObject extends Game3Object {
      *
      * @return active : Checks if ButtonObject is active.
      */
-    public boolean isActive() {
+    boolean isActive() {
         return active;
     }
 
@@ -124,7 +124,7 @@ class ButtonObject extends Game3Object {
     }
 
     /**
-     * Overrides update for the ButtonObject from GabeObject class.
+     * Overrides update for the ButtonObject from GameObject class.
      */
     @Override
     void update() {
