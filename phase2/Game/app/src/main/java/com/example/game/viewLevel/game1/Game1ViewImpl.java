@@ -22,6 +22,7 @@ public class Game1ViewImpl extends SurfaceView implements SurfaceHolder.Callback
      */
     private MainThread thread;
     private ScenePresenter scenePresenter;
+    MainThreadFactory mainThreadFactory;
 
     /**
      * Constructor
@@ -32,7 +33,8 @@ public class Game1ViewImpl extends SurfaceView implements SurfaceHolder.Callback
         super(context);
         getHolder().addCallback(this);
         Constants.CURRENT_CONTEXT = context;
-        thread = new MainThread(getHolder(), this);
+        mainThreadFactory = ViewFactories.MAIN_THREAD_FACTORY;
+        thread = mainThreadFactory.makeGame1Thread(getHolder(), this);
         ScenePresenterFactory scenePresenterFactory = PresenterFactories.SCENE_PRESENTER_FACTORY;
         scenePresenter = scenePresenterFactory.makeScenePresenterImp();
         setFocusable(true);
@@ -49,10 +51,10 @@ public class Game1ViewImpl extends SurfaceView implements SurfaceHolder.Callback
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        thread = new MainThread(getHolder(), this);
+        thread = mainThreadFactory.makeGame1Thread(getHolder(), this);
         Constants.INIT_TIME = System.currentTimeMillis();
         thread.setRunning(true);
-        thread.start();
+        ((Thread) thread).start();
     }
 
     @Override
@@ -61,7 +63,7 @@ public class Game1ViewImpl extends SurfaceView implements SurfaceHolder.Callback
         while (retry) {
             try {
                 thread.setRunning(false);
-                thread.join();
+                ((Thread) thread).join();
             } catch (Exception e) {
                 e.printStackTrace();
             }

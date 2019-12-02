@@ -25,7 +25,8 @@ public class Game1Activity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game1);
-        ViewFactories.game1ViewFactory = new Game1ViewFactoryImpl();
+        ViewFactories.GAME1_VIEW_FACTORY = new Game1ViewFactoryImpl();
+        ViewFactories.MAIN_THREAD_FACTORY = new MainThreadFactoryImpl();
         assert BaseActivity.account!= null;
         getWindow().getDecorView().setBackgroundResource(BaseActivity.account.getBackground());
     }
