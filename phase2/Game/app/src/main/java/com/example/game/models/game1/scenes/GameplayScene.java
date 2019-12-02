@@ -8,7 +8,7 @@ import android.graphics.Rect;
 import android.view.MotionEvent;
 
 import com.example.game.models.game1.Constants;
-import com.example.game.models.game1.Factories;
+import com.example.game.models.game1.ModelFactories;
 import com.example.game.models.game1.orientation.OrientationData;
 import com.example.game.models.game1.obstacles.Obstacle;
 import com.example.game.models.game1.obstacles.ObstacleManager;
@@ -47,15 +47,15 @@ public class GameplayScene implements Scene {
      * Constructor for GameplayScene. Instansiates player, playerPoint, obstacles, and lives.
      */
     public GameplayScene() {
-        RectPlayerFactory rectPlayerFactory = Factories.RECT_PLAYER_FACTORY;
+        RectPlayerFactory rectPlayerFactory = ModelFactories.RECT_PLAYER_FACTORY;
         player = rectPlayerFactory.makeBallJumpRectPlayer(new Rect(100, 100, 200, 200));
         playerPoint = new Point(Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 4);
         player.update(playerPoint);
-        obstacleManagerFactory = Factories.OBSTACLE_MANAGER_FACTORY;
+        obstacleManagerFactory = ModelFactories.OBSTACLE_MANAGER_FACTORY;
         obstacleManager = obstacleManagerFactory.makeObstacleManagerImpl(1000, 75, Color.BLACK);
         lives = 3;
         // Initialize for tilt controls
-        OrientationDataFactory orientationDataFactory = Factories.ORIENTATION_DATA_FACTORY;
+        OrientationDataFactory orientationDataFactory = ModelFactories.ORIENTATION_DATA_FACTORY;
         orientationData = orientationDataFactory.makeOrientationDataImp();
         orientationData.register();
         frameTime = System.currentTimeMillis();

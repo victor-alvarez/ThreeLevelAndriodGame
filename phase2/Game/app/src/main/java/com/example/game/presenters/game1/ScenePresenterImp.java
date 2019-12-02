@@ -3,8 +3,7 @@ package com.example.game.presenters.game1;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
-import com.example.game.models.game1.Factories;
-import com.example.game.models.game1.scenes.GameplayScene;
+import com.example.game.models.game1.ModelFactories;
 import com.example.game.models.game1.scenes.Scene;
 import com.example.game.models.game1.scenes.SceneFactory;
 
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 /**
  * ScenePresenterImp class. Manages the Scene
  */
-public class ScenePresenterImp {
+public class ScenePresenterImp implements ScenePresenter{
     /**
      * Instance variables
      */
@@ -26,10 +25,11 @@ public class ScenePresenterImp {
      */
     public ScenePresenterImp() {
         ACTIVE_SCENE = 0;
-        SceneFactory sceneFactory = Factories.SCENE_FACTORY;
+        SceneFactory sceneFactory = ModelFactories.SCENE_FACTORY;
         scenes.add(sceneFactory.makeGameplayScene());
     }
 
+    @Override
     public void setDifficulty(String difficulty) {
         for (Scene s : scenes) {
             s.setDifficulty(difficulty);
@@ -42,6 +42,7 @@ public class ScenePresenterImp {
      * @param event - event of the interaction with the screen (i.e., touch screen, let go of
      *              screen, etc.)
      */
+    @Override
     public void receiveTouch(MotionEvent event) {
         scenes.get(ACTIVE_SCENE).receiveTouch(event);
     }
@@ -49,6 +50,7 @@ public class ScenePresenterImp {
     /**
      * Update scene
      */
+    @Override
     public void update() {
         scenes.get(ACTIVE_SCENE).update();
     }
@@ -58,6 +60,7 @@ public class ScenePresenterImp {
      *
      * @param canvas - draw onto Canvas canvas
      */
+    @Override
     public void draw(Canvas canvas) {
         scenes.get(ACTIVE_SCENE).draw(canvas);
     }

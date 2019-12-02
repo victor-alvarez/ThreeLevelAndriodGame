@@ -8,10 +8,7 @@ import android.graphics.Rect;
 
 import com.example.game.R;
 import com.example.game.models.game1.Constants;
-import com.example.game.models.game1.Factories;
-import com.example.game.models.game1.animations.Animation;
-import com.example.game.models.game1.animations.AnimationFactory;
-import com.example.game.models.game1.animations.AnimationManager;
+import com.example.game.models.game1.ModelFactories;
 
 public class AnimationManagerImpl implements AnimationManager {
     /**
@@ -28,7 +25,7 @@ public class AnimationManagerImpl implements AnimationManager {
      *
      */
     public AnimationManagerImpl() {
-        AnimationFactory animationFactory = Factories.ANIMATION_FACTORY;
+        AnimationFactory animationFactory = ModelFactories.ANIMATION_FACTORY;
 
         Bitmap idleImg = BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.alienblue_badge1);
         Bitmap walk1 = BitmapFactory.decodeResource(Constants.CURRENT_CONTEXT.getResources(), R.drawable.alienblue_badge1);

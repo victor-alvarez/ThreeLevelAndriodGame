@@ -8,6 +8,9 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import com.example.game.models.game1.Constants;
+import com.example.game.presenters.game1.PresenterFactories;
+import com.example.game.presenters.game1.ScenePresenter;
+import com.example.game.presenters.game1.ScenePresenterFactory;
 import com.example.game.presenters.game1.ScenePresenterImp;
 import com.example.game.presenters.game1.MainThread;
 
@@ -20,7 +23,7 @@ public class Game1View extends SurfaceView implements SurfaceHolder.Callback {
      * Instance variables
      */
     private MainThread thread;
-    private ScenePresenterImp manager;
+    private ScenePresenter scenePresenter;
 
     /**
      * Constructor
@@ -32,12 +35,13 @@ public class Game1View extends SurfaceView implements SurfaceHolder.Callback {
         getHolder().addCallback(this);
         Constants.CURRENT_CONTEXT = context;
         thread = new MainThread(getHolder(), this);
-        manager = new ScenePresenterImp();
+        ScenePresenterFactory scenePresenterFactory = PresenterFactories.SCENE_PRESENTER_FACTORY;
+        scenePresenter = scenePresenterFactory.makeScenePresenterImp();
         setFocusable(true);
     }
 
     public void setDifficulty(String difficulty) {
-        manager.setDifficulty(difficulty);
+        scenePresenter.setDifficulty(difficulty);
     }
 
     @Override
@@ -69,7 +73,7 @@ public class Game1View extends SurfaceView implements SurfaceHolder.Callback {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        manager.receiveTouch(event);
+        scenePresenter.receiveTouch(event);
         return true;
         // return super.onTouchEvent(event);
     }
@@ -78,12 +82,12 @@ public class Game1View extends SurfaceView implements SurfaceHolder.Callback {
      * updates manager
      */
     public void update() {
-        manager.update();
+        scenePresenter.update();
     }
 
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        manager.draw(canvas);
+        scenePresenter.draw(canvas);
     }
 }

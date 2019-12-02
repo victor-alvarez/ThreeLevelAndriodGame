@@ -11,11 +11,14 @@ import com.example.game.models.game1.animations.AnimationFactoryImpl;
 import com.example.game.models.game1.animations.AnimationManagerFactoryImpl;
 import com.example.game.models.game1.obstacles.ObstacleFactoryImpl;
 import com.example.game.models.game1.Constants;
-import com.example.game.models.game1.Factories;
+import com.example.game.models.game1.ModelFactories;
 import com.example.game.models.game1.obstacles.ObstacleManagerFactoryImpl;
 import com.example.game.models.game1.orientation.OrientationDataFactoryImp;
 import com.example.game.models.game1.rectplayer.RectPlayerFactoryImpl;
 import com.example.game.models.game1.scenes.SceneFactoryImp;
+import com.example.game.presenters.game1.PresenterFactories;
+import com.example.game.presenters.game1.ScenePresenterFactoryImp;
+import com.example.game.presenters.game1.ScenePresenterImp;
 
 public class BallJumperActivity extends BaseActivity {
     /**
@@ -41,13 +44,14 @@ public class BallJumperActivity extends BaseActivity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         Constants.SCREEN_WIDTH = dm.widthPixels;
         Constants.SCREEN_HEIGHT = dm.heightPixels;
-        Factories.OBSTACLE_FACTORY = new ObstacleFactoryImpl();
-        Factories.RECT_PLAYER_FACTORY = new RectPlayerFactoryImpl();
-        Factories.OBSTACLE_MANAGER_FACTORY = new ObstacleManagerFactoryImpl();
-        Factories.ANIMATION_FACTORY = new AnimationFactoryImpl();
-        Factories.ANIMATION_MANAGER_FACTORY = new AnimationManagerFactoryImpl();
-        Factories.ORIENTATION_DATA_FACTORY = new OrientationDataFactoryImp();
-        Factories.SCENE_FACTORY = new SceneFactoryImp();
+        ModelFactories.OBSTACLE_FACTORY = new ObstacleFactoryImpl();
+        ModelFactories.RECT_PLAYER_FACTORY = new RectPlayerFactoryImpl();
+        ModelFactories.OBSTACLE_MANAGER_FACTORY = new ObstacleManagerFactoryImpl();
+        ModelFactories.ANIMATION_FACTORY = new AnimationFactoryImpl();
+        ModelFactories.ANIMATION_MANAGER_FACTORY = new AnimationManagerFactoryImpl();
+        ModelFactories.ORIENTATION_DATA_FACTORY = new OrientationDataFactoryImp();
+        ModelFactories.SCENE_FACTORY = new SceneFactoryImp();
+        PresenterFactories.SCENE_PRESENTER_FACTORY = new ScenePresenterFactoryImp();
         Game1View gamePanel = new Game1View(this);
         gamePanel.setDifficulty(getIntent().getStringExtra("difficulty"));
         setContentView(gamePanel);
