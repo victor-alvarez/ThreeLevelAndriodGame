@@ -1,4 +1,4 @@
-package com.example.game.models.Interfaces;
+package com.example.game.models.interfaces;
 
 /**
  * The reactions the listener to the use cases can take.

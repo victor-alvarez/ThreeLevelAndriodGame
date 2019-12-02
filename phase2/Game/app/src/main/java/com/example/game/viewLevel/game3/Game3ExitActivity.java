@@ -10,7 +10,7 @@ import com.example.game.BaseActivity;
 import com.example.game.R;
 import com.example.game.viewLevel.ScoreboardActivity;
 import com.example.game.models.DataIncrementerUseCases;
-import com.example.game.models.Interfaces.DataIncrementerActions;
+import com.example.game.models.interfaces.DataIncrementerActions;
 import com.example.game.presenters.DataIncrementerPresenter;
 
 /**

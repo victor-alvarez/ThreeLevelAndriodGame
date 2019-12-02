@@ -1,4 +1,4 @@
-package com.example.game.models.Interfaces;
+package com.example.game.models.interfaces;
 
 /**
  * The actions the class which loads the games can take.

@@ -1,6 +1,6 @@
 package com.example.game.models;
 
-import com.example.game.models.Interfaces.LoadGameListener;
+import com.example.game.models.interfaces.LoadGameListener;
 
 import java.io.File;
 

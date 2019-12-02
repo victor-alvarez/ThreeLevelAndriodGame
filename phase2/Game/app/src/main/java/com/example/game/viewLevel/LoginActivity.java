@@ -14,7 +14,7 @@ import com.example.game.models.LoginUseCases;
 import com.example.game.R;
 import com.example.game.models.AccountHolder;
 import com.example.game.models.AccountManager;
-import com.example.game.models.Interfaces.LoginActions;
+import com.example.game.models.interfaces.LoginActions;
 
 /**
  * Login activity for login the user in. Lets the user enter a username and if it exists they may

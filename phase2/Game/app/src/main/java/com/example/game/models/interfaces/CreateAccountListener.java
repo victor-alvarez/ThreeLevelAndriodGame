@@ -1,4 +1,4 @@
-package com.example.game.models.Interfaces;
+package com.example.game.models.interfaces;
 
 /**
  * Interface for reactions to the results of the Use Cases.
