@@ -3,12 +3,10 @@ package com.example.game.viewLevel.game1;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
-import com.example.game.viewLevel.game1.Game1View;
-
 /**
  * MainThread class. Runs game loop under fps.
  */
-public class Game1Thread extends Thread implements MainThread{
+class Game1Thread extends Thread implements MainThread {
     /**
      * Instance Variables
      */
@@ -24,7 +22,7 @@ public class Game1Thread extends Thread implements MainThread{
      * @param surfaceHolder - sets the surface holder
      * @param game1View     - sets the game panel
      */
-    public Game1Thread(SurfaceHolder surfaceHolder, Game1View game1View) {
+    Game1Thread(SurfaceHolder surfaceHolder, Game1View game1View) {
         super();
         this.surfaceHolder = surfaceHolder;
         this.game1View = game1View;

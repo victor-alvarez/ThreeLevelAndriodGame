@@ -8,23 +8,23 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.game.BaseActivity;
-import com.example.game.models.game1.animations.AnimationFactoryImpl;
-import com.example.game.models.game1.animations.AnimationManagerFactoryImpl;
-import com.example.game.models.game1.obstacles.ObstacleFactoryImpl;
+import com.example.game.models.game1.AnimationFactoryImpl;
+import com.example.game.models.game1.AnimationManagerFactoryImpl;
+import com.example.game.models.game1.ObstacleFactoryImpl;
 import com.example.game.models.game1.Constants;
 import com.example.game.models.game1.ModelFactories;
-import com.example.game.models.game1.obstacles.ObstacleManagerFactoryImpl;
-import com.example.game.models.game1.orientation.OrientationDataFactoryImp;
-import com.example.game.models.game1.rectplayer.RectPlayerFactoryImpl;
-import com.example.game.models.game1.scenes.SceneFactoryImp;
+import com.example.game.models.game1.ObstacleManagerFactoryImpl;
+import com.example.game.models.game1.OrientationDataFactoryImp;
+import com.example.game.models.game1.RectPlayerFactoryImpl;
+import com.example.game.presenters.game1.SceneFactoryImp;
 import com.example.game.presenters.game1.PresenterFactories;
-import com.example.game.presenters.game1.ScenePresenterFactoryImp;
-import com.example.game.presenters.game1.ScenePresenterImp;
+import com.example.game.presenters.game1.Game1PresenterFactoryImp;
 
 public class BallJumperActivity extends BaseActivity {
+
     /**
      * The activity that is commenced once the "Play" or "Retry" button is pressed in Game1.
-     */
+
 
     // === Instance Variables ===
 
@@ -51,8 +51,8 @@ public class BallJumperActivity extends BaseActivity {
         ModelFactories.ANIMATION_FACTORY = new AnimationFactoryImpl();
         ModelFactories.ANIMATION_MANAGER_FACTORY = new AnimationManagerFactoryImpl();
         ModelFactories.ORIENTATION_DATA_FACTORY = new OrientationDataFactoryImp();
-        ModelFactories.SCENE_FACTORY = new SceneFactoryImp();
-        PresenterFactories.SCENE_PRESENTER_FACTORY = new ScenePresenterFactoryImp();
+        PresenterFactories.SCENE_FACTORY = new SceneFactoryImp();
+        PresenterFactories.SCENE_PRESENTER_FACTORY = new Game1PresenterFactoryImp();
         Game1ViewFactory game1ViewFactory = ViewFactories.GAME1_VIEW_FACTORY;
         Game1View game1View = game1ViewFactory.makeGame1ViewImpl(this);
         game1View.setDifficulty(getIntent().getStringExtra("difficulty"));
